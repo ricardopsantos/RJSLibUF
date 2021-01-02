@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17192" systemVersion="19E287" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="DataModelEntity" representedClassName="DataModelEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="encoding" optional="YES" attributeType="String"/>
+        <attribute name="expireDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="key" optional="YES" attributeType="String"/>
+        <attribute name="keyBase" optional="YES" attributeType="String"/>
+        <attribute name="keyParams" optional="YES" attributeType="String"/>
+        <attribute name="recordDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="recordType" optional="YES" attributeType="String"/>
+        <attribute name="value" optional="YES" attributeType="String"/>
+        <attribute name="valueData" optional="YES" attributeType="Binary"/>
+        <attribute name="valueType" optional="YES" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="DataModelEntity" positionX="160" positionY="192" width="128" height="193"/>
+    </elements>
+</model>

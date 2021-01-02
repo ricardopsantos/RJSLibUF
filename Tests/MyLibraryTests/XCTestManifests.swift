@@ -1,0 +1,11 @@
+import XCTest
+
+// swiftlint:disable all
+
+#if !canImport(ObjectiveC)
+public func allTests() -> [XCTestCaseEntry] {
+    return [
+        testCase(MyLibraryTests.allTests)
+    ]
+}
+#endif

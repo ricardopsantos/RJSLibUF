@@ -1,0 +1,13 @@
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+.build/
+Carthage/*
+fastlane/*
+
+.DS_Store
+/.build
+/Packages
+/*.xcodeproj
+xcuserdata/
