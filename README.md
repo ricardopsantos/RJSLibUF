@@ -85,11 +85,15 @@ __Model:__
 
 ```swift
 struct Employee: Codable {
-    let identifier, employeeName, employeeSalary: String
+    // https://app.quicktype.io/
+    let identifier, employeeName, employeeSalary, employeeAge: String
+    let profileImage: String
     enum CodingKeys: String, CodingKey {
         case identifier     = "id"
         case employeeName   = "employee_name"
         case employeeSalary = "employee_salary"
+        case employeeAge    = "employee_age"
+        case profileImage   = "profile_image"
     }
 }
 ```
@@ -97,13 +101,13 @@ struct Employee: Codable {
 __API Target Request:__
 
 ```swift
-struct EmployesAPIRequest: RJS_SimpleNetworkClientProtocol {
+struct APIRequest: RJS_SimpleNetworkClientRequestProtocol {
     var returnOnMainTread: Bool = false
     var debugRequest: Bool = true
     var urlRequest: URLRequest
     var responseType: RJS_SimpleNetworkClientResponseType
     var mockedData: String? = """
-[{"id":"36253","employee_name":"Mike Cooper","employee_salary":"80"},{"id":"36255","employee_name":"Eldon","employee_salary":"9452"}]
+[{"id":"36253","employee_name":"Mike Cooper","employee_salary":"80","employee_age":"23","profile_image":""},{"id":"36255","employee_name":"Eldon","employee_salary":"9452","employee_age":"66","profile_image":""}]
 """
     init() throws {
         if let url = URL(string: "http://dummy.restapiexample.com/api/v1/employees") {
@@ -121,18 +125,18 @@ __Request:__
 
 ```swift
 do {
-    let apiRequest: RJS_SimpleNetworkClientProtocol = try EmployesAPIRequest()
-    let api: RJS_SimpleNetworkClientRequestProtocol = RJS_SimpleNetworkClient()
-    api.execute(request: apiRequest, completionHandler: { (result: Result<RJS_SimpleNetworkClientResponse<[Employee]>>) in
+    typealias EmployeeList = [Employee]
+    let apiRequest: RJS_SimpleNetworkClientRequestProtocol = try APIRequest()
+    let api: SimpleNetworkClient_Protocol = RJS_SimpleNetworkClient()
+    api.execute(request: apiRequest, completionHandler: { (result: Result<RJS_SimpleNetworkClientResponse<EmployeeList>>) in
         switch result {
-        case .success(let some):
-            print(some.entity)
-        case .failure(let error):
-            print(error)
+        case .success(let some): print(some.entity)
+        case .failure(let error): print(error)
         }
     })
 } catch {
     print(error)
+}
 }
 ```
 

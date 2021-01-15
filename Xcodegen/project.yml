@@ -153,7 +153,7 @@ targets:
     type: bundle.unit-test
     platform: iOS
     sources:
-       - path: ../Tests/MyLibraryTests
+       - path: ../Tests/RJSLibUFTests
     scheme: {}
     dependencies:
       - target: SampleApp

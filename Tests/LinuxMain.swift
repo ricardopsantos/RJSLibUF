@@ -1,7 +1,7 @@
 import XCTest
 
-import MyLibraryTests
+import RJSLibUFTests
 
 var tests = [XCTestCaseEntry]()
-tests += MyLibraryTests.allTests()
+tests += RJSLibUFTests.allTests()
 XCTMain(tests)

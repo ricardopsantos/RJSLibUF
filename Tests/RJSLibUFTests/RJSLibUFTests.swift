@@ -1,4 +1,5 @@
 import XCTest
+import class Foundation.Bundle
 
 // swiftlint:disable all
 
@@ -13,7 +14,7 @@ private let tValue: String = "XCTestCase_value"
 private let tImageURL: String = "https://www.google.pt/images/branding/googlelogo/1x/googlelogo_white_background_color_272x92dp.png"
 private let tJSONURL: String = "http://dummy.restapiexample.com/api/v1/employees"
 
-class MyLibraryTests: XCTestCase {
+class RJSLibUFTests: XCTestCase {
 
     static var allTests = [
         ("test_Device", test_Device)
@@ -22,10 +23,12 @@ class MyLibraryTests: XCTestCase {
     // MARK: - Device
 
     func test_Device() {
+        #if !os(macOS)
         XCTAssert(!RJS_DeviceInfo.appOnBackground)
         XCTAssert(RJS_DeviceInfo.uuid.length>0)
         XCTAssert(RJS_DeviceInfo.deviceInfo.count>0)
         XCTAssert(RJS_DeviceInfo.isSimulator)
+        #endif
     }
 
     // MARK: - Storage
@@ -131,11 +134,12 @@ class MyLibraryTests: XCTestCase {
     }
 
     func test_AppInfo() {
+        #if !os(macOS)
         _ = RJS_AppInfo.appOnBackground
         _ = RJS_AppInfo.isInLowPower
         _ = RJS_AppInfo.iPadDevice
         _ = RJS_AppInfo.iPhoneDevice
-        _ = RJS_AppInfo.isSimulator
+        #endif
         _ = RJS_AppInfo.isSimulator
     }
 
@@ -174,6 +178,7 @@ class MyLibraryTests: XCTestCase {
     }
 
     func test_FilesImages() {
+        #if !os(macOS)
         let expectation = self.expectation(description: #function)
         let imageName = "someImage"
         func doTestIn(folder: RJS_Files.Folder, image: UIImage) {
@@ -194,6 +199,7 @@ class MyLibraryTests: XCTestCase {
             expectation.fulfill()
         }
         waitForExpectations(timeout: 5)
+        #endif
     }
 
     func test_NetworkClient() {
@@ -258,22 +264,28 @@ class MyLibraryTests: XCTestCase {
             RJS_BasicNetworkClient.getJSONFrom(urlString: tJSONURL, completion: { (some, success) in
                 XCTAssert(some != nil)
                 XCTAssert(success)
+                #if !os(macOS)
                 RJS_BasicNetworkClient.downloadImageFrom(tImageURL, completion: { (image) in
                     XCTAssert(image != nil)
                     expectation.fulfill()
                 })
+                #else
+                expectation.fulfill()
+                #endif
             })
         }
         waitForExpectations(timeout: 5)
     }
 
     func test_RJSCronometer() {
+        #if !os(macOS)
         let operationId = "operationId"
         _ = RJS_Cronometer.printTimeElapsedWhenRunningCode(operationId) { }
         _ = RJS_Cronometer.timeElapsedInSecondsWhenRunningCode { }
         RJS_Cronometer.startTimerWith(identifier: operationId)
         [1...1000].forEach { (_) in }
         XCTAssert(RJS_Cronometer.timeElapsed(identifier: operationId, print: false)! > 0.0)
+        #endif
     }
 
     func test_Convert() {
