@@ -2,13 +2,16 @@
 clear
 
 echo 'Xcodegen...'
+echo 'Generating RJSLibUF.xcodeproj for carthage install...'
 xcodegen -s ./XcodeGen/project.yml -p ./
-echo '50% done!'
+echo 'Done!'
+
+echo 'Generating Sample app with RJSLibUF installed via SPM...'
 xcodegen -s ./XcodeGen/project2.yml -p ./
-echo '100% done!'
+echo 'Done!'
 
 #open RJSLibUF.xcodeproj
-open SPMInstalled_SampleProject.xcodeproj
+open iOSSampleApp.xcodeproj
 
 echo ''
 

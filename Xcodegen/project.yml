@@ -1,22 +1,8 @@
-
-
-#
-# DOCS
-#
-# https://github.com/yonaskolb/XcodeGen/blob/master/Docs/ProjectSpec.md
-
-#
-# SAMPLES
-#
-# https://gist.github.com/d-date/44510c5b4b3baf820033453bfeb235c3
-# https://github.com/yonaskolb/XcodeGen/blob/master/Docs/Examples.md
-#
-
-####################### PROJECT #######################
-####################### PROJECT #######################  
-####################### PROJECT #######################
-
 name: RJSLibUF
+
+# RJSLibUF.xcodeproj for carthage install)
+# RJSLibUF.xcodeproj for carthage install)
+# RJSLibUF.xcodeproj for carthage install)
 
 options:
   bundleIdPrefix: com.rjps.libuf
