@@ -29,7 +29,7 @@ public enum SizesNames: Int, Codable {
     case size_21 = 152
     case size_22 = 160
     
-    var cgFloat: CGFloat {
+    public var cgFloat: CGFloat {
         return CGFloat(self.rawValue)
     }
 }
