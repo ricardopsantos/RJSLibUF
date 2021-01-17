@@ -9,7 +9,7 @@ name: iOSSampleApp
 options:
   bundleIdPrefix: com.rjps.libuf
   xcodeVersion: '12.0.1'
-  deploymentTarget: '10.0'
+  deploymentTarget: '13.0'
   groupSortPosition: top
   generateEmptyDirectories: true
   findCarthageFrameworks: false
@@ -26,7 +26,7 @@ packages:
     
 settings:
   base:
-    IPHONEOS_DEPLOYMENT_TARGET: 10.0
+    IPHONEOS_DEPLOYMENT_TARGET: 13.0
     ENABLE_BITCODE: NO
     SWIFT_VERSION: 5.3
     
