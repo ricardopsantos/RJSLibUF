@@ -3,6 +3,7 @@
 //
 
 import Foundation
+import UIKit
 
 public enum SizesNames: Int, Codable {
     case size_1 = 2   // Preferred
@@ -27,5 +28,8 @@ public enum SizesNames: Int, Codable {
     case size_20 = 144
     case size_21 = 152
     case size_22 = 160
+    
+    var cgFloat: CGFloat {
+        return CGFloat(self.rawValue)
+    }
 }
-
