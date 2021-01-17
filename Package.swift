@@ -46,7 +46,7 @@ let swiftSettings:[SwiftSetting] = [
 
 let package = Package(
     name: swiftPackageManagerName,
-    platforms: [.iOS(.v10), .macOS(.v10_15)],
+    platforms: [.iOS(.v13), .macOS(.v10_15)],
     products: [
         libraryWith(name: spmBaseTargetName),
         libraryWith(name: spmALayoutsTargetName),
