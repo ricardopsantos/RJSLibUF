@@ -29,4 +29,6 @@ public typealias RJS_ColorName = UIColor.Pack3
 
 // Font styles utils with a font builder for Bold, Regular and Light, and also pre-built styles like : headingJumbo, headingBold, headingMedium, headingSmall
 public typealias RJS_Fonts = UIFont.RJS_Fonts
+
+public typealias RJS_SizeNames = SizesNames
 #endif
