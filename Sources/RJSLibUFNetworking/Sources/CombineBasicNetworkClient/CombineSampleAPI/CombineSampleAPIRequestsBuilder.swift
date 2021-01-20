@@ -6,12 +6,7 @@
 import Foundation
 import CryptoKit
 
-public struct RequestsBuilder {
-            
-}
-
-extension RequestsBuilder {
-    
+public struct CombineSampleAPIRequestsBuilder {
     // Sample Request
     static func sampleRequest(publicKey: Curve25519.KeyAgreement.PublicKey, userID: String) -> CombineSimpleNetworkAgentRequestModel {
         let httpBody = [
@@ -28,5 +23,4 @@ extension RequestsBuilder {
                             headerValues: headerValues,
                             serverURL: "127.1.0")
     }
-        
 }
