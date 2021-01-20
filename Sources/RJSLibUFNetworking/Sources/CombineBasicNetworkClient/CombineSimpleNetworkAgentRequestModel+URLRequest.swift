@@ -5,7 +5,7 @@
 
 import Foundation
 
-extension CombineSimpleNetworkAgentRequestModel {
+public extension CombineSimpleNetworkAgentRequestModel {
 
     fileprivate static func toJSON<T: Codable>(some: T) -> String? {
         guard let data = try? JSONEncoder().encode(some.self) else { return nil }
