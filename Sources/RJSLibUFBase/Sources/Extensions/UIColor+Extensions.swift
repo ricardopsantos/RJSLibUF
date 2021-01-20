@@ -68,11 +68,11 @@ public extension UIColor {
         let rgbSafe = rgb.trim.replace(";", with: ",")
         let splited = rgbSafe.split(by: ",")
         if splited.count>=3 {
-            let red   = RJSLib.Convert.toCGFloat(splited[0])
-            let green = RJSLib.Convert.toCGFloat(splited[1])
-            let blue  = RJSLib.Convert.toCGFloat(splited[2])
+            let red   = splited[0].cgFloatValue ?? 0
+            let green = splited[1].cgFloatValue ?? 0
+            let blue  = splited[2].cgFloatValue ?? 0
             if splited.count==4 {
-                let alpha = RJSLib.Convert.toCGFloat(splited[3])
+                let alpha = splited[3].cgFloatValue ?? 1
                 color = UIColor(red: red/255.0, green: green/255.0, blue: blue/255.0, alpha: alpha)
                 
             } else {

@@ -111,9 +111,7 @@ fileprivate extension RJSLib.BasicNetworkClient {
             let path = destinyFolder + "/" + name.replacingOccurrences(of: "\\", with: "/")
             return UIImage(contentsOfFile: path)
         }
-        #endif
-        
-        #if !os(macOS)
+
         static func saveImageWith(name: String, image: UIImage) -> Bool {
             guard !name.isEmpty else { return false }
             let path = destinyFolder + "/" + name.replacingOccurrences(of: "\\", with: "/")

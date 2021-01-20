@@ -9,7 +9,7 @@ name: iOSSampleApp
 options:
   bundleIdPrefix: com.rjps.libuf
   xcodeVersion: '12.0.1'
-  deploymentTarget: '10.0'
+  deploymentTarget: '13.0'
   groupSortPosition: top
   generateEmptyDirectories: true
   findCarthageFrameworks: false
@@ -20,7 +20,7 @@ options:
 packages:
   RJSLibUF:
     url: https://github.com/ricardopsantos/RJSLibUF
-    from: 1.0.3
+    from: 1.0.0
         
 ####################### SETTINGS #######################   
     

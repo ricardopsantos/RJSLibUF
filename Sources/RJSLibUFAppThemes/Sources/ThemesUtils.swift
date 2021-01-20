@@ -8,12 +8,8 @@
 #if !os(macOS)
 import Foundation
 import UIKit
-
-extension String {
-    var floatValue: CGFloat {
-        return CGFloat((self as NSString).floatValue)
-    }
-}
+//
+import RJSLibUFBase
 
 func colorFromRGBString(_ rgb: String) -> UIColor {
     guard !rgb.isEmpty else { return .black }
@@ -22,11 +18,11 @@ func colorFromRGBString(_ rgb: String) -> UIColor {
     let rgbSafe = rgb.replacingOccurrences(of: ";", with: ",", options: .literal, range: nil)
     let splited = rgbSafe.components(separatedBy: ",")
     if splited.count>=3 {
-        let red   = splited[0].floatValue
-        let green = splited[1].floatValue
-        let blue  = splited[2].floatValue
+        let red   = splited[0].cgFloatValue ?? 128
+        let green = splited[1].cgFloatValue ?? 128
+        let blue  = splited[2].cgFloatValue ?? 128
         if splited.count==4 {
-            let alpha = splited[3].floatValue
+            let alpha = splited[3].cgFloatValue ?? 1
             color = UIColor(red: red/255.0, green: green/255.0, blue: blue/255.0, alpha: alpha)
 
         } else {

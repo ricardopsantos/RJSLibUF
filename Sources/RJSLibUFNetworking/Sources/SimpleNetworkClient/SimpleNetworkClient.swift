@@ -64,10 +64,10 @@ public extension RJSLib {
                 let mockedData = request.mockedData!.trimmingCharacters(in: .whitespacesAndNewlines)
                 if mockedData.count>0 {
                     do {
-                        let data: Data? = mockedData.data(using: .utf8) // non-nil
+                        let data: Data? = mockedData.utf8Data
                         let response = try RJSLibNetworkClientResponse<T>(data: data, httpUrlResponse: nil, responseType: request.responseType)
                         DispatchQueue.main.async {
-                            print("# RJSLib.SimpleNetworkClient - Returned mocked data for [\(request.urlRequest)]")
+                            RJS_Logs.message("# RJSLib.SimpleNetworkClient - Returned mocked data for [\(request.urlRequest)]")
                             completionHandler(.success(response))
                         }
                     } catch {
@@ -91,7 +91,7 @@ public extension RJSLib {
                             let response = try RJSLibNetworkClientResponse<T>(data: data, httpUrlResponse: httpUrlResponse, responseType: request.responseType)
                             if request.debugRequest && data != nil {
                                 let dataString: String = String(data: data!, encoding: .utf8) ?? ""
-                                print("# RJSLib.SimpleNetworkClient - Request: \(String(describing: request.urlRequest.url?.absoluteURL))\n# Response:\(dataString)")
+                                RJS_Logs.message("# RJSLib.SimpleNetworkClient - Request: \(String(describing: request.urlRequest.url?.absoluteURL))\n# Response:\(dataString)")
                             }
                             completionHandler(.success(response))
                         } catch {

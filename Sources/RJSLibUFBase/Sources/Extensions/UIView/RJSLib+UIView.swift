@@ -16,14 +16,18 @@ public extension RJSLibExtension where Target == UIView {
     var width: CGFloat { return self.target.width }
     var height: CGFloat { return self.target.height }
     func allSubviews<T: UIView>() -> [T] { return self.target.allSubviews() }
-    func disableUserInteractionFor(_ seconds: Double, disableAlpha: CGFloat=1) { return self.target.disableUserInteractionFor(seconds, disableAlpha: disableAlpha) }
     func destroy() { self.target.destroy() }
     func removeAllSubviews() { self.target.removeAllSubviews() }
-
+    func disableUserInteractionFor(_ seconds: Double, disableAlpha: CGFloat=1) {
+        self.target.disableUserInteractionFor(seconds, disableAlpha: disableAlpha)
+    }
 }
 
 public extension UIView {
     
+    var width: CGFloat { return self.frame.width }
+    var height: CGFloat { return self.frame.height }
+
     var viewController: UIViewController? {
         if let nextResponder = self.next as? UIViewController {
             return nextResponder
@@ -34,25 +38,31 @@ public extension UIView {
         }
     }
     
-    var width: CGFloat { return self.frame.width }
-    var height: CGFloat { return self.frame.height }
+    // this functions is duplicated
+    func addCorner(radius: CGFloat) {
+        self.layoutIfNeeded()
+        self.layer.cornerRadius = radius
+        self.layer.masksToBounds = true
+    }
+    
+    // this functions is duplicated
+    func addBlur(style: UIBlurEffect.Style = .dark) -> UIVisualEffectView {
+        let blurEffectView: UIVisualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: style))
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        blurEffectView.alpha = 0.5
+        self.addSubview(blurEffectView)
+        return blurEffectView
+    }
 
+    func bringToFront() { superview?.bringSubviewToFront(self) }
+
+    func sendToBack() { superview?.sendSubviewToBack(self) }
+    
     func fadeTo(_ value: CGFloat, duration: Double=RJS_Constants.defaultAnimationsTime) {
         RJS_Utils.executeInMainTread { [weak self] in
             UIView.animate(withDuration: duration) {
                 self?.alpha = value
             }
-        }
-    }
-
-    func allSubviews<T: UIView>() -> [T] { return UIView.allSubviews(view: self) as [T] }
-    static func allSubviews<T: UIView>(view: UIView) -> [T] {
-        return view.subviews.flatMap { subView -> [T] in
-            var result = allSubviews(view: subView) as [T]
-            if let view = subView as? T {
-                result.append(view)
-            }
-            return result
         }
     }
     
@@ -78,6 +88,57 @@ public extension UIView {
         self.removeAllSubviews()
         self.removeFromSuperview()
     }
+}
 
+//
+// MARK: - SubViews
+//
+
+public extension UIView {
+    func subViewsWith(tag: Int, recursive: Bool) -> [UIView] {
+        if recursive {
+            return self.getAllSubviews().filter { $0.tag == tag }
+        } else {
+            return self.subviews.filter { $0.tag == tag }
+        }
+    }
+
+    class func getAllSubviews<T: UIView>(from parenView: UIView) -> [T] {
+        parenView.subviews.flatMap { subView -> [T] in
+            var result = getAllSubviews(from: subView) as [T]
+            if let view = subView as? T { result.append(view) }
+            return result
+        }
+    }
+
+    class func getAllSubviews(from parenView: UIView, types: [UIView.Type]) -> [UIView] {
+        parenView.subviews.flatMap { subView -> [UIView] in
+            var result = getAllSubviews(from: subView) as [UIView]
+            for type in types {
+                if subView.classForCoder == type {
+                    result.append(subView)
+                    return result
+                }
+            }
+            return result
+        }
+    }
+
+    func getAllSubviews<T: UIView>() -> [T] { UIView.getAllSubviews(from: self) as [T] }
+
+    func get<T: UIView>(all type: T.Type) -> [T] { UIView.getAllSubviews(from: self) as [T] }
+
+    func get(all types: [UIView.Type]) -> [UIView] { UIView.getAllSubviews(from: self, types: types) }
+    
+    func allSubviews<T: UIView>() -> [T] { return UIView.allSubviews(view: self) as [T] }
+    static func allSubviews<T: UIView>(view: UIView) -> [T] {
+        return view.subviews.flatMap { subView -> [T] in
+            var result = allSubviews(view: subView) as [T]
+            if let view = subView as? T {
+                result.append(view)
+            }
+            return result
+        }
+    }
 }
 #endif

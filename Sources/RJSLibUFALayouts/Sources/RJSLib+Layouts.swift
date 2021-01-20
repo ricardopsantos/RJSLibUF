@@ -6,6 +6,8 @@
 #if !os(macOS)
 import UIKit
 import Foundation
+//
+import RJSLibUFBase
 
 //
 // References
@@ -54,12 +56,12 @@ public enum RJSLayoutsAttribute {
 }
 
 public extension RJPSLayouts where Target: NSLayoutConstraint {
-    
     var associatedViews: [UIView] {
         return [self.target.firstItem, self.target.secondItem].compactMap { $0 as? UIView }
     }
 }
 
+@available(*, deprecated)
 public extension RJPSLayouts where Target: UIView {
     
     /*
@@ -80,7 +82,7 @@ public extension RJPSLayouts where Target: UIView {
             acc = "\(acc)value: \(constraint.constant)" + " | "
             acc = "\(acc)\(constraint)" + "\n"
         })
-        print("\(acc)")
+        RJS_Logs.message("\(acc)")
     }
     
     func removeAllConstraints() {
@@ -124,7 +126,7 @@ public extension RJPSLayouts where Target: UIView {
                 return []
             }
         } else {
-            print("\(#file)|\(#line):Not implemented \(method)")
+            RJS_Logs.message("\(#file)|\(#line):Not implemented \(method)")
             return []
         }
     }
@@ -191,7 +193,7 @@ public extension RJPSLayouts where Target: UIView {
             }
             return constraint
         } else {
-            print("\(#file)|\(#line):Not implemented \(method)")
+            RJS_Logs.message("\(#file)|\(#line):Not implemented \(method)")
             return nil
         }
     }
@@ -271,7 +273,7 @@ public extension RJPSLayouts where Target: UIView {
         }
         guard target != nil else {
             if let fileName = #file.components(separatedBy: "/").last {
-                print("\(fileName)|\(#line) : Fail to apply [\(property)]. Target view is nil.")
+                RJS_Logs.message("\(fileName)|\(#line) : Fail to apply [\(property)]. Target view is nil.")
             }
             return nil
         }
@@ -294,11 +296,7 @@ public extension RJPSLayouts where Target: UIView {
             switch property {
             case .top:
                 if targetIsSuper {
-                    if #available(iOS 11.0, *) {
-                        tView.topAnchor.constraint(equalTo: target!.safeAreaLayoutGuide.topAnchor, constant: margin).isActive = true
-                    } else {
-                        tView.topAnchor.constraint(equalTo: target!.topAnchor, constant: margin).isActive = true
-                    }
+                    tView.topAnchor.constraint(equalTo: target!.safeAreaLayoutGuide.topAnchor, constant: margin).isActive = true
                 } else {
                     tView.topAnchor.constraint(equalTo: target!.bottomAnchor, constant: margin).isActive = true
                 }
@@ -306,11 +304,7 @@ public extension RJPSLayouts where Target: UIView {
                 let constant = margin
                 // Add if statement for safe area check
                 if targetIsSuper {
-                    if #available(iOS 11.0, *) {
-                        tView.bottomAnchor.constraint(equalTo: target!.safeAreaLayoutGuide.bottomAnchor, constant: -constant).isActive = true
-                    } else {
-                        tView.bottomAnchor.constraint(equalTo: target!.bottomAnchor, constant: -constant).isActive = true
-                    }
+                    tView.bottomAnchor.constraint(equalTo: target!.safeAreaLayoutGuide.bottomAnchor, constant: -constant).isActive = true
                 } else { tView.bottomAnchor.constraint(equalTo: target!.topAnchor, constant: constant).isActive = true }
             case .left, .tailing:
                 let constant = margin
@@ -449,13 +443,13 @@ public extension RJPSLayouts where Target: UIView {
     // Compression Resistance =>  Dont want to shrink
     func addLowResistanceToGrow(_ priority: UILayoutPriority = .defaultLow, axis: NSLayoutConstraint.Axis) {
         if priority > .defaultLow {
-            print("\(#file)|\(#line) : Too higth?!")
+            RJS_Logs.message("\(#file)|\(#line) : Too higth?!")
         }
         self.target.setContentHuggingPriority(priority, for: axis)
     }
     func addHightResistanceToGrow(_ priority: UILayoutPriority = .defaultHigh, axis: NSLayoutConstraint.Axis) {
         if priority > .defaultLow {
-            print("\(#file)|\(#line) : Too low?!")
+            RJS_Logs.message("\(#file)|\(#line) : Too low?!")
         }
         self.target.setContentHuggingPriority(priority, for: axis)
     }

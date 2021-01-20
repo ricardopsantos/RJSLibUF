@@ -4,6 +4,9 @@
 //
 
 import Foundation
+#if !os(macOS)
+import UIKit
+#endif
 import CommonCrypto
 
 // MARK: - SubScript
@@ -36,6 +39,18 @@ public extension String {
     var base64Decoded: String? { return RJS_Convert.Base64.toPlainString(self) }
     var aesDecrypted: String { return self.aesDecrypt() }
     var aesEncrypted: String { return self.aesEncrypt() }
+    
+    var utf8Data: Data? { return self.data(using: .utf8) }
+    var cgFloatValue: CGFloat? { RJSLib.Convert.toCGFloat(self) }
+    var boolValue: Bool? { RJSLib.Convert.toBool(self) }
+    var doubleValue: Double? { RJSLib.Convert.toDouble(self) }
+    var intValue: Int? { RJSLib.Convert.toInt(self) }
+    var dateValue: Date? { RJSLib.Convert.toDate("\(self)" as AnyObject) }
+    var floatValue: Float? { floatValueA }
+    
+    private var floatValueA: Float? { RJSLib.Convert.toFloat(self) }
+    private var floatValueB: CGFloat { return CGFloat((self as NSString).floatValue) }
+
 }
 
 // MARK: - Hashing

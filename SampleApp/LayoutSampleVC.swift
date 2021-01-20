@@ -87,7 +87,7 @@ class LayoutSampleVC: GenericViewController {
 
         let key = "LoginCount"
         if let loginsCount = RJS_StorableKeyValue.with(key: key) {
-            print(loginsCount)
+            RJS_Logs.message(loginsCount)
             if let recordValue = loginsCount.value, let loginsCount =  Int(recordValue) {
                 _ = RJS_StorableKeyValue.save(key: key, value: "\(loginsCount+1)")
             }
