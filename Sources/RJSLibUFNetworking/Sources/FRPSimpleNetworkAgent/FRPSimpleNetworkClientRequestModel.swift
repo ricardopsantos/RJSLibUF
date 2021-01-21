@@ -5,27 +5,30 @@
 
 import Foundation
 
-public struct FRPSimpleNetworkAgentRequestModel {
+public struct FRPSimpleNetworkClientRequestModel {
     public let path: String
-    public let httpMethod: FRPSimpleNetworkAgentHttpMethod
+    public let httpMethod: RJS_HttpMethod
     public let httpBody: [String: String]?
     public let headerValues: [String: String]?
     public let serverURL: String
+    public let responseFormat: RJS_NetworkClientResponseFormat
     
     public init(path: String,
-                httpMethod: FRPSimpleNetworkAgentHttpMethod,
+                httpMethod: RJS_HttpMethod,
                 httpBody: [String: String]?,
                 headerValues: [String: String]?,
-                serverURL: String) {
+                serverURL: String,
+                responseType: RJS_NetworkClientResponseFormat) {
         self.path = path
         self.httpMethod = httpMethod
         self.httpBody = httpBody
         self.headerValues = headerValues
         self.serverURL = serverURL
+        self.responseFormat = responseType
     }
 }
 
-public extension FRPSimpleNetworkAgentRequestModel {
+public extension FRPSimpleNetworkClientRequestModel {
 
     fileprivate static func toJSON<T: Codable>(some: T) -> String? {
         guard let data = try? JSONEncoder().encode(some.self) else { return nil }

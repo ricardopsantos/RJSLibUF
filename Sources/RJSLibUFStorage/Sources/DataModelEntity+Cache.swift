@@ -85,10 +85,10 @@ extension RJS_DataModel {
                 guard let cached = cachedMaybe, cached.expireDate != nil else { return nil }                      // Not found
                 guard cached.expireDate!.timeIntervalSinceNow > baseDate.timeIntervalSinceNow else { return nil } // expired
                 if let data1 = cached.value?.data(using: String.Encoding.utf8) {
-                    return try JSONDecoder().decode(T.self, from: data1)
+                    return try JSONDecoder().decodeFriendly(T.self, from: data1)
                 }
                 if let data2 = cached.valueData {
-                    return try JSONDecoder().decode(T.self, from: data2)
+                    return try JSONDecoder().decodeFriendly(T.self, from: data2)
                 }
             } catch {
                 assertionFailure("Error retrieving object with key [\(composedKey)]. Error [\(error)]")

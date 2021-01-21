@@ -7,6 +7,7 @@ import Foundation
 
 struct RJSLibNetworkClientErrorsManager {
     
+    /*
     public enum NetworkClient_ErrorCode: Int {
         case ok                  = 200
         case notFound            = 404
@@ -15,12 +16,14 @@ struct RJSLibNetworkClientErrorsManager {
         case timeOut             = 504
         case generic             = 999
     }
+    */
     
     struct APIError: Error {
         let data: Data?
         let httpUrlResponse: HTTPURLResponse
     }
     
+    /*
     struct ClientError: Error {
         static let code: Int = NetworkClient_ErrorCode.generic.rawValue
         let error: Error
@@ -29,10 +32,9 @@ struct RJSLibNetworkClientErrorsManager {
         var reason: String
         var localizedDescription: String { return error.localizedDescription }
     }
+    */
     
     struct Custom {
-        private static func errorWith(message: String) -> NSError { return NSError(domain: message, code: NetworkClient_ErrorCode.generic.rawValue, userInfo: nil) }
-        static var parseError: Error { return errorWith(message: "Parse error") }
         static func with(error: Error) -> Error { return error }
     }
     
@@ -45,18 +47,6 @@ struct RJSLibNetworkClientErrorsManager {
             assertionFailure("# Request [\(url)] failed with status code \(status)] \(info)")
         }
         
-        let statusCode = response.statusCode
-        if let status = NetworkClient_ErrorCode(rawValue: statusCode) {
-            switch status {
-            case .ok                  : log(request: request, status: statusCode, info: "OK")
-            case .notFound            : log(request: request, status: statusCode, info: "Not Found")
-            case .internalServerError : log(request: request, status: statusCode, info: "Internal Server Error")
-            case .timeOut             : log(request: request, status: statusCode, info: "TimeOut")
-            case .forbidden           : log(request: request, status: statusCode, info: "Forbidden")
-            case .generic             : log(request: request, status: statusCode, info: "generic")
-            }
-        } else {
-            log(request: request, status: statusCode, info: "\(response.debugDescription)")
-        }
+        log(request: request, status: response.statusCode, info: "\(response.debugDescription)")
     }
 }

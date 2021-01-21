@@ -13,15 +13,44 @@ public enum JSONDecoderErrors: Error {
 }
 
 public extension JSONDecoder {
+    
+    // Decoder that when fails log as much information as possible for a fast correction/debug
+    func decodeFriendly<T>(_ type: T.Type, from data: Data) throws -> T where T: Decodable {
+        do {
+            let result = try JSONDecoder().decode(type, from: data)
+            return result
+        } catch {
+            var debugMessage = "\n#Fail decoding data into [\(type)]\n"
+            if let object = try? JSONSerialization.jsonObject(with: data, options: []) {
+                if let json = object as? [String: Any] {
+                    debugMessage = "\(debugMessage)# Data contains a single object\n"
+                    debugMessage = "\(debugMessage)# \(json)\n"
+                } else if let jsonArray = object as? [[String: Any]] {
+                    debugMessage = "\(debugMessage)# Data contains an array\n"
+                    debugMessage = "\(debugMessage)# \(jsonArray.prefix(5))\n"
+                } else {
+                    debugMessage = "\(debugMessage)# Not predicted"
+                }
+            } else {
+                debugMessage = "\(debugMessage)# Data does not look JSON"
+                debugMessage = "\(debugMessage)# \(String(decoding: data, as: UTF8.self))"
+            }
+            debugMessage = "\(debugMessage)# \(error.localizedDescription)"
+            debugMessage = "\(debugMessage)# \(error)"
+            RJS_Logs.error("\(debugMessage)")
+            throw error
+        }
+    }
+    
     func decodeSafe<T>(_ type: T.Type, from data: Data) throws -> T where T: Decodable {
         // https://bugs.swift.org/browse/SR-6163 - Encode/Decode not possible < iOS 13 for top-level fragments (enum, int, string, etc.).
         if #available(iOS 13.0, *) {
-            return try JSONDecoder().decode(type, from: data)
+            return try JSONDecoder().decodeFriendly(type, from: data)
         } else {
-            if let value = try? JSONDecoder().decode(type, from: data) {
+            if let value = try? JSONDecoder().decodeFriendly(type, from: data) {
                 return value
             }
-            if let value = try? JSONDecoder().decode(WrapDecodable<T>.self, from: data) {
+            if let value = try? JSONDecoder().decodeFriendly(WrapDecodable<T>.self, from: data) {
                 return value.t
             }
             throw JSONDecoderErrors.decodeFail

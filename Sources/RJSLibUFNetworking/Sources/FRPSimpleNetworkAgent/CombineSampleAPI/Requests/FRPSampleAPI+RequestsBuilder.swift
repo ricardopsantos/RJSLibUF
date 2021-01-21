@@ -14,18 +14,28 @@ public extension FRPSampleAPI {
 
 extension FRPSampleAPI.RequestsBuilder {
     
-    static func sampleRequest(_ resquestDto: FRPSampleAPI.RequestDto.Sample) -> FRPSimpleNetworkAgentRequestModel {
+    static func sampleRequestJSON(_ resquestDto: FRPSampleAPI.RequestDto.Sample) -> FRPSimpleNetworkClientRequestModel {
         let httpBody = [
             "publicKey": resquestDto.userID
         ]
         let headerValues = [
             "userId": resquestDto.userID
         ]
-        return FRPSimpleNetworkAgentRequestModel(path: "v1/employees",
+        return FRPSimpleNetworkClientRequestModel(path: "v1/employees",
                             httpMethod: .get,
                             httpBody: httpBody,
                             headerValues: headerValues,
-                            serverURL: FRPSampleAPI.serverURL)
+                            serverURL: "http://dummy.restapiexample.com/api",
+                            responseType: .json)
+    }
+
+    static func sampleRequestCSV(_ resquestDto: FRPSampleAPI.RequestDto.Sample) -> FRPSimpleNetworkClientRequestModel {
+        return FRPSimpleNetworkClientRequestModel(path: "codigos_postais.csv",
+                            httpMethod: .get,
+                            httpBody: nil,
+                            headerValues: nil,
+                            serverURL: "https://raw.githubusercontent.com/centraldedados/codigos_postais/master/data",
+                            responseType: .csv)
     }
     
 }

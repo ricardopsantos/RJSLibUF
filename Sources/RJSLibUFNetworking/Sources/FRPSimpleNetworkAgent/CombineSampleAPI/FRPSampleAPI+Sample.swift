@@ -18,9 +18,16 @@ public extension FRPSampleAPI {
         let api: FRPSampleAPI = FRPSampleAPI()
         
         let requestDto = FRPSampleAPI.RequestDto.Sample(userID: "")
-        let publisher = api.sampleRequest(requestDto)
+        let publisherA = api.sampleRequestCVS(requestDto)
+        let publisherB = api.sampleRequestJSON(requestDto)
+
+        publisherA.sink { (_) in
+            //RJS_Logs.message(result)
+        } receiveValue: { (response) in
+            RJS_Logs.message(response)
+        }.store(in: cancelBag)
         
-        publisher.sink { (_) in
+        publisherB.sink { (_) in
             //RJS_Logs.message(result)
         } receiveValue: { (response) in
             RJS_Logs.message(response.data)

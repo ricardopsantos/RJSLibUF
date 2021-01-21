@@ -11,7 +11,7 @@ import RJSLibUFBase
 
 public protocol SimpleNetworkClientRequest_Protocol {
     var urlRequest: URLRequest { get }
-    var responseType: RJSLibNetworkClientResponseType { get set }
+    var responseType: RJS_NetworkClientResponseFormat { get set }
     var debugRequest: Bool { get set }
     var returnOnMainTread: Bool { get set }
     var mockedData: String? { get }
@@ -37,13 +37,6 @@ private func synced<T>(_ lock: Any, closure: () -> T) -> T {
 public extension RJSLib {
     class SimpleNetworkClient: SimpleNetworkClient_Protocol {
         let urlSession: SimpleNetworkClientURLSession_Protocol
-
-        public enum HttpMethod: String {
-            case get = "GET"
-            case post = "POST"
-            case put = "PUT"
-            case delete = "DELETE"
-        }
 
         public init(urlSessionConfiguration: URLSessionConfiguration=URLSessionConfiguration.default, completionHandlerQueue: OperationQueue = OperationQueue.main) {
             urlSession = URLSession(configuration: urlSessionConfiguration, delegate: nil, delegateQueue: completionHandlerQueue)

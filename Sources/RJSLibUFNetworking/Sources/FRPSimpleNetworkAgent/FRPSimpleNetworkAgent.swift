@@ -19,24 +19,7 @@ import RJSLibUFBase
  7 - Erase publisher’s type and return an instance of AnyPublisher.
  */
 
-public enum FRPSimpleNetworkAgentAPIError: Error {
-   case ok // no error
-   case genericError
-   case cacheNotFound // no error
-   case parsing(description: String)
-   case network(description: String)
-   case failedWithStatusCode(code: Int)
-}
-
-public enum FRPSimpleNetworkAgentHttpMethod: String {
-    case post 
-    case get
-    case put
-    case patch
-    case delete
-}
-
-public protocol FRPSimpleNetworkAgentProtocol {
+public protocol FRPSimpleNetworkClientProtocol {
     var agent: FRPSimpleNetworkAgent { get set }
 }
 
@@ -51,30 +34,44 @@ public class FRPSimpleNetworkAgent {
 public extension FRPSimpleNetworkAgent {
 
     // 2
-    func run<T>(_ request: URLRequest, _ decoder: JSONDecoder, _ dumpResponse: Bool) -> AnyPublisher<Response<T>, FRPSimpleNetworkAgentAPIError> where T: Decodable {
+    func run<T>(_ request: URLRequest,
+                _ decoder: JSONDecoder,
+                _ dumpResponse: Bool,
+                _ reponseType: RJS_NetworkClientResponseFormat) -> AnyPublisher<Response<T>, FRPSimpleNetworkClientAPIError> where T: Decodable {
+        
         let requestDebugDump = "\(request) : \(T.self)"
         return session
             .dataTaskPublisher(for: request) // 3
             .tryMap { result -> Response<T> in
                 guard let httpResponse = result.response as? HTTPURLResponse, 200...299 ~= httpResponse.statusCode else {
                     if let code = (result.response as? HTTPURLResponse)?.statusCode {
-                        throw FRPSimpleNetworkAgentAPIError.failedWithStatusCode(code: code)
+                        throw FRPSimpleNetworkClientAPIError.failedWithStatusCode(code: code)
                     } else {
-                        throw FRPSimpleNetworkAgentAPIError.genericError
+                        throw FRPSimpleNetworkClientAPIError.genericError
                     }
                 }
                 if dumpResponse {
                     RJS_Logs.message("request: \(requestDebugDump)\n\(String(decoding: result.data, as: UTF8.self))")
                 }
-                let value = try decoder.decode(T.self, from: result.data) // 4
-                return Response(value: value, response: result.response)  // 5
+                switch reponseType {
+                case .json:
+                    let value = try decoder.decodeFriendly(T.self, from: result.data) // 4
+                    return Response(value: value, response: result.response)  // 5
+                case .csv:
+                    let data = try RJSLib.NetworkAgentUtils.parseCSV(data: result.data)
+                    let value = try decoder.decodeFriendly(T.self, from: data)
+                    return Response(value: value, response: result.response)  // 5
+                }
+
         }
         .mapError { error in
             RJS_Logs.message("Request [\(requestDebugDump)] failed with error [\(error.localizedDescription))]")
-            RJS_Logs.error("\(error.localizedDescription)")
-            return FRPSimpleNetworkAgentAPIError.network(description: error.localizedDescription)
+            RJS_Logs.error("\(error)")
+            return FRPSimpleNetworkClientAPIError.network(description: error.localizedDescription)
         }
             .receive(on: DispatchQueue.main) // 6
             .eraseToAnyPublisher()           // 7
+        
     }
+    
 }

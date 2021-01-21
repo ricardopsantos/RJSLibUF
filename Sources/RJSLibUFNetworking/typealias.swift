@@ -15,7 +15,7 @@
 import RJSLibUFBase
 
 //
-// MARK: - Regular NetWork Clients
+// MARK: - Regular NetWork Clients (works with completionHandlers)
 //
 
 public enum Result<T> {
@@ -30,16 +30,16 @@ public typealias RJS_SimpleNetworkClient    = RJSLib.SimpleNetworkClient // Hand
 public typealias RJS_SimpleNetworkClientProtocol        = SimpleNetworkClient_Protocol
 public typealias RJS_SimpleNetworkClientRequestProtocol = SimpleNetworkClientRequest_Protocol
 public typealias RJS_SimpleNetworkClientResponse        = RJSLibNetworkClientResponse     // Response entity
-public typealias RJS_SimpleNetworkClientResponseType    = RJSLibNetworkClientResponseType // json, csv
 
 //
-// MARK: - FRP (Functional Reactive Programing) NetWork Clients
+// MARK: - FRP NetWork Clients (works with Functional Reactive Programing)
 //
 
 public typealias RJS_FRPSimpleNetworkClient = FRPSimpleNetworkAgent
 
-public typealias RJS_FRPSimpleNetworkClientProtocol     = FRPSimpleNetworkAgentProtocol
-public typealias RJS_FRPSimpleNetworkClientRequestModel = FRPSimpleNetworkAgentRequestModel
+public typealias RJS_FRPNetworkClientProtocol     = FRPSimpleNetworkClientProtocol
+public typealias RJS_FRPNetworkClientRequestModel = FRPSimpleNetworkClientRequestModel
+public typealias RJS_FRPNetworkClientAPIError     = FRPSimpleNetworkClientAPIError
 
 public struct Response<T: Decodable> {
     public let value: T
@@ -49,3 +49,10 @@ public struct Response<T: Decodable> {
         self.response = response
     }
 }
+
+//
+// MARK: - Shared between NetWork Clients and FRP NetWork Clients
+//
+
+public typealias RJS_NetworkClientResponseFormat = RJSLib.ResponseFormat // json, csv
+public typealias RJS_HttpMethod                  = RJSLib.HttpMethod  // POST, GET, DELETE, ...
