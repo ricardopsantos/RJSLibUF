@@ -10,6 +10,10 @@ import RJSLibUFStorage
 import RJSLibUFNetworking
 import RJSLibUFALayouts
 
+#warning("RJSLibUFALayouts was deprecated on 2021 Jan and its not mantained anymore")
+#warning("RJSLibUFALayouts was deprecated on 2021 Jan and its not mantained anymore")
+#warning("RJSLibUFALayouts was deprecated on 2021 Jan and its not mantained anymore")
+
 struct Source1 {
     let title: String
 }

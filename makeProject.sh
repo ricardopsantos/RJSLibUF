@@ -6,8 +6,8 @@ echo 'Generating RJSLibUF.xcodeproj for carthage install...'
 xcodegen -s ./XcodeGen/project.yml -p ./
 echo 'Done!'
 
-echo 'Generating Sample app with RJSLibUF installed via SPM...'
-xcodegen -s ./XcodeGen/project2.yml -p ./
+echo 'Generating iOSSampleApp with RJSLibUF installed via SPM...'
+xcodegen -s ./XcodeGen/iOSSampleApp.yml -p ./
 echo 'Done!'
 
 #open RJSLibUF.xcodeproj

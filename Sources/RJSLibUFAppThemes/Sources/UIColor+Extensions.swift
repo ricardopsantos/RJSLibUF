@@ -11,7 +11,7 @@ import UIKit
 
 public extension UIColor {
 
-    enum Pack1: CaseIterable {
+    enum Pack1: CaseIterable, ReportableColorProtocol {
         public typealias RawValue = UIColor
         public init?(rawValue: RawValue) { return nil }
         public var color: UIColor { return self.rawValue }
@@ -38,9 +38,14 @@ public extension UIColor {
             case .red1:   return colorFromRGBString("255,100,100")
             case .blue1:  return colorFromRGBString("10,173,175")
             case .blue2:  return colorFromRGBString("148,208,187")
-            case .orange: return UIColor(red: 242, green: 168, blue: 62, alpha: 1)
+            case .orange: return colorFromRGBString("242,168,62")
             }
         }
+        
+        public var name: String {
+            return "\(self)"
+        }
+        
     }
 }
 
@@ -48,7 +53,7 @@ public extension UIColor {
 
 public extension UIColor {
 
-    enum Pack2: CaseIterable {
+    enum Pack2: CaseIterable, ReportableColorProtocol {
         public typealias RawValue = UIColor
         public init?(rawValue: RawValue) { return nil }
         public var color: UIColor { return self.rawValue }
@@ -93,6 +98,10 @@ public extension UIColor {
         case green
         case dustyGray
 
+        public var name: String {
+            return "\(self)"
+        }
+        
         public var rawValue: RawValue {
             switch self {
             case .white: return UIColor(white: 1.0, alpha: 1.0)
@@ -142,7 +151,7 @@ public extension UIColor {
 
 public extension UIColor {
 
-    enum Pack3: CaseIterable {
+    enum Pack3: CaseIterable, ReportableColorProtocol {
         public typealias RawValue = UIColor
         public init?(rawValue: RawValue) { return nil }
         public var color: UIColor { return self.rawValue }
@@ -169,6 +178,9 @@ public extension UIColor {
         case warning
         case onWarning
 
+        public var name: String {
+            return "\(self)"
+        }
         public var rawValue: RawValue {
              let onLigthMode = true
              switch self {
@@ -196,6 +208,55 @@ public extension UIColor {
              case .onWarning: return UIColor.Pack2.white.color
             }
         }
+    }
+}
+
+/** Utils protocol to build screens showing all color Packs
+Sample Usage
+ ```
+ UIColor.Pack1.allCases.forEach { (some) in
+     stackView.add(reportView)
+ }
+ ```
+ */
+ 
+public protocol ReportableColorProtocol {
+    var name: String { get }
+    var color: UIColor { get }
+    var reportView: UIView { get }
+}
+
+public extension ReportableColorProtocol {
+    var reportView: UIView {
+        let label = UILabel()
+        label.numberOfLines = 2
+        label.backgroundColor = color
+        label.font = RJS_Fonts.Styles.paragraphSmall.rawValue
+        var r: CGFloat = 0
+        var g: CGFloat = 0
+        var b: CGFloat = 0
+        var a: CGFloat = 1
+        if color.cgColor.components!.count == 2 {
+            r = color.cgColor.components![0] * 255
+            g = color.cgColor.components![0] * 255
+            b = color.cgColor.components![0] * 255
+            a = color.cgColor.components![1]
+        } else if color.cgColor.components!.count >= 3 {
+            r = color.cgColor.components![0] * 255
+            g = color.cgColor.components![1] * 255
+            b = color.cgColor.components![2] * 255
+            if color.cgColor.components?.count == 4 {
+                a = color.cgColor.components![3]
+            }
+        }
+        if ((r + g + b) / 3.0) > 128.8 {
+            label.textColor = .black
+        } else {
+            label.textColor = .white
+        }
+        let colorReport = "\(r), \(g), \(b), \(a)"
+        label.text = "  \(name)\n  \(colorReport)"
+        return label
     }
 }
 #endif

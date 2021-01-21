@@ -5,7 +5,27 @@
 
 import Foundation
 
-public extension CombineSimpleNetworkAgentRequestModel {
+public struct FRPSimpleNetworkAgentRequestModel {
+    public let path: String
+    public let httpMethod: FRPSimpleNetworkAgentHttpMethod
+    public let httpBody: [String: String]?
+    public let headerValues: [String: String]?
+    public let serverURL: String
+    
+    public init(path: String,
+                httpMethod: FRPSimpleNetworkAgentHttpMethod,
+                httpBody: [String: String]?,
+                headerValues: [String: String]?,
+                serverURL: String) {
+        self.path = path
+        self.httpMethod = httpMethod
+        self.httpBody = httpBody
+        self.headerValues = headerValues
+        self.serverURL = serverURL
+    }
+}
+
+public extension FRPSimpleNetworkAgentRequestModel {
 
     fileprivate static func toJSON<T: Codable>(some: T) -> String? {
         guard let data = try? JSONEncoder().encode(some.self) else { return nil }
@@ -17,17 +37,8 @@ public extension CombineSimpleNetworkAgentRequestModel {
         var request = URLRequest(url: theURL)
         request.httpMethod = httpMethod.rawValue.uppercased()
         
-        var httpBody: Data?
-        if let httpBodyDic = httpBodyDic {
-            httpBody = try? JSONSerialization.data(withJSONObject: httpBodyDic, options: .prettyPrinted)
-        }
-        
-        //if let httpBodyCodable = httpBodyCodable {
-        //    httpBody = try? JSONEncoder().encode(httpBodyCodable.self)
-        //}
-        
-        if httpBody != nil {
-            request.httpBody = httpBody
+        if let httpBody = httpBody {
+            request.httpBody = try? JSONSerialization.data(withJSONObject: httpBody, options: .prettyPrinted)
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
             request.addValue("application/json", forHTTPHeaderField: "Accept")
         }

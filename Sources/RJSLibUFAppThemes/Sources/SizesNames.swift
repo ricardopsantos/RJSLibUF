@@ -7,7 +7,7 @@ import Foundation
 import UIKit
 #endif
 
-public enum SizesNames: Int, Codable {
+public enum SizesNames: Int, Codable, CaseIterable {
     case size_1 = 2   // Preferred
     case size_2 = 4
     case size_3 = 8   // Unit

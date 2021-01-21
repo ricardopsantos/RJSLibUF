@@ -14,19 +14,38 @@
 
 import RJSLibUFBase
 
+//
+// MARK: - Regular NetWork Clients
+//
+
 public enum Result<T> {
     case success(T)
     case failure(Error)
 }
 
-// MARK: - NetWork Clients
+public typealias RJS_BasicNetworkClient     = RJSLib.BasicNetworkClient // Handles simple GETs (`func getDataFrom:`, `func getJSONFrom:`) and images download with caching
 
-public typealias RJS_BasicNetworkClient  = RJSLib.BasicNetworkClient  // Handles simple GETs (`func getDataFrom:`, `func getJSONFrom:`) and images download with caching
-public typealias RJS_SimpleNetworkClient = RJSLib.SimpleNetworkClient // Handles "GET", POST, PUT, DELETE, Response decode and errors
-
-// MARK: - Web API
+public typealias RJS_SimpleNetworkClient    = RJSLib.SimpleNetworkClient // Handles "GET", POST, PUT, DELETE, Response decode and errors
 
 public typealias RJS_SimpleNetworkClientProtocol        = SimpleNetworkClient_Protocol
 public typealias RJS_SimpleNetworkClientRequestProtocol = SimpleNetworkClientRequest_Protocol
 public typealias RJS_SimpleNetworkClientResponse        = RJSLibNetworkClientResponse     // Response entity
 public typealias RJS_SimpleNetworkClientResponseType    = RJSLibNetworkClientResponseType // json, csv
+
+//
+// MARK: - FRP (Functional Reactive Programing) NetWork Clients
+//
+
+public typealias RJS_FRPSimpleNetworkClient = FRPSimpleNetworkAgent
+
+public typealias RJS_FRPSimpleNetworkClientProtocol     = FRPSimpleNetworkAgentProtocol
+public typealias RJS_FRPSimpleNetworkClientRequestModel = FRPSimpleNetworkAgentRequestModel
+
+public struct Response<T: Decodable> {
+    public let value: T
+    public let response: Any
+    public init(value: T, response: Any) {
+        self.value = value
+        self.response = response
+    }
+}
