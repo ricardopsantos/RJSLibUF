@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 //
+/*
 import RJSLibUFBase
 
 func colorFromRGBString(_ rgb: String) -> UIColor {
@@ -49,5 +50,5 @@ func colorFromHexString(_ hexString: String, alpha: Float=1.0) -> UIColor {
     green = colorComponentsFrom(colorString, start: 2, length: 2)
     blue  = colorComponentsFrom(colorString, start: 4, length: 2)
     return  UIColor(red: CGFloat(red), green: CGFloat(green), blue: CGFloat(blue), alpha: CGFloat(alpha))
-}
+}*/
 #endif

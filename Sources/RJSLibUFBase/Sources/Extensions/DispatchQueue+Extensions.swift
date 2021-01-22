@@ -5,7 +5,6 @@
 
 import Foundation
 
-//extension RJSLibExtension where Target == DispatchQueue {
 public extension DispatchQueue {
     
     static let defaultDelay: Double = RJS_Constants.defaultAnimationsTime
