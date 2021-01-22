@@ -23,8 +23,8 @@ extension FRPSampleAPI.RequestsBuilder {
         ]
         return FRPSimpleNetworkClientRequestModel(path: "v1/employees",
                             httpMethod: .get,
-                            httpBody: httpBody,
-                            headerValues: headerValues,
+                            httpBody: nil,
+                            headerValues: nil,
                             serverURL: "http://dummy.restapiexample.com/api",
                             responseType: .json)
     }

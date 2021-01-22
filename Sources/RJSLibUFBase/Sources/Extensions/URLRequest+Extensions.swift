@@ -11,7 +11,10 @@ public extension URLRequest {
                      httpMethod: String,
                      httpBody: [String: String]?,
                      headerValues: [String: String]?) -> URLRequest? {
-        guard let theURL = URL(string: "\(urlString)/") else { return nil }
+        guard let theURL = URL(string: "\(urlString)") else {
+            RJS_Logs.warning("Invalid url [\(urlString)]")
+            return nil
+        }
         var request = URLRequest(url: theURL)
         request.httpMethod = httpMethod.uppercased()
         

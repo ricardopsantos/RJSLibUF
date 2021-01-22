@@ -13,6 +13,7 @@ private let tKey: String = "XCTestCase_key"
 private let tValue: String = "XCTestCase_value"
 private let tImageURL: String = "https://www.google.pt/images/branding/googlelogo/1x/googlelogo_white_background_color_272x92dp.png"
 private let tJSONURL: String = "http://dummy.restapiexample.com/api/v1/employees"
+private var cancelBag = CancelBag()
 
 class RJSLibUFTests: XCTestCase {
 
@@ -202,6 +203,53 @@ class RJSLibUFTests: XCTestCase {
         #endif
     }
 
+    func test_NetworkClientFRP_CSV() {
+        let expectation = self.expectation(description: #function)
+        
+        let api: FRPSampleAPI = FRPSampleAPI()
+        
+        let requestDto = FRPSampleAPI.RequestDto.Sample(userID: "")
+        let publisher  = api.sampleRequestCVS(requestDto)
+      
+        publisher.sink { (result) in
+            switch result {
+            case .finished: _ = ()
+            case .failure(_):
+                XCTAssert(false)
+                expectation.fulfill()
+            }
+        } receiveValue: { (response) in
+            XCTAssert(response.prefix(5).count == 5)
+            expectation.fulfill()
+        }.store(in: cancelBag)
+        
+        waitForExpectations(timeout: 30) // Slow request...
+    }
+    
+    func test_NetworkClientFRP_JSON() {
+        let expectation = self.expectation(description: #function)
+        
+        let api: FRPSampleAPI = FRPSampleAPI()
+        
+        let requestDto = FRPSampleAPI.RequestDto.Sample(userID: "")
+        let publisher = api.sampleRequestJSON(requestDto)
+
+        publisher.sink { (result) in
+            switch result {
+            case .finished: _ = ()
+            case .failure(_):
+                XCTAssert(false)
+                expectation.fulfill()
+            }
+        } receiveValue: { (response) in
+            //RJS_Logs.message(response.data.prefix(3))
+            XCTAssert(response.data.count > 0)
+            expectation.fulfill()
+        }.store(in: cancelBag)
+        
+        waitForExpectations(timeout: 5)
+    }
+    
     func test_NetworkClient() {
         let expectation = self.expectation(description: #function)
 
@@ -253,7 +301,7 @@ class RJSLibUFTests: XCTestCase {
         } catch {
             XCTAssert(false)
         }
-        waitForExpectations(timeout: 5)
+
     }
 
     func test_BasicNetworkClient() {

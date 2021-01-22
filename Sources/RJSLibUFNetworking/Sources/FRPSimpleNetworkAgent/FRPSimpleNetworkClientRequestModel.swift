@@ -38,7 +38,7 @@ public extension FRPSimpleNetworkClientRequestModel {
     }
     
     var urlRequest: URLRequest? {
-        return URLRequest.with(urlString: "\(serverURL)/\(path))",
+        return URLRequest.with(urlString: "\(serverURL)/\(path)",
                                httpMethod: httpMethod.rawValue,
                                httpBody: httpBody,
                                headerValues: headerValues)

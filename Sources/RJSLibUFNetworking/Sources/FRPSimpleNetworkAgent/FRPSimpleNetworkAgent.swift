@@ -39,10 +39,11 @@ public extension FRPSimpleNetworkAgent {
                 _ dumpResponse: Bool,
                 _ reponseType: RJS_NetworkClientResponseFormat) -> AnyPublisher<Response<T>, FRPSimpleNetworkClientAPIError> where T: Decodable {
         
-        let requestDebugDump = "\(request) : \(T.self)"
+        let requestDebugDump = "\(request) : \(T.self) : \(request.url)"
         return session
             .dataTaskPublisher(for: request) // 3
             .tryMap { result -> Response<T> in
+                //RJS_Logs.error("\(result.response)")
                 guard let httpResponse = result.response as? HTTPURLResponse, 200...299 ~= httpResponse.statusCode else {
                     if let code = (result.response as? HTTPURLResponse)?.statusCode {
                         throw FRPSimpleNetworkClientAPIError.failedWithStatusCode(code: code)

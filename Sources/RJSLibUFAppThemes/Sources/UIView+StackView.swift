@@ -31,7 +31,7 @@ public extension UIStackView {
     }
     
     // Will add a visual report on the stack view for easy understanding of about the available design languages
-    func buildAndAddReport() {
+    func loadWithDesignLanguageReport() {
         
         addSectionForDevScreen(title: "RJS_Fonts: \(RJS_Fonts.Styles.allCases.count) values")
         RJS_Fonts.Styles.allCases.forEach { (some) in
