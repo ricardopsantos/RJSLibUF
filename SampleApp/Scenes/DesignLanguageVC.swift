@@ -10,6 +10,8 @@ import RJSLibUFStorage
 import RJSLibUFNetworking
 import RJSLibUFALayouts
 import RJSLibUFAppThemes
+
+#if USE_INCLUDE_TINYCONSTRAINTS
 import TinyConstraints
 
 let screenWidth  = UIScreen.main.bounds.width
@@ -71,3 +73,4 @@ class DesignLanguageVC: GenericViewController {
         self.view.backgroundColor = .white
     }
 }
+#endif

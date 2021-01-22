@@ -4,6 +4,8 @@
 //
 
 import Foundation
+//
+import RJSLibUFBase
 
 public struct FRPSimpleNetworkClientRequestModel {
     public let path: String
@@ -36,20 +38,9 @@ public extension FRPSimpleNetworkClientRequestModel {
     }
     
     var urlRequest: URLRequest? {
-        guard let theURL = URL(string: "\(serverURL)/\(path)") else { return nil }
-        var request = URLRequest(url: theURL)
-        request.httpMethod = httpMethod.rawValue.uppercased()
-        
-        if let httpBody = httpBody {
-            request.httpBody = try? JSONSerialization.data(withJSONObject: httpBody, options: .prettyPrinted)
-            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-            request.addValue("application/json", forHTTPHeaderField: "Accept")
-        }
-        
-        headerValues?.forEach({ (kv) in
-            request.addValue(kv.value, forHTTPHeaderField: kv.key)
-        })
-        
-        return request
+        return URLRequest.with(urlString: "\(serverURL)/\(path))",
+                               httpMethod: httpMethod.rawValue,
+                               httpBody: httpBody,
+                               headerValues: headerValues)
     }
 }

@@ -12,6 +12,57 @@ public enum JSONDecoderErrors: Error {
     case decodeFail
 }
 
+/*
+public extension Encodable {
+    func mapTo<T: Decodable>() -> T? {
+        do {
+            return try mapToThrows()
+        } catch {
+            RJS_Logs.error("\("Mapping [\(self)] into [\(T.self)] failed with [\(error)]")")
+            var errorMessage = error.localizedDescription
+            if let decodingError = error as? DecodingError {
+                switch decodingError {
+                case DecodingError.dataCorrupted(let context):
+                    errorMessage = """
+                    context = \(context.debugDescription)
+                    context.codingPathList = \(context.codingPath.debugDescription)
+                    """
+                case DecodingError.keyNotFound(let codingKey, let context):
+                    errorMessage = """
+                    codingKey = \(codingKey.debugDescription)
+                    context = \(context.debugDescription)
+                    context.codingPathList = \(context.codingPath.debugDescription)
+                    """
+                case DecodingError.typeMismatch(let propertyType, let context):
+                    errorMessage = """
+                    type = \(String(describing: type(of: propertyType)))
+                    context = \(context.debugDescription)
+                    context.codingPathList = \(context.codingPath.debugDescription)
+                    """
+                case DecodingError.valueNotFound(let propertyType, let context):
+                    errorMessage = """
+                    type = \(String(describing: type(of: propertyType)))
+                    context = \(context.debugDescription)
+                    context.codingPathList = \(context.codingPath.debugDescription)
+                    """
+                default:
+                    break
+                }
+            }
+            return nil
+        }
+        
+        func mapToThrows<T: Decodable>() throws -> T {
+            do {
+                return try decodeFriendly(inValue: self, outValue: T.self)
+                JSONDecoder().decodeFriendly(type, from: data)
+            } catch {
+                DevTools.Log.error("Mapping [\(self)] into [\(T.self)] failed with [\(error)]")
+                throw error
+            }
+        }
+    }
+    */
 public extension JSONDecoder {
     
     // Decoder that when fails log as much information as possible for a fast correction/debug
@@ -21,6 +72,39 @@ public extension JSONDecoder {
             return result
         } catch {
             var debugMessage = "\n#Fail decoding data into [\(type)]\n"
+            if let decodingError = error as? DecodingError {
+                switch decodingError {
+                case DecodingError.dataCorrupted(let context):
+                    debugMessage = """
+                    \(debugMessage)
+                    # context = \(context.debugDescription)
+                    # context.codingPathList = \(context.codingPath.debugDescription)
+                    """
+                case DecodingError.keyNotFound(let codingKey, let context):
+                    debugMessage = """
+                    \(debugMessage)
+                    # codingKey = \(codingKey.debugDescription)
+                    # context = \(context.debugDescription)
+                    # context.codingPathList = \(context.codingPath.debugDescription)
+                    """
+                /*case DecodingError.typeMismatch(let propertyType, let context):
+                    debugMessage = """
+                    \(debugMessage)
+                    type = \(String(describing: type(of: propertyType)))
+                    context = \(context.debugDescription)
+                    context.codingPathList = \(context.codingPath.debugDescription)
+                    """
+                case DecodingError.valueNotFound(let propertyType, let context):
+                    debugMessage = """
+                    \(debugMessage)
+                    type = \(String(describing: type(of: propertyType)))
+                    context = \(context.debugDescription)
+                    context.codingPathList = \(context.codingPath.debugDescription)
+                    """*/
+                default:
+                    break
+                }
+            }
             if let object = try? JSONSerialization.jsonObject(with: data, options: []) {
                 if let json = object as? [String: Any] {
                     debugMessage = "\(debugMessage)# Data contains a single object\n"

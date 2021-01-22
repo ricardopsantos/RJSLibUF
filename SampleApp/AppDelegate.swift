@@ -22,10 +22,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        //self.window?.rootViewController = LayoutSampleVC()
+        #if USE_INCLUDE_TINYCONSTRAINTS
         self.window?.rootViewController = DesignLanguageVC()
-
-        FRPSampleAPI.doTest()
+        #else
+        self.window?.rootViewController = LayoutSampleVC()
+        #endif
 
         return true
     }

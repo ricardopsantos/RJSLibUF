@@ -1,6 +1,6 @@
-name: iOSSampleApp
+name: iOSSampleAppWTinyConstraints
 
-# iOSSampleApp.xcodeproj
+# iOSSampleAppWTinyConstraints.xcodeproj
 # SAMPLE APP | SAMPLE APP | SAMPLE APP | SAMPLE APP | SAMPLE APP |
 # SAMPLE APP | SAMPLE APP | SAMPLE APP | SAMPLE APP | SAMPLE APP |
 # SAMPLE APP | SAMPLE APP | SAMPLE APP | SAMPLE APP | SAMPLE APP |
@@ -23,9 +23,9 @@ packages:
     #from: 1.0.0
     branch: develop
    
-#  TinyConstraints:
-#    url: https://github.com/roberthein/TinyConstraints
-#    branch: master
+  TinyConstraints:
+    url: https://github.com/roberthein/TinyConstraints
+    branch: master
     
 ####################### SETTINGS #######################   
     
@@ -37,7 +37,7 @@ settings:
     
 targets:
         
-  SampleApp:
+  iOSSampleAppWTinyConstraints:
     type: application
     platform: iOS
     deploymentTarget: 13.0
@@ -60,5 +60,5 @@ targets:
       - package: RJSLibUF
         product: RJSLibUFStorage
         
-#      - package: TinyConstraints
-#        product: TinyConstraints
+      - package: TinyConstraints
+        product: TinyConstraints
