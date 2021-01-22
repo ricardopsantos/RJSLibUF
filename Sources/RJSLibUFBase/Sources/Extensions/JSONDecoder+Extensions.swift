@@ -12,57 +12,18 @@ public enum JSONDecoderErrors: Error {
     case decodeFail
 }
 
-/*
-public extension Encodable {
-    func mapTo<T: Decodable>() -> T? {
-        do {
-            return try mapToThrows()
-        } catch {
-            RJS_Logs.error("\("Mapping [\(self)] into [\(T.self)] failed with [\(error)]")")
-            var errorMessage = error.localizedDescription
-            if let decodingError = error as? DecodingError {
-                switch decodingError {
-                case DecodingError.dataCorrupted(let context):
-                    errorMessage = """
-                    context = \(context.debugDescription)
-                    context.codingPathList = \(context.codingPath.debugDescription)
-                    """
-                case DecodingError.keyNotFound(let codingKey, let context):
-                    errorMessage = """
-                    codingKey = \(codingKey.debugDescription)
-                    context = \(context.debugDescription)
-                    context.codingPathList = \(context.codingPath.debugDescription)
-                    """
-                case DecodingError.typeMismatch(let propertyType, let context):
-                    errorMessage = """
-                    type = \(String(describing: type(of: propertyType)))
-                    context = \(context.debugDescription)
-                    context.codingPathList = \(context.codingPath.debugDescription)
-                    """
-                case DecodingError.valueNotFound(let propertyType, let context):
-                    errorMessage = """
-                    type = \(String(describing: type(of: propertyType)))
-                    context = \(context.debugDescription)
-                    context.codingPathList = \(context.codingPath.debugDescription)
-                    """
-                default:
-                    break
-                }
-            }
-            return nil
-        }
-        
-        func mapToThrows<T: Decodable>() throws -> T {
-            do {
-                return try decodeFriendly(inValue: self, outValue: T.self)
-                JSONDecoder().decodeFriendly(type, from: data)
-            } catch {
-                DevTools.Log.error("Mapping [\(self)] into [\(T.self)] failed with [\(error)]")
-                throw error
-            }
-        }
+public func perfectMapper<A: Codable, B: Codable>(inValue: A, outValue: B.Type) -> B? {
+    do {
+        let encoded = try JSONEncoder().encode(inValue)
+        let decoded = try JSONDecoder().decodeFriendly(((B).self), from: encoded)
+        return decoded
+    } catch {
+        let message = "# Conversion fail from [\(A.self)] to [\(B.self)]\n# In value [\(inValue)]\n# Error [\(error)]"
+        RJS_Logs.error("\(message)")
+        return nil
     }
-    */
+}
+
 public extension JSONDecoder {
     
     // Decoder that when fails log as much information as possible for a fast correction/debug
@@ -87,20 +48,20 @@ public extension JSONDecoder {
                     # context = \(context.debugDescription)
                     # context.codingPathList = \(context.codingPath.debugDescription)
                     """
-                /*case DecodingError.typeMismatch(let propertyType, let context):
+                case DecodingError.typeMismatch(let propertyType, let context):
                     debugMessage = """
                     \(debugMessage)
-                    type = \(String(describing: type(of: propertyType)))
-                    context = \(context.debugDescription)
-                    context.codingPathList = \(context.codingPath.debugDescription)
+                    # type = \(String(describing: propertyType.self))
+                    # context = \(context.debugDescription)
+                    # context.codingPathList = \(context.codingPath.debugDescription)
                     """
                 case DecodingError.valueNotFound(let propertyType, let context):
                     debugMessage = """
                     \(debugMessage)
-                    type = \(String(describing: type(of: propertyType)))
-                    context = \(context.debugDescription)
-                    context.codingPathList = \(context.codingPath.debugDescription)
-                    """*/
+                    # type = \(String(describing: propertyType.self))
+                    # context = \(context.debugDescription)
+                    # context.codingPathList = \(context.codingPath.debugDescription)
+                    """
                 default:
                     break
                 }
