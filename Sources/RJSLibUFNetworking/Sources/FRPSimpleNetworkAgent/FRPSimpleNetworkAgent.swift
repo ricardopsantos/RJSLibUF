@@ -39,20 +39,21 @@ public extension FRPSimpleNetworkAgent {
                 _ dumpResponse: Bool,
                 _ reponseType: RJS_NetworkClientResponseFormat) -> AnyPublisher<Response<T>, FRPSimpleNetworkClientAPIError> where T: Decodable {
         
-        let requestDebugDump = "\(request) : \(T.self) : \(request.url)"
+        let requestDebugDump = "\(request) : \(T.self))"
         return session
             .dataTaskPublisher(for: request) // 3
             .tryMap { result -> Response<T> in
                 //RJS_Logs.error("\(result.response)")
+                if dumpResponse {
+                    let response = String(decoding: result.data, as: UTF8.self).prefix(500)
+                    RJS_Logs.message("# Request: [\(requestDebugDump)]\n# \(response)")
+                }
                 guard let httpResponse = result.response as? HTTPURLResponse, 200...299 ~= httpResponse.statusCode else {
                     if let code = (result.response as? HTTPURLResponse)?.statusCode {
                         throw FRPSimpleNetworkClientAPIError.failedWithStatusCode(code: code)
                     } else {
                         throw FRPSimpleNetworkClientAPIError.genericError
                     }
-                }
-                if dumpResponse {
-                    RJS_Logs.message("request: \(requestDebugDump)\n\(String(decoding: result.data, as: UTF8.self))")
                 }
                 switch reponseType {
                 case .json:
