@@ -27,8 +27,6 @@ digraph {
   RJSLibUFALayouts [label=RJSLibUFALayouts shape=box]
   SampleApp [shape=box]
   RJSLibUFStorage [label=RJSLibUFStorage shape=box]
-  SampleApp [shape=box]
-  TinyConstraints [label="[package]\nTinyConstraints" shape=box]
   MyLibraryTests -> SampleApp [style=dashed]
   MyLibraryTests -> RJSLibUFBase [style=dashed]
   MyLibraryTests -> RJSLibUFNetworking [style=dashed]
@@ -43,5 +41,4 @@ digraph {
   SampleApp -> RJSLibUFNetworking [style=dashed]
   SampleApp -> RJSLibUFALayouts [style=dashed]
   SampleApp -> RJSLibUFStorage [style=dashed]
-  SampleApp -> TinyConstraints [style=dashed]
 }

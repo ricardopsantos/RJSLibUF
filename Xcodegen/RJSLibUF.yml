@@ -13,12 +13,6 @@ options:
   findCarthageFrameworks: false
   minimumXcodeGenVersion: '2.18.0'
 
-packages:
-   
-  TinyConstraints:
-    url: https://github.com/roberthein/TinyConstraints
-    branch: master
-    
 ####################### AUXILIAR FOLDERS #######################
 ####################### AUXILIAR FOLDERS #######################  
 ####################### AUXILIAR FOLDERS #######################
@@ -84,8 +78,6 @@ targets:
         link: true
       - target: RJSLibUFStorage
         link: true
-      - package: TinyConstraints
-        product: TinyConstraints
     postCompileScripts:
       - script: |
                 if which swiftlint >/dev/null; then

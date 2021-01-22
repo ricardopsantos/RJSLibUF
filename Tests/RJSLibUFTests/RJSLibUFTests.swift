@@ -222,14 +222,14 @@ class RJSLibUFTests: XCTestCase {
             var returnOnMainTread: Bool = false
             var debugRequest: Bool = true
             var urlRequest: URLRequest
-            var responseType: RJS_SimpleNetworkClientResponseType
+            var responseType: RJS_NetworkClientResponseFormat
             var mockedData: String? = """
 [{"id":"36253","employee_name":"Mike Cooper","employee_salary":"80","employee_age":"23","profile_image":""},{"id":"36255","employee_name":"Eldon","employee_salary":"9452","employee_age":"66","profile_image":""}]
 """
             init() throws {
                 if let url = URL(string: tJSONURL) {
                     urlRequest            = URLRequest(url: url)
-                    urlRequest.httpMethod = RJS_SimpleNetworkClient.HttpMethod.get.rawValue
+                    urlRequest.httpMethod = RJS_HttpMethod.get.rawValue
                     responseType          = .json
                 } else {
                     throw NSError(domain: "com.example.error", code: 0, userInfo: nil)
