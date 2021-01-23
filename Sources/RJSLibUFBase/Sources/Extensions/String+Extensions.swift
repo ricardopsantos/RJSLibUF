@@ -151,7 +151,7 @@ public extension String {
                                                                 .characterEncoding: String.Encoding.utf8.rawValue],
                                           documentAttributes: nil)
         } catch {
-            RJS_Logs.error("\(error)")
+            RJS_Logs.error("\(error)", tag: .rjsLib)
             return nil
         }
         /*

@@ -19,7 +19,7 @@ public func perfectMapper<A: Codable, B: Codable>(inValue: A, outValue: B.Type) 
         return decoded
     } catch {
         let message = "# Conversion fail from [\(A.self)] to [\(B.self)]\n# In value [\(inValue)]\n# Error [\(error)]"
-        RJS_Logs.error("\(message)")
+        RJS_Logs.error("\(message)", tag: .rjsLib)
         return nil
     }
 }
@@ -82,7 +82,7 @@ public extension JSONDecoder {
             }
             debugMessage = "\(debugMessage)# \(error.localizedDescription)"
             debugMessage = "\(debugMessage)# \(error)"
-            RJS_Logs.error("\(debugMessage)")
+            RJS_Logs.error("\(debugMessage)", tag: .rjsLib)
             throw error
         }
     }

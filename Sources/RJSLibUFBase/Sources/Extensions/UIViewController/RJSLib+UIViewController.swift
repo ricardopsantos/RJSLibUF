@@ -24,20 +24,6 @@ public extension UIViewController {
     }
     var isVisible: Bool { return self.isViewLoaded && ((self.view.window) != nil) }
 
-    func debugStack() {
-        if let navigationController = self.navigationController {
-            if navigationController.children.count > 0 {
-                RJS_Logs.message("Children's : \(navigationController.children.count)")
-                RJS_Logs.message("Fist Nav : \(String(describing: navigationController.children.first?.className))")
-                var childrensInfo = ""
-                navigationController.children.forEach { (some) in
-                    childrensInfo += " -\(some.className)\n"
-                }
-                RJS_Logs.message("Children\n \(childrensInfo)")
-            }
-        }
-    }
-
     //
     // UTILS
     //

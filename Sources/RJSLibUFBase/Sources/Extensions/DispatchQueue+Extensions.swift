@@ -13,7 +13,7 @@ public extension DispatchQueue {
     
     private static var _onceTracker = [String]()
     static func onceTrackerClean() {
-        RJS_Logs.warning("DispatchQueue._onceTracker cleaned")
+        RJS_Logs.warning("DispatchQueue._onceTracker cleaned", tag: .rjsLib)
         _onceTracker = []
     }
     

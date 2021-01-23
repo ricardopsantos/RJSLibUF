@@ -40,8 +40,11 @@ public extension UIButton {
                         block:@escaping () -> Void) {
         self.disableUserInteractionFor(disableUserInteractionFor)
         UIView.animate(withDuration: RJS_Constants.defaultAnimationsTime/2.0, animations: { [weak self] in
-            guard let strongSelf = self else { RJS_Logs.warning(RJS_Constants.referenceLost); return }
-            strongSelf.transform = CGAffineTransform(scaleX: scale, y: scale) },
+            guard let self = self else {
+                RJS_Logs.warning(RJS_Constants.referenceLost, tag: .rjsLib)
+                return
+            }
+            self.transform = CGAffineTransform(scaleX: scale, y: scale) },
                        completion: { _ in
                         UIView.animate(withDuration: RJS_Constants.defaultAnimationsTime/2.0 ,
                                        animations: { self.transform = .identity },

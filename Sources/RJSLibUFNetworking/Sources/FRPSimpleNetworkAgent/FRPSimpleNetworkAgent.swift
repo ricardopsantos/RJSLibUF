@@ -46,7 +46,7 @@ public extension FRPSimpleNetworkAgent {
                 //RJS_Logs.error("\(result.response)")
                 if dumpResponse {
                     let response = String(decoding: result.data, as: UTF8.self).prefix(500)
-                    RJS_Logs.message("# Request: [\(requestDebugDump)]\n# \(response)")
+                    RJS_Logs.message("# Request: [\(requestDebugDump)]\n# \(response)", tag: .rjsLib)
                 }
                 guard let httpResponse = result.response as? HTTPURLResponse, 200...299 ~= httpResponse.statusCode else {
                     if let code = (result.response as? HTTPURLResponse)?.statusCode {
@@ -67,8 +67,12 @@ public extension FRPSimpleNetworkAgent {
 
         }
         .mapError { error in
-            RJS_Logs.message("Request [\(requestDebugDump)] failed with error [\(error.localizedDescription))]")
-            RJS_Logs.error("\(error)")
+            let debugMessage = """
+            # Request [\(requestDebugDump)] failed
+            # [\(error.localizedDescription)]
+            # [\(error)]
+            """
+            RJS_Logs.error(debugMessage, tag: .rjsLib)
             return FRPSimpleNetworkClientAPIError.network(description: error.localizedDescription)
         }
             .receive(on: DispatchQueue.main) // 6

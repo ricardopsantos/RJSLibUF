@@ -12,7 +12,7 @@ public extension URLRequest {
                      httpBody: [String: String]?,
                      headerValues: [String: String]?) -> URLRequest? {
         guard let theURL = URL(string: "\(urlString)") else {
-            RJS_Logs.warning("Invalid url [\(urlString)]")
+            RJS_Logs.warning("Invalid url [\(urlString)]", tag: .rjsLib)
             return nil
         }
         var request = URLRequest(url: theURL)

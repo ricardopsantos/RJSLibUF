@@ -48,7 +48,7 @@ extension RJSLib {
                     return managedObjectModel
                 }
             }
-            RJS_Logs.error("\(dbName) not found in any Bundle")
+            RJS_Logs.error("\(dbName) not found in any Bundle", tag: .rjsLib)
             return nil
         }()
 
@@ -69,7 +69,7 @@ extension RJSLib {
             } catch {
                 someError = error
             }
-            RJS_Logs.error(someError)
+            RJS_Logs.error(someError, tag: .rjsLib)
             return NSPersistentStoreCoordinator()
         }()
 
@@ -88,7 +88,7 @@ extension RJSLib {
                 if managedObjectContext.hasChanges {
                     do {
                         try managedObjectContext.save()
-                        RJS_Logs.message("DB record stored/updated/deleted")
+                        RJS_Logs.message("DB record stored/updated/deleted", tag: .rjsLib)
                     } catch {
                         assertionFailure("\(error)")
                     }

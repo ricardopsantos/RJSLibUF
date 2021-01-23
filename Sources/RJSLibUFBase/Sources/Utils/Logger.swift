@@ -18,35 +18,46 @@ extension RJSLib {
         private init() {}
 
         public enum Tag: String {
-            case generic
+            case rjsLib
+            case client
+            
+            var prettyName: String {
+                switch self {
+                case .rjsLib: return "RJSLibUF"
+                case .client: return "MyApp"
+                }
+            }
         }
 
-        private static var _logMessagesPrefix = "\(RJSLib.self).\(Logger.self)"
+        //private static var _logMessagesPrefix = "\(RJSLib.self).\(Logger.self)"
         private static var _debugCounter: Int = 0
         public static func cleanStoredLogs() {
             StorageUtils.deleteLogs()
         }
 
-        public static func message(_ message: Any?, tag: String = RJSLib.Logger.Tag.generic.rawValue,
+        public static func message(_ message: Any?,
+                                   tag: Logger.Tag,
                                    function: String = #function, file: String = #file, line: Int = #line) {
             guard message != nil else { return }
-            let prefix = "[Debug] [\(tag)]"
-            private_print("\(prefix)\(message!)", function: function, file: file, line: line)
+            let prefix = "# Type : Debug @ \(tag.prettyName)"
+            private_print("\(prefix)\n\n\(message!)", function: function, file: file, line: line)
         }
 
-        public static func warning(_ message: Any?, tag: String = RJSLib.Logger.Tag.generic.rawValue,
+        public static func warning(_ message: Any?,
+                                   tag: Logger.Tag,
                                    function: String = #function, file: String = #file, line: Int = #line) {
             guard message != nil else { return }
-            let prefix = "[Warning] [\(tag)]"
-            private_print("\(prefix)\(message!)", function: function, file: file, line: line)
+            let prefix = "# Type: Warning @ \(tag.prettyName)]"
+            private_print("\(prefix)\n\n\(message!)", function: function, file: file, line: line)
         }
 
-        public static func error(_ message: Any?, tag: String = RJSLib.Logger.Tag.generic.rawValue,
+        public static func error(_ message: Any?,
+                                 tag: Logger.Tag,
                                  shouldCrash: Bool = false,
                                  function: String = #function, file: String = #file, line: Int = #line) {
             guard message != nil else { return }
-            let prefix = "[Error] [\(tag)]"
-            private_print("\(prefix)\(message!)", function: function, file: file, line: line)
+            let prefix = "# Type : Error @ \(tag.prettyName)"
+            private_print("\(prefix)\n\n\(message!)", function: function, file: file, line: line)
         }
         
         //
@@ -58,18 +69,16 @@ extension RJSLib {
             // When performed on physical device, NSLog statements appear in the device's console whereas
             // print only appears in the debugger console.
             
-            let appState = ""
-            
             _debugCounter     += 1
             let senderCodeId   = RJS_Utils.senderCodeId(function, file: file, line: line)
             let messageToPrint = message.trim
             let date           = Date.utcNow
-            var logMessage     = ""
-            if appState.isEmpty {
-                logMessage = "# [\(_debugCounter)][\(_logMessagesPrefix)][\(senderCodeId)][\(date)]\n\(messageToPrint)"
-            } else {
-                logMessage = "# [\(_debugCounter)][\(_logMessagesPrefix)][\(appState)][\(senderCodeId)][\(date)]\n\(messageToPrint)"
-            }
+            let logMessage     = """
+            \n###################################################################
+            # Log_\(_debugCounter) @ \(date)
+            # \(senderCodeId)
+            \(messageToPrint)
+            """
             
             StorageUtils.appendToFile(logMessage)
             

@@ -24,13 +24,13 @@ public extension FRPSampleAPI {
         publisherA.sink { (_) in
             //RJS_Logs.message(result)
         } receiveValue: { (response) in
-            RJS_Logs.message(response.prefix(3))
+            RJS_Logs.message(response.prefix(3), tag: .rjsLib)
         }.store(in: cancelBag)
         
         publisherB.sink { (_) in
             //RJS_Logs.message(result)
         } receiveValue: { (response) in
-            RJS_Logs.message(response.data.prefix(3))
+            RJS_Logs.message(response.data.prefix(3), tag: .rjsLib)
         }.store(in: cancelBag)
     }
 }

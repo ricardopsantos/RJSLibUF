@@ -118,9 +118,9 @@ class RJSLibUFTests: XCTestCase {
     }
 
     func test_Logs() {
-        RJS_Logs.message("Regular log")
-        RJS_Logs.warning("Warning log")
-        RJS_Logs.error("Error log")
+        RJS_Logs.message("Regular log", tag: .rjsLib)
+        RJS_Logs.warning("Warning log", tag: .rjsLib)
+        RJS_Logs.error("Error log", tag: .rjsLib)
     }
 
     func test_Utils() {

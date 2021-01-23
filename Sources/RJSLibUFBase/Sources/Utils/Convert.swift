@@ -77,7 +77,7 @@ public extension RJSLib {
             if let some = NumberFormatter().number(from: removeInvalidChars(string!.replace(",", with: "."))) {
                 return CGFloat(truncating: some)
             }
-            RJS_Logs.warning("Fail on converting [\(String(describing: string))]")
+            RJS_Logs.warning("Fail on converting [\(String(describing: string))]", tag: .rjsLib)
             return nil
         }
 
@@ -88,7 +88,7 @@ public extension RJSLib {
             if let some = NumberFormatter().number(from: removeInvalidChars(string!)) {
                 return Bool(truncating: some)
             }
-            RJS_Logs.warning("Fail on converting [\(String(describing: string))]")
+            RJS_Logs.warning("Fail on converting [\(String(describing: string))]", tag: .rjsLib)
             return nil
         }
 
@@ -102,7 +102,7 @@ public extension RJSLib {
             if let some = NumberFormatter().number(from: removeInvalidChars(string!.replace(",", with: "."))) {
                 return Double(truncating: some)
             }
-            RJS_Logs.warning("Fail on converting [\(String(describing: string))]")
+            RJS_Logs.warning("Fail on converting [\(String(describing: string))]", tag: .rjsLib)
             return nil
         }
 
@@ -116,7 +116,7 @@ public extension RJSLib {
             if let some = NumberFormatter().number(from: removeInvalidChars(string!.replace(",", with: "."))) {
                 return Float(truncating: some)
             }
-            RJS_Logs.warning("Fail on converting [\(String(describing: string))]")
+            RJS_Logs.warning("Fail on converting [\(String(describing: string))]", tag: .rjsLib)
             return nil
         }
 
@@ -127,7 +127,7 @@ public extension RJSLib {
             if let some = NumberFormatter().number(from: removeInvalidChars(string!).replace(",", with: ".")) {
                 return Int(truncating: some)
             }
-            RJS_Logs.warning("Fail on converting [\(String(describing: string))]")
+            RJS_Logs.warning("Fail on converting [\(String(describing: string))]", tag: .rjsLib)
             return nil
         }
         

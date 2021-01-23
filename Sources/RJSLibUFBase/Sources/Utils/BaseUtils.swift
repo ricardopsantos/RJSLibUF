@@ -61,13 +61,16 @@ extension RJSLib {
         public static var isSimulator: Bool { return RJS_DeviceInfo.isSimulator }
         public static var isRealDevice: Bool { return isSimulator }
         
-        public static func senderCodeId(_ function: String = #function, file: String = #file, line: Int = #line, showLine: Bool=isRealDevice) -> String {
+        public static func senderCodeId(_ function: String = #function,
+                                        file: String = #file,
+                                        line: Int = #line,
+                                        showLine: Bool=isRealDevice) -> String {
             let fileName = file.split(by: "/").last!
-            var sender   = "\(fileName) | \(function)"
+            var sender   = "File \(fileName), func \(function)"
             if showLine {
-                sender =  "\(sender) | \(line)"
+                sender =  "\(sender), line \(line)"
             }
-            return sender.replace(" ", with: "")
+            return sender//.replace(" ", with: "")
         }
         
         public static var existsInternetConnection: Bool {
@@ -83,7 +86,11 @@ extension RJSLib {
                                   line: Int = #line) {
             guard onDebug else { return }
             if !value() {
-                RJS_Logs.error("Assert condition not meeted! \(message())" as AnyObject, function: "\(function)", file: "\(file)", line: line)
+                RJS_Logs.error("Assert condition not meeted! \(message())" as AnyObject,
+                               tag: .rjsLib,
+                               function: "\(function)",
+                               file: "\(file)",
+                               line: line)
             }
         }
     }

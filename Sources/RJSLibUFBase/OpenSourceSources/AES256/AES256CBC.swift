@@ -21,7 +21,7 @@ final class AES256CBC {
             let key = password
 
             guard let encryptedString = try? aesEncrypt(str, key: key, iv: iv) else {
-                RJS_Logs.error("an error occurred while encrypting")
+                RJS_Logs.error("an error occurred while encrypting with [\(password)]", tag: .rjsLib)
                 return nil
             }
             return iv + encryptedString
@@ -40,7 +40,7 @@ final class AES256CBC {
                                       range: nil) // remove IV
 
             guard let decryptedString = try? aesDecrypt(encryptedString, key: password, iv: iv) else {
-                RJS_Logs.error("an error occurred while decrypting")
+                RJS_Logs.error("an error occurred while decrypting with [password]", tag: .rjsLib)
                 return nil
             }
             return decryptedString
