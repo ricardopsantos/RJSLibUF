@@ -6,8 +6,6 @@
 import Foundation
 import Combine
 
-// swiftlint:disable nesting
-
 extension FRPSampleAPI {
     public struct ResponseDto {
         private init() { }

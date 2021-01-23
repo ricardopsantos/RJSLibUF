@@ -22,6 +22,7 @@ extension RJSLib {
          *    log(RJSCronometer.nthPrimeNumber(10000))
          * }
          */
+        @discardableResult
         public static func printTimeElapsedWhenRunningCode(_ title: String, operation: () -> Void) -> Double {
             let startTime = CFAbsoluteTimeGetCurrent()
             operation()
@@ -38,6 +39,7 @@ extension RJSLib {
         }
         
         private static var _times: [String: CFAbsoluteTime] = [:]
+        
         public static func startTimerWith(identifier: String="") {
             synced(_times) {
                 _times.removeValue(forKey: identifier)

@@ -272,9 +272,7 @@ public extension RJPSLayouts where Target: UIView {
             targetIsSuper = true
         }
         guard target != nil else {
-            if let fileName = #file.components(separatedBy: "/").last {
-                RJS_Logs.message("Fail to apply [\(property)]. Target view is nil.", tag: .rjsLib)
-            }
+            RJS_Logs.message("Fail to apply [\(property)]. Target view is nil.", tag: .rjsLib)
             return nil
         }
         if method == .constraints {
