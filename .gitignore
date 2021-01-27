@@ -9,5 +9,4 @@ fastlane/*
 .DS_Store
 /.build
 /Packages
-/*.xcodeproj
 xcuserdata/
