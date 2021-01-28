@@ -31,10 +31,11 @@ public extension UIStackView {
     }
     
     // Will add a visual report on the stack view for easy understanding of about the available design languages
-    func loadWithDesignLanguageReport() {
+    func loadWithDesignLanguageReport2() {
         
-        addSectionForDevScreen(title: "RJS_ButtontStyle: \(RJS_ButtontStyle.allCases.count) values")
-        RJS_ButtontStyle.allCases.forEach { (some) in
+        let buttontStyles = RJS_ButtontStyle.allCases.filter { $0 != .notApplied }
+        addSectionForDevScreen(title: "RJS_ButtontStyle: \(buttontStyles.count) values")
+        buttontStyles.forEach { (some) in
             let reportView = UIButton()
             reportView.layoutStyle = some
             reportView.setTitleForAllStates("\(some)")
@@ -42,12 +43,20 @@ public extension UIStackView {
             reportView.heightAnchor.constraint(equalToConstant: UIButton.buttonDefaultSize.height).isActive = true
         }
         
-        addSectionForDevScreen(title: "RJS_LabelStyle: \(RJS_LabelStyle.allCases.count) values")
-        RJS_LabelStyle.allCases.forEach { (some) in
+        let labelStyles = RJS_LabelStyle.allCases.filter { $0 != .notApplied }
+        addSectionForDevScreen(title: "RJS_LabelStyle: \(labelStyles.count) values")
+        labelStyles.forEach { (some) in
             let reportView = UILabel()
-            reportView.text = "\(some)"
+            reportView.text = " \(some)"
             reportView.layoutStyle = some
             self.add(reportView)
+            reportView.heightAnchor.constraint(equalToConstant: UIButton.buttonDefaultSize.height).isActive = true
+            let reportView2 = UILabel()
+            reportView2.text = "\(some)"
+            reportView2.layoutStyle = some
+            reportView2.backgroundColor = UIColor.black.withAlphaComponent(0.1)
+            self.add(reportView2)
+            reportView2.heightAnchor.constraint(equalToConstant: UIButton.buttonDefaultSize.height*0.66).isActive = true
         }
         
         addSectionForDevScreen(title: "RJS_Fonts: \(RJS_Fonts.Styles.allCases.count) values")
@@ -87,4 +96,5 @@ public extension UIStackView {
     }
 
 }
+
 #endif

@@ -5,8 +5,8 @@
         "package": "rjps-lib-uf",
         "repositoryURL": "https://github.com/ricardopsantos/RJSLibUF",
         "state": {
-          "branch": "develop",
-          "revision": "c43837ac178da1a69cc650f2b99dd4c5aa62327b",
+          "branch": null,
+          "revision": "6abf813436aa7ff3ecc64ec76e7c1e8367f4aeca",
           "version": null
         }
       },

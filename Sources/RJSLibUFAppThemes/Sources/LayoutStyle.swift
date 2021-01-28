@@ -2,6 +2,7 @@
 //  Created by Ricardo Santos on 28/01/2021.
 //
 
+#if !os(macOS)
 import Foundation
 import UIKit
 
@@ -28,3 +29,4 @@ public extension UILabel {
         case error
     }
 }
+#endif
