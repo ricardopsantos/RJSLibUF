@@ -14,22 +14,6 @@ struct AppConstants {
     static let cellIdentifier = "cellIdentifier"
 }
 
-extension UILabel {
-    enum LayoutStyle {
-        case notAplyed /// not Applied
-        case title
-        case value
-    }
-}
-
-extension UIButton {
-    enum LayoutStyle {
-        case notAplyed /// not Applied
-        case title
-        case value
-    }
-}
-
 extension UIView {
     func lazyLoad() {}
 }
@@ -39,7 +23,7 @@ class GenericViewController: UIViewController { }
 struct UIKitFactory {
     private init() {}
     
-    static func label(baseView: UIView? = nil, title: String="", style: UILabel.LayoutStyle, tag: Int=0) -> UILabel {
+    static func label(baseView: UIView? = nil, title: String="", style: UILabel.RJSLibUFLayoutStyle, tag: Int=0) -> UILabel {
         let some = UILabel()
         some.text = title
         some.numberOfLines = 0
@@ -48,7 +32,7 @@ struct UIKitFactory {
         return some
     }
 
-    static func button(baseView: UIView? = nil, title: String="", style: UIButton.LayoutStyle, tag: Int=0) -> UIButton {
+    static func button(baseView: UIView? = nil, title: String="", style: UIButton.RJSLibUFLayoutStyle, tag: Int=0) -> UIButton {
         let some = UIButton()
         some.tag = tag
         some.setTitleForAllStates(title)

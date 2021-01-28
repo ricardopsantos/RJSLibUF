@@ -51,7 +51,9 @@ public extension UIColor {
     }
 }
 
+//
 // MARK: - Color Set 2
+//
 
 public extension UIColor {
 
@@ -151,6 +153,10 @@ public extension UIColor {
     }
 }
 
+//
+// MARK: - Color Set 3
+//
+
 public extension UIColor {
 
     enum Pack3: CaseIterable, ReportableColorProtocol {
@@ -210,6 +216,46 @@ public extension UIColor {
              case .onWarning: return UIColor.Pack2.white.color
             }
         }
+    }
+}
+
+public extension UIColor {
+
+    struct AppBrand1 {
+        private init() {}
+
+        public struct TopBar {
+            private init() {}
+            public static var background: UIColor { return RJS_ColorName.primary.color }
+            public static var titleColor: UIColor { return RJS_ColorName.onPrimary.color }
+        }
+
+        public struct UIButton {
+            public static var backgroundColorInnGage: UIColor { return UIColor.Pack1.grey_6.color }
+            public static var textColorInnGage: UIColor { return UIColor.Pack1.grey_1.color }
+            public static var backgroundColorDefault: UIColor { return  RJS_ColorName.primary.color }
+            public static var textColorDefault: UIColor { return  RJS_ColorName.onPrimary.color }
+        }
+
+        public struct UILabel {
+            public static var lblBackgroundColor: UIColor { return UIColor.Pack1.grey_6.color }
+            public static var lblTextColor: UIColor { return UIColor.Pack1.grey_1.color }
+        }
+
+        public static var background: UIColor { return RJS_ColorName.onPrimary.color }
+        public static var onBackground: UIColor { return RJS_ColorName.primary.color }
+
+        public static var primary: UIColor { return RJS_ColorName.primary.color }
+        public static var onPrimary: UIColor { return RJS_ColorName.onPrimary.color }
+
+        public static var error: UIColor { return RJS_ColorName.danger.color }
+        public static var success: UIColor { return RJS_ColorName.success.color }
+        public static var warning: UIColor { return RJS_ColorName.warning.color }
+
+        public static var accept: UIColor { return RJS_ColorName.success.color }
+        public static var reject: UIColor { return RJS_ColorName.warning.color }
+        public static var remind: UIColor { return RJS_ColorName.danger.color }
+
     }
 }
 

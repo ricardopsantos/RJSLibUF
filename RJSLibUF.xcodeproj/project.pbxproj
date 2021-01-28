@@ -86,6 +86,9 @@
 		CCD19BD01143FDABDA266E15 /* RJSLibUFALayouts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5CB34C80F1CD1CE82B934F5E /* RJSLibUFALayouts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D721F15CD0A2521AD72E0860 /* RJSLibUFBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B0D02882E22945B619357BF /* RJSLibUFBase.framework */; };
 		D733D7041B511A03BEA97F87 /* NSObject+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD3374E2B2FAFC282B92508 /* NSObject+Extensions.swift */; };
+		D773400225C33B29000C0EF5 /* LayoutStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D773400125C33B29000C0EF5 /* LayoutStyle.swift */; };
+		D773401F25C33E75000C0EF5 /* UILabel+Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D773401E25C33E75000C0EF5 /* UILabel+Styles.swift */; };
+		D773402B25C33EAE000C0EF5 /* UIButton+Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D773402A25C33EAE000C0EF5 /* UIButton+Styles.swift */; };
 		D8B498ADCD7A15B2143BAC94 /* Designables+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F1A6C59E51C00A24DEF8E8 /* Designables+SearchBar.swift */; };
 		D9DF80C5F08654703EBED4C4 /* RJSLibNetworkClientErrorsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAD80AE21451C16325238A0 /* RJSLibNetworkClientErrorsManager.swift */; };
 		DB68E509A2B4BADB25EB4720 /* RJSLibUFALayouts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5CB34C80F1CD1CE82B934F5E /* RJSLibUFALayouts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -325,6 +328,9 @@
 		C9B2362B8015B26023D2D549 /* FRPSampleAPI+RequestsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FRPSampleAPI+RequestsBuilder.swift"; sourceTree = "<group>"; };
 		D5FCBCFD8D709AF7820D020A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		D72FF8069A32B39CE9556041 /* RJSLib+UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RJSLib+UIViewController.swift"; sourceTree = "<group>"; };
+		D773400125C33B29000C0EF5 /* LayoutStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutStyle.swift; sourceTree = "<group>"; };
+		D773401E25C33E75000C0EF5 /* UILabel+Styles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Styles.swift"; sourceTree = "<group>"; };
+		D773402A25C33EAE000C0EF5 /* UIButton+Styles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Styles.swift"; sourceTree = "<group>"; };
 		D89E707349666725E8E46048 /* RJSLib+UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RJSLib+UIView.swift"; sourceTree = "<group>"; };
 		DB1081E0C457B10140C16D18 /* UIDevice+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extensions.swift"; sourceTree = "<group>"; };
 		DD4DEAB85D959C8F029F2E0F /* RJSLibUFNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RJSLibUFNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -722,8 +728,11 @@
 				72E16F7C1ADBA8AE34C21AFF /* UIColor+Extensions.swift */,
 				A06985C402FFAD08178A63FA /* UIFont+Extensions.swift */,
 				C7CD26E5D953535DAB3FAFED /* UILabel+Extensions.swift */,
+				D773402A25C33EAE000C0EF5 /* UIButton+Styles.swift */,
+				D773401E25C33E75000C0EF5 /* UILabel+Styles.swift */,
 				A7D1072252EB41BDF9BCF108 /* UIView+Extensions.swift */,
 				EA1A1D59C7677284BFE22E92 /* UIView+StackView.swift */,
+				D773400125C33B29000C0EF5 /* LayoutStyle.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -870,8 +879,6 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 1201;
-				TargetAttributes = {
-				};
 			};
 			buildConfigurationList = 478BD369166F0567C3785035 /* Build configuration list for PBXProject "RJSLibUF" */;
 			compatibilityVersion = "Xcode 10.0";
@@ -1032,6 +1039,9 @@
 				E5C5F50CE9DFE5E3A06B4C6B /* UILabel+Extensions.swift in Sources */,
 				754995950A77FDA3F3D4F519 /* UIView+Extensions.swift in Sources */,
 				FD24E0A8E77F7C31F66875FD /* UIView+StackView.swift in Sources */,
+				D773400225C33B29000C0EF5 /* LayoutStyle.swift in Sources */,
+				D773401F25C33E75000C0EF5 /* UILabel+Styles.swift in Sources */,
+				D773402B25C33EAE000C0EF5 /* UIButton+Styles.swift in Sources */,
 				89BA691142297CCFEE50BE0F /* typealias.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
