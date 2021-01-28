@@ -33,6 +33,23 @@ public extension UIStackView {
     // Will add a visual report on the stack view for easy understanding of about the available design languages
     func loadWithDesignLanguageReport() {
         
+        addSectionForDevScreen(title: "RJS_ButtontStyle: \(RJS_ButtontStyle.allCases.count) values")
+        RJS_ButtontStyle.allCases.forEach { (some) in
+            let reportView = UIButton()
+            reportView.layoutStyle = some
+            reportView.setTitleForAllStates("\(some)")
+            self.add(reportView)
+            reportView.heightAnchor.constraint(equalToConstant: UIButton.buttonDefaultSize.height).isActive = true
+        }
+        
+        addSectionForDevScreen(title: "RJS_LabelStyle: \(RJS_LabelStyle.allCases.count) values")
+        RJS_LabelStyle.allCases.forEach { (some) in
+            let reportView = UILabel()
+            reportView.text = "\(some)"
+            reportView.layoutStyle = some
+            self.add(reportView)
+        }
+        
         addSectionForDevScreen(title: "RJS_Fonts: \(RJS_Fonts.Styles.allCases.count) values")
         RJS_Fonts.Styles.allCases.forEach { (some) in
             self.add(some.reportView)

@@ -273,6 +273,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_SWIFT_FLAGS = "-DUSE_INCLUDE_TINYCONSTRAINTS";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rjps.libuf.iOSSampleAppWTinyConstraints;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -348,6 +349,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_SWIFT_FLAGS = "-DUSE_INCLUDE_TINYCONSTRAINTS";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rjps.libuf.iOSSampleAppWTinyConstraints;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";

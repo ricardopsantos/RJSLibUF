@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "rjps-lib-uf",
+        "repositoryURL": "https://github.com/ricardopsantos/RJSLibUF",
+        "state": {
+          "branch": "develop",
+          "revision": "c43837ac178da1a69cc650f2b99dd4c5aa62327b",
+          "version": null
+        }
+      },
+      {
+        "package": "TinyConstraints",
+        "repositoryURL": "https://github.com/roberthein/TinyConstraints",
+        "state": {
+          "branch": "master",
+          "revision": "d7bd59531c1e5155cb64167235dc75bf5a37ebe6",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}

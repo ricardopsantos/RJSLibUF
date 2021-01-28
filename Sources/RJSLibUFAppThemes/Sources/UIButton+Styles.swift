@@ -14,6 +14,7 @@ public extension UIButton {
 
     // Cant be o Designables because the Designables allready import AppTheme
     static var defaultFont: UIFont { RJS_Fonts.Styles.paragraphMedium.rawValue }
+    static var buttonDefaultSize: CGSize { return CGSize(width: 125, height: 44) }
 
     var layoutStyle: RJS_ButtontStyle {
         set { apply(style: newValue) }
@@ -41,8 +42,6 @@ public extension UIButton {
 
 private extension UIButton {
 
-    private var buttonDefaultSize: CGSize { return CGSize(width: 125, height: 44) }
-
     func applySharedProperties() {
         setState(enabled: true)
         addShadow(shadowType: .regular)
@@ -62,7 +61,7 @@ private extension UIButton {
         self.titleLabel?.font = UIButton.defaultFont
         self.backgroundColor  = RJS_AppBrand1.accept
         self.setTextColorForAllStates(RJS_AppBrand1.UIButton.textColorDefault)
-        self.layer.cornerRadius = buttonDefaultSize.height / 2
+        self.layer.cornerRadius = UIButton.buttonDefaultSize.height / 2
         self.clipsToBounds      = true
     }
 
@@ -71,7 +70,7 @@ private extension UIButton {
         self.titleLabel?.font = UIButton.defaultFont
         self.backgroundColor  = RJS_AppBrand1.reject
         self.setTextColorForAllStates(RJS_AppBrand1.UIButton.textColorDefault)
-        self.layer.cornerRadius = buttonDefaultSize.height / 2
+        self.layer.cornerRadius = UIButton.buttonDefaultSize.height / 2
         self.clipsToBounds      = true
     }
 
@@ -80,7 +79,7 @@ private extension UIButton {
         self.titleLabel?.font = UIButton.defaultFont
         self.backgroundColor  = RJS_AppBrand1.remind
         self.setTextColorForAllStates(RJS_AppBrand1.UIButton.textColorDefault)
-        self.layer.cornerRadius = buttonDefaultSize.height / 2
+        self.layer.cornerRadius = UIButton.buttonDefaultSize.height / 2
         self.clipsToBounds      = true
     }
     
@@ -89,7 +88,7 @@ private extension UIButton {
         self.titleLabel?.font = UIButton.defaultFont
         self.backgroundColor  = RJS_AppBrand1.UIButton.backgroundColorDefault
         self.setTextColorForAllStates(RJS_AppBrand1.UIButton.textColorDefault)
-        self.layer.cornerRadius = buttonDefaultSize.height / 2
+        self.layer.cornerRadius = UIButton.buttonDefaultSize.height / 2
         self.clipsToBounds      = true
     }
 
@@ -100,7 +99,7 @@ private extension UIButton {
         self.setTextColorForAllStates(RJS_ColorName.primary.color)
         self.layer.borderWidth  = 2
         self.layer.borderColor  = RJS_AppBrand1.primary.cgColor
-        self.layer.cornerRadius = buttonDefaultSize.height / 2
+        self.layer.cornerRadius = UIButton.buttonDefaultSize.height / 2
         self.clipsToBounds      = true
     }
 
@@ -109,7 +108,7 @@ private extension UIButton {
         self.titleLabel?.font = UIButton.defaultFont
         self.backgroundColor  = UIColor.white
         self.setTextColorForAllStates(RJS_AppBrand1.error)
-        self.layer.cornerRadius = buttonDefaultSize.height / 2
+        self.layer.cornerRadius = UIButton.buttonDefaultSize.height / 2
         self.clipsToBounds      = true
         self.layer.borderWidth  = 2
         self.layer.borderColor  = RJS_AppBrand1.error.cgColor
