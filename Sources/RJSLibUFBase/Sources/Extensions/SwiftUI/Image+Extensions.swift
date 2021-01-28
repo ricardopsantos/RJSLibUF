@@ -24,52 +24,52 @@ public extension Image {
 }
 
 public enum ImageNames: String, CaseIterable {
-    public case arrow
-    public case arrow2 = "arrow.2"
-    public case arrowCounterClockWise = "arrow.counterclockwise"
-    public case arrowClockWise = "arrow.clockwise"
-    public case app
-    public case bag
-    public case bell
-    public case buble
-    public case cloud
-    public case clock
-    public case camera
-    public case chevron
-    public case circle
-    public case envelope
-    public case ellipsis
-    public case flame
-    public case house
-    public case heart
-    public case gear
-    public case location
-    public case magnifyingglass
-    public case message
-    public case minus
-    public case minusSquare = "minus.square"
-    public case minusCircle = "minus.circle"
-    public case mic
-    public case micCircle = "mic.circle"
-    public case micSlash = "mic.slash"
-    public case phone
-    public case paperplane
-    public case person
-    public case personCrop = "person.crop"
-    public case personCropCircle = "person.crop.circle"
-    public case personCropSquare = "person.crop.square"
-    public case plus
-    public case pause
-    public case play
-    public case plusCircle = "plus.circle"
-    public case plusSquare = "plus.square"
-    public case star
-    public case sparkles
-    public case stop
-    public case square
-    public case squareAndArrow = "square.and.arrow"
-    public case wifi
-    public case xmark
+    case arrow
+    case arrow2 = "arrow.2"
+    case arrowCounterClockWise = "arrow.counterclockwise"
+    case arrowClockWise = "arrow.clockwise"
+    case app
+    case bag
+    case bell
+    case buble
+    case cloud
+    case clock
+    case camera
+    case chevron
+    case circle
+    case envelope
+    case ellipsis
+    case flame
+    case house
+    case heart
+    case gear
+    case location
+    case magnifyingglass
+    case message
+    case minus
+    case minusSquare = "minus.square"
+    case minusCircle = "minus.circle"
+    case mic
+    case micCircle = "mic.circle"
+    case micSlash = "mic.slash"
+    case phone
+    case paperplane
+    case person
+    case personCrop = "person.crop"
+    case personCropCircle = "person.crop.circle"
+    case personCropSquare = "person.crop.square"
+    case plus
+    case pause
+    case play
+    case plusCircle = "plus.circle"
+    case plusSquare = "plus.square"
+    case star
+    case sparkles
+    case stop
+    case square
+    case squareAndArrow = "square.and.arrow"
+    case wifi
+    case xmark
 }
 
 #if !os(macOS)
@@ -184,11 +184,11 @@ public struct VisualDocs_ImageName: View {
 }
 
 // MARK: - Preview
-
+/*
 public struct VisualDocs_ImageName_PreviewProvider: PreviewProvider {
     public static var previews: some View {
         VisualDocs_ImageName()
     }
 }
-
+*/
 #endif
