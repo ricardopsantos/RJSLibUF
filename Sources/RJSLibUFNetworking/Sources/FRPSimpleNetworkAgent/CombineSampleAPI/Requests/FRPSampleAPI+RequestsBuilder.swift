@@ -15,10 +15,10 @@ public extension FRPSampleAPI {
 extension FRPSampleAPI.RequestsBuilder {
     
     static func sampleRequestJSON(_ resquestDto: FRPSampleAPI.RequestDto.Sample) -> FRPSimpleNetworkClientRequestModel {
-        let httpBody = [
+        let /*httpBody*/ _ = [
             "publicKey": resquestDto.userID
         ]
-        let headerValues = [
+        let /*headerValues*/ _ = [
             "userId": resquestDto.userID
         ]
         return FRPSimpleNetworkClientRequestModel(path: "v1/employees",

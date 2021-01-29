@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -135,6 +135,8 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 1201;
+				TargetAttributes = {
+				};
 			};
 			buildConfigurationList = 56B3666D5CF6F90DBF4813E2 /* Build configuration list for PBXProject "iOSSampleAppWTinyConstraints" */;
 			compatibilityVersion = "Xcode 10.0";
@@ -382,8 +384,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ricardopsantos/RJSLibUF";
 			requirement = {
-				kind = revision;
-				revision = 6abf813436aa7ff3ecc64ec76e7c1e8367f4aeca;
+				branch = develop;
+				kind = branch;
 			};
 		};
 		82A70BC4F117E5CA073482D5 /* XCRemoteSwiftPackageReference "TinyConstraints" */ = {

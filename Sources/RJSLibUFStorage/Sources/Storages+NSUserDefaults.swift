@@ -8,6 +8,9 @@ import Foundation
 import RJSLibUFBase
 
 public extension RJSLib.Storages {
+    
+    @available(*, deprecated)
+    
     struct NSUserDefaults {
         private init() {}
         

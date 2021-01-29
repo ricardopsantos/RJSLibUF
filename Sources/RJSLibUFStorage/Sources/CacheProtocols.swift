@@ -19,12 +19,12 @@ public protocol RJPSLibHotCacheProtocol {
     func clean()
 }
 
-// MARK: - RJPSLibPersistentSimpleCacheWithTTLProtocol
+// MARK: - RJPSLibColdCacheWithTTLProtocol
 
 public protocol RJPSLibColdCacheWithTTLProtocol {
     func getObject<T: Codable>(_ some: T.Type, withKey key: String, keyParams: [String]) -> T?
     func saveObject<T: Codable>(_ some: T, withKey key: String, keyParams: [String], lifeSpam: Int) -> Bool
-    func allRecords() -> [RJS_DataModel]
+    func allRecords() -> [RJS_DataModelEntity]
     func delete(key: String)
     func clean()
     func printReport()

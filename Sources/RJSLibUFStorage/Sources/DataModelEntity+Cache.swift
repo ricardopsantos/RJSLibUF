@@ -25,27 +25,31 @@ fileprivate extension Date {
 public protocol RJSStorableKeyValueWithTTLProtocol {
     static func save(key: String, value: String, expireDate: Date?) -> Bool
     static func existsWith(key: String) -> Bool
-    static func with(key: String) -> RJS_DataModel?
-    static func with(keyPrefix: String) -> RJS_DataModel?
+    static func with(key: String) -> RJS_DataModelEntity?         // Returns CoreData @objc(DataModelEntity)
+    static func with(keyPrefix: String) -> RJS_DataModelEntity?   // Returns CoreData @objc(DataModelEntity)
     static func allKeys() -> [String]
-    static func allRecords() -> [RJS_DataModel]
+    static func allRecords() -> [RJS_DataModelEntity]             // Returns [CoreData @objc(DataModelEntity)]
     static func clean() -> Bool
     static func deleteWith(key: String) -> Bool
     static var baseDate: Date { get }
 }
 
+//
 // MARK: - RJPSLibSimpleCacheProtocol
+//
 
 protocol CoreDataEntity_Protocol {
     static var entityName: String { get }
 }
 
-// MARK: - Auxiliary values
+//
+// MARK: - CoreData @objc(DataModelEntity) auxiliar values
+//
 
-extension RJS_DataModel {
+extension RJS_DataModelEntity {
     public static var baseDate: Date { return Date() }
     internal static var validateMainThread = true
-    internal static var entityName: String = "\(RJS_DataModel.self)"
+    internal static var entityName: String = "\(RJS_DataModelEntity.self)"
 
     public enum RecordType: String {
         case keyValueRecord // For general purpose saved records. Usually primitive and huge TTL
@@ -57,9 +61,11 @@ extension RJS_DataModel {
     }
 }
 
-// MARK: - RJPSLibPersistentSimpleCacheWithTTLProtocol implementation
+//
+// MARK: - RJPSLibColdCacheWithTTLProtocol implementation
+//
 
-extension RJS_DataModel {
+extension RJS_DataModelEntity {
     
     private static func parseKeyParams(_ params: [String]) -> String {
         return "[" + params.joined(separator: ",") + "]"
@@ -81,7 +87,7 @@ extension RJS_DataModel {
         public func getObject<T>(_ some: T.Type, withKey key: String, keyParams: [String]) -> T? where T: Decodable, T: Encodable {
             let composedKey = buildKey(key, keyParams)
             do {
-                let cachedMaybe  = RJS_DataModel.StorableKeyValue.with(key: composedKey)
+                let cachedMaybe  = RJS_DataModelEntity.StorableKeyValue.with(key: composedKey)
                 guard let cached = cachedMaybe, cached.expireDate != nil else { return nil }                      // Not found
                 guard cached.expireDate!.timeIntervalSinceNow > baseDate.timeIntervalSinceNow else { return nil } // expired
                 if let data1 = cached.value?.data(using: String.Encoding.utf8) {
@@ -102,12 +108,12 @@ extension RJS_DataModel {
             if let data = try? JSONEncoder().encode(some) {
                 if validateMainThread && !Thread.isMainThread { assertionFailure("Not in main tread") }
                 objc_sync_enter(self); defer { objc_sync_exit(self) }
-                let object: RJS_DataModel?
+                let object: RJS_DataModelEntity?
                 if #available(iOS 10.0, *) {
-                    object = RJS_DataModel(context: RJS_DataModelManager.managedObjectContext)
+                    object = RJS_DataModelEntity(context: RJS_DataModelManager.managedObjectContext)
                 } else {
                     let entityDesc = NSEntityDescription.entity(forEntityName: entityName, in: RJS_DataModelManager.managedObjectContext)
-                    object = RJS_DataModel(entity: entityDesc!, insertInto: RJS_DataModelManager.managedObjectContext)
+                    object = RJS_DataModelEntity(entity: entityDesc!, insertInto: RJS_DataModelManager.managedObjectContext)
                 }
                 
                 let checkSuccess = { }
@@ -140,13 +146,13 @@ extension RJS_DataModel {
             _ = StorableKeyValue.deleteAllWith(recordType: .cachedRecord)
         }
 
-        public func allRecords() -> [RJS_DataModel] {
+        public func allRecords() -> [RJS_DataModelEntity] {
             return StorableKeyValue.allRecords().filter { $0.recordType == RecordType.cachedRecord.rawValue }
         }
 
         public func delete(key: String) {
             if let record = allRecords().filter({ (some) -> Bool in some.key == key }).first, let recordKey = record.key {
-                _ = RJS_DataModel.StorableKeyValue.deleteWith(key: recordKey)
+                _ = RJS_DataModelEntity.StorableKeyValue.deleteWith(key: recordKey)
             }
         }
 
@@ -165,23 +171,19 @@ extension RJS_DataModel {
 
 // MARK: - RJSStorableKeyValueWithExpireDate_Protocol implementation
 
-extension RJS_DataModel: CoreDataEntity_Protocol {
+extension RJS_DataModelEntity: CoreDataEntity_Protocol {
     
     public struct StorableKeyValue: RJSStorableKeyValueWithTTLProtocol {
-        public static var baseDate: Date = RJS_DataModel.baseDate
+        public static var baseDate: Date = RJS_DataModelEntity.baseDate
         
         private init() {}
         
         public static func save(key: String, value: String, expireDate: Date?=nil) -> Bool {
             if validateMainThread && !Thread.isMainThread { assertionFailure("Not in main tread") }
             objc_sync_enter(self); defer { objc_sync_exit(self) }
-            let object: RJS_DataModel?
-            if #available(iOS 10.0, *) {
-                object = RJS_DataModel(context: RJS_DataModelManager.managedObjectContext)
-            } else {
-                let entityDesc = NSEntityDescription.entity(forEntityName: entityName, in: RJS_DataModelManager.managedObjectContext)
-                object = RJS_DataModel(entity: entityDesc!, insertInto: RJS_DataModelManager.managedObjectContext)
-            }
+
+            let entityDesc = NSEntityDescription.entity(forEntityName: entityName, in: RJS_DataModelManager.managedObjectContext)
+            let object: RJS_DataModelEntity? = RJS_DataModelEntity(entity: entityDesc!, insertInto: RJS_DataModelManager.managedObjectContext)
             
             let checkSuccess = { }
             let saveNewRecordBlock = {
@@ -218,7 +220,7 @@ extension RJS_DataModel: CoreDataEntity_Protocol {
             return with(key: key) != nil
         }
         
-        public static func with(key: String) -> RJS_DataModel? {
+        public static func with(key: String) -> RJS_DataModelEntity? {
             if validateMainThread && !Thread.isMainThread { assertionFailure("Not in main tread") }
             objc_sync_enter(self); defer { objc_sync_exit(self) }
             let allRecordsCopy = allRecords()
@@ -245,14 +247,14 @@ extension RJS_DataModel: CoreDataEntity_Protocol {
             return nil
         }
         
-        public static func with(keyPrefix: String) -> RJS_DataModel? {
+        public static func with(keyPrefix: String) -> RJS_DataModelEntity? {
             if validateMainThread && !Thread.isMainThread { assertionFailure("Not in main tread") }
             objc_sync_enter(self); defer { objc_sync_exit(self) }
             let allRecordsCopy = allRecords()
             return allRecordsCopy.filter { (item) -> Bool in return item.key!.hasPrefix(keyPrefix) && item.expireDate! > baseDate }.first
         }
         
-        static private func delete(records: [RJS_DataModel]) -> Bool {
+        static private func delete(records: [RJS_DataModelEntity]) -> Bool {
             if validateMainThread && !Thread.isMainThread { assertionFailure("Not in main tread") }
             objc_sync_enter(self); defer { objc_sync_exit(self) }
             if !records.isEmpty {
@@ -264,7 +266,7 @@ extension RJS_DataModel: CoreDataEntity_Protocol {
             return !records.isEmpty
         }
         
-        public static func deleteAllWith(recordType: RJS_DataModel.RecordType) -> Bool {
+        public static func deleteAllWith(recordType: RJS_DataModelEntity.RecordType) -> Bool {
             if validateMainThread && !Thread.isMainThread { assertionFailure("Not in main tread") }
             objc_sync_enter(self); defer { objc_sync_exit(self) }
             let allRecordsCopy = allRecords()
@@ -297,13 +299,13 @@ extension RJS_DataModel: CoreDataEntity_Protocol {
             return delete(records: allRecordsCopy)
         }
         
-        public static func allRecords() -> [RJS_DataModel] {
+        public static func allRecords() -> [RJS_DataModelEntity] {
             if validateMainThread && !Thread.isMainThread { assertionFailure("Not in main tread") }
             objc_sync_enter(self); defer { objc_sync_exit(self) }
             let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
             do {
                 let fetchResult = try RJS_DataModelManager.managedObjectContext.fetch(fetchRequest)
-                if let items = fetchResult as? [RJS_DataModel] {
+                if let items = fetchResult as? [RJS_DataModelEntity] {
                     return items
                 }
             } catch {
@@ -319,7 +321,7 @@ extension RJS_DataModel: CoreDataEntity_Protocol {
             var result: [String] = []
             do {
                 let fetchResult = try RJS_DataModelManager.managedObjectContext.fetch(fetchRequest)
-                if let items = fetchResult as? [RJS_DataModel] {
+                if let items = fetchResult as? [RJS_DataModelEntity] {
                     items.forEach { (some) in
                         if some.key != nil {
                             result.append(some.key!)

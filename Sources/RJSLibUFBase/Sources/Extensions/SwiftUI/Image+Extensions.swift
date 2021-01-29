@@ -74,53 +74,51 @@ public enum ImageNames: String, CaseIterable {
 
 #if !os(macOS)
 public extension ImageNames {
-    public var name: String {
+    var name: String {
         self.rawValue
     }
 
-    public var image: Image {
+    var image: Image {
         Image(systemName: "\(self.rawValue)")
     }
 
-    public var imageFill: Image {
+    var imageFill: Image {
         Image(systemName: "\(self.rawValue).fill")
     }
 
-    public var imageBadge: Image {
+    var imageBadge: Image {
         Image(systemName: "\(self.rawValue).badge")
     }
 
-    public var imageSquarePath: Image {
+    var imageSquarePath: Image {
         Image(systemName: "\(self.rawValue).squarepath")
     }
 
-    public var imageSquare: Image {
+    var imageSquare: Image {
         Image(systemName: "\(self.rawValue).square")
     }
 
-    public var imageCircle: Image {
+    var imageCircle: Image {
         Image(systemName: "\(self.rawValue).circle")
     }
 
-    public var imageRight: Image {
+    var imageRight: Image {
         Image(systemName: "\(self.rawValue).right")
     }
 
-    public var imageLeft: Image {
+    var imageLeft: Image {
         Image(systemName: "\(self.rawValue).left")
     }
 
-    public var imageUp: Image {
+    var imageUp: Image {
         Image(systemName: "\(self.rawValue).up")
     }
 
-    public var imageDown: Image {
+    var imageDown: Image {
         Image(systemName: "\(self.rawValue).down")
     }
 }
-#endif
 
-#if !os(macOS)
 public struct VisualDocs_ImageName: View {
     public init() { }
     @State var imageNames = ImageNames.allCases
@@ -183,8 +181,9 @@ public struct VisualDocs_ImageName: View {
     }
 }
 
-// MARK: - Preview
 /*
+// MARK: - Preview
+
 public struct VisualDocs_ImageName_PreviewProvider: PreviewProvider {
     public static var previews: some View {
         VisualDocs_ImageName()

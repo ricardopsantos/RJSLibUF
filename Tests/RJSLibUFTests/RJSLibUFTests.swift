@@ -102,11 +102,6 @@ class RJSLibUFTests: XCTestCase {
 
     func test_Storages_DefaultsVars() {
         let someIntA = 100
-        RJSLib.Storages.NSUserDefaultsStoredVarUtils.setIntWithKey(tKey, value: someIntA)
-        XCTAssert(RJSLib.Storages.NSUserDefaultsStoredVarUtils.getIntWithKey(tKey) == someIntA)
-        XCTAssert(RJSLib.Storages.NSUserDefaultsStoredVarUtils.decrementIntWithKey(tKey) == someIntA-1)
-        RJSLib.Storages.NSUserDefaultsStoredVarUtils.setIntWithKey(tKey, value: someIntA)
-        XCTAssert(RJS_UserDefaultsVars.incrementIntWithKey(tKey) == someIntA+1)
         RJS_UserDefaults.deleteWith(key: tKey)
         XCTAssert(!RJS_UserDefaults.existsWith(key: tKey))
         RJS_UserDefaults.save(tValue as AnyObject, key: tKey)
@@ -271,9 +266,8 @@ class RJSLibUFTests: XCTestCase {
             var debugRequest: Bool = true
             var urlRequest: URLRequest
             var responseType: RJS_NetworkClientResponseFormat
-            var mockedData: String? = """
-[{"id":"36253","employee_name":"Mike Cooper","employee_salary":"80","employee_age":"23","profile_image":""},{"id":"36255","employee_name":"Eldon","employee_salary":"9452","employee_age":"66","profile_image":""}]
-"""
+            var mockedData: String?
+
             init() throws {
                 if let url = URL(string: tJSONURL) {
                     urlRequest            = URLRequest(url: url)
@@ -343,13 +337,6 @@ class RJSLibUFTests: XCTestCase {
         XCTAssert(RJS_Convert.Base64.toPlainString(b64)==plain)
         XCTAssert(RJS_Convert.Base64.toB64String(plain as AnyObject)==b64)
         XCTAssert(RJS_Convert.Base64.toB64String(Data(plain.utf8) as AnyObject)==b64)
-    }
-
-    func test_AES() {
-        let mySecret  = AES256CBC.randomText(500)
-        let encripted = mySecret.aesEncrypt()
-        XCTAssert(encripted.aesDecrypt() ==  mySecret)
-        XCTAssert("lalalala".aesDecrypt() == "")
     }
 
     func test_TreadingMisc() {

@@ -189,31 +189,33 @@ public extension UIColor {
         public var name: String {
             return "\(self)"
         }
+        
+        static var onLigthMode: Bool = true
+        
         public var rawValue: RawValue {
-             let onLigthMode = true
-             switch self {
-             case .background: return onLigthMode ? UIColor.Pack2.dirtyWhite.color : UIColor.Pack2.obsidian.color
-             case .onBackground: return onLigthMode ? UIColor.Pack2.darkBlue.color : UIColor.Pack2.white.color
-             case .surface: return onLigthMode ? UIColor.Pack2.white.color  : UIColor.Pack2.charcoal.color
-             case .onSurface: return onLigthMode ? UIColor.Pack2.darkBlue.color : UIColor.Pack2.white.color
-             case .detail: return onLigthMode ? UIColor.Pack2.silver.color : UIColor.Pack2.darkSilver.color
-             case .onDetail: return onLigthMode ?  UIColor.Pack2.white.color : UIColor.Pack2.silver.color
-             case .divider: return onLigthMode ? UIColor.Pack2.lightGray.color  : UIColor.Pack2.darkGray.color
-             case .overlayBackground: return UIColor.Pack2.dirtyWhite.color.withAlphaComponent(0.5)
-             case .void: return UIColor.Pack2.black.color
-             case .onVoid: return UIColor.Pack2.white.color
-             case .primary: return UIColor.Pack2.lightBlue.color
-             case .onPrimary: return UIColor.Pack2.white.color
-             case .primaryVariant: return UIColor.Pack2.lightBlue.color.withAlphaComponent(0.1)
-             case .onPrimaryVariant: return UIColor.Pack2.lightBlue.color
-             case .secondary: return UIColor.Pack2.yellow.color
-             case .onSecondary: return UIColor.Pack2.darkBlue.color
-             case .success: return UIColor.Pack2.green.color
-             case .onSuccess: return UIColor.Pack2.white.color
-             case .danger: return UIColor.Pack2.red.color
-             case .onDanger: return UIColor.Pack2.white.color
-             case .warning: return UIColor.Pack2.orange.color
-             case .onWarning: return UIColor.Pack2.white.color
+            switch self {
+            case .background: return Self.onLigthMode ? RJS_ColorPack2.dirtyWhite.color : RJS_ColorPack2.obsidian.color
+            case .onBackground: return Self.onLigthMode ? RJS_ColorPack2.darkBlue.color : RJS_ColorPack2.white.color
+            case .surface: return Self.onLigthMode ? RJS_ColorPack2.white.color  : RJS_ColorPack2.charcoal.color
+            case .onSurface: return Self.onLigthMode ? RJS_ColorPack2.darkBlue.color : RJS_ColorPack2.white.color
+            case .detail: return Self.onLigthMode ? RJS_ColorPack2.silver.color : RJS_ColorPack2.darkSilver.color
+            case .onDetail: return Self.onLigthMode ? RJS_ColorPack2.white.color : RJS_ColorPack2.silver.color
+            case .divider: return Self.onLigthMode ? RJS_ColorPack2.lightGray.color : RJS_ColorPack2.darkGray.color
+            case .overlayBackground: return RJS_ColorPack2.dirtyWhite.color.withAlphaComponent(0.5)
+            case .void: return RJS_ColorPack2.black.color
+            case .onVoid: return RJS_ColorPack2.white.color
+            case .primary: return RJS_ColorPack2.lightBlue.color
+            case .onPrimary: return RJS_ColorPack2.white.color
+            case .primaryVariant: return RJS_ColorPack2.lightBlue.color.withAlphaComponent(0.1)
+            case .onPrimaryVariant: return RJS_ColorPack2.lightBlue.color
+            case .secondary: return RJS_ColorPack2.yellow.color
+            case .onSecondary: return RJS_ColorPack2.darkBlue.color
+            case .success: return RJS_ColorPack2.green.color
+            case .onSuccess: return RJS_ColorPack2.white.color
+            case .danger: return RJS_ColorPack2.red.color
+            case .onDanger: return RJS_ColorPack2.white.color
+            case .warning: return RJS_ColorPack2.orange.color
+            case .onWarning: return RJS_ColorPack2.white.color
             }
         }
     }
@@ -226,35 +228,35 @@ public extension UIColor {
 
         public struct TopBar {
             private init() {}
-            public static var background: UIColor { return RJS_ColorName.primary.color }
-            public static var titleColor: UIColor { return RJS_ColorName.onPrimary.color }
+            public static var background: UIColor { return RJS_ColorPack3.primary.color }
+            public static var titleColor: UIColor { return RJS_ColorPack3.onPrimary.color }
         }
 
         public struct UIButton {
-            public static var backgroundColorInnGage: UIColor { return UIColor.Pack1.grey_6.color }
-            public static var textColorInnGage: UIColor { return UIColor.Pack1.grey_1.color }
-            public static var backgroundColorDefault: UIColor { return  RJS_ColorName.primary.color }
-            public static var textColorDefault: UIColor { return  RJS_ColorName.onPrimary.color }
+            public static var backgroundColorInnGage: UIColor { return RJS_ColorPack1.grey_6.color }
+            public static var textColorInnGage: UIColor { return RJS_ColorPack1.grey_1.color }
+            public static var backgroundColorDefault: UIColor { return  RJS_ColorPack3.primary.color }
+            public static var textColorDefault: UIColor { return  RJS_ColorPack3.onPrimary.color }
         }
 
         public struct UILabel {
-            public static var lblBackgroundColor: UIColor { return UIColor.Pack1.grey_6.color }
-            public static var lblTextColor: UIColor { return UIColor.Pack1.grey_1.color }
+            public static var lblBackgroundColor: UIColor { return RJS_ColorPack1.grey_6.color }
+            public static var lblTextColor: UIColor { return RJS_ColorPack1.grey_1.color }
         }
 
-        public static var background: UIColor { return RJS_ColorName.onPrimary.color }
-        public static var onBackground: UIColor { return RJS_ColorName.primary.color }
+        public static var background: UIColor { return RJS_ColorPack3.onPrimary.color }
+        public static var onBackground: UIColor { return RJS_ColorPack3.primary.color }
 
-        public static var primary: UIColor { return RJS_ColorName.primary.color }
-        public static var onPrimary: UIColor { return RJS_ColorName.onPrimary.color }
+        public static var primary: UIColor { return RJS_ColorPack3.primary.color }
+        public static var onPrimary: UIColor { return RJS_ColorPack3.onPrimary.color }
 
-        public static var error: UIColor { return RJS_ColorName.danger.color }
-        public static var success: UIColor { return RJS_ColorName.success.color }
-        public static var warning: UIColor { return RJS_ColorName.warning.color }
+        public static var error: UIColor { return RJS_ColorPack3.danger.color }
+        public static var success: UIColor { return RJS_ColorPack3.success.color }
+        public static var warning: UIColor { return RJS_ColorPack3.warning.color }
 
-        public static var accept: UIColor { return RJS_ColorName.success.color }
-        public static var reject: UIColor { return RJS_ColorName.warning.color }
-        public static var remind: UIColor { return RJS_ColorName.danger.color }
+        public static var accept: UIColor { return RJS_ColorPack3.success.color }
+        public static var reject: UIColor { return RJS_ColorPack3.warning.color }
+        public static var remind: UIColor { return RJS_ColorPack3.danger.color }
 
     }
 }

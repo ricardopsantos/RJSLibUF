@@ -18,7 +18,7 @@ public extension UIStackView {
         let separator1 = UIView()
         let separator2 = UIView()
         let separator3 = UIView()
-        separator1.backgroundColor = UIColor.Pack3.primary.rawValue
+        separator1.backgroundColor = RJS_ColorPack3.primary.rawValue
         separator2.backgroundColor = UIColor.clear
         separator2.backgroundColor = UIColor.clear
         self.add(separator3)
@@ -71,14 +71,14 @@ public extension UIStackView {
             reportView.heightAnchor.constraint(equalToConstant: 40).isActive = true
         }
         
-        addSectionForDevScreen(title: "RJS_Color.Pack1: \(UIColor.Pack1.allCases.count) values")
+        addSectionForDevScreen(title: "RJS_Color.Pack1: \(RJS_ColorPack1.allCases.count) values")
         RJS_ColorPack1.allCases.forEach { (some) in
             let reportView = some.reportView
             self.add(some.reportView)
             reportView.heightAnchor.constraint(equalToConstant: 40).isActive = true
         }
         
-        addSectionForDevScreen(title: "RJS_Color.Pack2: \(UIColor.Pack2.allCases.count) values")
+        addSectionForDevScreen(title: "RJS_Color.Pack2: \(RJS_ColorPack2.allCases.count) values")
         RJS_ColorPack2.allCases.forEach { (some) in
             let reportView = some.reportView
             self.add(some.reportView)

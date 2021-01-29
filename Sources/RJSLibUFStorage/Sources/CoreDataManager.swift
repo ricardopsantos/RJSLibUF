@@ -20,16 +20,18 @@ extension RJSLib {
         static var dbName: String { return "RJPSLibDataModel" }
 
         private static var managedObjectModel: NSManagedObjectModel? = {
-            func tryIn(bundle: Bundle) -> NSManagedObjectModel? {
+            func tryNSManagedObjectModelFrom(bundle: Bundle) -> NSManagedObjectModel? {
                 if let modelURL = bundle.url(forResource: dbName, withExtension: "momd") {
                     return NSManagedObjectModel(contentsOf: modelURL)!
                 }
                 return nil
             }
 
+            //
             // Bundle should be present here when the package installed via Carthage
+            //
             if let bundle = Bundle(identifier: "com.rjps.libuf.RJSLibUFStorage"),
-               let managedObjectModel = tryIn(bundle: bundle) {
+               let managedObjectModel = tryNSManagedObjectModelFrom(bundle: bundle) {
                 return managedObjectModel
             }
 
@@ -44,7 +46,7 @@ extension RJSLib {
                 let spmProductName = "RJSLibUFStorage"
                 let bundlePath = candidate?.appendingPathComponent("\(spmPackageName)_\(spmProductName).bundle")
                 if let bundle = bundlePath.flatMap(Bundle.init(url:)),
-                   let managedObjectModel = tryIn(bundle: bundle) {
+                   let managedObjectModel = tryNSManagedObjectModelFrom(bundle: bundle) {
                     return managedObjectModel
                 }
             }
@@ -59,10 +61,7 @@ extension RJSLib {
             let directoryUrls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
             let directoryUrl = directoryUrls[directoryUrls.count-1]
             var coordinator = NSPersistentStoreCoordinator(managedObjectModel: managedObjectModel!)
-            let url = directoryUrl.appendingPathComponent("\(dbName).sqlite") // type your database name here...
-            //let options = [NSMigratePersistentStoresAutomaticallyOption: NSNumber(value: true as Bool),
-            //                NSInferMappingModelAutomaticallyOption: NSNumber(value: true as Bool)
-            //]
+            let url = directoryUrl.appendingPathComponent("\(dbName).sqlite")
             do {
                 try coordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: url, options: nil)
                 return coordinator

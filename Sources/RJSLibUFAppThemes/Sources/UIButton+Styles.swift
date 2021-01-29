@@ -96,7 +96,7 @@ private extension UIButton {
         applySharedProperties()
         self.titleLabel?.font = UIButton.defaultFont
         self.backgroundColor  = UIColor.white
-        self.setTextColorForAllStates(RJS_ColorName.primary.color)
+        self.setTextColorForAllStates(RJS_ColorPack3.primary.color)
         self.layer.borderWidth  = 2
         self.layer.borderColor  = RJS_AppBrand1.primary.cgColor
         self.layer.cornerRadius = UIButton.buttonDefaultSize.height / 2

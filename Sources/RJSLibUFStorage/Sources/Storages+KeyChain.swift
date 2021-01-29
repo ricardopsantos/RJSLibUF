@@ -9,6 +9,7 @@ import RJSLibUFBase
 
 public extension RJSLib.Storages {
     
+    @available(*, deprecated)
     class Keychain {
 
         private init() {}

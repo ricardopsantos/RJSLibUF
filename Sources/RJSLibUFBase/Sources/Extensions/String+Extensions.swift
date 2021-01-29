@@ -19,8 +19,6 @@ public extension String {
     var reversed: String { var acc = ""; for char in self { acc = "\(char)\(acc)" }; return acc }
     var base64Encoded: String { return RJS_Convert.Base64.toB64String(self as AnyObject) ?? ""}
     var base64Decoded: String? { return RJS_Convert.Base64.toPlainString(self) }
-    var aesDecrypted: String { return self.aesDecrypt() }
-    var aesEncrypted: String { return self.aesEncrypt() }
     
     var utf8Data: Data? { return self.data(using: .utf8) }
     var cgFloatValue: CGFloat? { RJSLib.Convert.toCGFloat(self) }
@@ -139,9 +137,6 @@ public extension String {
         return formatter.number(from: regexedString)?.decimalValue
     }
     
-    func aesEncrypt(password: String = "3ec7b94c83124d188ff8fe75e402f1ab") -> String { return AES256CBC.encryptString(self, password: password) ?? "" }
-    func aesDecrypt(password: String = "3ec7b94c83124d188ff8fe75e402f1ab") -> String { return AES256CBC.decryptString(self, password: password) ?? "" }
-
     func split(by: String) -> [String] {
         guard !by.isEmpty else { return [] }
         return self.components(separatedBy: by.first)

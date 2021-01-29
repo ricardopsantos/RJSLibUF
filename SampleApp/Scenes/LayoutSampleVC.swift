@@ -85,7 +85,7 @@ class LayoutSampleVC: GenericViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        RJS_DataModel.RJPSLibColdCacheWithTTL.shared.printReport()
+        RJS_ColdCache.shared.printReport()
 
         let key = "LoginCount"
         if let loginsCount = RJS_StorableKeyValue.with(key: key) {
