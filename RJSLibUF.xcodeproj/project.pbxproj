@@ -98,6 +98,7 @@
 		D721F15CD0A2521AD72E0860 /* RJSLibUFBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B0D02882E22945B619357BF /* RJSLibUFBase.framework */; };
 		D733D7041B511A03BEA97F87 /* NSObject+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD3374E2B2FAFC282B92508 /* NSObject+Extensions.swift */; };
 		D7513F3FE5CFB3E521F65790 /* Just+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC103409834D898F5EA978BE /* Just+Extensions.swift */; };
+		D77161BA25C4C48100A17E41 /* Storages+UserDefaultsPropertyWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77161B925C4C48100A17E41 /* Storages+UserDefaultsPropertyWrapper.swift */; };
 		D8B498ADCD7A15B2143BAC94 /* Designables+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F1A6C59E51C00A24DEF8E8 /* Designables+SearchBar.swift */; };
 		D9DF80C5F08654703EBED4C4 /* RJSLibNetworkClientErrorsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAD80AE21451C16325238A0 /* RJSLibNetworkClientErrorsManager.swift */; };
 		DB68E509A2B4BADB25EB4720 /* RJSLibUFALayouts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5CB34C80F1CD1CE82B934F5E /* RJSLibUFALayouts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -107,6 +108,7 @@
 		E195B820DC7F91355526AA57 /* RJSLibUFNetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DD4DEAB85D959C8F029F2E0F /* RJSLibUFNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E2947B5BE100A66AACB3CF59 /* RangeReplaceableCollection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766825849FDB8E31649DCB77 /* RangeReplaceableCollection+Extensions.swift */; };
 		E5C5F50CE9DFE5E3A06B4C6B /* UILabel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7CD26E5D953535DAB3FAFED /* UILabel+Extensions.swift */; };
+		E6F4A3B63D5FA01519740559 /* UIScreen+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C222473E9D0F6377AD7252 /* UIScreen+Extensions.swift */; };
 		EA4853C40EDFAA2053DE60EC /* SimpleNetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E82991E0B7AD8D28C8C7601 /* SimpleNetworkClient.swift */; };
 		EB7D7D0D67BE0A2D91B8F544 /* RJSLibUFAppThemes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F20CF5BF19068E6B3A1440D1 /* RJSLibUFAppThemes.framework */; };
 		ECC5B7F9043ED2EC1FB8B2B5 /* RJSLib+UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AE13D7F07E7FFD10897745 /* RJSLib+UIImageView.swift */; };
@@ -261,6 +263,7 @@
 		0EC8F6B796D0F413F0685949 /* typealias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = typealias.swift; sourceTree = "<group>"; };
 		0F9AEDBD47B80AD806858034 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		14F51558A22F2306844E4F8D /* LayoutStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutStyle.swift; sourceTree = "<group>"; };
+		18C222473E9D0F6377AD7252 /* UIScreen+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+Extensions.swift"; sourceTree = "<group>"; };
 		21B56BFBE719C0DF492DF799 /* SizesNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizesNames.swift; sourceTree = "<group>"; };
 		22385C3AFA90258220F4C4F8 /* typealias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = typealias.swift; sourceTree = "<group>"; };
 		2397F2343F47EF7061AA7167 /* Subscribers+Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Subscribers+Extentions.swift"; sourceTree = "<group>"; };
@@ -344,6 +347,7 @@
 		D1E3907A2B3D4170943EB097 /* UILabel+Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Styles.swift"; sourceTree = "<group>"; };
 		D5FCBCFD8D709AF7820D020A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		D72FF8069A32B39CE9556041 /* RJSLib+UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RJSLib+UIViewController.swift"; sourceTree = "<group>"; };
+		D77161B925C4C48100A17E41 /* Storages+UserDefaultsPropertyWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Storages+UserDefaultsPropertyWrapper.swift"; sourceTree = "<group>"; };
 		D89E707349666725E8E46048 /* RJSLib+UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RJSLib+UIView.swift"; sourceTree = "<group>"; };
 		DA01EBB38A60C3E68676E2A2 /* NetworkUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkUtils.swift; sourceTree = "<group>"; };
 		DB1081E0C457B10140C16D18 /* UIDevice+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extensions.swift"; sourceTree = "<group>"; };
@@ -427,6 +431,7 @@
 				852CF81ADD9BE9C4338620D1 /* UIColor+Extensions.swift */,
 				DB1081E0C457B10140C16D18 /* UIDevice+Extensions.swift */,
 				EE4563715C0A1691E0369A2D /* UIKit+ExtensionsPainting .swift */,
+				18C222473E9D0F6377AD7252 /* UIScreen+Extensions.swift */,
 				04DF4D6C31CE69692B46AE44 /* UIStackView+Extensions.swift */,
 				23E17E2A4278DF107CD40749 /* URLRequest+Extensions.swift */,
 				298D7BF19C08A07060EACF44 /* URLSession+Extensions.swift */,
@@ -475,6 +480,7 @@
 				B7A3598B58B1A47636177F9B /* Storages+HotCache.swift */,
 				0352521CC64C5A07B50BB163 /* Storages+KeyChain.swift */,
 				36462EDA8F79E4CBA1068F05 /* Storages+NSUserDefaults.swift */,
+				D77161B925C4C48100A17E41 /* Storages+UserDefaultsPropertyWrapper.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -975,6 +981,7 @@
 				C1A6218D5BF95CB64521224F /* Storages+Files.swift in Sources */,
 				9B776510B782FC13148D5414 /* Storages+HotCache.swift in Sources */,
 				A559349D65282B242629C1AB /* Storages+KeyChain.swift in Sources */,
+				D77161BA25C4C48100A17E41 /* Storages+UserDefaultsPropertyWrapper.swift in Sources */,
 				98F2600D57028EC1277BD739 /* Storages+NSUserDefaults.swift in Sources */,
 				5E2ED301FEFCB01A7396BD65 /* typealias.swift in Sources */,
 			);
@@ -1033,6 +1040,7 @@
 				840C2AD305E00157F4D7E8AD /* UIColor+Extensions.swift in Sources */,
 				0D88AD16C2DAF48E372CCC94 /* UIDevice+Extensions.swift in Sources */,
 				45AA93D4ACF68647DA1DE0AC /* UIKit+ExtensionsPainting .swift in Sources */,
+				E6F4A3B63D5FA01519740559 /* UIScreen+Extensions.swift in Sources */,
 				A742B0FEF6934DE72D929A4E /* UIStackView+Extensions.swift in Sources */,
 				77DC7E269C8A872711772C4F /* URLRequest+Extensions.swift in Sources */,
 				355D14B778896B1F1838BD24 /* URLSession+Extensions.swift in Sources */,

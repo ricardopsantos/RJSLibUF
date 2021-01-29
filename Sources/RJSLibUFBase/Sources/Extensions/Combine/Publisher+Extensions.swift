@@ -8,6 +8,19 @@ import Combine
 import Foundation
 
 public extension Publisher {
+    var genericError: AnyPublisher<Self.Output, Error> {
+        return self.mapError({ (error: Self.Failure) -> Error in return error }).eraseToAnyPublisher()
+    }
+
+    func sampleOperator<T>(source: T) -> AnyPublisher<Self.Output, Self.Failure> where T: Publisher, T.Output: Equatable, T.Failure == Self.Failure {
+        combineLatest(source)
+            .removeDuplicates(by: { (first, second) -> Bool in first.1 == second.1 })
+            .map { first in first.0 }
+        .eraseToAnyPublisher()
+    }
+}
+
+public extension Publisher {
     func sinkToResult(_ result: @escaping (Result<Output, Failure>) -> Void) -> AnyCancellable {
         return sink(receiveCompletion: { completion in
             switch completion {

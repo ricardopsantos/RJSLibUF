@@ -1,75 +1,19 @@
 {
+  "name" : "RJSLibUF",
+  "options" : {
+    "groupSortPosition" : "top",
+    "minimumXcodeGenVersion" : "2.18.0",
+    "xcodeVersion" : "12.0.1",
+    "deploymentTarget" : "11.0",
+    "bundleIdPrefix" : "com.rjps.libuf",
+    "findCarthageFrameworks" : false,
+    "generateEmptyDirectories" : true
+  },
   "configs" : {
     "Release" : "release",
     "Debug" : "debug"
   },
   "targets" : {
-    "MyLibraryTests" : {
-      "type" : "bundle.unit-test",
-      "sources" : [
-        {
-          "path" : "..\/Tests\/RJSLibUFTests"
-        }
-      ],
-      "dependencies" : [
-        {
-          "target" : "SampleApp",
-          "link" : false
-        },
-        {
-          "link" : false,
-          "target" : "RJSLibUFBase"
-        },
-        {
-          "target" : "RJSLibUFNetworking",
-          "link" : false
-        },
-        {
-          "target" : "RJSLibUFALayouts",
-          "link" : false
-        },
-        {
-          "link" : false,
-          "target" : "RJSLibUFStorage"
-        }
-      ],
-      "platform" : "iOS",
-      "scheme" : {
-
-      }
-    },
-    "RJSLibUFStorage" : {
-      "sources" : [
-        {
-          "path" : "..\/Sources\/RJSLibUFStorage"
-        }
-      ],
-      "templates" : [
-        "Framework"
-      ],
-      "dependencies" : [
-        {
-          "target" : "RJSLibUFBase",
-          "link" : false
-        }
-      ]
-    },
-    "RJSLibUFALayouts" : {
-      "templates" : [
-        "Framework"
-      ],
-      "sources" : [
-        {
-          "path" : "..\/Sources\/RJSLibUFALayouts"
-        }
-      ],
-      "dependencies" : [
-        {
-          "link" : false,
-          "target" : "RJSLibUFBase"
-        }
-      ]
-    },
     "RJSLibUFBase" : {
       "templates" : [
         "Framework"
@@ -80,39 +24,71 @@
         }
       ]
     },
+    "MyLibraryTests" : {
+      "sources" : [
+        {
+          "path" : "..\/Tests\/RJSLibUFTests"
+        }
+      ],
+      "scheme" : {
+
+      },
+      "platform" : "iOS",
+      "type" : "bundle.unit-test",
+      "dependencies" : [
+        {
+          "target" : "SampleApp",
+          "link" : false
+        },
+        {
+          "link" : false,
+          "target" : "RJSLibUFBase"
+        },
+        {
+          "link" : false,
+          "target" : "RJSLibUFNetworking"
+        },
+        {
+          "target" : "RJSLibUFALayouts",
+          "link" : false
+        },
+        {
+          "target" : "RJSLibUFStorage",
+          "link" : false
+        }
+      ]
+    },
     "RJSLibUFAppThemes" : {
       "templates" : [
         "Framework"
-      ],
-      "sources" : [
-        {
-          "path" : "..\/Sources\/RJSLibUFAppThemes"
-        }
       ],
       "dependencies" : [
         {
           "link" : false,
           "target" : "RJSLibUFBase"
         }
-      ]
-    },
-    "RJSLibUFNetworking" : {
-      "dependencies" : [
-        {
-          "target" : "RJSLibUFBase",
-          "link" : false
-        }
-      ],
-      "templates" : [
-        "Framework"
       ],
       "sources" : [
         {
-          "path" : "..\/Sources\/RJSLibUFNetworking"
+          "path" : "..\/Sources\/RJSLibUFAppThemes"
         }
       ]
     },
     "SampleApp" : {
+      "platform" : "iOS",
+      "type" : "application",
+      "deploymentTarget" : 13,
+      "settings" : {
+        "base" : {
+          "MARKETING_VERSION" : 1
+        }
+      },
+      "postCompileScripts" : [
+        {
+          "name" : "Run SwiftLint",
+          "script" : "if which swiftlint >\/dev\/null; then\n   swiftlint\nelse\n   echo \"warning: SwiftLint not installed, download from https:\/\/github.com\/realm\/SwiftLint\"\nfi\n"
+        }
+      ],
       "dependencies" : [
         {
           "link" : true,
@@ -135,59 +111,83 @@
           "target" : "RJSLibUFStorage"
         }
       ],
-      "deploymentTarget" : 13,
       "sources" : [
         {
           "path" : "..\/SampleApp"
         }
-      ],
-      "settings" : {
-        "base" : {
-          "MARKETING_VERSION" : 1
-        }
-      },
-      "platform" : "iOS",
-      "postCompileScripts" : [
+      ]
+    },
+    "RJSLibUFNetworking" : {
+      "sources" : [
         {
-          "name" : "Run SwiftLint",
-          "script" : "if which swiftlint >\/dev\/null; then\n   swiftlint\nelse\n   echo \"warning: SwiftLint not installed, download from https:\/\/github.com\/realm\/SwiftLint\"\nfi\n"
+          "path" : "..\/Sources\/RJSLibUFNetworking"
         }
       ],
-      "type" : "application"
+      "templates" : [
+        "Framework"
+      ],
+      "dependencies" : [
+        {
+          "link" : false,
+          "target" : "RJSLibUFBase"
+        }
+      ]
+    },
+    "RJSLibUFALayouts" : {
+      "sources" : [
+        {
+          "path" : "..\/Sources\/RJSLibUFALayouts"
+        }
+      ],
+      "templates" : [
+        "Framework"
+      ],
+      "dependencies" : [
+        {
+          "link" : false,
+          "target" : "RJSLibUFBase"
+        }
+      ]
+    },
+    "RJSLibUFStorage" : {
+      "dependencies" : [
+        {
+          "target" : "RJSLibUFBase",
+          "link" : false
+        }
+      ],
+      "sources" : [
+        {
+          "path" : "..\/Sources\/RJSLibUFStorage"
+        }
+      ],
+      "templates" : [
+        "Framework"
+      ]
     }
   },
-  "name" : "RJSLibUF",
   "targetTemplates" : {
     "Framework" : {
-      "deploymentTarget" : 13,
+      "type" : "framework",
       "platform" : "iOS",
       "settings" : {
         "base" : {
           "MARKETING_VERSION" : "1.2.1"
         }
       },
-      "type" : "framework"
+      "deploymentTarget" : 13
     }
   },
   "settings" : {
-    "base" : {
-      "ENABLE_BITCODE" : false,
-      "SWIFT_VERSION" : 5.2999999999999998,
-      "IPHONEOS_DEPLOYMENT_TARGET" : 13
-    },
     "configs" : {
       "Release" : {
         "ENABLE_BITCODE" : true
       }
+    },
+    "base" : {
+      "IPHONEOS_DEPLOYMENT_TARGET" : 13,
+      "ENABLE_BITCODE" : false,
+      "SWIFT_VERSION" : 5.2999999999999998
     }
-  },
-  "options" : {
-    "minimumXcodeGenVersion" : "2.18.0",
-    "groupSortPosition" : "top",
-    "generateEmptyDirectories" : true,
-    "deploymentTarget" : "11.0",
-    "findCarthageFrameworks" : false,
-    "xcodeVersion" : "12.0.1",
-    "bundleIdPrefix" : "com.rjps.libuf"
   }
 }
