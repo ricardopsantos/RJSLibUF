@@ -7,8 +7,6 @@
 import Foundation
 import UIKit
 
-import RJSLibUFBase
-
 // MARK: - Color Set 1
 
 public extension UIColor {

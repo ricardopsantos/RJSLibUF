@@ -32,9 +32,9 @@ let spmNetworkingTargetName = "RJSLibUFNetworking"
 let spmNetworkingDependency = dependencyWith(name: spmNetworkingTargetName)
 
 let spmStorageTargetName = "RJSLibUFStorage"
-let spmTStorageDependency = dependencyWith(name: spmStorageTargetName)
+let spmStorageDependency = dependencyWith(name: spmStorageTargetName)
 
-let testTargetDependencies = [spmALayoutsDependency, spmThemesDependency, spmNetworkingDependency, spmTStorageDependency]
+let testTargetDependencies = [spmALayoutsDependency, spmThemesDependency, spmNetworkingDependency, spmStorageDependency]
 let plistFile = "Info.plist"
 
 let swiftSettings:[SwiftSetting] = [
@@ -50,8 +50,8 @@ let package = Package(
     products: [
         libraryWith(name: spmBaseTargetName),
         libraryWith(name: spmALayoutsTargetName),
-        libraryWith(name: spmThemesTargetName),
         libraryWith(name: spmNetworkingTargetName),
+        libraryWith(name: spmThemesTargetName),
         libraryWith(name: spmStorageTargetName)
     ],
     targets: [

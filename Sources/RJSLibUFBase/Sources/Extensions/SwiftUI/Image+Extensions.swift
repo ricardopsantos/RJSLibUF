@@ -119,6 +119,7 @@ public extension ImageNames {
     }
 }
 
+/*
 public struct VisualDocs_ImageName: View {
     public init() { }
     @State var imageNames = ImageNames.allCases
@@ -181,7 +182,6 @@ public struct VisualDocs_ImageName: View {
     }
 }
 
-/*
 // MARK: - Preview
 
 public struct VisualDocs_ImageName_PreviewProvider: PreviewProvider {
