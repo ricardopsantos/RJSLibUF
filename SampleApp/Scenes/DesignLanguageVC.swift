@@ -14,9 +14,6 @@ import RJSLibUFAppThemes
 #if USE_INCLUDE_TINYCONSTRAINTS
 import TinyConstraints
 
-let screenWidth  = UIScreen.main.bounds.width
-let screenHeight = UIScreen.main.bounds.height
-
 public extension UIView {
     
     func addAndSetup(scrollView: UIScrollView, stackViewV: UIStackView, hasTopBar: Bool) {
@@ -45,9 +42,6 @@ public extension UIStackView {
 }
 
 class DesignLanguageVC: GenericViewController {
-
-    let screenWidth  = UIScreen.main.bounds.width
-    let screenHeight = UIScreen.main.bounds.height
 
     private lazy var scrollView: UIScrollView = { UIKitFactory.scrollView() }()
     private lazy var stackViewVLevel1: UIStackView = { UIKitFactory.stackView(axis: .vertical) }()

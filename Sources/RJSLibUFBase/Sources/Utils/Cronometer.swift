@@ -6,13 +6,6 @@
 #if !os(macOS)
 import UIKit
 
-private func synced<T>(_ lock: Any, closure: () -> T) -> T {
-    objc_sync_enter(lock)
-    let r = closure()
-    objc_sync_exit(lock)
-    return r
-}
-
 extension RJSLib {
     public struct Cronometer {
         

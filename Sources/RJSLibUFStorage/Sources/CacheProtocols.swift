@@ -31,7 +31,7 @@ public protocol RJPSLibColdCacheWithTTLProtocol {
 }
 
 public extension RJSLib.Storages {
-    enum CacheStrategy {
+    enum CacheStrategy: Hashable {
         case cacheNoLoad    // Use cache only
         case noCacheLoad    // Cache ignored, and returns latest available value
         case cacheElseLoad  // Will use cache if available, else returns latest available value (good because avoids server calls)
@@ -41,3 +41,4 @@ public extension RJSLib.Storages {
         }
     }
 }
+

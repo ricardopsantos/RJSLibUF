@@ -12,14 +12,20 @@ public enum JSONDecoderErrors: Error {
     case decodeFail
 }
 
-public func perfectMapper<A: Codable, B: Codable>(inValue: A, outValue: B.Type) -> B? {
+public func perfectMapperThrows<A: Encodable, B: Decodable>(inValue: A, outValue: B.Type) throws -> B {
     do {
         let encoded = try JSONEncoder().encode(inValue)
         let decoded = try JSONDecoder().decodeFriendly(((B).self), from: encoded)
         return decoded
     } catch {
-        let message = "# Conversion fail from [\(A.self)] to [\(B.self)]\n# In value [\(inValue)]\n# Error [\(error)]"
-        RJS_Logs.error("\(message)", tag: .rjsLib)
+        throw error
+    }
+}
+
+public func perfectMapper<A: Encodable, B: Decodable>(inValue: A, outValue: B.Type) -> B? {
+    do {
+        return try perfectMapperThrows(inValue: inValue, outValue: outValue)
+    } catch {
         return nil
     }
 }
@@ -87,7 +93,7 @@ public extension JSONDecoder {
         }
     }
     
-    func decodeSafe<T>(_ type: T.Type, from data: Data) throws -> T where T: Decodable {
+    private func decodeSafe<T>(_ type: T.Type, from data: Data) throws -> T where T: Decodable {
         // https://bugs.swift.org/browse/SR-6163 - Encode/Decode not possible < iOS 13 for top-level fragments (enum, int, string, etc.).
         if #available(iOS 13.0, *) {
             return try JSONDecoder().decodeFriendly(type, from: data)

@@ -19,8 +19,12 @@ public typealias RJS_DeviceInfo       = RJSLib.AppAndDeviceInfo   // Same as RJS
 public typealias RJS_Constants        = RJSLib.Constants          // Util constants like `defaultDelay`, etc
 public typealias RJS_Logs             = RJSLib.Logger             // Simple logger. Handles verbose, warning and errors
 public typealias RJS_Utils            = RJSLib.Utils              // Utilities like `onDebug`, `onRelease`, `executeOnce`, etc
-public typealias RJS_Reachability     = RJSLib.Reachability       // Reachability helper. Contains `Reachability.isConnectedToNetwork()`
 public typealias RJS_Convert          = RJSLib.Convert            // Types conversion utilities. Things like `isBase64`, `toB64String`, `toBinary`, etc
+
+// MARK: - Networking
+
+public typealias RJS_NetworMonitor = RJSLib.NetworkUtils.NetworMonitor
+public typealias RJS_Reachability  = RJSLib.NetworkUtils.Reachability
 
 // MARK: - Designables
 

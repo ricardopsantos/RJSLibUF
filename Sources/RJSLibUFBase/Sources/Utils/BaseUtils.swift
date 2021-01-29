@@ -74,7 +74,7 @@ extension RJSLib {
         }
         
         public static var existsInternetConnection: Bool {
-            return Reachability.isConnectedToNetwork()
+            return RJS_Reachability.isConnectedToNetwork
         }
         
         // https://www.swiftbysundell.com/posts/under-the-hood-of-assertions-in-swift
