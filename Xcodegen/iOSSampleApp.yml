@@ -50,16 +50,19 @@ targets:
     dependencies:
       - package: RJSLibUF
         product: RJSLibUFBase
+        link: true
       - package: RJSLibUF
         product: RJSLibUFNetworking
+        link: true
       - package: RJSLibUF
         product: RJSLibUFAppThemes
+        link: true
       - package: RJSLibUF
         product: RJSLibUFALayouts
+        link: true
       - package: RJSLibUF
         product: RJSLibUFStorage
-      - package: RJSLibUF
-        product: RJSLibUFStorage
+        link: true
         
 #      - package: TinyConstraints
 #        product: TinyConstraints

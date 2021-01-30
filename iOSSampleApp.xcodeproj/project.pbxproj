@@ -18,7 +18,6 @@
 		A9F2067711B2910E32F9CFA3 /* DesignLanguageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD552CC59E7A56B45872F3 /* DesignLanguageVC.swift */; };
 		CF1096D5FEB3FBDBF8D83ACF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61114974D64A09F7845CC853 /* Assets.xcassets */; };
 		D6152E607ABC2B2EE4DAF396 /* RJSLibUFNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = 3D1D0262D4472B54E7A7C375 /* RJSLibUFNetworking */; };
-		D8CDCDE732A116B5A4DD02BA /* RJSLibUFStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 1D053D95522E7EDE60B93157 /* RJSLibUFStorage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,7 +42,6 @@
 				77430AC3388E7E07667973D0 /* RJSLibUFAppThemes in Frameworks */,
 				834F491E24679DA510E3B9B6 /* RJSLibUFALayouts in Frameworks */,
 				80E64973758DD3990100696A /* RJSLibUFStorage in Frameworks */,
-				D8CDCDE732A116B5A4DD02BA /* RJSLibUFStorage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,7 +117,6 @@
 				31826F13AD56498558E5A644 /* RJSLibUFAppThemes */,
 				EE55F0988F83451FDB4AAE56 /* RJSLibUFALayouts */,
 				A831A6545DE57D4304CDCEDF /* RJSLibUFStorage */,
-				1D053D95522E7EDE60B93157 /* RJSLibUFStorage */,
 			);
 			productName = SampleApp;
 			productReference = D2EC2B87F18CEF52A4E5B936 /* SampleApp.app */;
@@ -389,11 +386,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B82E728FCE96035145B29FD9 /* XCRemoteSwiftPackageReference "RJSLibUF" */;
 			productName = RJSLibUFBase;
-		};
-		1D053D95522E7EDE60B93157 /* RJSLibUFStorage */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B82E728FCE96035145B29FD9 /* XCRemoteSwiftPackageReference "RJSLibUF" */;
-			productName = RJSLibUFStorage;
 		};
 		31826F13AD56498558E5A644 /* RJSLibUFAppThemes */ = {
 			isa = XCSwiftPackageProductDependency;

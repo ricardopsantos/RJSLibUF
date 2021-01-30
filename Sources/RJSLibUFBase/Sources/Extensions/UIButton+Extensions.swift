@@ -9,6 +9,16 @@ import UIKit
 
 public extension UIButton {
     
+    func disable() {
+        self.isUserInteractionEnabled = false
+        self.fadeTo(0.6)
+    }
+
+    func enable() {
+        self.isUserInteractionEnabled = true
+        self.fadeTo(1)
+    }
+    
     func setTitleForAllStates(_ title: String) {
         self.setTitle(title, for: .normal)
         self.setTitle(title, for: .highlighted)

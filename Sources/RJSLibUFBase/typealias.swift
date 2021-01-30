@@ -36,7 +36,9 @@ public typealias RJS_Designables_ActivityIndicator = RJSLib.Designables.Activity
 
 // MARK: - Cool Stuff
 
-public typealias RJS_SynchronizedArray = SynchronizedArray
+public typealias RJS_OperationQueueManager = RJSLib.OperationQueues.OperationQueueManager
+public typealias RJS_OperationBase         = RJSLib.OperationQueues.OperationBase
+public typealias RJS_SynchronizedArray     = SynchronizedArray
 #if !os(macOS)
 public typealias RJS_Cronometer        = RJSLib.Cronometer         // Utilities class for measure operations time
 #endif

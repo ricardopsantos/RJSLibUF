@@ -14,13 +14,15 @@ import CommonCrypto
 //
 
 public extension String {
-    var encodedUrl: String? { return self.addingPercentEncoding( withAllowedCharacters: NSCharacterSet.urlQueryAllowed) }
-    var decodedUrl: String? { return self.removingPercentEncoding }
-    var reversed: String { var acc = ""; for char in self { acc = "\(char)\(acc)" }; return acc }
-    var base64Encoded: String { return RJS_Convert.Base64.toB64String(self as AnyObject) ?? ""}
-    var base64Decoded: String? { return RJS_Convert.Base64.toPlainString(self) }
     
-    var utf8Data: Data? { return self.data(using: .utf8) }
+    var capitalised: String { self.count >= 1 ? prefix(1).uppercased() + self.lowercased().dropFirst() : "" }
+    var encodedUrl: String? { self.addingPercentEncoding( withAllowedCharacters: NSCharacterSet.urlQueryAllowed) }
+    var decodedUrl: String? { self.removingPercentEncoding }
+    var reversed: String { var acc = ""; for char in self { acc = "\(char)\(acc)" }; return acc }
+    var base64Encoded: String { RJS_Convert.Base64.toB64String(self as AnyObject) ?? ""}
+    var base64Decoded: String? { RJS_Convert.Base64.toPlainString(self) }
+    
+    var utf8Data: Data? { self.data(using: .utf8) }
     var cgFloatValue: CGFloat? { RJSLib.Convert.toCGFloat(self) }
     var boolValue: Bool? { RJSLib.Convert.toBool(self) }
     var doubleValue: Double? { RJSLib.Convert.toDouble(self) }
@@ -29,7 +31,7 @@ public extension String {
     var floatValue: Float? { floatValueA }
     
     private var floatValueA: Float? { RJSLib.Convert.toFloat(self) }
-    private var floatValueB: CGFloat { return CGFloat((self as NSString).floatValue) }
+    private var floatValueB: CGFloat { CGFloat((self as NSString).floatValue) }
     
     // let json = "{\"hello\": \"world\"}"
     // let dictFromJson = json.asDict

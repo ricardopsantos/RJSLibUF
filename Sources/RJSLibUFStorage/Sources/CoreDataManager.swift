@@ -42,6 +42,8 @@ extension RJSLib {
                 Bundle.main.bundleURL                       // For command-line tools.
             ].filter { $0 != nil }
             
+            print(candidates)
+            
             for candidate in candidates {
                 let spmPackageName = "rjps-lib-uf"
                 let spmProductName = "RJSLibUFStorage"

@@ -385,7 +385,7 @@
 			repositoryURL = "https://github.com/ricardopsantos/RJSLibUF";
 			requirement = {
 				kind = revision;
-				revision = 73ede61128f31f1ed8ed6c84e5ae9f8482acd306;
+				revision = 24678cc68c3e2b0d74fbce17801bb7eb361337a2;
 			};
 		};
 		82A70BC4F117E5CA073482D5 /* XCRemoteSwiftPackageReference "TinyConstraints" */ = {
