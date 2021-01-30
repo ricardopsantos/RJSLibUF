@@ -384,8 +384,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ricardopsantos/RJSLibUF";
 			requirement = {
-				branch = develop;
-				kind = branch;
+				kind = revision;
+				revision = 73ede61128f31f1ed8ed6c84e5ae9f8482acd306;
 			};
 		};
 		82A70BC4F117E5CA073482D5 /* XCRemoteSwiftPackageReference "TinyConstraints" */ = {

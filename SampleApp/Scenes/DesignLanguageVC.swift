@@ -50,7 +50,7 @@ class DesignLanguageVC: GenericViewController {
         super.loadView()
         prepareLayout()
         self.view.addAndSetup(scrollView: scrollView, stackViewV: stackViewVLevel1, hasTopBar: false)
-        stackViewVLevel1.loadWithDesignLanguageReport()
+        stackViewVLevel1.loadWithDesignLanguageReport2()
     }
 
     override func viewDidLoad() {

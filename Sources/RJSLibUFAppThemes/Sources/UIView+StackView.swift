@@ -30,7 +30,7 @@ public extension UIStackView {
     }
     
     // Will add a visual report on the stack view for easy understanding of about the available design languages
-    func loadWithDesignLanguageReport2() {
+    func loadWithDesignLanguageReport() {
         
         let buttontStyles = RJS_ButtontStyle.allCases.filter { $0 != .notApplied }
         addSectionForDevScreen(title: "RJS_ButtontStyle: \(buttontStyles.count) values")
@@ -91,9 +91,7 @@ public extension UIStackView {
             reportView.font = RJS_Fonts.Styles.paragraphSmall.rawValue
             self.add(reportView)
         }
-        
     }
-
 }
 
 #endif
