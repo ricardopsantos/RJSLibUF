@@ -61,7 +61,11 @@ extension RJSLib {
             var someError: Error?
             let directoryUrls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
             let directoryUrl = directoryUrls[directoryUrls.count-1]
-            var coordinator = NSPersistentStoreCoordinator(managedObjectModel: managedObjectModel!)
+            guard let managedObjectModel = managedObjectModel else {
+                RJS_Logs.error("Fail to find managedObjectModel", tag: .rjsLib)
+                return NSPersistentStoreCoordinator()
+            }
+            var coordinator = NSPersistentStoreCoordinator(managedObjectModel: managedObjectModel)
             let url = directoryUrl.appendingPathComponent("\(dbName).sqlite")
             do {
                 try coordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: url, options: nil)
