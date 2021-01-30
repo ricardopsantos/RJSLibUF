@@ -13,6 +13,7 @@ private let tKey: String = "XCTestCase_key"
 private let tValue: String = "XCTestCase_value"
 private let tImageURL: String = "https://www.google.pt/images/branding/googlelogo/1x/googlelogo_white_background_color_272x92dp.png"
 private let tJSONURL: String = "http://dummy.restapiexample.com/api/v1/employees"
+private var cancelBag = CancelBag()
 
 class RJSLibUFTests: XCTestCase {
 
@@ -101,11 +102,6 @@ class RJSLibUFTests: XCTestCase {
 
     func test_Storages_DefaultsVars() {
         let someIntA = 100
-        RJSLib.Storages.NSUserDefaultsStoredVarUtils.setIntWithKey(tKey, value: someIntA)
-        XCTAssert(RJSLib.Storages.NSUserDefaultsStoredVarUtils.getIntWithKey(tKey) == someIntA)
-        XCTAssert(RJSLib.Storages.NSUserDefaultsStoredVarUtils.decrementIntWithKey(tKey) == someIntA-1)
-        RJSLib.Storages.NSUserDefaultsStoredVarUtils.setIntWithKey(tKey, value: someIntA)
-        XCTAssert(RJS_UserDefaultsVars.incrementIntWithKey(tKey) == someIntA+1)
         RJS_UserDefaults.deleteWith(key: tKey)
         XCTAssert(!RJS_UserDefaults.existsWith(key: tKey))
         RJS_UserDefaults.save(tValue as AnyObject, key: tKey)
@@ -117,9 +113,9 @@ class RJSLibUFTests: XCTestCase {
     }
 
     func test_Logs() {
-        RJS_Logs.message("Regular log")
-        RJS_Logs.warning("Warning log")
-        RJS_Logs.error("Error log")
+        RJS_Logs.info("Regular log", tag: .rjsLib)
+        RJS_Logs.warning("Warning log", tag: .rjsLib)
+        RJS_Logs.error("Error log", tag: .rjsLib)
     }
 
     func test_Utils() {
@@ -143,11 +139,12 @@ class RJSLibUFTests: XCTestCase {
         _ = RJS_AppInfo.isSimulator
     }
 
+    @available(*, deprecated)
     func test_Files() {
         let fileName1 = "File1.txt"
         let fileName2 = "File2.txt"
-        let content1   = "content_1"
-        let content2   = "content_2"
+        let content1  = "content_1"
+        let content2  = "content_2"
         func doTestIn(folder: RJS_Files.Folder) {
             RJS_Files.clearFolder(folder)
             XCTAssert(RJS_Files.appendToFile(fileName1, toAppend: content1, folder: folder, overWrite: true))
@@ -166,6 +163,7 @@ class RJSLibUFTests: XCTestCase {
         //doTestIn(folder: .temp)
     }
 
+    @available(*, deprecated)
     func test_KeyChain() {
         RJS_Keychain.shared.delete(key: tKey)
         XCTAssert(RJS_Keychain.shared.get(key: tKey) == nil)
@@ -202,6 +200,53 @@ class RJSLibUFTests: XCTestCase {
         #endif
     }
 
+    func test_NetworkClientFRP_CSV() {
+        let expectation = self.expectation(description: #function)
+        
+        let api: FRPSampleAPI = FRPSampleAPI()
+        
+        let requestDto = FRPSampleAPI.RequestDto.Sample(userID: "")
+        let publisher  = api.sampleRequestCVS(requestDto)
+      
+        publisher.sink { (result) in
+            switch result {
+            case .finished: _ = ()
+            case .failure(_):
+                XCTAssert(false)
+                expectation.fulfill()
+            }
+        } receiveValue: { (response) in
+            XCTAssert(response.count > 1)
+            expectation.fulfill()
+        }.store(in: cancelBag)
+        
+        waitForExpectations(timeout: 30) // Slow request...
+    }
+    
+    func test_NetworkClientFRP_JSON() {
+        let expectation = self.expectation(description: #function)
+        
+        let api: FRPSampleAPI = FRPSampleAPI()
+        
+        let requestDto = FRPSampleAPI.RequestDto.Sample(userID: "")
+        let publisher = api.sampleRequestJSON(requestDto)
+
+        publisher.sink { (result) in
+            switch result {
+            case .finished: _ = ()
+            case .failure(_):
+                XCTAssert(false)
+                expectation.fulfill()
+            }
+        } receiveValue: { (response) in
+            //RJS_Logs.info(response.data.prefix(3))
+            XCTAssert(response.data.count > 0)
+            expectation.fulfill()
+        }.store(in: cancelBag)
+        
+        waitForExpectations(timeout: 5)
+    }
+    
     func test_NetworkClient() {
         let expectation = self.expectation(description: #function)
 
@@ -222,14 +267,13 @@ class RJSLibUFTests: XCTestCase {
             var returnOnMainTread: Bool = false
             var debugRequest: Bool = true
             var urlRequest: URLRequest
-            var responseType: RJS_SimpleNetworkClientResponseType
-            var mockedData: String? = """
-[{"id":"36253","employee_name":"Mike Cooper","employee_salary":"80","employee_age":"23","profile_image":""},{"id":"36255","employee_name":"Eldon","employee_salary":"9452","employee_age":"66","profile_image":""}]
-"""
+            var responseType: RJS_NetworkClientResponseFormat
+            var mockedData: String?
+
             init() throws {
                 if let url = URL(string: tJSONURL) {
                     urlRequest            = URLRequest(url: url)
-                    urlRequest.httpMethod = RJS_SimpleNetworkClient.HttpMethod.get.rawValue
+                    urlRequest.httpMethod = RJS_HttpMethod.get.rawValue
                     responseType          = .json
                 } else {
                     throw NSError(domain: "com.example.error", code: 0, userInfo: nil)
@@ -253,7 +297,7 @@ class RJSLibUFTests: XCTestCase {
         } catch {
             XCTAssert(false)
         }
-        waitForExpectations(timeout: 5)
+
     }
 
     func test_BasicNetworkClient() {
@@ -295,13 +339,6 @@ class RJSLibUFTests: XCTestCase {
         XCTAssert(RJS_Convert.Base64.toPlainString(b64)==plain)
         XCTAssert(RJS_Convert.Base64.toB64String(plain as AnyObject)==b64)
         XCTAssert(RJS_Convert.Base64.toB64String(Data(plain.utf8) as AnyObject)==b64)
-    }
-
-    func test_AES() {
-        let mySecret  = AES256CBC.randomText(500)
-        let encripted = mySecret.aesEncrypt()
-        XCTAssert(encripted.aesDecrypt() ==  mySecret)
-        XCTAssert("lalalala".aesDecrypt() == "")
     }
 
     func test_TreadingMisc() {

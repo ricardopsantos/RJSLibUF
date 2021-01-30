@@ -22,7 +22,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        RJS_DataModelEntity.StorableKeyValue.clean()
+        
+        #if USE_INCLUDE_TINYCONSTRAINTS
+        self.window?.rootViewController = DesignLanguageVC()
+        #else
         self.window?.rootViewController = LayoutSampleVC()
+        #endif
 
         return true
     }

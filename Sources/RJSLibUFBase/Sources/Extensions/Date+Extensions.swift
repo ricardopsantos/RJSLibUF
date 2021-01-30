@@ -32,6 +32,7 @@ public extension Date {
         guard !dateToParse.contains(subString: "null") else { return nil }
         guard !dateToParse.contains(subString: "nil") else { return nil }
         let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
         dateFormatter.dateFormat = dateFormat // http://userguide.icu-project.org/formatparse/datetime
         if let result = dateFormatter.date(from: dateToParse) { return result }
         if let date = dateToParse.detectDates?.first { return date }

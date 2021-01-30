@@ -23,4 +23,5 @@ fileprivate extension UILabel {
         layer.add(animation, forKey: CATransitionType.fade.rawValue)
     }
 }
+
 #endif

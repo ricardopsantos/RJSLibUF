@@ -13,6 +13,7 @@ import RJSLibUFBase
 public extension RJSLib.Storages {
     private init() {}
     
+    @available(*, deprecated)
     struct Files {
         private init() {}
         
@@ -77,7 +78,7 @@ public extension RJSLib.Storages {
                 }
                 return filePaths
             } catch {
-                RJS_Logs.error("\(error)")
+                RJS_Logs.error("\(error)", tag: .rjsLib)
             }
             return []
         }

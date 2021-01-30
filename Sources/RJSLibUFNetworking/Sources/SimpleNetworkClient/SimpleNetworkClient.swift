@@ -11,7 +11,7 @@ import RJSLibUFBase
 
 public protocol SimpleNetworkClientRequest_Protocol {
     var urlRequest: URLRequest { get }
-    var responseType: RJSLibNetworkClientResponseType { get set }
+    var responseType: RJS_NetworkClientResponseFormat { get set }
     var debugRequest: Bool { get set }
     var returnOnMainTread: Bool { get set }
     var mockedData: String? { get }
@@ -38,13 +38,6 @@ public extension RJSLib {
     class SimpleNetworkClient: SimpleNetworkClient_Protocol {
         let urlSession: SimpleNetworkClientURLSession_Protocol
 
-        public enum HttpMethod: String {
-            case get = "GET"
-            case post = "POST"
-            case put = "PUT"
-            case delete = "DELETE"
-        }
-
         public init(urlSessionConfiguration: URLSessionConfiguration=URLSessionConfiguration.default, completionHandlerQueue: OperationQueue = OperationQueue.main) {
             urlSession = URLSession(configuration: urlSessionConfiguration, delegate: nil, delegateQueue: completionHandlerQueue)
         }
@@ -64,10 +57,10 @@ public extension RJSLib {
                 let mockedData = request.mockedData!.trimmingCharacters(in: .whitespacesAndNewlines)
                 if mockedData.count>0 {
                     do {
-                        let data: Data? = mockedData.data(using: .utf8) // non-nil
+                        let data: Data? = mockedData.utf8Data
                         let response = try RJSLibNetworkClientResponse<T>(data: data, httpUrlResponse: nil, responseType: request.responseType)
                         DispatchQueue.main.async {
-                            print("# RJSLib.SimpleNetworkClient - Returned mocked data for [\(request.urlRequest)]")
+                            RJS_Logs.debug("# Returned mocked data for [\(request.urlRequest)]", tag: .rjsLib)
                             completionHandler(.success(response))
                         }
                     } catch {
@@ -91,7 +84,11 @@ public extension RJSLib {
                             let response = try RJSLibNetworkClientResponse<T>(data: data, httpUrlResponse: httpUrlResponse, responseType: request.responseType)
                             if request.debugRequest && data != nil {
                                 let dataString: String = String(data: data!, encoding: .utf8) ?? ""
-                                print("# RJSLib.SimpleNetworkClient - Request: \(String(describing: request.urlRequest.url?.absoluteURL))\n# Response:\(dataString)")
+                                let debugMessage = """
+                                # Request: \(String(describing: request.urlRequest.url?.absoluteURL))
+                                # Response:\(dataString)"
+                                """
+                                RJS_Logs.debug(debugMessage, tag: .rjsLib)
                             }
                             completionHandler(.success(response))
                         } catch {

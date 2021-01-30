@@ -1,0 +1,66 @@
+name: iOSSampleAppWTinyConstraints
+
+# iOSSampleAppWTinyConstraints.xcodeproj
+# SAMPLE APP | SAMPLE APP | SAMPLE APP | SAMPLE APP | SAMPLE APP |
+# SAMPLE APP | SAMPLE APP | SAMPLE APP | SAMPLE APP | SAMPLE APP |
+# SAMPLE APP | SAMPLE APP | SAMPLE APP | SAMPLE APP | SAMPLE APP |
+# iOSSampleApp.xcodeproj
+
+options:
+  bundleIdPrefix: com.rjps.libuf
+  xcodeVersion: '12.0.1'
+  deploymentTarget: '13.0'
+  groupSortPosition: top
+  generateEmptyDirectories: true
+  findCarthageFrameworks: false
+  minimumXcodeGenVersion: '2.18.0'
+
+####################### PACKAGES #######################
+
+packages:
+  RJSLibUF:
+    url: https://github.com/ricardopsantos/RJSLibUF
+    #from: 1.0.0
+    #branch: develop
+    revision: 24678cc68c3e2b0d74fbce17801bb7eb361337a2
+    
+  TinyConstraints:
+    url: https://github.com/roberthein/TinyConstraints
+    branch: master
+    
+####################### SETTINGS #######################   
+    
+settings:
+  base:
+    IPHONEOS_DEPLOYMENT_TARGET: 13.0
+    ENABLE_BITCODE: NO
+    SWIFT_VERSION: 5.3
+    
+targets:
+        
+  iOSSampleAppWTinyConstraints:
+    type: application
+    platform: iOS
+    deploymentTarget: 13.0
+    settings:
+      base:
+        MARKETING_VERSION: 1.0
+        OTHER_SWIFT_FLAGS: "-DUSE_INCLUDE_TINYCONSTRAINTS"
+    sources:
+       - path: ../SampleApp
+    dependencies:
+      - package: RJSLibUF
+        product: RJSLibUFBase
+      - package: RJSLibUF
+        product: RJSLibUFNetworking
+      - package: RJSLibUF
+        product: RJSLibUFAppThemes
+      - package: RJSLibUF
+        product: RJSLibUFALayouts
+      - package: RJSLibUF
+        product: RJSLibUFStorage
+      - package: RJSLibUF
+        product: RJSLibUFStorage
+        
+      - package: TinyConstraints
+        product: TinyConstraints

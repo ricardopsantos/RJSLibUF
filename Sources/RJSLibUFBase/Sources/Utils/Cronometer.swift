@@ -6,13 +6,6 @@
 #if !os(macOS)
 import UIKit
 
-private func synced<T>(_ lock: Any, closure: () -> T) -> T {
-    objc_sync_enter(lock)
-    let r = closure()
-    objc_sync_exit(lock)
-    return r
-}
-
 extension RJSLib {
     public struct Cronometer {
         
@@ -22,11 +15,12 @@ extension RJSLib {
          *    log(RJSCronometer.nthPrimeNumber(10000))
          * }
          */
+        @discardableResult
         public static func printTimeElapsedWhenRunningCode(_ title: String, operation: () -> Void) -> Double {
             let startTime = CFAbsoluteTimeGetCurrent()
             operation()
             let timeElapsed = CFAbsoluteTimeGetCurrent() - startTime
-            Logger.message("Time elapsed for \(title): \(timeElapsed) s")
+            Logger.info("Time elapsed for \(title): \(timeElapsed)s", tag: .rjsLib)
             return timeElapsed
         }
         
@@ -38,6 +32,7 @@ extension RJSLib {
         }
         
         private static var _times: [String: CFAbsoluteTime] = [:]
+        
         public static func startTimerWith(identifier: String="") {
             synced(_times) {
                 _times.removeValue(forKey: identifier)
@@ -51,7 +46,7 @@ extension RJSLib {
                 if let time = _times[identifier] {
                     let timeElapsed = CFAbsoluteTimeGetCurrent() - time
                     if print {
-                        RJS_Logs.message("Operation [\(identifier)] time : \(Double(timeElapsed))" as AnyObject)
+                        RJS_Logs.info("Operation [\(identifier)] time : \(Double(timeElapsed))" as AnyObject, tag: .rjsLib)
                     }
                     result = Double(timeElapsed)
                 }

@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "rjps-lib-uf",
+        "repositoryURL": "https://github.com/ricardopsantos/RJSLibUF",
+        "state": {
+          "branch": null,
+          "revision": "73ede61128f31f1ed8ed6c84e5ae9f8482acd306",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}

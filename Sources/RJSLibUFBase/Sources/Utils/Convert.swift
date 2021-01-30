@@ -33,7 +33,7 @@ public extension RJSLib {
                 return nil
             }
             
-            public static func toB64String (_ anyObject: AnyObject) -> String? {
+            public static func toB64String(_ anyObject: AnyObject) -> String? {
                 if let data = anyObject as? Data {
                     return data.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
                 }
@@ -63,64 +63,72 @@ public extension RJSLib {
             return String(some, radix: 2)
         }
         
-        public static func toDate(_ dateToParse: AnyObject) -> Date {
-            return Date.with("\(dateToParse)")!
+        public static func toDate(_ dateToParse: AnyObject) -> Date? {
+            return Date.with("\(dateToParse)")
         }
 
         @available(*, deprecated)
-        public static func toCGFloat(_ string: String?) -> CGFloat {
-            guard string != nil else { return 0.0 }
+        /* public */
+        static func toCGFloat(_ string: String?) -> CGFloat? {
+            guard string != nil else { return nil }
             if let some = NumberFormatter().number(from: removeInvalidChars(string!)) {
                 return CGFloat(truncating: some)
             }
             if let some = NumberFormatter().number(from: removeInvalidChars(string!.replace(",", with: "."))) {
                 return CGFloat(truncating: some)
             }
-            RJS_Utils.assert(false, message: RJS_Constants.fail)
-            return 0
+            RJS_Logs.warning("Fail on converting [\(String(describing: string))]", tag: .rjsLib)
+            return nil
         }
 
         @available(*, deprecated)
-        public static func toBool(_ string: String?) -> Bool {
-            guard string != nil else { return false }
+        /* public */
+        static func toBool(_ string: String?) -> Bool? {
+            guard string != nil else { return nil }
             if let some = NumberFormatter().number(from: removeInvalidChars(string!)) {
                 return Bool(truncating: some)
             }
-            RJS_Logs.warning("Fail on converting [\(String(describing: string))]")
-            return false
+            RJS_Logs.warning("Fail on converting [\(String(describing: string))]", tag: .rjsLib)
+            return nil
         }
 
         @available(*, deprecated)
-        public static func toDouble(_ string: String?) -> Double {
-            guard string != nil else { return 0.0 }
+        /* public */
+        static func toDouble(_ string: String?) -> Double? {
+            guard string != nil else { return nil }
             if let some = NumberFormatter().number(from: removeInvalidChars(string!)) {
                 return Double(truncating: some)
             }
             if let some = NumberFormatter().number(from: removeInvalidChars(string!.replace(",", with: "."))) {
                 return Double(truncating: some)
             }
-            return 0
+            RJS_Logs.warning("Fail on converting [\(String(describing: string))]", tag: .rjsLib)
+            return nil
         }
 
         @available(*, deprecated)
-        public static func toFloat(_ string: String?) -> Float {
-            guard string != nil else { return 0.0 }
+        /* public */
+        static func toFloat(_ string: String?) -> Float? {
+            guard string != nil else { return nil }
             if let some = NumberFormatter().number(from: removeInvalidChars(string!)) {
                 return Float(truncating: some)
             }
             if let some = NumberFormatter().number(from: removeInvalidChars(string!.replace(",", with: "."))) {
                 return Float(truncating: some)
             }
-            return 0
+            RJS_Logs.warning("Fail on converting [\(String(describing: string))]", tag: .rjsLib)
+            return nil
         }
 
         @available(*, deprecated)
-        public static func toInt(_ string: String?) -> Int {
-            guard string != nil else { return 0 }
+        /* public */
+        static func toInt(_ string: String?) -> Int? {
+            guard string != nil else { return nil }
             if let some = NumberFormatter().number(from: removeInvalidChars(string!).replace(",", with: ".")) {
                 return Int(truncating: some)
             }
-            return  0
+            RJS_Logs.warning("Fail on converting [\(String(describing: string))]", tag: .rjsLib)
+            return nil
         }
         
     }

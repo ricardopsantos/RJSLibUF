@@ -10,6 +10,8 @@ import RJSLibUFStorage
 import RJSLibUFNetworking
 import RJSLibUFALayouts
 
+#warning("RJSLibUFALayouts was deprecated on 2021 Jan and its not mantained anymore")
+
 struct Source1 {
     let title: String
 }
@@ -83,11 +85,11 @@ class LayoutSampleVC: GenericViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        RJS_DataModel.RJPSLibColdCacheWithTTL.shared.printReport()
+        RJS_ColdCache.shared.printReport()
 
         let key = "LoginCount"
         if let loginsCount = RJS_StorableKeyValue.with(key: key) {
-            print(loginsCount)
+            RJS_Logs.info(loginsCount, tag: .rjsLib)
             if let recordValue = loginsCount.value, let loginsCount =  Int(recordValue) {
                 _ = RJS_StorableKeyValue.save(key: key, value: "\(loginsCount+1)")
             }
@@ -168,7 +170,7 @@ extension LayoutSampleVC: UICollectionViewDataSource, UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        RJS_Logs.message("User tapped on item \(indexPath.row)")
+        RJS_Logs.info("User tapped on item \(indexPath.row)", tag: .client)
     }
     
 }

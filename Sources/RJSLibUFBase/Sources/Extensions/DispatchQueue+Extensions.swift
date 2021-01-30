@@ -5,7 +5,6 @@
 
 import Foundation
 
-//extension RJSLibExtension where Target == DispatchQueue {
 public extension DispatchQueue {
     
     static let defaultDelay: Double = RJS_Constants.defaultAnimationsTime
@@ -14,7 +13,7 @@ public extension DispatchQueue {
     
     private static var _onceTracker = [String]()
     static func onceTrackerClean() {
-        RJS_Logs.warning("DispatchQueue._onceTracker cleaned")
+        RJS_Logs.warning("DispatchQueue._onceTracker cleaned", tag: .rjsLib)
         _onceTracker = []
     }
     

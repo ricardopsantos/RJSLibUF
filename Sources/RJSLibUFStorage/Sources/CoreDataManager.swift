@@ -20,16 +20,18 @@ extension RJSLib {
         static var dbName: String { return "RJPSLibDataModel" }
 
         private static var managedObjectModel: NSManagedObjectModel? = {
-            func tryIn(bundle: Bundle) -> NSManagedObjectModel? {
+            func tryNSManagedObjectModelFrom(bundle: Bundle) -> NSManagedObjectModel? {
                 if let modelURL = bundle.url(forResource: dbName, withExtension: "momd") {
                     return NSManagedObjectModel(contentsOf: modelURL)!
                 }
                 return nil
             }
 
+            //
             // Bundle should be present here when the package installed via Carthage
+            //
             if let bundle = Bundle(identifier: "com.rjps.libuf.RJSLibUFStorage"),
-               let managedObjectModel = tryIn(bundle: bundle) {
+               let managedObjectModel = tryNSManagedObjectModelFrom(bundle: bundle) {
                 return managedObjectModel
             }
 
@@ -38,17 +40,20 @@ extension RJSLib {
                 Bundle.main.resourceURL,                    // Bundle should be present here when the package is linked into an App.
                 Bundle(for: BundleFinder.self).resourceURL, // Bundle should be present here when the package is linked into a framework.
                 Bundle.main.bundleURL                       // For command-line tools.
-            ]
+            ].filter { $0 != nil }
+            
+            print(candidates)
+            
             for candidate in candidates {
                 let spmPackageName = "rjps-lib-uf"
                 let spmProductName = "RJSLibUFStorage"
                 let bundlePath = candidate?.appendingPathComponent("\(spmPackageName)_\(spmProductName).bundle")
                 if let bundle = bundlePath.flatMap(Bundle.init(url:)),
-                   let managedObjectModel = tryIn(bundle: bundle) {
+                   let managedObjectModel = tryNSManagedObjectModelFrom(bundle: bundle) {
                     return managedObjectModel
                 }
             }
-            RJS_Logs.error("\(dbName) not found in any Bundle")
+            RJS_Logs.error("\(dbName) not found in any Bundle", tag: .rjsLib)
             return nil
         }()
 
@@ -58,18 +63,19 @@ extension RJSLib {
             var someError: Error?
             let directoryUrls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
             let directoryUrl = directoryUrls[directoryUrls.count-1]
-            var coordinator = NSPersistentStoreCoordinator(managedObjectModel: managedObjectModel!)
-            let url = directoryUrl.appendingPathComponent("\(dbName).sqlite") // type your database name here...
-            //let options = [NSMigratePersistentStoresAutomaticallyOption: NSNumber(value: true as Bool),
-            //                NSInferMappingModelAutomaticallyOption: NSNumber(value: true as Bool)
-            //]
+            guard let managedObjectModel = managedObjectModel else {
+                RJS_Logs.error("Fail to find managedObjectModel", tag: .rjsLib)
+                return NSPersistentStoreCoordinator()
+            }
+            var coordinator = NSPersistentStoreCoordinator(managedObjectModel: managedObjectModel)
+            let url = directoryUrl.appendingPathComponent("\(dbName).sqlite")
             do {
                 try coordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: url, options: nil)
                 return coordinator
             } catch {
                 someError = error
             }
-            RJS_Logs.error(someError)
+            RJS_Logs.error(someError, tag: .rjsLib)
             return NSPersistentStoreCoordinator()
         }()
 
@@ -88,7 +94,7 @@ extension RJSLib {
                 if managedObjectContext.hasChanges {
                     do {
                         try managedObjectContext.save()
-                        RJS_Logs.message("DB record stored/updated/deleted")
+                        RJS_Logs.info("DB record stored/updated/deleted", tag: .rjsLib)
                     } catch {
                         assertionFailure("\(error)")
                     }

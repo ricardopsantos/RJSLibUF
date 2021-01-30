@@ -56,7 +56,7 @@ _To do..._
 
 ---
 
-### RJSLibUFALayouts
+### RJSLibUFALayouts (deprecated)
 
 Auto-layout framework (supports constraints or anchors)
 

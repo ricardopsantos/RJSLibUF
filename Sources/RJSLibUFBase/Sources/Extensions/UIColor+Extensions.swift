@@ -68,11 +68,11 @@ public extension UIColor {
         let rgbSafe = rgb.trim.replace(";", with: ",")
         let splited = rgbSafe.split(by: ",")
         if splited.count>=3 {
-            let red   = RJSLib.Convert.toCGFloat(splited[0])
-            let green = RJSLib.Convert.toCGFloat(splited[1])
-            let blue  = RJSLib.Convert.toCGFloat(splited[2])
+            let red   = splited[0].cgFloatValue ?? 0
+            let green = splited[1].cgFloatValue ?? 0
+            let blue  = splited[2].cgFloatValue ?? 0
             if splited.count==4 {
-                let alpha = RJSLib.Convert.toCGFloat(splited[3])
+                let alpha = splited[3].cgFloatValue ?? 1
                 color = UIColor(red: red/255.0, green: green/255.0, blue: blue/255.0, alpha: alpha)
                 
             } else {
@@ -102,6 +102,29 @@ public extension UIColor {
             blue: rgb & 0xFF
         )
     }
+    
+    convenience init?(hex: String) {
+        let r, g, b, a: CGFloat
+        let safeHex = hex.hasPrefix("#") ? hex.uppercased() : "#\(hex.uppercased())"
+        let start = safeHex.index(safeHex.startIndex, offsetBy: 1)
+        let hexColor = String(safeHex[start...])
+        let scanner = Scanner(string: hexColor)
+        var hexNumber: UInt64 = 0
+        if scanner.scanHexInt64(&hexNumber) {
+            r = CGFloat((hexNumber & 0xff000000) >> 24) / 255
+            g = CGFloat((hexNumber & 0x00ff0000) >> 16) / 255
+            b = CGFloat((hexNumber & 0x0000ff00) >> 8) / 255
+            if hexColor.count == 8 {
+                a = CGFloat(hexNumber & 0x000000ff) / 255
+                self.init(red: r, green: g, blue: b, alpha: a)
+            } else {
+                self.init(red: r, green: g, blue: b, alpha: 1)
+            }
+            return
+        }
+        return nil
+    }
+
 }
 
 private extension UIColor {

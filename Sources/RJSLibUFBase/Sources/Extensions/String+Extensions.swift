@@ -4,43 +4,56 @@
 //
 
 import Foundation
+#if !os(macOS)
+import UIKit
+#endif
 import CommonCrypto
 
-// MARK: - SubScript
+//
+// MARK: - Transformations / Operators
+//
 
 public extension String {
-
-    subscript (i: Int) -> String { return self[i ..< i + 1] }
-
-    func substring(fromIndex: Int) -> String { return self[min(fromIndex, length) ..< length] }
-
-    func substring(toIndex: Int) -> String { return self[0 ..< max(0, toIndex)] }
-
-    subscript (r: Range<Int>) -> String {
-        let range = Range(uncheckedBounds: (lower: max(0, min(length, r.lowerBound)),
-                                            upper: min(length, max(0, r.upperBound))))
-        let start = index(startIndex, offsetBy: range.lowerBound)
-        let end = index(start, offsetBy: range.upperBound - range.lowerBound)
-        return String(self[start ..< end])
+    
+    var capitalised: String { self.count >= 1 ? prefix(1).uppercased() + self.lowercased().dropFirst() : "" }
+    var encodedUrl: String? { self.addingPercentEncoding( withAllowedCharacters: NSCharacterSet.urlQueryAllowed) }
+    var decodedUrl: String? { self.removingPercentEncoding }
+    var reversed: String { var acc = ""; for char in self { acc = "\(char)\(acc)" }; return acc }
+    var base64Encoded: String { RJS_Convert.Base64.toB64String(self as AnyObject) ?? ""}
+    var base64Decoded: String? { RJS_Convert.Base64.toPlainString(self) }
+    
+    var utf8Data: Data? { self.data(using: .utf8) }
+    var cgFloatValue: CGFloat? { RJSLib.Convert.toCGFloat(self) }
+    var boolValue: Bool? { RJSLib.Convert.toBool(self) }
+    var doubleValue: Double? { RJSLib.Convert.toDouble(self) }
+    var intValue: Int? { RJSLib.Convert.toInt(self) }
+    var dateValue: Date? { RJSLib.Convert.toDate("\(self)" as AnyObject) }
+    var floatValue: Float? { floatValueA }
+    
+    private var floatValueA: Float? { RJSLib.Convert.toFloat(self) }
+    private var floatValueB: CGFloat { CGFloat((self as NSString).floatValue) }
+    
+    // let json = "{\"hello\": \"world\"}"
+    // let dictFromJson = json.asDict
+    var asDict: [String: Any]? {
+        guard let data = self.data(using: .utf8) else { return nil }
+        return try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any]
     }
 
+    // let htmlString = "<p>Hello, <strong>world!</string></p>"
+    // let attrString = htmlString.asAttributedString
+    var asAttributedString: NSAttributedString? {
+        guard let data = self.data(using: .utf8) else { return nil }
+        return try? NSAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
+    }
 }
 
-// MARK: - Transformations
-
-public extension String {
-    var encodedUrl: String? { return self.addingPercentEncoding( withAllowedCharacters: NSCharacterSet.urlQueryAllowed) }
-    var decodedUrl: String? { return self.removingPercentEncoding }
-    var reversed: String { var acc = ""; for char in self { acc = "\(char)\(acc)" }; return acc }
-    var base64Encoded: String { return RJS_Convert.Base64.toB64String(self as AnyObject) ?? ""}
-    var base64Decoded: String? { return RJS_Convert.Base64.toPlainString(self) }
-    var aesDecrypted: String { return self.aesDecrypt() }
-    var aesEncrypted: String { return self.aesEncrypt() }
-}
-
+//
 // MARK: - Hashing
+//
 
 public extension String {
+    
     var deterministicHashValue: Int {
          return zip(utf8.map(numericCast), Swift.sequence(first: 1, next: { $0 &* 589836 })).map(&*).reduce(0, &+)
      }
@@ -56,9 +69,24 @@ public extension String {
      }
 }
 
-// MARK: - Tests
+//
+// MARK: - Constructors
+//
 
 public extension String {
+    init(_ staticString: StaticString) {
+        self = staticString.withUTF8Buffer {
+            String(decoding: $0, as: UTF8.self)
+        }
+    }
+}
+
+//
+// MARK: - Tests
+//
+
+public extension String {
+    
     //Found at https://medium.com/@darthpelo/email-validation-in-swift-3-0-acfebe4d879a
     var isValidEmail: Bool {
         let emailRegEx = "(?:[a-zA-Z0-9!#$%\\&‘*+/=?\\^_`{|}~-]+(?:\\.[a-zA-Z0-9!#$%\\&'*+/=?\\^_`{|}" +
@@ -71,9 +99,28 @@ public extension String {
         let emailTest = NSPredicate(format: "SELF MATCHES[c] %@", emailRegEx)
         return emailTest.evaluate(with: self)
     }
+    
+    var isAlphanumeric: Bool {
+        !isEmpty && range(of: "[^a-zA-Z0-9]", options: .regularExpression) == nil
+    }
+    
+    var containsOnlyDigits: Bool {
+        let notDigits = NSCharacterSet.decimalDigits.inverted
+        return rangeOfCharacter(from: notDigits, options: String.CompareOptions.literal, range: nil) == nil
+    }
+    
+    func contains(subString: String, ignoreCase: Bool=true) -> Bool {
+        if ignoreCase {
+            return self.lowercased().range(of: subString.lowercased()) != nil
+        } else {
+            return self.range(of: subString) != nil
+        }
+    }
 }
 
+//
 // MARK: - Utils
+//
 
 public extension String {
 
@@ -104,20 +151,21 @@ public extension String {
         return formatter.number(from: regexedString)?.decimalValue
     }
     
-    func aesEncrypt(password: String = "3ec7b94c83124d188ff8fe75e402f1ab") -> String { return AES256CBC.encryptString(self, password: password) ?? "" }
-    func aesDecrypt(password: String = "3ec7b94c83124d188ff8fe75e402f1ab") -> String { return AES256CBC.decryptString(self, password: password) ?? "" }
-
     func split(by: String) -> [String] {
         guard !by.isEmpty else { return [] }
         return self.components(separatedBy: by.first)
     }
 
-    func contains(subString: String, ignoreCase: Bool=true) -> Bool {
-        if ignoreCase {
-            return self.lowercased().range(of: subString.lowercased()) != nil
-        } else {
-            return self.range(of: subString) != nil
+    static func random(_ length: Int) -> String {
+        let letters: NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        let len = UInt32(letters.length)
+        var randomString = ""
+        for _ in 0 ..< length {
+            let rand = arc4random_uniform(len)
+            var nextChar = letters.character(at: Int(rand))
+            randomString += NSString(characters: &nextChar, length: 1) as String
         }
+        return randomString
     }
     
     func replace(_ some: String, with: String) -> String {
@@ -136,7 +184,7 @@ public extension String {
                                                                 .characterEncoding: String.Encoding.utf8.rawValue],
                                           documentAttributes: nil)
         } catch {
-            RJS_Logs.error("\(error)")
+            RJS_Logs.error("\(error)", tag: .rjsLib)
             return nil
         }
         /*
@@ -148,4 +196,63 @@ public extension String {
          test()*/
     }
     #endif
+}
+
+//
+// MARK: - SubScript
+//
+
+public extension String {
+
+    subscript (i: Int) -> String { return self[i ..< i + 1] }
+
+    func substring(fromIndex: Int) -> String { return self[min(fromIndex, length) ..< length] }
+
+    func substring(toIndex: Int) -> String { return self[0 ..< max(0, toIndex)] }
+
+    subscript (r: Range<Int>) -> String {
+        let range = Range(uncheckedBounds: (lower: max(0, min(length, r.lowerBound)),
+                                            upper: min(length, max(0, r.upperBound))))
+        let start = index(startIndex, offsetBy: range.lowerBound)
+        let end = index(start, offsetBy: range.upperBound - range.lowerBound)
+        return String(self[start ..< end])
+    }
+    
+    subscript (i: Int) -> Character {
+        return self[index(startIndex, offsetBy: i)]
+    }
+
+    subscript (bounds: CountableRange<Int>) -> Substring {
+        let start = index(startIndex, offsetBy: bounds.lowerBound)
+        let end = index(startIndex, offsetBy: bounds.upperBound)
+        if end < start { return "" }
+        return self[start..<end]
+    }
+
+    subscript (bounds: CountableClosedRange<Int>) -> Substring {
+        let start = index(startIndex, offsetBy: bounds.lowerBound)
+        let end = index(startIndex, offsetBy: bounds.upperBound)
+        if end < start { return "" }
+        return self[start...end]
+    }
+
+    subscript (bounds: CountablePartialRangeFrom<Int>) -> Substring {
+        let start = index(startIndex, offsetBy: bounds.lowerBound)
+        let end = index(endIndex, offsetBy: -1)
+        if end < start { return "" }
+        return self[start...end]
+    }
+
+    subscript (bounds: PartialRangeThrough<Int>) -> Substring {
+        let end = index(startIndex, offsetBy: bounds.upperBound)
+        if end < startIndex { return "" }
+        return self[startIndex...end]
+    }
+
+    subscript (bounds: PartialRangeUpTo<Int>) -> Substring {
+        let end = index(startIndex, offsetBy: bounds.upperBound)
+        if end < startIndex { return "" }
+        return self[startIndex..<end]
+    }
+
 }

@@ -19,19 +19,19 @@ public protocol RJPSLibHotCacheProtocol {
     func clean()
 }
 
-// MARK: - RJPSLibPersistentSimpleCacheWithTTLProtocol
+// MARK: - RJPSLibColdCacheWithTTLProtocol
 
 public protocol RJPSLibColdCacheWithTTLProtocol {
     func getObject<T: Codable>(_ some: T.Type, withKey key: String, keyParams: [String]) -> T?
     func saveObject<T: Codable>(_ some: T, withKey key: String, keyParams: [String], lifeSpam: Int) -> Bool
-    func allRecords() -> [RJS_DataModel]
+    func allRecords() -> [RJS_DataModelEntity]
     func delete(key: String)
     func clean()
     func printReport()
 }
 
 public extension RJSLib.Storages {
-    enum CacheStrategy {
+    enum CacheStrategy: Hashable {
         case cacheNoLoad    // Use cache only
         case noCacheLoad    // Cache ignored, and returns latest available value
         case cacheElseLoad  // Will use cache if available, else returns latest available value (good because avoids server calls)

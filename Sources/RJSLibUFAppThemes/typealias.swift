@@ -25,8 +25,17 @@ public typealias RJS_ColorPack2 = UIColor.Pack2
 // Pack of 22 color namings, inspired on https://developer.android.com/reference/kotlin/androidx/compose/material/Colors
 // Same as RJS_ColorPack3. (surface, onSurface, detail, onDetail, success, onSuccess)
 public typealias RJS_ColorPack3 = UIColor.Pack3
-public typealias RJS_ColorName = UIColor.Pack3
+//public typealias RJS_ColorName  = UIColor.Pack3
+
+// Defines a predefined app brand with colors for buttons and labels, etc...
+public typealias RJS_AppBrand1 = UIColor.AppBrand1
 
 // Font styles utils with a font builder for Bold, Regular and Light, and also pre-built styles like : headingJumbo, headingBold, headingMedium, headingSmall
 public typealias RJS_Fonts = UIFont.RJS_Fonts
+
+public typealias RJS_SizeNames = SizesNames
+
+public typealias RJS_ButtontStyle = UIButton.RJSLibUFLayoutStyle
+public typealias RJS_LabelStyle   = UILabel.RJSLibUFLayoutStyle
+
 #endif

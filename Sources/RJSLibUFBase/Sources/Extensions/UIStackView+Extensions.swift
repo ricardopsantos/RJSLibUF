@@ -10,8 +10,20 @@ import Foundation
 #if !os(macOS)
 import UIKit
 
-extension UIStackView {
+public extension UIStackView {
 
+    func add(_ view: UIView) {
+        if view.superview == nil {
+            self.addArrangedSubview(view)
+            view.setNeedsLayout()
+            view.layoutIfNeeded()
+        }
+    }
+    
+    func addSub(view: UIView) {
+        self.add(view)
+    }
+    
     func insertArrangedSubview(_ view: UIView, belowArrangedSubview subview: UIView) {
         arrangedSubviews.enumerated().forEach {
             if $0.1 == subview {

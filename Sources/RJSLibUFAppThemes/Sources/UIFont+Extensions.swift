@@ -71,6 +71,13 @@ public extension UIFont {
                 case .captionSmall: return UIFont(name: mediumFontName, size: 10.0)!
                 }
             }
+            
+            public var reportView: UIView {
+                let label = UILabel()
+                label.text = "\(self)"
+                label.font = self.rawValue
+                return label
+            }
         }
     }
 }

@@ -37,7 +37,7 @@ extension RJSLib {
         public static func checkPushNotificationsPermission(completetion:@escaping (Bool, String?) -> Void) {
             UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, _ in
                 guard granted else {
-                    RJS_Logs.message(_notGranted)
+                    RJS_Logs.debug(_notGranted, tag: .rjsLib)
                     completetion(true, nil)
                     return
                 }
@@ -56,7 +56,7 @@ extension RJSLib {
                     if granted {
                         completetion(true)
                     } else {
-                        RJS_Logs.message(_notGranted)
+                        RJS_Logs.debug(_notGranted, tag: .rjsLib)
                         completetion(false)
                     }
                 })
@@ -71,27 +71,27 @@ extension RJSLib {
             case .authorized:
                 completetion(true)
             case .notDetermined:
-                RJS_Logs.message("Asking permission")
+                RJS_Logs.debug("Asking permission", tag: .rjsLib)
                 completetion(nil)
                 PHPhotoLibrary.requestAuthorization({ (newStatus) in
                     if newStatus ==  PHAuthorizationStatus.authorized {
                         completetion(true)
                     } else {
-                        RJS_Logs.message(_notGranted)
+                        RJS_Logs.debug(_notGranted, tag: .rjsLib)
                         completetion(false)
                     }
                 })
             case .restricted:
-                RJS_Logs.message("\(_notGranted) : User do not have access to photo album.")
+                RJS_Logs.info("\(_notGranted) : User do not have access to photo album.", tag: .rjsLib)
                 completetion(false)
             case .denied:
-                RJS_Logs.message("\(_notGranted) : User has denied the permission.")
+                RJS_Logs.info("\(_notGranted) : User has denied the permission.", tag: .rjsLib)
                 completetion(false)
             //case .limited:
-            //    RJS_Logs.message("\(_notGranted) : User limited the permission.")
+            //    RJS_Logs.info("\(_notGranted) : User limited the permission.")
             //    completetion(false)
             @unknown default:
-                RJS_Logs.message("Unknown.")
+                RJS_Logs.info("Unknown.", tag: .rjsLib)
                 completetion(false)
             }
         }

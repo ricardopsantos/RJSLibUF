@@ -37,7 +37,7 @@ public extension RJSLib.Designables {
             
             activityIndicator.frame  = CGRect(x: 0, y: 0, width: 40, height: 40)
             activityIndicator.center = CGPoint(x: progressView.bounds.width / 2, y: progressView.bounds.height / 2)
-            activityIndicator.style = .whiteLarge
+            activityIndicator.style = UIActivityIndicatorView.Style.large
             
             progressView.addSubview(activityIndicator)
             containerView.addSubview(progressView)
