@@ -10,6 +10,51 @@ public extension RJSLib {
     }
 }
 
+/**
+
+ __USAGE__
+ 
+ Given:
+ 
+ ```
+ private class DownloadImageOperation: RJSLibOperationBase {
+     let urlString: String
+     var image: UIImage!
+     init(withURLString urlString: String) {
+         self.urlString = urlString
+     }
+     public override func main() {
+         guard isCancelled == false else {
+             finish(true)
+             return
+         }
+         executing(true)
+         networkingUtilsDownloadImage(imageURL: urlString, onFail: Images.notFound.image) { (image) in
+             self.image = image!
+             self.executing(false)
+             self.finish(true)
+         }
+     }
+ }
+ ```
+ 
+ Do:
+ 
+ ```
+ let operation = DownloadImageOperation(withURLString: size.source)
+ RJS_OperationQueueManager.shared.add(operation)
+ operation.completionBlock = {
+     if operation.isCancelled {
+         observer.on(.next(Images.notFound.image))
+     } else {
+         observer.on(.next(operation.image))
+     }
+     observer.on(.completed)
+ }
+ ```
+ 
+ */
+
 public extension RJSLib.OperationQueues {
     class OperationQueueManager {
         private init() {

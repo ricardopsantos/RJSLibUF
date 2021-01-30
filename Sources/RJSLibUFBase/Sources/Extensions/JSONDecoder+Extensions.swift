@@ -38,7 +38,7 @@ public extension JSONDecoder {
             let result = try JSONDecoder().decode(type, from: data)
             return result
         } catch {
-            var debugMessage = "\n#Fail decoding data into [\(type)]\n"
+            var debugMessage = "# Fail decoding data into [\(type)]"
             if let decodingError = error as? DecodingError {
                 switch decodingError {
                 case DecodingError.dataCorrupted(let context):
