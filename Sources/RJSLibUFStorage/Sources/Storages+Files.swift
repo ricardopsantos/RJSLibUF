@@ -13,6 +13,7 @@ import RJSLibUFBase
 public extension RJSLib.Storages {
     private init() {}
     
+    @available(*, deprecated)
     struct Files {
         private init() {}
         

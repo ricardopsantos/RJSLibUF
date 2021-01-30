@@ -139,11 +139,12 @@ class RJSLibUFTests: XCTestCase {
         _ = RJS_AppInfo.isSimulator
     }
 
+    @available(*, deprecated)
     func test_Files() {
         let fileName1 = "File1.txt"
         let fileName2 = "File2.txt"
-        let content1   = "content_1"
-        let content2   = "content_2"
+        let content1  = "content_1"
+        let content2  = "content_2"
         func doTestIn(folder: RJS_Files.Folder) {
             RJS_Files.clearFolder(folder)
             XCTAssert(RJS_Files.appendToFile(fileName1, toAppend: content1, folder: folder, overWrite: true))
@@ -162,6 +163,7 @@ class RJSLibUFTests: XCTestCase {
         //doTestIn(folder: .temp)
     }
 
+    @available(*, deprecated)
     func test_KeyChain() {
         RJS_Keychain.shared.delete(key: tKey)
         XCTAssert(RJS_Keychain.shared.get(key: tKey) == nil)
@@ -214,7 +216,7 @@ class RJSLibUFTests: XCTestCase {
                 expectation.fulfill()
             }
         } receiveValue: { (response) in
-            XCTAssert(response.prefix(5).count == 5)
+            XCTAssert(response.count > 1)
             expectation.fulfill()
         }.store(in: cancelBag)
         
