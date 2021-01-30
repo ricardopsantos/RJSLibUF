@@ -67,6 +67,7 @@
 		94B61CCEB1367AC05EB160DD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41603EE15ECB31E196F82C5 /* Constants.swift */; };
 		96D8338C4F1A2B0812BDBD34 /* NetworkUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA01EBB38A60C3E68676E2A2 /* NetworkUtils.swift */; };
 		98F2600D57028EC1277BD739 /* Storages+NSUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36462EDA8F79E4CBA1068F05 /* Storages+NSUserDefaults.swift */; };
+		99FD2E223F7145943C9A220C /* Storages+UserDefaultsPropertyWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92B1A5C9B443262C7097FA7 /* Storages+UserDefaultsPropertyWrapper.swift */; };
 		9B1FC0343519A9101B0BF721 /* Image+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CACE777019AC12589FB6470 /* Image+Extensions.swift */; };
 		9B776510B782FC13148D5414 /* Storages+HotCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A3598B58B1A47636177F9B /* Storages+HotCache.swift */; };
 		9D017F33813AAD94002E1EA9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04DA12F8E849FB0732CB8608 /* LaunchScreen.storyboard */; };
@@ -98,7 +99,6 @@
 		D721F15CD0A2521AD72E0860 /* RJSLibUFBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B0D02882E22945B619357BF /* RJSLibUFBase.framework */; };
 		D733D7041B511A03BEA97F87 /* NSObject+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD3374E2B2FAFC282B92508 /* NSObject+Extensions.swift */; };
 		D7513F3FE5CFB3E521F65790 /* Just+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC103409834D898F5EA978BE /* Just+Extensions.swift */; };
-		D77161BA25C4C48100A17E41 /* Storages+UserDefaultsPropertyWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77161B925C4C48100A17E41 /* Storages+UserDefaultsPropertyWrapper.swift */; };
 		D8B498ADCD7A15B2143BAC94 /* Designables+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F1A6C59E51C00A24DEF8E8 /* Designables+SearchBar.swift */; };
 		D9DF80C5F08654703EBED4C4 /* RJSLibNetworkClientErrorsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAD80AE21451C16325238A0 /* RJSLibNetworkClientErrorsManager.swift */; };
 		DB68E509A2B4BADB25EB4720 /* RJSLibUFALayouts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5CB34C80F1CD1CE82B934F5E /* RJSLibUFALayouts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -347,8 +347,8 @@
 		D1E3907A2B3D4170943EB097 /* UILabel+Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Styles.swift"; sourceTree = "<group>"; };
 		D5FCBCFD8D709AF7820D020A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		D72FF8069A32B39CE9556041 /* RJSLib+UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RJSLib+UIViewController.swift"; sourceTree = "<group>"; };
-		D77161B925C4C48100A17E41 /* Storages+UserDefaultsPropertyWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Storages+UserDefaultsPropertyWrapper.swift"; sourceTree = "<group>"; };
 		D89E707349666725E8E46048 /* RJSLib+UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RJSLib+UIView.swift"; sourceTree = "<group>"; };
+		D92B1A5C9B443262C7097FA7 /* Storages+UserDefaultsPropertyWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Storages+UserDefaultsPropertyWrapper.swift"; sourceTree = "<group>"; };
 		DA01EBB38A60C3E68676E2A2 /* NetworkUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkUtils.swift; sourceTree = "<group>"; };
 		DB1081E0C457B10140C16D18 /* UIDevice+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extensions.swift"; sourceTree = "<group>"; };
 		DD4DEAB85D959C8F029F2E0F /* RJSLibUFNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RJSLibUFNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -439,13 +439,6 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		4876C803FCA9D4B206B33120 /* OpenSourceSources */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = OpenSourceSources;
-			sourceTree = "<group>";
-		};
 		4CE19F973761C289AD135C12 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -480,7 +473,7 @@
 				B7A3598B58B1A47636177F9B /* Storages+HotCache.swift */,
 				0352521CC64C5A07B50BB163 /* Storages+KeyChain.swift */,
 				36462EDA8F79E4CBA1068F05 /* Storages+NSUserDefaults.swift */,
-				D77161B925C4C48100A17E41 /* Storages+UserDefaultsPropertyWrapper.swift */,
+				D92B1A5C9B443262C7097FA7 /* Storages+UserDefaultsPropertyWrapper.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -695,7 +688,6 @@
 		D02264B561A10AA4A35ECE59 /* RJSLibUFBase */ = {
 			isa = PBXGroup;
 			children = (
-				4876C803FCA9D4B206B33120 /* OpenSourceSources */,
 				C964EC9B101F6CDFCE676512 /* Sources */,
 				9FDD495DC88792F902CE419D /* Info.plist */,
 				4923D82CCA83E70F31D41134 /* RJSLib.swift */,
@@ -909,6 +901,8 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 1201;
+				TargetAttributes = {
+				};
 			};
 			buildConfigurationList = 478BD369166F0567C3785035 /* Build configuration list for PBXProject "RJSLibUF" */;
 			compatibilityVersion = "Xcode 10.0";
@@ -981,8 +975,8 @@
 				C1A6218D5BF95CB64521224F /* Storages+Files.swift in Sources */,
 				9B776510B782FC13148D5414 /* Storages+HotCache.swift in Sources */,
 				A559349D65282B242629C1AB /* Storages+KeyChain.swift in Sources */,
-				D77161BA25C4C48100A17E41 /* Storages+UserDefaultsPropertyWrapper.swift in Sources */,
 				98F2600D57028EC1277BD739 /* Storages+NSUserDefaults.swift in Sources */,
+				99FD2E223F7145943C9A220C /* Storages+UserDefaultsPropertyWrapper.swift in Sources */,
 				5E2ED301FEFCB01A7396BD65 /* typealias.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
