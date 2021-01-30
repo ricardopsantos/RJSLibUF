@@ -89,7 +89,7 @@ class LayoutSampleVC: GenericViewController {
 
         let key = "LoginCount"
         if let loginsCount = RJS_StorableKeyValue.with(key: key) {
-            RJS_Logs.message(loginsCount, tag: .rjsLib)
+            RJS_Logs.info(loginsCount, tag: .rjsLib)
             if let recordValue = loginsCount.value, let loginsCount =  Int(recordValue) {
                 _ = RJS_StorableKeyValue.save(key: key, value: "\(loginsCount+1)")
             }
@@ -170,7 +170,7 @@ extension LayoutSampleVC: UICollectionViewDataSource, UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        RJS_Logs.message("User tapped on item \(indexPath.row)", tag: .client)
+        RJS_Logs.info("User tapped on item \(indexPath.row)", tag: .client)
     }
     
 }

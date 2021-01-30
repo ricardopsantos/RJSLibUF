@@ -60,7 +60,7 @@ public extension RJSLib {
                         let data: Data? = mockedData.utf8Data
                         let response = try RJSLibNetworkClientResponse<T>(data: data, httpUrlResponse: nil, responseType: request.responseType)
                         DispatchQueue.main.async {
-                            RJS_Logs.message("# Returned mocked data for [\(request.urlRequest)]", tag: .rjsLib)
+                            RJS_Logs.debug("# Returned mocked data for [\(request.urlRequest)]", tag: .rjsLib)
                             completionHandler(.success(response))
                         }
                     } catch {
@@ -88,7 +88,7 @@ public extension RJSLib {
                                 # Request: \(String(describing: request.urlRequest.url?.absoluteURL))
                                 # Response:\(dataString)"
                                 """
-                                RJS_Logs.message(debugMessage, tag: .rjsLib)
+                                RJS_Logs.debug(debugMessage, tag: .rjsLib)
                             }
                             completionHandler(.success(response))
                         } catch {

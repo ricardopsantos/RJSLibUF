@@ -163,7 +163,7 @@ extension RJS_DataModelEntity {
                 i += 1
                 acc = "\(acc)[\(i)] - 'key'=[\(some.key!)] | 'valueType'=[\(some.valueType!)] | 'expire'=[\(some.expireDate!)]\n"
             }
-            RJS_Logs.message("\(#function) : \(acc)", tag: .rjsLib)
+            RJS_Logs.info("\(#function) : \(acc)", tag: .rjsLib)
         }
     }
     

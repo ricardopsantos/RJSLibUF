@@ -22,15 +22,15 @@ public extension FRPSampleAPI {
         let publisherB = api.sampleRequestJSON(requestDto)
 
         publisherA.sink { (_) in
-            //RJS_Logs.message(result)
+            //RJS_Logs.info(result)
         } receiveValue: { (response) in
-            RJS_Logs.message(response.prefix(3), tag: .rjsLib)
+            RJS_Logs.debug(response.prefix(3), tag: .rjsLib)
         }.store(in: cancelBag)
         
         publisherB.sink { (_) in
-            //RJS_Logs.message(result)
+            //RJS_Logs.info(result)
         } receiveValue: { (response) in
-            RJS_Logs.message(response.data.prefix(3), tag: .rjsLib)
+            RJS_Logs.debug(response.data.prefix(3), tag: .rjsLib)
         }.store(in: cancelBag)
     }
 }

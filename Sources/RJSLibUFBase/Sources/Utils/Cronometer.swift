@@ -20,7 +20,7 @@ extension RJSLib {
             let startTime = CFAbsoluteTimeGetCurrent()
             operation()
             let timeElapsed = CFAbsoluteTimeGetCurrent() - startTime
-            Logger.message("Time elapsed for \(title): \(timeElapsed)s", tag: .rjsLib)
+            Logger.info("Time elapsed for \(title): \(timeElapsed)s", tag: .rjsLib)
             return timeElapsed
         }
         
@@ -46,7 +46,7 @@ extension RJSLib {
                 if let time = _times[identifier] {
                     let timeElapsed = CFAbsoluteTimeGetCurrent() - time
                     if print {
-                        RJS_Logs.message("Operation [\(identifier)] time : \(Double(timeElapsed))" as AnyObject, tag: .rjsLib)
+                        RJS_Logs.info("Operation [\(identifier)] time : \(Double(timeElapsed))" as AnyObject, tag: .rjsLib)
                     }
                     result = Double(timeElapsed)
                 }

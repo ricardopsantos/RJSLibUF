@@ -88,7 +88,7 @@ extension RJSLib {
                 if managedObjectContext.hasChanges {
                     do {
                         try managedObjectContext.save()
-                        RJS_Logs.message("DB record stored/updated/deleted", tag: .rjsLib)
+                        RJS_Logs.info("DB record stored/updated/deleted", tag: .rjsLib)
                     } catch {
                         assertionFailure("\(error)")
                     }

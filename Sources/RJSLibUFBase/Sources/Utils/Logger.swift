@@ -23,8 +23,8 @@ extension RJSLib {
             
             var prettyName: String {
                 switch self {
-                case .rjsLib: return "RJSLibUF"
-                case .client: return "MyApp"
+                case .rjsLib: return "RJSLibUF" // RJSLibUF logs id
+                case .client: return "MyApp"    // Client app logs id
                 }
             }
         }
@@ -35,16 +35,24 @@ extension RJSLib {
             StorageUtils.deleteLogs()
         }
 
-        public static func message(_ message: Any?,
-                                   tag: Logger.Tag,
+        public static func debug(_ message: Any?,
+                                   tag: Logger.Tag = .client,
                                    function: String = #function, file: String = #file, line: Int = #line) {
             guard message != nil else { return }
             let prefix = "# Type : Debug @ \(tag.prettyName)"
             private_print("\(prefix)\n\n\(message!)", function: function, file: file, line: line)
         }
+        
+        public static func info(_ message: Any?,
+                                   tag: Logger.Tag = .client,
+                                   function: String = #function, file: String = #file, line: Int = #line) {
+            guard message != nil else { return }
+            let prefix = "# Type : Info @ \(tag.prettyName)"
+            private_print("\(prefix)\n\n\(message!)", function: function, file: file, line: line)
+        }
 
         public static func warning(_ message: Any?,
-                                   tag: Logger.Tag,
+                                   tag: Logger.Tag = .client,
                                    function: String = #function, file: String = #file, line: Int = #line) {
             guard message != nil else { return }
             let prefix = "# Type: Warning @ \(tag.prettyName)]"
@@ -52,7 +60,7 @@ extension RJSLib {
         }
 
         public static func error(_ message: Any?,
-                                 tag: Logger.Tag,
+                                 tag: Logger.Tag = .client,
                                  shouldCrash: Bool = false,
                                  function: String = #function, file: String = #file, line: Int = #line) {
             guard message != nil else { return }

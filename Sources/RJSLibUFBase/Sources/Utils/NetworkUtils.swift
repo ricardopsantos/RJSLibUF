@@ -26,9 +26,9 @@ public extension RJSLib.NetworkUtils {
         static func eval() {
             shared.monitor.pathUpdateHandler = { path in
                 if path.status == .satisfied {
-                    RJS_Logs.message("back to online", tag: .rjsLib)
+                    RJS_Logs.debug("back to online", tag: .rjsLib)
                 } else {
-                    RJS_Logs.message("offline mode", tag: .rjsLib)
+                    RJS_Logs.debug("offline mode", tag: .rjsLib)
                 }
             }
         }

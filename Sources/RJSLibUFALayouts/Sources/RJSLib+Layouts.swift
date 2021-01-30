@@ -82,7 +82,7 @@ public extension RJPSLayouts where Target: UIView {
             acc = "\(acc)value: \(constraint.constant)" + " | "
             acc = "\(acc)\(constraint)" + "\n"
         })
-        RJS_Logs.message("\(acc)", tag: .rjsLib)
+        RJS_Logs.debug("\(acc)", tag: .rjsLib)
     }
     
     func removeAllConstraints() {
@@ -126,7 +126,7 @@ public extension RJPSLayouts where Target: UIView {
                 return []
             }
         } else {
-            RJS_Logs.message("Not implemented \(method)", tag: .rjsLib)
+            RJS_Logs.info("Not implemented \(method)", tag: .rjsLib)
             return []
         }
     }
@@ -193,7 +193,7 @@ public extension RJPSLayouts where Target: UIView {
             }
             return constraint
         } else {
-            RJS_Logs.message("Not implemented \(method)", tag: .rjsLib)
+            RJS_Logs.info("Not implemented \(method)", tag: .rjsLib)
             return nil
         }
     }
@@ -272,7 +272,7 @@ public extension RJPSLayouts where Target: UIView {
             targetIsSuper = true
         }
         guard target != nil else {
-            RJS_Logs.message("Fail to apply [\(property)]. Target view is nil.", tag: .rjsLib)
+            RJS_Logs.info("Fail to apply [\(property)]. Target view is nil.", tag: .rjsLib)
             return nil
         }
         if method == .constraints {
@@ -441,13 +441,13 @@ public extension RJPSLayouts where Target: UIView {
     // Compression Resistance =>  Dont want to shrink
     func addLowResistanceToGrow(_ priority: UILayoutPriority = .defaultLow, axis: NSLayoutConstraint.Axis) {
         if priority > .defaultLow {
-            RJS_Logs.message("Too higth?!", tag: .rjsLib)
+            RJS_Logs.info("Too higth?!", tag: .rjsLib)
         }
         self.target.setContentHuggingPriority(priority, for: axis)
     }
     func addHightResistanceToGrow(_ priority: UILayoutPriority = .defaultHigh, axis: NSLayoutConstraint.Axis) {
         if priority > .defaultLow {
-            RJS_Logs.message("Too low?!", tag: .rjsLib)
+            RJS_Logs.info("Too low?!", tag: .rjsLib)
         }
         self.target.setContentHuggingPriority(priority, for: axis)
     }

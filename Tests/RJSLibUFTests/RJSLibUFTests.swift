@@ -113,7 +113,7 @@ class RJSLibUFTests: XCTestCase {
     }
 
     func test_Logs() {
-        RJS_Logs.message("Regular log", tag: .rjsLib)
+        RJS_Logs.info("Regular log", tag: .rjsLib)
         RJS_Logs.warning("Warning log", tag: .rjsLib)
         RJS_Logs.error("Error log", tag: .rjsLib)
     }
@@ -239,7 +239,7 @@ class RJSLibUFTests: XCTestCase {
                 expectation.fulfill()
             }
         } receiveValue: { (response) in
-            //RJS_Logs.message(response.data.prefix(3))
+            //RJS_Logs.info(response.data.prefix(3))
             XCTAssert(response.data.count > 0)
             expectation.fulfill()
         }.store(in: cancelBag)
