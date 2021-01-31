@@ -7,7 +7,7 @@ import Foundation
 import UIKit
 
 public extension UIButton {
-    enum RJSLibUFLayoutStyle: CaseIterable {
+    enum RJSLibUFLayoutStyle: String, CaseIterable {
         case notApplied
         case primary
         case secondary
@@ -20,11 +20,21 @@ public extension UIButton {
         public var rawValue: Self {
             return self
         }
+        
+        public init?(rawValue: RJSLibUFLayoutStyle) {
+            if let some = Self.allCases.first(where: { $0.rawValue == rawValue.rawValue }) {
+                self = some
+            }
+            return nil
+        }
+        
     }
 }
 
 public extension UILabel {
-    enum RJSLibUFLayoutStyle: CaseIterable {
+    
+    enum RJSLibUFLayoutStyle: String, CaseIterable {
+        
         case notApplied
         case navigationBarTitle
         case title
@@ -34,6 +44,13 @@ public extension UILabel {
         
         public var rawValue: Self {
             return self
+        }
+        
+        public init?(rawValue: RJSLibUFLayoutStyle) {
+            if let some = Self.allCases.first(where: { $0.rawValue == rawValue.rawValue }) {
+                self = some
+            }
+            return nil
         }
     }
 }
