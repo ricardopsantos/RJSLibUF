@@ -43,8 +43,9 @@ public extension UIFont {
             public init?(rawValue: RawValue) {
                 if let some = Self.allCases.first(where: { $0.rawValue == rawValue }) {
                     self = some
+                } else {
+                    return nil
                 }
-                return nil
             }
             
             case headingJumbo

@@ -16,8 +16,9 @@ public extension UIColor {
         public init?(rawValue: RawValue) {
             if let some = Self.allCases.first(where: { $0.rawValue == rawValue }) {
                 self = some
+            } else {
+                return nil
             }
-            return nil
         }
         public var color: UIColor { return self.rawValue }
 
@@ -65,8 +66,9 @@ public extension UIColor {
         public init?(rawValue: RawValue) {
             if let some = Self.allCases.first(where: { $0.rawValue == rawValue }) {
                 self = some
+            } else {
+                return nil
             }
-            return nil
         }
         public var color: UIColor { return self.rawValue }
 
@@ -172,8 +174,9 @@ public extension UIColor {
         public init?(rawValue: RawValue) {
             if let some = Self.allCases.first(where: { $0.rawValue == rawValue }) {
                 self = some
+            } else {
+                return nil
             }
-            return nil
         }
         public var color: UIColor { return self.rawValue }
         case background
