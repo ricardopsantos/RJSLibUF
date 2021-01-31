@@ -30,6 +30,27 @@ public func perfectMapper<A: Encodable, B: Decodable>(inValue: A, outValue: B.Ty
     }
 }
 
+//
+// MARK: - Conversion Utils
+//
+
+public extension JSONDecoder {
+    static func toJSONString<A: Encodable>(inValue: A) -> String? {
+        guard let data = try? JSONEncoder().encode(inValue) else { return nil }
+        return String(data: data, encoding: .utf8)
+    }
+}
+
+public extension JSONEncoder {
+    static func toJSONString<A: Encodable>(inValue: A) -> String? {
+        return JSONDecoder.toJSONString(inValue: inValue)
+    }
+}
+
+//
+// MARK: - Safe decoder
+//
+
 public extension JSONDecoder {
     
     // Decoder that when fails log as much information as possible for a fast correction/debug

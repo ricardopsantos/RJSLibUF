@@ -677,6 +677,7 @@
 		C964EC9B101F6CDFCE676512 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				D79D7A9D25C722EF0060A674 /* ProgramaticUI */,
 				5EA84DF4A3E5AD96DC7CB6ED /* Designables */,
 				2DF6B0651AF6E23755FE35F4 /* Extensions */,
 				726AAC35475548E7FA3F3808 /* Managers */,
@@ -712,6 +713,13 @@
 				9143D516AC7B12E76CB1F833 /* SampleApp */,
 				4CE19F973761C289AD135C12 /* Products */,
 			);
+			sourceTree = "<group>";
+		};
+		D79D7A9D25C722EF0060A674 /* ProgramaticUI */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ProgramaticUI;
 			sourceTree = "<group>";
 		};
 		DF21EDC9FFA7BCA051D54B78 /* CombineSampleAPI */ = {
