@@ -16,6 +16,10 @@ public extension UIButton {
         case reject
         case remind
         case inngage
+        
+        public var rawValue: Self {
+            return self
+        }
     }
 }
 
@@ -27,6 +31,10 @@ public extension UILabel {
         case value
         case text
         case error
+        
+        public var rawValue: Self {
+            return self
+        }
     }
 }
 #endif
