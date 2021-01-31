@@ -8,6 +8,7 @@ import UIKit
 
 public extension UIButton {
     enum RJSLibUFLayoutStyle: String, CaseIterable {
+        
         case notApplied
         case primary
         case secondary
@@ -17,12 +18,9 @@ public extension UIButton {
         case remind
         case inngage
         
-        public var rawValue: Self {
-            return self
-        }
-        
-        public init?(rawValue: RJSLibUFLayoutStyle) {
-            if let some = Self.allCases.first(where: { $0.rawValue == rawValue.rawValue }) {
+        public typealias RawValue = String
+        public init?(rawValue: RawValue) {
+            if let some = Self.allCases.first(where: { $0.rawValue == rawValue }) {
                 self = some
             }
             return nil
@@ -42,12 +40,9 @@ public extension UILabel {
         case text
         case error
         
-        public var rawValue: Self {
-            return self
-        }
-        
-        public init?(rawValue: RJSLibUFLayoutStyle) {
-            if let some = Self.allCases.first(where: { $0.rawValue == rawValue.rawValue }) {
+        public typealias RawValue = String
+        public init?(rawValue: RawValue) {
+            if let some = Self.allCases.first(where: { $0.rawValue == rawValue }) {
                 self = some
             }
             return nil

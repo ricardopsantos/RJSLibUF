@@ -13,7 +13,12 @@ public extension UIColor {
 
     enum Pack1: CaseIterable, ReportableColorProtocol {
         public typealias RawValue = UIColor
-        public init?(rawValue: RawValue) { return nil }
+        public init?(rawValue: RawValue) {
+            if let some = Self.allCases.first(where: { $0.rawValue == rawValue }) {
+                self = some
+            }
+            return nil
+        }
         public var color: UIColor { return self.rawValue }
 
         case grey_1
@@ -57,7 +62,12 @@ public extension UIColor {
 
     enum Pack2: CaseIterable, ReportableColorProtocol {
         public typealias RawValue = UIColor
-        public init?(rawValue: RawValue) { return nil }
+        public init?(rawValue: RawValue) {
+            if let some = Self.allCases.first(where: { $0.rawValue == rawValue }) {
+                self = some
+            }
+            return nil
+        }
         public var color: UIColor { return self.rawValue }
 
         case white
@@ -159,7 +169,12 @@ public extension UIColor {
 
     enum Pack3: CaseIterable, ReportableColorProtocol {
         public typealias RawValue = UIColor
-        public init?(rawValue: RawValue) { return nil }
+        public init?(rawValue: RawValue) {
+            if let some = Self.allCases.first(where: { $0.rawValue == rawValue }) {
+                self = some
+            }
+            return nil
+        }
         public var color: UIColor { return self.rawValue }
         case background
         case onBackground
