@@ -100,6 +100,7 @@
 		D733D7041B511A03BEA97F87 /* NSObject+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD3374E2B2FAFC282B92508 /* NSObject+Extensions.swift */; };
 		D7513F3FE5CFB3E521F65790 /* Just+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC103409834D898F5EA978BE /* Just+Extensions.swift */; };
 		D7952E2225C587C50020D723 /* OperationQueues.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7952E1125C586C70020D723 /* OperationQueues.swift */; };
+		D79D7ACB25C753D00060A674 /* UIKitFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79D7ACA25C753D00060A674 /* UIKitFactory.swift */; };
 		D8B498ADCD7A15B2143BAC94 /* Designables+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F1A6C59E51C00A24DEF8E8 /* Designables+SearchBar.swift */; };
 		D9DF80C5F08654703EBED4C4 /* RJSLibNetworkClientErrorsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAD80AE21451C16325238A0 /* RJSLibNetworkClientErrorsManager.swift */; };
 		DB68E509A2B4BADB25EB4720 /* RJSLibUFALayouts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5CB34C80F1CD1CE82B934F5E /* RJSLibUFALayouts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -349,6 +350,7 @@
 		D5FCBCFD8D709AF7820D020A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		D72FF8069A32B39CE9556041 /* RJSLib+UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RJSLib+UIViewController.swift"; sourceTree = "<group>"; };
 		D7952E1125C586C70020D723 /* OperationQueues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationQueues.swift; sourceTree = "<group>"; };
+		D79D7ACA25C753D00060A674 /* UIKitFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitFactory.swift; sourceTree = "<group>"; };
 		D89E707349666725E8E46048 /* RJSLib+UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RJSLib+UIView.swift"; sourceTree = "<group>"; };
 		D92B1A5C9B443262C7097FA7 /* Storages+UserDefaultsPropertyWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Storages+UserDefaultsPropertyWrapper.swift"; sourceTree = "<group>"; };
 		DA01EBB38A60C3E68676E2A2 /* NetworkUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkUtils.swift; sourceTree = "<group>"; };
@@ -766,6 +768,7 @@
 				D1E3907A2B3D4170943EB097 /* UILabel+Styles.swift */,
 				A7D1072252EB41BDF9BCF108 /* UIView+Extensions.swift */,
 				EA1A1D59C7677284BFE22E92 /* UIView+StackView.swift */,
+				D79D7ACA25C753D00060A674 /* UIKitFactory.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -1077,6 +1080,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CAAC19BB3282B1DBB689E71B /* FadeType.swift in Sources */,
+				D79D7ACB25C753D00060A674 /* UIKitFactory.swift in Sources */,
 				533D81A0CDC8AD901A6CDBE1 /* LayoutStyle.swift in Sources */,
 				35BBEE63F3A404BDD1A1E870 /* SizesNames.swift in Sources */,
 				F115AF970D13A4974A5F5AB3 /* UIButton+Styles.swift in Sources */,

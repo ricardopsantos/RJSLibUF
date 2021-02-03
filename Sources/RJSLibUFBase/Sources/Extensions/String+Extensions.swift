@@ -15,6 +15,12 @@ import CommonCrypto
 
 public extension String {
     
+    var length: Int { return self.count }
+    var first: String { return String(self.prefix(1)) }
+    var last: String { if self.count == 0 { return "" } else { return String(self.suffix(1))} }
+    var trim: String { return self.trimmingCharacters(in: .whitespacesAndNewlines) }
+    var trimmedAndSingleSpaced: String { return replacingOccurrences(of: "\\s+", with: " ", options: .regularExpression).trim }
+    
     var capitalised: String { self.count >= 1 ? prefix(1).uppercased() + self.lowercased().dropFirst() : "" }
     var encodedUrl: String? { self.addingPercentEncoding( withAllowedCharacters: NSCharacterSet.urlQueryAllowed) }
     var decodedUrl: String? { self.removingPercentEncoding }
@@ -29,23 +35,30 @@ public extension String {
     var intValue: Int? { RJSLib.Convert.toInt(self) }
     var dateValue: Date? { RJSLib.Convert.toDate("\(self)" as AnyObject) }
     var floatValue: Float? { floatValueA }
+    var decimalValue: Decimal? {
+        let decimalSeparator = Locale.current.decimalSeparator ?? "."
+        let groupingSeparator = Locale.current.groupingSeparator ?? ","
+        let regex: NSRegularExpression! = try? NSRegularExpression(pattern: "[^0-9\(decimalSeparator)]", options: .caseInsensitive)
+        var formatter: NumberFormatter {
+            let formatter = NumberFormatter()
+            formatter.decimalSeparator = decimalSeparator
+            formatter.groupingSeparator = groupingSeparator
+            formatter.minimumFractionDigits = 2
+            formatter.maximumFractionDigits = 2
+            return formatter
+        }
+
+        let regexedString = regex.stringByReplacingMatches(in: self,
+                                                           options: NSRegularExpression.MatchingOptions(rawValue: 0),
+                                                           range: NSRange(location: 0, length: self.count),
+                                                           withTemplate: "")
+
+        return formatter.number(from: regexedString)?.decimalValue
+    }
     
     private var floatValueA: Float? { RJSLib.Convert.toFloat(self) }
     private var floatValueB: CGFloat { CGFloat((self as NSString).floatValue) }
     
-    // let json = "{\"hello\": \"world\"}"
-    // let dictFromJson = json.asDict
-    var asDict: [String: Any]? {
-        guard let data = self.data(using: .utf8) else { return nil }
-        return try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any]
-    }
-
-    // let htmlString = "<p>Hello, <strong>world!</string></p>"
-    // let attrString = htmlString.asAttributedString
-    var asAttributedString: NSAttributedString? {
-        guard let data = self.data(using: .utf8) else { return nil }
-        return try? NSAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
-    }
 }
 
 //
@@ -54,7 +67,7 @@ public extension String {
 
 public extension String {
     
-    var deterministicHashValue: Int {
+     var deterministicHashValue: Int {
          return zip(utf8.map(numericCast), Swift.sequence(first: 1, next: { $0 &* 589836 })).map(&*).reduce(0, &+)
      }
 
@@ -82,7 +95,7 @@ public extension String {
 }
 
 //
-// MARK: - Tests
+// MARK: - Bools
 //
 
 public extension String {
@@ -124,32 +137,32 @@ public extension String {
 
 public extension String {
 
-    var length: Int { return self.count }
-    var first: String { return String(self.prefix(1)) }
-    var last: String { if self.count == 0 { return "" } else { return String(self.suffix(1))} }
-    var trim: String { return self.trimmingCharacters(in: .whitespacesAndNewlines) }
-    var trimmedAndSingleSpaced: String { return replacingOccurrences(of: "\\s+", with: " ", options: .regularExpression).trim }
-
-    var decimalValue: Decimal? {
-        let decimalSeparator = Locale.current.decimalSeparator ?? "."
-        let groupingSeparator = Locale.current.groupingSeparator ?? ","
-        let regex: NSRegularExpression! = try? NSRegularExpression(pattern: "[^0-9\(decimalSeparator)]", options: .caseInsensitive)
-        var formatter: NumberFormatter {
-            let formatter = NumberFormatter()
-            formatter.decimalSeparator = decimalSeparator
-            formatter.groupingSeparator = groupingSeparator
-            formatter.minimumFractionDigits = 2
-            formatter.maximumFractionDigits = 2
-            return formatter
-        }
-
-        let regexedString = regex.stringByReplacingMatches(in: self,
-                                                           options: NSRegularExpression.MatchingOptions(rawValue: 0),
-                                                           range: NSRange(location: 0, length: self.count),
-                                                           withTemplate: "")
-
-        return formatter.number(from: regexedString)?.decimalValue
+    // let json = "{\"hello\": \"world\"}"
+    // let dictFromJson = json.asDict
+    var asDict: [String: Any]? {
+        guard let data = self.data(using: .utf8) else { return nil }
+        return try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any]
     }
+
+    // let htmlString = "<p>Hello, <strong>world!</string></p>"
+    // let attrString = htmlString.asAttributedString
+    var asAttributedString: NSAttributedString? {
+        guard let data = self.data(using: .utf8) else { return nil }
+        return try? NSAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
+    }
+    
+    #if !os(macOS)
+    func image(font: UIFont, size: CGSize = CGSize(width: 40, height: 40)) -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(size, false, 0)
+        UIColor.white.set()
+        let rect = CGRect(origin: .zero, size: size)
+        UIRectFill(CGRect(origin: .zero, size: size))
+        (self as AnyObject).draw(in: rect, withAttributes: [.font: font])
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image
+    }
+    #endif
     
     func split(by: String) -> [String] {
         guard !by.isEmpty else { return [] }

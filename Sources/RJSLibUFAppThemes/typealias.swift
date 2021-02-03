@@ -6,6 +6,7 @@
 #if !os(macOS)
 import Foundation
 import UIKit
+import RJSLibUFBase
 
 //
 // typealias? Why?
@@ -35,6 +36,7 @@ public typealias RJS_Fonts = UIFont.RJS_Fonts
 
 public typealias RJS_SizeNames = SizesNames
 
+public typealias RJS_UIKitFactory = RJSLib.UIKitFactory
 public typealias RJS_ButtontStyle = UIButton.RJSLibUFLayoutStyle
 public typealias RJS_LabelStyle   = UILabel.RJSLibUFLayoutStyle
 

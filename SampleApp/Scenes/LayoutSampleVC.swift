@@ -4,11 +4,13 @@
 //
 
 import UIKit
+import LocalAuthentication
 //
 import RJSLibUFBase
 import RJSLibUFStorage
 import RJSLibUFNetworking
 import RJSLibUFALayouts
+import RJSLibUFAppThemes
 
 #warning("RJSLibUFALayouts was deprecated on 2021 Jan and its not mantained anymore")
 
@@ -27,7 +29,7 @@ class LayoutSampleVC: GenericViewController {
     private lazy var collectionView1: UICollectionView = {
         let itemSizeK: CGFloat = 0.8
         let itemSize: CGSize = CGSize(width: (screenWidth*0.8), height: (screenHeight/2)*itemSizeK)
-        let some = UIKitFactory.collectionView(baseController: self, itemSize: itemSize, direction: .horizontal)
+        let some = RJS_UIKitFactory.collectionView(baseController: self, itemSize: itemSize, direction: .horizontal)
         some.backgroundColor = .brown
         some.rjsALayouts.setMargin(0, on: .top)
         some.rjsALayouts.setMargin(0, on: .left)
@@ -51,7 +53,7 @@ class LayoutSampleVC: GenericViewController {
     private lazy var collectionView2: UICollectionView = {
         let itemSizeK: CGFloat = 0.8
         let itemSize: CGSize = CGSize(width: (screenWidth/2)*itemSizeK, height: (screenHeight/2)*itemSizeK)
-        let some = UIKitFactory.collectionView(baseController: self, itemSize: itemSize, direction: .vertical)
+        let some = RJS_UIKitFactory.collectionView(baseController: self, itemSize: itemSize, direction: .vertical)
         some.backgroundColor = .orange
         some.rjsALayouts.setMargin(0, on: .top, from: collectionView1)
         some.rjsALayouts.setMargin(0, on: .left)
@@ -96,7 +98,7 @@ class LayoutSampleVC: GenericViewController {
         } else {
             _ = RJS_StorableKeyValue.save(key: key, value: "0")
         }
-
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -145,7 +147,7 @@ extension LayoutSampleVC: UICollectionViewDataSource, UICollectionViewDelegate {
             myCell.backgroundColor = UIColor.blue
             let item = dataSource1[indexPath.row]
             _ = myCell.subviews.map { $0.removeFromSuperview() }
-            let label = UIKitFactory.label(title: item.title, style: .value)
+            let label = RJS_UIKitFactory.label(title: item.title, style: .value)
             label.textAlignment = .center
             myCell.addSubview(label)
             label.rjsALayouts.setMargin(0, on: .top)
@@ -158,7 +160,7 @@ extension LayoutSampleVC: UICollectionViewDataSource, UICollectionViewDelegate {
             myCell.backgroundColor = UIColor.blue
             let item = dataSource2[indexPath.row]
             _ = myCell.subviews.map { $0.removeFromSuperview() }
-            let label = UIKitFactory.label(title: item.title, style: .value)
+            let label = RJS_UIKitFactory.label(title: item.title, style: .value)
             label.textAlignment = .center
             myCell.addSubview(label)
             label.rjsALayouts.setMargin(0, on: .top)

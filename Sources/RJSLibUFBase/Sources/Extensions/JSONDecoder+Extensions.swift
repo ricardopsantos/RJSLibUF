@@ -30,6 +30,7 @@ public func perfectMapper<A: Encodable, B: Decodable>(inValue: A, outValue: B.Ty
     }
 }
 
+/*
 //
 // MARK: - Conversion Utils
 //
@@ -46,6 +47,7 @@ public extension JSONEncoder {
         return JSONDecoder.toJSONString(inValue: inValue)
     }
 }
+*/
 
 //
 // MARK: - Safe decoder

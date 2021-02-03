@@ -7,10 +7,13 @@ import Foundation
 import UIKit
 
 public extension UIView {
-    // this functions is duplicated
+
     static var defaultShadowColor = UIColor(red: CGFloat(80/255.0), green: CGFloat(88/255.0), blue: CGFloat(93/255.0), alpha: 1)
     static let defaultShadowOffset = CGSize(width: 1, height: 5) // Shadow bellow
 
+    //
+    // More about shadows : https://medium.com/swlh/how-to-create-advanced-shadows-in-swift-ios-swift-guide-9d2844b653f8
+    //
     func addShadow(color: UIColor = defaultShadowColor,
                    offset: CGSize = defaultShadowOffset,
                    radius: CGFloat = defaultShadowOffset.height,

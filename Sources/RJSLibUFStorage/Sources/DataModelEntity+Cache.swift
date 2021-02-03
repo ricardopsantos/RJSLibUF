@@ -291,6 +291,7 @@ extension RJS_DataModelEntity: CoreDataEntity_Protocol {
             return delete(records: records)
         }
         
+        @discardableResult
         public static func clean() -> Bool {
             if validateMainThread && !Thread.isMainThread { assertionFailure("Not in main tread") }
             objc_sync_enter(self); defer { objc_sync_exit(self) }

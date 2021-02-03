@@ -22,7 +22,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        //print(UIButton.RJSLibUFLayoutStyle.accept.rawValue)
         RJS_DataModelEntity.StorableKeyValue.clean()
         
         #if USE_INCLUDE_TINYCONSTRAINTS
