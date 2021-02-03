@@ -22,7 +22,7 @@ packages:
     url: https://github.com/ricardopsantos/RJSLibUF
     #from: 1.0.0
     #branch: develop
-    revision: 24678cc68c3e2b0d74fbce17801bb7eb361337a2
+    revision: 11aeb1417d0f32d74bb9576a98149699c9871617
     
   TinyConstraints:
     url: https://github.com/roberthein/TinyConstraints
