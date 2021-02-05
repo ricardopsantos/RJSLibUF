@@ -36,16 +36,16 @@ extension RJSLib {
         }
 
         public static func debug(_ message: Any?,
-                                   tag: Logger.Tag = .client,
-                                   function: String = #function, file: String = #file, line: Int = #line) {
+                                 tag: Logger.Tag = .client,
+                                 function: String = #function, file: String = #file, line: Int = #line) {
             guard message != nil else { return }
             let prefix = "# Type : Debug @ \(tag.prettyName)"
             private_print("\(prefix)\n\n\(message!)", function: function, file: file, line: line)
         }
         
         public static func info(_ message: Any?,
-                                   tag: Logger.Tag = .client,
-                                   function: String = #function, file: String = #file, line: Int = #line) {
+                                tag: Logger.Tag = .client,
+                                function: String = #function, file: String = #file, line: Int = #line) {
             guard message != nil else { return }
             let prefix = "# Type : Info @ \(tag.prettyName)"
             private_print("\(prefix)\n\n\(message!)", function: function, file: file, line: line)

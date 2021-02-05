@@ -42,3 +42,8 @@ public typealias RJS_SynchronizedArray     = SynchronizedArray
 #if !os(macOS)
 public typealias RJS_Cronometer        = RJSLib.Cronometer         // Utilities class for measure operations time
 #endif
+
+// MARK: - Property Wrappers Dependency Injection
+
+public typealias RJS_Resolver = RJSLib.Container
+public typealias RJS_Inject   = RJSLib.Inject
