@@ -1,6 +1,4 @@
 import Foundation
-//
-import RJSLibUFBase
 
 /**
  https://github.com/apple/swift-evolution/blob/master/proposals/0258-property-wrappers.md
@@ -39,9 +37,9 @@ __If you’re not familiar with Property Wrappers in Swift, it’s not a big dea
 
 */
 
-public extension RJSLib.Storages {
+public extension RJSLib {
     @propertyWrapper
-    struct UserDefaultsPropertyWrapper<T> {
+    struct UserDefaults<T> {
         public let key: String
         public let defaultValue: T
         public init(_ key: String, defaultValue: T) {
@@ -49,11 +47,12 @@ public extension RJSLib.Storages {
             self.defaultValue = defaultValue
         }
         public var wrappedValue: T {
-            get { UserDefaults.standard.object(forKey: key) as? T ?? defaultValue }
-            set { UserDefaults.standard.set(newValue, forKey: key) }
+            get { Foundation.UserDefaults.standard.object(forKey: key) as? T ?? defaultValue }
+            set { Foundation.UserDefaults.standard.set(newValue, forKey: key) }
         }
     }
 }
+
 // https://medium.com/flawless-app-stories/turning-property-wrappers-into-function-wrappers-2be3a49229f5
 // Turning Property Wrappers into Function Wrappers
 

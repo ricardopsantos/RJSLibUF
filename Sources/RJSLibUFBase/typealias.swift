@@ -39,11 +39,15 @@ public typealias RJS_Designables_ActivityIndicator = RJSLib.Designables.Activity
 public typealias RJS_OperationQueueManager = RJSLib.OperationQueues.OperationQueueManager
 public typealias RJS_OperationBase         = RJSLibOperationBase
 public typealias RJS_SynchronizedArray     = SynchronizedArray
+
 #if !os(macOS)
 public typealias RJS_Cronometer        = RJSLib.Cronometer         // Utilities class for measure operations time
 #endif
 
-// MARK: - Property Wrappers Dependency Injection
+// MARK: - Property Wrappers
 
-public typealias RJS_Resolver = RJSLib.Container
-public typealias RJS_Inject   = RJSLib.Inject
+public typealias RJS_Resolver = RJSLib.Container // Dependency Injection
+public typealias RJS_Inject   = RJSLib.Inject    // Dependency Injection
+
+public typealias RJS_Delegated = RJSLib.Delegated_V2
+public typealias RJS_Defaults  = RJSLib.UserDefaults

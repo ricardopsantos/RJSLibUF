@@ -6,6 +6,24 @@
 import Foundation
 import SystemConfiguration
 
+/**
+* https://avdyushin.ru/posts/swift-property-wrappers/
+* https://medium.com/@anuragajwani/dependency-injection-in-ios-and-swift-using-property-wrappers-f411117cfdcf
+*/
+
+/**
+ __Usage__
+ 
+ ```
+ RJS_Resolver.shared.register(type: SomeProtocol.self, {  SomeImplementation() })
+ ```
+ 
+ ```
+ @RJS_Inject private var xxx: SomeProtocol
+
+ ```
+ */
+
 public extension RJSLib {
     
     // Resolver
