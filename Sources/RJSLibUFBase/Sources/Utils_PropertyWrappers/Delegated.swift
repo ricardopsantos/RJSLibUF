@@ -12,7 +12,7 @@ import UIKit
 
 /**
  https://olegdreyman.medium.com/no-more-weak-self-or-the-weird-new-future-of-delegation-f2a2745cd73
- 
+ https://github.com/dreymonde/Delegated
  */
 
 public extension RJSLib {
@@ -62,7 +62,10 @@ public extension RJSLib {
     }
 }
 
-/*
+//
+// USAGE
+//
+
 #if !os(macOS)
 private extension RJSLib {
     struct SampleDelegate {
@@ -108,4 +111,4 @@ private extension RJSLib {
     }
 }
 #endif
-*/
+
