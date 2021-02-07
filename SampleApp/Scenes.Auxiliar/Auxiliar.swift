@@ -10,10 +10,6 @@ import UIKit
 import Foundation
 import RJSLibUFAppThemes
 
-struct AppConstants {
-    static let cellIdentifier = "cellIdentifier"
-}
-
 extension UIView {
     func lazyLoad() {}
 }

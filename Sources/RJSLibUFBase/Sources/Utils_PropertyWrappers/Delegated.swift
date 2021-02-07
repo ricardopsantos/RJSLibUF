@@ -6,8 +6,9 @@
 //
 
 import Foundation
-import SwiftUI
+#if !os(macOS)
 import UIKit
+#endif
 
 /**
  https://olegdreyman.medium.com/no-more-weak-self-or-the-weird-new-future-of-delegation-f2a2745cd73
@@ -29,9 +30,6 @@ public extension RJSLib {
     }
 }
 
-/**
- Only closures that have exactly one argument and no return value can be marked as @Delegated_V2
- */
 public extension RJSLib {
     @propertyWrapper
     final class Delegated_V2<Input> {
@@ -64,6 +62,8 @@ public extension RJSLib {
     }
 }
 
+/*
+#if !os(macOS)
 private extension RJSLib {
     struct SampleDelegate {
         
@@ -107,3 +107,5 @@ private extension RJSLib {
 
     }
 }
+#endif
+*/

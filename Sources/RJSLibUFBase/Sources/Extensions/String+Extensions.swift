@@ -29,11 +29,11 @@ public extension String {
     var base64Decoded: String? { RJS_Convert.Base64.toPlainString(self) }
     
     var utf8Data: Data? { self.data(using: .utf8) }
-    var cgFloatValue: CGFloat? { RJSLib.Convert.toCGFloat(self) }
-    var boolValue: Bool? { RJSLib.Convert.toBool(self) }
-    var doubleValue: Double? { RJSLib.Convert.toDouble(self) }
-    var intValue: Int? { RJSLib.Convert.toInt(self) }
-    var dateValue: Date? { RJSLib.Convert.toDate("\(self)" as AnyObject) }
+    var cgFloatValue: CGFloat? { RJS_Convert.toCGFloat(self) }
+    var boolValue: Bool? { RJS_Convert.toBool(self) }
+    var doubleValue: Double? { RJS_Convert.toDouble(self) }
+    var intValue: Int? { RJS_Convert.toInt(self) }
+    var dateValue: Date? { RJS_Convert.toDate("\(self)" as AnyObject) }
     var floatValue: Float? { floatValueA }
     var decimalValue: Decimal? {
         let decimalSeparator = Locale.current.decimalSeparator ?? "."
@@ -56,7 +56,7 @@ public extension String {
         return formatter.number(from: regexedString)?.decimalValue
     }
     
-    private var floatValueA: Float? { RJSLib.Convert.toFloat(self) }
+    private var floatValueA: Float? { RJS_Convert.toFloat(self) }
     private var floatValueB: CGFloat { CGFloat((self as NSString).floatValue) }
     
 }

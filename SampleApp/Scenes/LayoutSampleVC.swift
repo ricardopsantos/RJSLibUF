@@ -12,7 +12,11 @@ import RJSLibUFNetworking
 import RJSLibUFALayouts
 import RJSLibUFAppThemes
 
-#warning("RJSLibUFALayouts was deprecated on 2021 Jan and its not mantained anymore")
+//
+// RJSLibUFALayouts was deprecated on 2021 Jan and its not mantained anymore
+// RJSLibUFALayouts was deprecated on 2021 Jan and its not mantained anymore
+// RJSLibUFALayouts was deprecated on 2021 Jan and its not mantained anymore
+//
 
 struct Source1 {
     let title: String
@@ -143,7 +147,7 @@ extension LayoutSampleVC: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == collectionView1 {
-            let myCell = collectionView.dequeueReusableCell(withReuseIdentifier: AppConstants.cellIdentifier, for: indexPath as IndexPath)
+            let myCell = collectionView.dequeueReusableCell(withReuseIdentifier: RJS_Constants.cellIdentifier, for: indexPath as IndexPath)
             myCell.backgroundColor = UIColor.blue
             let item = dataSource1[indexPath.row]
             _ = myCell.subviews.map { $0.removeFromSuperview() }
@@ -156,7 +160,7 @@ extension LayoutSampleVC: UICollectionViewDataSource, UICollectionViewDelegate {
             label.rjsALayouts.setMargin(0, on: .right)
             return myCell
         } else {
-            let myCell = collectionView.dequeueReusableCell(withReuseIdentifier: AppConstants.cellIdentifier, for: indexPath as IndexPath)
+            let myCell = collectionView.dequeueReusableCell(withReuseIdentifier: RJS_Constants.cellIdentifier, for: indexPath as IndexPath)
             myCell.backgroundColor = UIColor.blue
             let item = dataSource2[indexPath.row]
             _ = myCell.subviews.map { $0.removeFromSuperview() }
