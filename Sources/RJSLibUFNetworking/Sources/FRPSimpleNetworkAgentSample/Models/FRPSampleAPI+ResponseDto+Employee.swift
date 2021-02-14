@@ -25,6 +25,4 @@ extension FRPSampleAPI.ResponseDto {
             case profileImage = "profile_image"
         }
     }
-    
-
 }

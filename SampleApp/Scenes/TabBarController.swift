@@ -25,5 +25,4 @@ class TabBarController: UITabBarController {
         tabVC.tabBarItem.title = tabName
         return tabVC
     }
-    }
-
+}

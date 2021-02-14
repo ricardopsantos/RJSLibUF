@@ -11,4 +11,3 @@ public extension FRPSampleAPI {
         private init() { }
     }
 }
-

@@ -42,4 +42,3 @@ class DesignablesVC: GenericViewController {
         self.view.backgroundColor = .white
     }
 }
-
