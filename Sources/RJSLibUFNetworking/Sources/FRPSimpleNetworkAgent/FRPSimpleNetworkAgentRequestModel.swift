@@ -7,6 +7,11 @@ import Foundation
 //
 import RJSLibUFBase
 
+//
+// FRPSimpleNetworkAgent was inspired on
+// https://www.vadimbulavin.com/modern-networking-in-swift-5-with-urlsession-combine-framework-and-codable/
+//
+
 public struct FRPSimpleNetworkAgentRequestModel {
     public let path: String
     public let httpMethod: RJS_HttpMethod

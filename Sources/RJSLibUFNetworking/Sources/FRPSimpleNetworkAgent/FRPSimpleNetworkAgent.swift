@@ -3,7 +3,10 @@ import Combine
 //
 import RJSLibUFBase
 
+//
+// FRPSimpleNetworkAgent was inspired on
 // https://www.vadimbulavin.com/modern-networking-in-swift-5-with-urlsession-combine-framework-and-codable/
+//
 
 /*
  Agent is a promise-based HTTP client. It fulfils and configures requests by passing a single URLRequest object to it.
@@ -18,10 +21,6 @@ import RJSLibUFBase
  6 - Deliver values on the main thread.
  7 - Erase publisher’s type and return an instance of AnyPublisher.
  */
-
-public protocol FRPSimpleNetworkAgentProtocol {
-    var agent: FRPSimpleNetworkAgent { get set }
-}
 
 public class FRPSimpleNetworkAgent {
     private var session: URLSession
@@ -52,7 +51,7 @@ public extension FRPSimpleNetworkAgent {
                 //RJS_Logs.error("\(result.response)")
                 if dumpResponse {
                     let response = String(decoding: result.data, as: UTF8.self).prefix(500)
-                    RJS_Logs.info("# Request: [\(requestDebugDump)]\n# \(response)", tag: .rjsLib)
+                    RJS_Logs.debug("# Request: [\(requestDebugDump)]\n# \(response)", tag: .rjsLib)
                 }
                 guard let httpResponse = result.response as? HTTPURLResponse, 200...299 ~= httpResponse.statusCode else {
                     if let code = (result.response as? HTTPURLResponse)?.statusCode {

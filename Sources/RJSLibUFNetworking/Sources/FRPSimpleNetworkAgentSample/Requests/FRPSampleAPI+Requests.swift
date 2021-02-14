@@ -22,17 +22,6 @@ extension FRPSampleAPI {
     }
 }
 
-// MARK: - FRPSampleAPI Private
-
-private extension FRPSampleAPI {
-    func run<T: Decodable>(request: URLRequest,
-                           decoder: JSONDecoder = JSONDecoder(),
-                           dumpResponse: Bool,
-                           reponseType: RJS_NetworkClientResponseFormat) -> AnyPublisher<T, RJS_FRPNetworkAgentAPIError> {
-        return agent.run(request, decoder, dumpResponse, reponseType).map(\.value).eraseToAnyPublisher()
-    }
-}
-
 //
 // MARK: - RequestsBuilder
 //

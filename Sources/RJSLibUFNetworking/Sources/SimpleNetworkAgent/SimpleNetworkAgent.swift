@@ -6,6 +6,7 @@
 // swiftlint:disable no_print
 
 import Foundation
+import Combine
 //
 import RJSLibUFBase
 
