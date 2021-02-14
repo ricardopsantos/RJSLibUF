@@ -28,10 +28,10 @@ public typealias RJS_Reachability  = RJSLib.NetworkUtils.Reachability
 
 // MARK: - Designables
 
-public typealias RJS_Designables                   = RJSLib.Designables
 #if !os(macOS)
-public typealias RJS_Designables_SearchBar         = RJSLib.Designables.SearchBar
-public typealias RJS_Designables_ActivityIndicator = RJSLib.Designables.ActivityIndicator
+public typealias RJS_Designables           = RJSLib.Designables
+public typealias RJS_Designables_UIKit     = RJSLib.Designables.UIKit
+public typealias RJS_Designables_SwiftUI   = RJSLib.Designables.SwiftUI
 #endif
 
 // MARK: - Cool Stuff

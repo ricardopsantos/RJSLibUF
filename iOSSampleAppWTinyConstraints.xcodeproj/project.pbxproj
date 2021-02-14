@@ -10,6 +10,7 @@
 		27D0EBBC602FF4E086909087 /* Auxiliar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC078F18752D6A135FCC01E /* Auxiliar.swift */; };
 		45ED068E12BD37DC9FA64C04 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6DA7FA2D08AB8FDB9FDAC6 /* AppDelegate.swift */; };
 		463B08C465B46385B62B84AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 799024543E956718551DC35C /* Assets.xcassets */; };
+		486ABF7DFCB8AC365C97D19F /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869856C15B54DFA18D52F9C4 /* TabBarController.swift */; };
 		4956F93E4BC4BEB862D45FA5 /* TinyConstraints in Frameworks */ = {isa = PBXBuildFile; productRef = 8311A9BDB584A1BF85FD9450 /* TinyConstraints */; };
 		53124699229D7E1C896A1B09 /* RJSLibUFNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = 249EAE18231303D84827373E /* RJSLibUFNetworking */; };
 		59DF9C57CCC0BB61EACCEEEB /* DesignLanguageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CDC0583743D0E47BB4C122 /* DesignLanguageVC.swift */; };
@@ -17,6 +18,7 @@
 		686C3852EF159214823075A8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CD0E476AD756A1463A244EC /* LaunchScreen.storyboard */; };
 		75754F890D6EA40C4E20D523 /* RJSLibUFALayouts in Frameworks */ = {isa = PBXBuildFile; productRef = 1D5EADB6777D336A45D6133C /* RJSLibUFALayouts */; };
 		A1D5A6E1722563DFE50BF6F6 /* RJSLibUFBase in Frameworks */ = {isa = PBXBuildFile; productRef = 03F9AD62F05DBC40AACAFAD9 /* RJSLibUFBase */; };
+		A57C5F389F91FB7862481A32 /* DesignablesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1BA092559F4AD6A246308C /* DesignablesVC.swift */; };
 		DF55158E7BBF35EE9258CEBC /* RJSLibUFStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 51ACB304684BDA2646D9E822 /* RJSLibUFStorage */; };
 		E7F3CB05AFC82D8949674ED3 /* LayoutSampleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47EB589AF1099AE0BF3CAA6 /* LayoutSampleVC.swift */; };
 		F35764E2C06855F7AC45D2D0 /* RJSLibUFStorage in Frameworks */ = {isa = PBXBuildFile; productRef = A7A0450F52CE5CC507C67047 /* RJSLibUFStorage */; };
@@ -26,8 +28,10 @@
 		13FB2A3B6C4F1F9863706616 /* iOSSampleAppWTinyConstraints.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = iOSSampleAppWTinyConstraints.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		360235B11BCE8292EA36E824 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		3A344F922672643D6EF6EFF1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4F1BA092559F4AD6A246308C /* DesignablesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignablesVC.swift; sourceTree = "<group>"; };
 		6E6DA7FA2D08AB8FDB9FDAC6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		799024543E956718551DC35C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		869856C15B54DFA18D52F9C4 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		A4C58C98572262FFB23D967F /* SampleApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SampleApp.entitlements; sourceTree = "<group>"; };
 		B47EB589AF1099AE0BF3CAA6 /* LayoutSampleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutSampleVC.swift; sourceTree = "<group>"; };
 		F0CDC0583743D0E47BB4C122 /* DesignLanguageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignLanguageVC.swift; sourceTree = "<group>"; };
@@ -63,8 +67,10 @@
 		3FD0853DB68366FDF576223C /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				4F1BA092559F4AD6A246308C /* DesignablesVC.swift */,
 				F0CDC0583743D0E47BB4C122 /* DesignLanguageVC.swift */,
 				B47EB589AF1099AE0BF3CAA6 /* LayoutSampleVC.swift */,
+				869856C15B54DFA18D52F9C4 /* TabBarController.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -179,7 +185,9 @@
 				45ED068E12BD37DC9FA64C04 /* AppDelegate.swift in Sources */,
 				27D0EBBC602FF4E086909087 /* Auxiliar.swift in Sources */,
 				59DF9C57CCC0BB61EACCEEEB /* DesignLanguageVC.swift in Sources */,
+				A57C5F389F91FB7862481A32 /* DesignablesVC.swift in Sources */,
 				E7F3CB05AFC82D8949674ED3 /* LayoutSampleVC.swift in Sources */,
+				486ABF7DFCB8AC365C97D19F /* TabBarController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

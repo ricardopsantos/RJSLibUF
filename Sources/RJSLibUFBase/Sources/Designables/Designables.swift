@@ -8,3 +8,15 @@ extension RJSLib {
         private init() {}
     }
 }
+
+extension RJSLib.Designables {
+    public struct UIKit {
+        private init() {}
+    }
+}
+
+extension RJSLib.Designables {
+    public struct SwiftUI {
+        private init() {}
+    }
+}

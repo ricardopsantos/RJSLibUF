@@ -7,7 +7,7 @@
 import Foundation
 import UIKit
 
-public extension RJSLib.Designables {
+public extension RJSLib.Designables.UIKit {
     
     class SearchBar: UISearchBar, UISearchBarDelegate {
         

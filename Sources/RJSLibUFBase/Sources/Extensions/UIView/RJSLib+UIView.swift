@@ -10,12 +10,14 @@ import UIKit
 ///////////// UTILS DEV /////////////
 
 public extension RJSLibExtension where Target == UIView {
-    func startActivityIndicator() { RJS_Designables_ActivityIndicator.shared.showProgressView(view: self.target) }
-    func stopActivityIndicator() { RJS_Designables_ActivityIndicator.shared.hideProgressView() }
+    func startActivityIndicator(style: RJS_Designables_UIKit.ActivityIndicator.Style) {
+        RJS_Designables_UIKit.ActivityIndicator.shared.showProgressView(view: self.target, style: style)
+    }
+    func stopActivityIndicator() {
+        RJS_Designables_UIKit.ActivityIndicator.shared.hideProgressView()
+    }
 
-    var width: CGFloat { return self.target.width }
-    var height: CGFloat { return self.target.height }
-    func allSubviews<T: UIView>() -> [T] { return self.target.allSubviews() }
+    func allSubviews<T: UIView>() -> [T] { return self.target.getAllSubviews() }
     func destroy() { self.target.destroy() }
     func removeAllSubviews() { self.target.removeAllSubviews() }
     func disableUserInteractionFor(_ seconds: Double, disableAlpha: CGFloat=1) {
@@ -24,6 +26,18 @@ public extension RJSLibExtension where Target == UIView {
 }
 
 public extension UIView {
+    
+    func edgeToSuperView() {
+        guard let superview = superview else { return }
+        self.translatesAutoresizingMaskIntoConstraints = false
+        let constraints = [
+            self.topAnchor.constraint(equalTo: superview.topAnchor),
+            self.leftAnchor.constraint(equalTo: superview.leftAnchor),
+            self.bottomAnchor.constraint(equalTo: superview.bottomAnchor),
+            self.rightAnchor.constraint(equalTo: superview.rightAnchor)
+        ]
+        NSLayoutConstraint.activate(constraints)
+    }
     
     var width: CGFloat { return self.frame.width }
     var height: CGFloat { return self.frame.height }

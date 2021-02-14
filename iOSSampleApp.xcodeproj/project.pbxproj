@@ -18,15 +18,19 @@
 		A9F2067711B2910E32F9CFA3 /* DesignLanguageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD552CC59E7A56B45872F3 /* DesignLanguageVC.swift */; };
 		CF1096D5FEB3FBDBF8D83ACF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61114974D64A09F7845CC853 /* Assets.xcassets */; };
 		D6152E607ABC2B2EE4DAF396 /* RJSLibUFNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = 3D1D0262D4472B54E7A7C375 /* RJSLibUFNetworking */; };
+		E825CDDB022946DF36F5FC23 /* DesignablesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F27D3AB3ED038B213E3762B /* DesignablesVC.swift */; };
+		F3F4F86848C497966435443D /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45F6054FC568D635892D9E5 /* TabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1222A38CA1D980ABA250E196 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		2CDD552CC59E7A56B45872F3 /* DesignLanguageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignLanguageVC.swift; sourceTree = "<group>"; };
+		2F27D3AB3ED038B213E3762B /* DesignablesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignablesVC.swift; sourceTree = "<group>"; };
 		3B91CB910E050843DE439451 /* SampleApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SampleApp.entitlements; sourceTree = "<group>"; };
 		4A11E4594C0FA0041971632B /* LayoutSampleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutSampleVC.swift; sourceTree = "<group>"; };
 		54B452CD4C754EEACDA5C304 /* Auxiliar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auxiliar.swift; sourceTree = "<group>"; };
 		61114974D64A09F7845CC853 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C45F6054FC568D635892D9E5 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		C850013A6A17CB2B156A7F5F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2EC2B87F18CEF52A4E5B936 /* SampleApp.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = SampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9A33FF968EDCAB50893D9C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -73,8 +77,10 @@
 		74901F2E984F5BFD204B85AA /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				2F27D3AB3ED038B213E3762B /* DesignablesVC.swift */,
 				2CDD552CC59E7A56B45872F3 /* DesignLanguageVC.swift */,
 				4A11E4594C0FA0041971632B /* LayoutSampleVC.swift */,
+				C45F6054FC568D635892D9E5 /* TabBarController.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -172,7 +178,9 @@
 				3EDE17B59810354D00498610 /* AppDelegate.swift in Sources */,
 				65EBF1F6D99A9EB1B2B44FB9 /* Auxiliar.swift in Sources */,
 				A9F2067711B2910E32F9CFA3 /* DesignLanguageVC.swift in Sources */,
+				E825CDDB022946DF36F5FC23 /* DesignablesVC.swift in Sources */,
 				1005FC65B558C0BDF0C16016 /* LayoutSampleVC.swift in Sources */,
+				F3F4F86848C497966435443D /* TabBarController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
