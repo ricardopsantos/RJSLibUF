@@ -103,7 +103,7 @@
 		C2216693E2FAA9D7891FD6D6 /* DesignLanguageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC230213429314325192AF59 /* DesignLanguageVC.swift */; };
 		C29F2AF694D1F2AFE12C69D5 /* Combine+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F38550A8CC6C3DADF0D438E /* Combine+Extensions.swift */; };
 		C345DAA53C291F1F2B58EA04 /* RJSLibUFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD4DEAB85D959C8F029F2E0F /* RJSLibUFNetworking.framework */; };
-		C380DDB5A07D18C5D050FF4C /* BasicHttpGetClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37B1E06D2BD304AA97A0984 /* BasicHttpGetClient.swift */; };
+		C380DDB5A07D18C5D050FF4C /* BasicHttpGetAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37B1E06D2BD304AA97A0984 /* BasicHttpGetAgent.swift */; };
 		C38C67A53A51E50FA642C98F /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B17A5D2082CF3B09172D60 /* Logger.swift */; };
 		C46D9D612E854F46EFB93269 /* CacheProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF5A2A7667B69536AC80B30 /* CacheProtocols.swift */; };
 		C59DC37B0EF6EEFC5526770B /* FRPSampleAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37537855417BE4B538975D68 /* FRPSampleAPI.swift */; };
@@ -375,7 +375,7 @@
 		D89E707349666725E8E46048 /* RJSLib+UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RJSLib+UIView.swift"; sourceTree = "<group>"; };
 		DB1081E0C457B10140C16D18 /* UIDevice+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extensions.swift"; sourceTree = "<group>"; };
 		DD4DEAB85D959C8F029F2E0F /* RJSLibUFNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RJSLibUFNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E37B1E06D2BD304AA97A0984 /* BasicHttpGetClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicHttpGetClient.swift; sourceTree = "<group>"; };
+		E37B1E06D2BD304AA97A0984 /* BasicHttpGetAgent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicHttpGetAgent.swift; sourceTree = "<group>"; };
 		E835C9ACF89AA3962A7C3BF7 /* PointFreeFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointFreeFunctions.swift; sourceTree = "<group>"; };
 		E8F716AF5BB0E767F51DE1DF /* Auxiliar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auxiliar.swift; sourceTree = "<group>"; };
 		EA1A1D59C7677284BFE22E92 /* UIView+StackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+StackView.swift"; sourceTree = "<group>"; };
@@ -583,7 +583,7 @@
 		856819823BFD2EF7857FCC84 /* BasicHttpGetClient */ = {
 			isa = PBXGroup;
 			children = (
-				E37B1E06D2BD304AA97A0984 /* BasicHttpGetClient.swift */,
+				E37B1E06D2BD304AA97A0984 /* BasicHttpGetAgent.swift */,
 			);
 			path = BasicHttpGetClient;
 			sourceTree = "<group>";
@@ -624,7 +624,7 @@
 		928F87258D4EE7541DA87983 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				B0621B706416E24DCFF1021D /* AgentsShared */,
+				B0621B706416E24DCFF1021D /* NetworkAgentsSharedLogic */,
 				856819823BFD2EF7857FCC84 /* BasicHttpGetClient */,
 				E8160E79AD3F5522466D1223 /* FRPSimpleNetworkAgent */,
 				C053B616627D938C9DCCDD14 /* SimpleNetworkAgent */,
@@ -649,7 +649,7 @@
 			path = Scenes.Auxiliar;
 			sourceTree = "<group>";
 		};
-		B0621B706416E24DCFF1021D /* AgentsShared */ = {
+		B0621B706416E24DCFF1021D /* NetworkAgentsSharedLogic */ = {
 			isa = PBXGroup;
 			children = (
 				C18D3977749BCC51F16648DD /* E.FRPSimpleNetworkClientAPIError.swift */,
@@ -657,7 +657,7 @@
 				8030219D95E55B209268B832 /* NetworkAgentUtils.swift */,
 				562A57B9DB30F949BF45A7C4 /* E.ResponseFormat.swift */,
 			);
-			path = AgentsShared;
+			path = NetworkAgentsSharedLogic;
 			sourceTree = "<group>";
 		};
 		B4FEAB1FDDE32343F2665643 /* Models */ = {
@@ -1127,7 +1127,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C380DDB5A07D18C5D050FF4C /* BasicHttpGetClient.swift in Sources */,
+				C380DDB5A07D18C5D050FF4C /* BasicHttpGetAgent.swift in Sources */,
 				BEDD658CC7CD8AA6542E2611 /* FRPSampleAPI+RequestDto.swift in Sources */,
 				7A5BDF86B07D893CDB69500A /* FRPSampleAPI+Requests.swift in Sources */,
 				47238BF90F62F5A895E97FEB /* FRPSampleAPI+ResponseDto.swift in Sources */,

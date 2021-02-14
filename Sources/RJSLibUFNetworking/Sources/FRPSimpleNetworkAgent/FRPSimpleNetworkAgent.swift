@@ -24,8 +24,14 @@ public protocol FRPSimpleNetworkAgentProtocol {
 }
 
 public class FRPSimpleNetworkAgent {
-    private init() { self.session = .shared }
     private var session: URLSession
+    public init() {
+        if false {
+            self.session = .shared
+        } else {
+            self.session = URLSession.defaultForConnectivity
+        }
+    }
     public init(session: URLSession) {
         self.session = session
     }

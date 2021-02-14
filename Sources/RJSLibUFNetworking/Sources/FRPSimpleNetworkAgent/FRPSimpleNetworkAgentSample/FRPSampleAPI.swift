@@ -4,20 +4,13 @@
 //
 
 import Foundation
-import Combine
+//
+import RJSLibUFBase
 
 public class FRPSampleAPI: RJS_FRPNetworkAgentProtocol {
-    public var agent = RJS_FRPSimpleNetworkClient(session: URLSession.shared)
+    public var agent = RJS_FRPSimpleNetworkClient(session: URLSession.defaultForConnectivity)
+    
+    private var agent1 = RJS_FRPSimpleNetworkClient()
+    private var agent2 = RJS_FRPSimpleNetworkClient(session: URLSession.defaultForConnectivity)
+    private var agent3 = RJS_FRPSimpleNetworkClient(session: URLSession.shared)
 }
-
-// MARK: - Private
-
-extension FRPSampleAPI {
-    func run<T: Decodable>(request: URLRequest,
-                           decoder: JSONDecoder = JSONDecoder(),
-                           dumpResponse: Bool,
-                           reponseType: RJS_NetworkClientResponseFormat) -> AnyPublisher<T, RJS_FRPNetworkAgentAPIError> {
-        return agent.run(request, decoder, dumpResponse, reponseType).map(\.value).eraseToAnyPublisher()
-    }
-}
-

@@ -13,13 +13,23 @@ import CryptoKit
 extension FRPSampleAPI {
     func sampleRequestJSON(_ resquestDto: SampleRequest1Dto) -> AnyPublisher<SampleResponse1Dto, RJS_FRPNetworkAgentAPIError> {
         let request = FRPSampleAPI.RequestsBuilder.sampleRequestJSON(resquestDto)
-       // agent.run(request, decoder, dumpResponse, reponseType).map(\.value).eraseToAnyPublisher()
-        return run(request: request.urlRequest!, dumpResponse: false, reponseType: request.responseFormat)
+        return agent.run(request.urlRequest!, JSONDecoder(), false, request.responseFormat).map(\.value).eraseToAnyPublisher() // Not using extension
     }
     
     func sampleRequestCVS(_ resquestDto: SampleRequest2Dto) -> AnyPublisher<[SampleResponse2Dto], RJS_FRPNetworkAgentAPIError> {
         let request = FRPSampleAPI.RequestsBuilder.sampleRequestCSV(resquestDto)
-        return run(request: request.urlRequest!, dumpResponse: false, reponseType: request.responseFormat)
+        return run(request: request.urlRequest!, dumpResponse: false, reponseType: request.responseFormat) // Using extension
+    }
+}
+
+// MARK: - FRPSampleAPI Private
+
+private extension FRPSampleAPI {
+    func run<T: Decodable>(request: URLRequest,
+                           decoder: JSONDecoder = JSONDecoder(),
+                           dumpResponse: Bool,
+                           reponseType: RJS_NetworkClientResponseFormat) -> AnyPublisher<T, RJS_FRPNetworkAgentAPIError> {
+        return agent.run(request, decoder, dumpResponse, reponseType).map(\.value).eraseToAnyPublisher()
     }
 }
 

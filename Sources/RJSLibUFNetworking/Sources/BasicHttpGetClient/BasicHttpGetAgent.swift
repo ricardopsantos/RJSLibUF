@@ -12,7 +12,7 @@ import RJSLibUFBase
 
 extension RJSLib {
     
-    public struct BasicHttpGetClient {
+    public struct BasicHttpGetAgent {
         
         private init() {}
 
@@ -97,7 +97,7 @@ extension RJSLib {
     }
 }
 
-fileprivate extension RJSLib.BasicHttpGetClient {
+fileprivate extension RJSLib.BasicHttpGetAgent {
 
     struct BasicNetworkClientFileManager {
         static var destinyFolder: String {
