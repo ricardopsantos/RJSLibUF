@@ -135,8 +135,21 @@ public extension String {
 // MARK: - Utils
 //
 
-public extension String {
+public extension CustomStringConvertible where Self: Codable {
+    var description: String {
+        var description = "\n \(type(of: self)) \n"
+        let selfMirror = Mirror(reflecting: self)
+        for child in selfMirror.children {
+            if let propertyName = child.label {
+                description += "\(propertyName): \(child.value)\n"
+            }
+        }
+        return description
+    }
+}
 
+public extension String {
+    
     // let json = "{\"hello\": \"world\"}"
     // let dictFromJson = json.asDict
     var asDict: [String: Any]? {
