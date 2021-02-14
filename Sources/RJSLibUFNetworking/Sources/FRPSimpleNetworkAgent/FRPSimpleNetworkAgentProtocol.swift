@@ -19,7 +19,7 @@ public protocol FRPSimpleNetworkAgentProtocol {
     var agent: FRPSimpleNetworkAgent { get set }
 }
 
-extension FRPSimpleNetworkAgentProtocol {
+public extension FRPSimpleNetworkAgentProtocol {
     func run<T: Decodable>(request: URLRequest,
                            decoder: JSONDecoder = JSONDecoder(),
                            dumpResponse: Bool,
