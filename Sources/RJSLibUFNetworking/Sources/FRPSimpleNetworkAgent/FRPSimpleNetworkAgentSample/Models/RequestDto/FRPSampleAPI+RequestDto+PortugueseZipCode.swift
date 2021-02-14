@@ -6,16 +6,10 @@
 import Foundation
 import Combine
 
-// swiftlint:disable nesting
-
-public extension FRPSampleAPI {
-     struct RequestDto {
-        private init() { }
-    }
-}
+typealias SampleRequest2Dto = FRPSampleAPI.RequestDto.PortugueseZipCode
 
 extension FRPSampleAPI.RequestDto {
-    struct Sample {
-        let userID: String
+    struct PortugueseZipCode {
+        let someParam: String
     }
 }

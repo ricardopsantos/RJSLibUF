@@ -28,6 +28,19 @@ configs:
   Debug: debug
   Release: release
   
+####################### INCLUDE #######################
+####################### INCLUDE #######################
+####################### INCLUDE #######################
+ 
+include:
+  
+  ## Templates
+  - _FrameworkTemplate.yml
+  
+  ## Scripts
+  
+  - _SwiftLint.yml
+  
 ####################### SETTINGS #######################
 ####################### SETTINGS #######################  
 ####################### SETTINGS #######################
@@ -41,15 +54,6 @@ settings:
     Release: 
       ENABLE_BITCODE: YES
      
-targetTemplates:
-  Framework:
-    type: framework
-    platform: iOS
-    deploymentTarget: 13.0
-    settings:
-      base:
-        MARKETING_VERSION: 1.2.1
-
 ####################### TARGETS #######################
 ####################### TARGETS #######################  
 ####################### TARGETS #######################
@@ -78,14 +82,14 @@ targets:
         link: true
       - target: RJSLibUFStorage
         link: true
-    postCompileScripts:
-      - script: |
-                if which swiftlint >/dev/null; then
-                   swiftlint
-                else
-                   echo "warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint"
-                fi
-        name: Run SwiftLint
+#    postCompileScripts:
+#      - script: |
+#                if which swiftlint >/dev/null; then
+#                   swiftlint
+#                else
+#                   echo "warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint"
+#                fi
+#        name: Run SwiftLint
      
 ## RJSLibUF
      

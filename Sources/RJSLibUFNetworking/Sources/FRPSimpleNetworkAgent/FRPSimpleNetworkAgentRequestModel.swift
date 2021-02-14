@@ -7,7 +7,7 @@ import Foundation
 //
 import RJSLibUFBase
 
-public struct FRPSimpleNetworkClientRequestModel {
+public struct FRPSimpleNetworkAgentRequestModel {
     public let path: String
     public let httpMethod: RJS_HttpMethod
     public let httpBody: [String: String]?
@@ -30,7 +30,7 @@ public struct FRPSimpleNetworkClientRequestModel {
     }
 }
 
-public extension FRPSimpleNetworkClientRequestModel {
+public extension FRPSimpleNetworkAgentRequestModel {
 
     fileprivate static func toJSON<T: Codable>(some: T) -> String? {
         guard let data = try? JSONEncoder().encode(some.self) else { return nil }

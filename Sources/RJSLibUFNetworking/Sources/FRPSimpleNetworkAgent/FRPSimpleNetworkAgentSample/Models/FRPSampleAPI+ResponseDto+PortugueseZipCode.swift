@@ -4,34 +4,11 @@
 //
 
 import Foundation
-import Combine
 
-extension FRPSampleAPI {
-    public struct ResponseDto {
-        private init() { }
-    }
-}
+typealias SampleResponse2Dto = FRPSampleAPI.ResponseDto.PortugueseZipCode
 
 extension FRPSampleAPI.ResponseDto {
-    struct EmployeeServiceAvailability: Codable {
-        let status: String
-        let data: [Employee]
-    }
     
-    struct Employee: Codable {
-        let id, employeeName, employeeSalary, employeeAge: String
-        let profileImage: String
-
-        enum CodingKeys: String, CodingKey {
-            case id
-            case employeeName = "employee_name"
-            case employeeSalary = "employee_salary"
-            case employeeAge = "employee_age"
-            case profileImage = "profile_image"
-        }
-    }
-    
-    // MARK: - AvailabilityElement
     struct PortugueseZipCode: Codable {
         let codConcelho, codLocalidade, nomeLocalidade, codArteria: String?
         let codDistrito, tipoArteria: String?

@@ -39,7 +39,7 @@ public extension View {
     // https://stackoverflow.com/questions/56517813/how-to-print-to-xcode-console-in-swiftui
     func SwiftUIDebugPrint(_ vars: Any..., function: String=#function) -> some View {
         let wereWasIt = function
-        for some in vars { print("\(wereWasIt) : \(some)") }
+        for some in vars { RJS_Logs.debug("\(wereWasIt) : \(some)", tag: .rjsLib) }
         return EmptyView()
     }
 
@@ -56,8 +56,13 @@ public extension View {
         #endif
     }
 
-    // Perform { print("rendered") }
-    // Perform(if: true) { print("rendered") }
+    /**
+     ```
+     Perform { RJS_Logs.debug("rendered") }
+     Perform(if: true) { RJS_Logs.debug("rendered") }
+     ```
+     */
+
     func Perform(_ block: () -> Void) -> some View {
         block()
         return EmptyView()

@@ -13,6 +13,10 @@ import UIKit
 /**
  https://olegdreyman.medium.com/no-more-weak-self-or-the-weird-new-future-of-delegation-f2a2745cd73
  https://github.com/dreymonde/Delegated
+ 
+ __@AppStorage__
+ A property wrapper type that reflects a value from UserDefaults and invalidates a view on a change in value in that user default.
+ https://developer.apple.com/documentation/swiftui/appstorage
  */
 
 public extension RJSLib {
@@ -111,4 +115,3 @@ private extension RJSLib {
     }
 }
 #endif
-

@@ -6,7 +6,7 @@
 import Foundation
 import Combine
 
-public class FRPSampleAPI: RJS_FRPNetworkClientProtocol {
+public class FRPSampleAPI: RJS_FRPNetworkAgentProtocol {
     public var agent = RJS_FRPSimpleNetworkClient(session: URLSession.shared)
 }
 
@@ -16,7 +16,8 @@ extension FRPSampleAPI {
     func run<T: Decodable>(request: URLRequest,
                            decoder: JSONDecoder = JSONDecoder(),
                            dumpResponse: Bool,
-                           reponseType: RJS_NetworkClientResponseFormat) -> AnyPublisher<T, RJS_FRPNetworkClientAPIError> {
+                           reponseType: RJS_NetworkClientResponseFormat) -> AnyPublisher<T, RJS_FRPNetworkAgentAPIError> {
         return agent.run(request, decoder, dumpResponse, reponseType).map(\.value).eraseToAnyPublisher()
     }
 }
+

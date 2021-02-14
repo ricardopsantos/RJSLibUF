@@ -12,11 +12,11 @@ import RJSLibUFBase
 
 extension RJSLib {
     
-    public struct BasicNetworkClient {
+    public struct BasicHttpGetClient {
         
         private init() {}
 
-        public enum ImagesDownloadCachePolicy: Int {
+        public enum CachePolicy: Int {
             case none        // Dont use cache
             case cold        // Use cache, stored and persistent after app is closed (slow access)
             case hot         // Use cache, persistent only while app is open (fast access)
@@ -25,7 +25,7 @@ extension RJSLib {
 
         #if !os(macOS)
         private static var _imagesCache = NSCache<NSString, UIImage>()
-        public static func downloadImageFrom(_ imageURL: String, caching: ImagesDownloadCachePolicy = .hot, completion: @escaping ((UIImage?) -> Void)) {
+        public static func imageFrom(_ imageURL: String, caching: CachePolicy = .hot, completion: @escaping ((UIImage?) -> Void)) {
 
             func returnImage(_ image: UIImage?) {
                 DispatchQueue.main.async { completion(image) }
@@ -35,16 +35,17 @@ extension RJSLib {
                 return
             }
             let cachedImageName = "cached_image_" + Data(imageURL.utf8).base64EncodedString().self.replacingOccurrences(of: "=", with: "") + ".png"
-            if (caching == .hot || caching == .hotElseCold), let cachedImage = _imagesCache.object(forKey: cachedImageName as NSString) {
+            
+            if (caching == .hot || caching == .hotElseCold),
+               let cachedImage = _imagesCache.object(forKey: cachedImageName as NSString) {
                 // Try hot cache first, is faster
                 returnImage(cachedImage)
                 return
-            } else if (caching == .cold || caching == .hotElseCold), let cachedImage = BasicNetworkClientFileManager.imageWith(name: cachedImageName) {
+            } else if (caching == .cold || caching == .hotElseCold),
+                      let cachedImage = BasicNetworkClientFileManager.imageWith(name: cachedImageName) {
                 returnImage(cachedImage)
                 return
-            } else
-
-            if let data = try? Data(contentsOf: url), let image = UIImage(data: data) {
+            } else if let data = try? Data(contentsOf: url), let image = UIImage(data: data) {
                 returnImage(image)
                 if caching == .cold || caching == .hotElseCold {
                     _ = BasicNetworkClientFileManager.saveImageWith(name: cachedImageName, image: image)
@@ -57,7 +58,7 @@ extension RJSLib {
         #endif
         
         /// this function is fetching the json from URL
-        public static func getDataFrom(urlString: String, completion:@escaping ((Data?, Bool) -> Void)) {
+        public static func dataFrom(urlString: String, completion:@escaping ((Data?, Bool) -> Void)) {
             guard let url = URL(string: urlString) else {
                 assertionFailure("Invalid url : \(urlString)")
                 completion(nil, false)
@@ -78,8 +79,8 @@ extension RJSLib {
         }
         
         /// Returns in success, Dictionary<String, Any> or [Dictionary<String, Any>]
-        public static func getJSONFrom(urlString: String, completion: @escaping ((AnyObject?, Bool) -> Void)) {
-            getDataFrom(urlString: urlString) { (data, success) in
+        public static func JSONFrom(urlString: String, completion: @escaping ((AnyObject?, Bool) -> Void)) {
+            dataFrom(urlString: urlString) { (data, success) in
                 guard success else {
                     completion(nil, success)
                     return
@@ -96,7 +97,7 @@ extension RJSLib {
     }
 }
 
-fileprivate extension RJSLib.BasicNetworkClient {
+fileprivate extension RJSLib.BasicHttpGetClient {
 
     struct BasicNetworkClientFileManager {
         static var destinyFolder: String {

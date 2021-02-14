@@ -19,7 +19,7 @@ import RJSLibUFBase
  7 - Erase publisher’s type and return an instance of AnyPublisher.
  */
 
-public protocol FRPSimpleNetworkClientProtocol {
+public protocol FRPSimpleNetworkAgentProtocol {
     var agent: FRPSimpleNetworkAgent { get set }
 }
 

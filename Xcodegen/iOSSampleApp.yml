@@ -20,13 +20,7 @@ options:
 packages:
   RJSLibUF:
     url: https://github.com/ricardopsantos/RJSLibUF
-    #from: 1.0.0
-    #branch: develop
     revision: 11aeb1417d0f32d74bb9576a98149699c9871617
-    
-#  TinyConstraints:
-#    url: https://github.com/roberthein/TinyConstraints
-#    branch: master
     
 ####################### SETTINGS #######################   
     
@@ -63,6 +57,3 @@ targets:
       - package: RJSLibUF
         product: RJSLibUFStorage
         link: true
-        
-#      - package: TinyConstraints
-#        product: TinyConstraints

@@ -17,9 +17,10 @@ public extension FRPSampleAPI {
     static func doTest() {
         let api: FRPSampleAPI = FRPSampleAPI()
         
-        let requestDto = FRPSampleAPI.RequestDto.Sample(userID: "")
-        let publisherA = api.sampleRequestCVS(requestDto)
-        let publisherB = api.sampleRequestJSON(requestDto)
+        let request1Dto = SampleRequest1Dto(someParam: "aaa")
+        let request2Dto = SampleRequest2Dto(someParam: "aaa")
+        let publisherA = api.sampleRequestCVS(request2Dto)
+        let publisherB = api.sampleRequestJSON(request1Dto)
 
         publisherA.sink { (_) in
             //RJS_Logs.info(result)

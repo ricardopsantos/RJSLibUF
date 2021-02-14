@@ -6,6 +6,8 @@
 import Foundation
 import SystemConfiguration
 
+// swiftlint:disable orphaned_doc_comment
+
 /**
 * https://avdyushin.ru/posts/swift-property-wrappers/
 * https://medium.com/@anuragajwani/dependency-injection-in-ios-and-swift-using-property-wrappers-f411117cfdcf
