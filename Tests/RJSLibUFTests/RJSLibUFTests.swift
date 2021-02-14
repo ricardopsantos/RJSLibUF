@@ -178,7 +178,7 @@ class RJSLibUFTests: XCTestCase {
             }
         }
 
-        RJS_BasicHttpGetClient.imageFrom(tImageURL, caching: .cold) { (image) in
+        RJS_BasicHttpGetAgent.imageFrom(tImageURL, caching: .cold) { (image) in
             XCTAssert(image != nil)
             doTestIn(folder: .documents, image: image!)
             doTestIn(folder: .temp, image: image!)
@@ -193,7 +193,7 @@ class RJSLibUFTests: XCTestCase {
         
         let api: FRPSampleAPI = FRPSampleAPI()
         
-        let requestDto = FRPSampleAPI.RequestDto.Sample(userID: "")
+        let requestDto = FRPSampleAPI.RequestDto.PortugueseZipCode(someParam: "")
         let publisher  = api.sampleRequestCVS(requestDto)
       
         publisher.sink { (result) in
@@ -216,7 +216,7 @@ class RJSLibUFTests: XCTestCase {
         
         let api: FRPSampleAPI = FRPSampleAPI()
         
-        let requestDto = FRPSampleAPI.RequestDto.Sample(userID: "")
+        let requestDto = FRPSampleAPI.RequestDto.Employee(someParam: "")
         let publisher = api.sampleRequestJSON(requestDto)
 
         publisher.sink { (result) in
@@ -290,14 +290,14 @@ class RJSLibUFTests: XCTestCase {
 
     func test_BasicNetworkClient() {
         let expectation = self.expectation(description: #function)
-        RJS_BasicHttpGetClient.dataFrom(urlString: tImageURL) { (data, success) in
+        RJS_BasicHttpGetAgent.dataFrom(urlString: tImageURL) { (data, success) in
             XCTAssert(data != nil)
             XCTAssert(success)
-            RJS_BasicHttpGetClient.JSONFrom(urlString: tJSONURL, completion: { (some, success) in
+            RJS_BasicHttpGetAgent.JSONFrom(urlString: tJSONURL, completion: { (some, success) in
                 XCTAssert(some != nil)
                 XCTAssert(success)
                 #if !os(macOS)
-                RJS_BasicHttpGetClient.imageFrom(tImageURL, completion: { (image) in
+                RJS_BasicHttpGetAgent.imageFrom(tImageURL, completion: { (image) in
                     XCTAssert(image != nil)
                     expectation.fulfill()
                 })
