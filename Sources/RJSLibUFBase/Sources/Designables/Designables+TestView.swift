@@ -12,6 +12,20 @@ public extension RJSLib.Designables {
     struct TestViews {
         private init() {}
                 
+        public class SomeDelegate: ObservableObject {
+            public init() { }
+            public var willChange = PassthroughSubject<SomeDelegate, Never>()
+            public var didChange = PassthroughSubject<SomeDelegate, Never>()
+            public var someValue: String? {
+                willSet {
+                    willChange.send(self)
+                }
+                didSet {
+                    didChange.send(self)
+                }
+            }
+        }
+        
         public struct SwiftUI: View {
             public init(delegate: SomeDelegate) {
                 self.delegate = delegate
@@ -45,19 +59,7 @@ public extension RJSLib.Designables {
     }
 }
 
-public class SomeDelegate: ObservableObject {
-    public init() { }
-    public var willChange = PassthroughSubject<SomeDelegate, Never>()
-    public var didChange = PassthroughSubject<SomeDelegate, Never>()
-    public var someValue: String? {
-        willSet {
-            willChange.send(self)
-        }
-        didSet {
-            didChange.send(self)
-        }
-    }
-}
+
 
 //
 // MARK: - Previews
@@ -75,7 +77,7 @@ private struct UIKitViewToSwiftUIView: UIViewRepresentable {
 struct Previews_TestViews {
     struct Preview1: PreviewProvider {
         public static var previews: some View {
-            RJSLib.Designables.TestViews.SwiftUI(delegate: SomeDelegate())
+            RJSLib.Designables.TestViews.SwiftUI(delegate: RJSLib.Designables.TestViews.SomeDelegate())
         }
     }
     
