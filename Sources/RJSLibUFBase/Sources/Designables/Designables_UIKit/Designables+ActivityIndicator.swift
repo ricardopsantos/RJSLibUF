@@ -36,7 +36,21 @@ public extension RJSLib.Designables.UIKit {
             }
             containerView.tag = RJS_Constants.Tags.progressView
             view.addSubview(containerView)
-            containerView.edgeToSuperView()
+            
+            if true {
+                containerView.edgeToSuperView()
+            } else {
+                containerView.backgroundColor = .blue
+                containerView.translatesAutoresizingMaskIntoConstraints = false
+                //containerView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+                //containerView.widthAnchor.constraint(equalToConstant: 50).isActive = true
+                containerView.heightAnchor.constraint(equalTo: view.heightAnchor, constant: 0.2).isActive = true
+                containerView.widthAnchor.constraint(equalTo: view.widthAnchor, constant: 0.2).isActive = true
+                
+                containerView.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 1).isActive = true
+                containerView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 1).isActive = true
+            }
+            
             let animationPack1 = RJS_Designables_SwiftUI.LoadingAnimations.Pack1.self
             let animationPack2 = RJS_Designables_SwiftUI.LoadingAnimations.Pack2.self
             switch style {

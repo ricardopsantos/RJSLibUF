@@ -6,6 +6,11 @@
 import Foundation
 import SwiftUI
 
+//
+// References:
+// https://www.avanderlee.com/swiftui/integrating-swiftui-with-uikit/
+//
+
 public extension View {
     
     // SwiftUIView -> UIViewController
@@ -15,67 +20,53 @@ public extension View {
     
     // SwiftUIView -> UIView
     var uiView: UIView {
-        UIHostingController(rootView: self).view
+        viewController.view
     }
 }
 
 public extension UIView {
     
-    // https://www.avanderlee.com/swiftui/integrating-swiftui-with-uikit/
     func addSubSwiftUIView<Content>(_ swiftUIView: Content) where Content: View {
-        let hostingController = UIHostingController(rootView: swiftUIView)
-
-        /// Add as a child of the current view controller.
-        self.addSubview(hostingController.view)
-
-        /// Setup the constraints to update the SwiftUI view boundaries.
-        hostingController.view.translatesAutoresizingMaskIntoConstraints = false
-        let constraints = [
-            hostingController.view.topAnchor.constraint(equalTo: self.topAnchor),
-            hostingController.view.leftAnchor.constraint(equalTo: self.leftAnchor),
-            self.bottomAnchor.constraint(equalTo: hostingController.view.bottomAnchor),
-            self.rightAnchor.constraint(equalTo: hostingController.view.rightAnchor)
-        ]
-        NSLayoutConstraint.activate(constraints)
+        if let view = swiftUIView.viewController.view {
+            self.addSubview(view)
+            view.edgeToSuperView()
+        }
     }
 }
 
 public extension UIViewController {
 
-    func presentSwiftUIView<Content>(_ swiftUIView: Content,
-                                     animated: Bool,
-                                     completion: (() -> Void)? = nil) where Content: View {
-        let hostingController = UIHostingController(rootView: swiftUIView)
-        present(hostingController, animated: animated, completion: completion)
-    }
-    
     /// Add a SwiftUI `View` as a child of the input `UIView`.
     /// - Parameters:
     ///   - swiftUIView: The SwiftUI `View` to add as a child.
     ///   - view: The `UIView` instance to which the view should be added.
-    /// https://www.avanderlee.com/swiftui/integrating-swiftui-with-uikit/
     func addSubSwiftUIView<Content>(_ swiftUIView: Content, to view: UIView) where Content: View {
-        let hostingController = UIHostingController(rootView: swiftUIView)
+        let hostingController = swiftUIView.viewController
+        if let newView = hostingController.view {
+            
+            /// Add as a child of the current view controller.
+            addChild(hostingController)
 
-        /// Add as a child of the current view controller.
-        addChild(hostingController)
+            /// Add the SwiftUI view to the view controller view hierarchy.
+            view.addSubview(newView)
+            newView.edgeToSuperView()
 
-        /// Add the SwiftUI view to the view controller view hierarchy.
-        view.addSubview(hostingController.view)
-
-        /// Setup the contraints to update the SwiftUI view boundaries.
-        hostingController.view.translatesAutoresizingMaskIntoConstraints = false
-        let constraints = [
-            hostingController.view.topAnchor.constraint(equalTo: view.topAnchor),
-            hostingController.view.leftAnchor.constraint(equalTo: view.leftAnchor),
-            view.bottomAnchor.constraint(equalTo: hostingController.view.bottomAnchor),
-            view.rightAnchor.constraint(equalTo: hostingController.view.rightAnchor)
-        ]
-
-        NSLayoutConstraint.activate(constraints)
-
-        /// Notify the hosting controller that it has been moved to the current view controller.
-        hostingController.didMove(toParent: self)
+            /// Notify the hosting controller that it has been moved to the current view controller.
+            hostingController.didMove(toParent: self)
+        }
+    }
+    
+    func addSubSwiftUIView<Content>(_ swiftUIView: Content) where Content: View {
+        addSubSwiftUIView(swiftUIView, to: view)
+    }
+    
+    func presentSwiftUIView<Content>(_ swiftUIView: Content,
+                                     modalPresentationStyle: UIModalPresentationStyle = .fullScreen,
+                                     animated: Bool,
+                                     completion: (() -> Void)? = nil) where Content: View {
+        let viewController = swiftUIView.viewController
+        viewController.modalPresentationStyle = modalPresentationStyle
+        present(swiftUIView.viewController, animated: animated, completion: completion)
     }
 }
 #endif

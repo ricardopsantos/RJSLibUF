@@ -233,6 +233,9 @@ public extension RJPSLayouts where Target: UIView {
             return activate(constraint: constraint, identifier: "id__same_\(property)_as_x", priority: priority)
         } else {
             switch property {
+            case .center :
+                tView.centerXAnchor.constraint(equalTo: toItem.centerXAnchor, constant: constant).isActive = true
+                tView.centerYAnchor.constraint(equalTo: toItem.centerYAnchor, constant: constant).isActive = true
             case .centerX : tView.centerXAnchor.constraint(equalTo: toItem.centerXAnchor, constant: constant).isActive = true
             case .centerY : tView.centerYAnchor.constraint(equalTo: toItem.centerYAnchor, constant: constant).isActive = true
             case .height  : tView.heightAnchor.constraint(equalTo: toItem.heightAnchor, constant: constant * multiplier).isActive = true
@@ -241,8 +244,6 @@ public extension RJPSLayouts where Target: UIView {
             case .bottom  : tView.bottomAnchor.constraint(equalTo: toItem.bottomAnchor, constant: constant).isActive = true
             case .left, .tailing : tView.trailingAnchor.constraint(equalTo: toItem.trailingAnchor, constant: constant).isActive = true
             case .right, .leading : tView.leadingAnchor.constraint(equalTo: toItem.leadingAnchor, constant: constant).isActive = true
-            default:
-                _ = 1
             }
             return nil
         }

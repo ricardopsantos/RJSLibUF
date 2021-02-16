@@ -14,6 +14,14 @@ public extension RJSLibExtension where Target == UIView {
         self.target.addCorner(radius: radius)
     }
     
+    func addCornerCurve(method: CALayerCornerCurve, radius: CGFloat) {
+        self.target.addCornerCurve(method: method, radius: radius)
+    }
+    
+    func addBorder(width: CGFloat, color: UIColor) {
+        self.target.addBorder(width: width, color: color)
+    }
+    
     func addBlur(style: UIBlurEffect.Style = .dark) -> UIVisualEffectView {
         self.target.addBlur(style: style)
     }
@@ -25,11 +33,21 @@ public extension RJSLibExtension where Target == UIView {
 
 public extension UIView {
         
-    // this functions is duplicated
-    func addCorner(radius: CGFloat) {
+    func addBorder(width: CGFloat, color: UIColor) {
+        self.layer.borderWidth = width
+        self.layer.borderColor = color.cgColor
+        self.clipsToBounds     = true
         self.layoutIfNeeded()
+    }
+    func addCornerCurve(method: CALayerCornerCurve = .circular, radius: CGFloat = 34) {
+        self.layer.cornerCurve = method // .continuous | .circular
         self.layer.cornerRadius = radius
         self.layer.masksToBounds = true
+        self.layoutIfNeeded()
+    }
+    
+    func addCorner(radius: CGFloat) {
+        addCornerCurve(method: .circular, radius: radius)
     }
     
     // this functions is duplicated

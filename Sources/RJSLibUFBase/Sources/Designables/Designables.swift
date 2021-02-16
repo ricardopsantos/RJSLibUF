@@ -25,7 +25,8 @@ public extension RJSLib.Designables {
     struct TestViews {
         private init() {}
         
-        struct SwiftUI: View {
+        public struct SwiftUI: View {
+            public init() { }
             public var body: some View {
                 VStack {
                     Text(String.random(100)).padding()
