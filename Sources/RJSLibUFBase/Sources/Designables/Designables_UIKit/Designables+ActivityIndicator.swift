@@ -20,6 +20,9 @@ public extension RJSLib.Designables.UIKit {
            case horizontalSlidingBar
            case verticalBar
            case cicleWithWaves
+           case pack2_1
+           case pack2_2
+           case pack2_3
         }
         
         private var containerView = UIView()
@@ -34,11 +37,16 @@ public extension RJSLib.Designables.UIKit {
             containerView.tag = RJS_Constants.Tags.progressView
             view.addSubview(containerView)
             containerView.edgeToSuperView()
+            let animationPack1 = RJS_Designables_SwiftUI.LoadingAnimations.Pack1.self
+            let animationPack2 = RJS_Designables_SwiftUI.LoadingAnimations.Pack2.self
             switch style {
-            case .slidingCircles: containerView.addSubSwiftUIView(RJS_Designables_SwiftUI.SlidingCircles())
-            case .horizontalSlidingBar: containerView.addSubSwiftUIView(RJS_Designables_SwiftUI.HorizontalSlidingBar())
-            case .verticalBar: containerView.addSubSwiftUIView(RJS_Designables_SwiftUI.VerticalBar())
-            case .cicleWithWaves: containerView.addSubSwiftUIView(RJS_Designables_SwiftUI.CicleWithWaves())
+            case .slidingCircles: containerView.addSubSwiftUIView(animationPack1.SlidingCircles())
+            case .horizontalSlidingBar: containerView.addSubSwiftUIView(animationPack1.HorizontalSlidingBar())
+            case .verticalBar: containerView.addSubSwiftUIView(animationPack1.VerticalBar())
+            case .cicleWithWaves: containerView.addSubSwiftUIView(animationPack1.CicleWithWaves())
+            case .pack2_1: containerView.addSubSwiftUIView(animationPack2.ActivityIndicator_V1(isAnimating: true))
+            case .pack2_2: containerView.addSubSwiftUIView(animationPack2.ActivityIndicator_V2(isAnimating: .constant(true)))
+            case .pack2_3: _ = 1//containerView.addSubSwiftUIView(animationPack2.ActivityIndicator_V3())
             }
             UIView.animate(withDuration: RJS_Constants.defaultDelay, animations: { [weak self] in
                 self?.containerView.alpha = 1

@@ -6,6 +6,19 @@
 import Foundation
 import SwiftUI
 
+public extension View {
+    
+    // SwiftUIView -> UIViewController
+    var viewController: UIViewController {
+        UIHostingController(rootView: self)
+    }
+    
+    // SwiftUIView -> UIView
+    var uiView: UIView {
+        UIHostingController(rootView: self).view
+    }
+}
+
 public extension UIView {
     
     // https://www.avanderlee.com/swiftui/integrating-swiftui-with-uikit/
@@ -29,6 +42,13 @@ public extension UIView {
 
 public extension UIViewController {
 
+    func presentSwiftUIView<Content>(_ swiftUIView: Content,
+                                     animated: Bool,
+                                     completion: (() -> Void)? = nil) where Content: View {
+        let hostingController = UIHostingController(rootView: swiftUIView)
+        present(hostingController, animated: animated, completion: completion)
+    }
+    
     /// Add a SwiftUI `View` as a child of the input `UIView`.
     /// - Parameters:
     ///   - swiftUIView: The SwiftUI `View` to add as a child.

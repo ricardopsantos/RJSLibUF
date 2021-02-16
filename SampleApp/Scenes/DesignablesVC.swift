@@ -27,14 +27,18 @@ class DesignablesVC: GenericViewController {
         super.viewWillAppear(animated)
     }
 
+    func displayLoading(style: RJS_Designables_UIKit.ActivityIndicator.Style) {
+        view.rjs.startActivityIndicator(style: style)
+        RJS_Utils.delay(2) {  [weak self] in
+            self?.view.rjs.stopActivityIndicator()
+        }
+    }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        RJS_Utils.delay(0.1) { [weak self] in
-            self?.view.rjs.startActivityIndicator(style: .slidingCircles)
-            RJS_Utils.delay(3) {  [weak self] in
-                self?.view.rjs.stopActivityIndicator()
-            }
+        displayLoading(style: .slidingCircles)
+        RJS_Utils.delay(3) { [weak self] in
+            self?.displayLoading(style: .pack2_2)
         }
     }
     

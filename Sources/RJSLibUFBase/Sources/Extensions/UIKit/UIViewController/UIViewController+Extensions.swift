@@ -12,17 +12,11 @@ public typealias RJSLoadedController    = (UIViewController?, NSError?) -> Void
 
 public extension RJSLibExtension where Target == UIViewController {
     func showAlert(title: String="Alert", message: String) { self.target.showAlert(title: title, message: message) }
-    func destroy() { self.target.destroy() }
     func dismissMe() { self.target.dismissMe() }
     func dismissAll() { self.target.dismissAll() }
 }
 
 public extension UIViewController {
-
-    static var topViewController: UIViewController {
-        return UIApplication.topViewController()!
-    }
-    var isVisible: Bool { return self.isViewLoaded && ((self.view.window) != nil) }
 
     //
     // UTILS
@@ -65,29 +59,6 @@ public extension UIViewController {
         }
     }
 
-    func destroy() {
-        self.children.forEach({ (some) in
-            some.destroy()
-        })
-        self.willMove(toParent: nil)
-        self.view.rjs.destroy()
-        self.removeFromParent()
-        NotificationCenter.default.removeObserver(self) // Remove from all notifications being observed
-
-    }
-
-    static func controllerWith(identifier: String,
-                               storyboard: String="Main") -> UIViewController? {
-        let storyBoard = UIStoryboard(name: storyboard, bundle: nil)
-        let controller = storyBoard.instantiateViewController(withIdentifier: identifier)
-        controller.modalPresentationStyle = .custom
-        return controller
-    }
-
-    //
-    // PRESENT VIEW CONTROLLERS ZONE
-    //
-
     static func present(controller: UIViewController,
                         sender: UIViewController,
                         modalTransitionStyle: UIModalTransitionStyle = .coverVertical,
@@ -101,15 +72,11 @@ public extension UIViewController {
 
     }
 
-    //
-    // LOAD VIEW CONTROLLERS ZONE
-    //
-
     static func loadViewControllerInContainedView(sender: UIViewController,
                                                   senderContainedView: UIView,
                                                   controller: UIViewController,
                                                   completion: RJSPresentedController) {
-        senderContainedView.removeAllSubviews()
+        senderContainedView.removeAllSubviewsRecursive()
         controller.willMove(toParent: sender)
         senderContainedView.addSubview(controller.view)
         sender.addChild(controller)
@@ -118,18 +85,5 @@ public extension UIViewController {
         completion(controller, nil)
     }
 
-    static func loadViewControllerInContainedView(sender: UIViewController,
-                                                  senderContainedView: UIView,
-                                                  controllerIdentifier: String,
-                                                  storyboard: String="Main",
-                                                  completion: RJSPresentedController) {
-        if let controller = UIViewController.controllerWith(identifier: controllerIdentifier, storyboard: storyboard) {
-            UIViewController.loadViewControllerInContainedView(sender: sender, senderContainedView: senderContainedView, controller: controller) { (controller, error) in
-                completion(controller, error)
-            }
-        } else {
-            completion(nil, nil)
-        }
-    }
 }
 #endif

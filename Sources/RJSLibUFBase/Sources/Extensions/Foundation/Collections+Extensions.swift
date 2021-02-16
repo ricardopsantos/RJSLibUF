@@ -20,3 +20,10 @@ public extension Array where Element: Hashable {
         return elements.filter { seen.insert($0).inserted }
     }
 }
+
+public extension RangeReplaceableCollection where Iterator.Element: Equatable {
+    // Remove first collection element that is equal to the given `object`:
+    mutating func removeObject(_ object: Iterator.Element) {
+        self = self.filter { return $0 != object }
+    }
+}

@@ -10,6 +10,14 @@ import Foundation
 #if !os(macOS)
 import UIKit
 
+public extension RJSLibExtension where Target == UIStackView {
+    func add(_ view: UIView) { self.target.add(view) }
+    func addSub(view: UIView) { self.target.addSub(view: view) }
+    func insertArrangedSubview(_ view: UIView, belowArrangedSubview subview: UIView) { self.target.insertArrangedSubview(view, belowArrangedSubview: subview) }
+    func insertArrangedSubview(_ view: UIView, aboveArrangedSubview subview: UIView) { self.target.insertArrangedSubview(view, aboveArrangedSubview: subview) }
+    func removeAllArrangedSubviews() { self.target.removeAllArrangedSubviews() }
+}
+
 public extension UIStackView {
 
     func add(_ view: UIView) {
@@ -41,9 +49,9 @@ public extension UIStackView {
     }
 
     func removeAllArrangedSubviews() {
-        let removedSubviews = arrangedSubviews.reduce([]) { (allSubviews, subview) -> [UIView] in
+        let removedSubviews = arrangedSubviews.reduce([]) { (allSubviewsRecursive, subview) -> [UIView] in
             self.removeArrangedSubview(subview)
-            return allSubviews + [subview]
+            return allSubviewsRecursive + [subview]
         }
         // Deactivate all constraints
         NSLayoutConstraint.deactivate(removedSubviews.flatMap({

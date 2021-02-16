@@ -9,6 +9,62 @@ import UIKit
 #endif
 import CommonCrypto
 
+public extension RJSLibExtension where Target == String {
+    var length: Int { self.target.length }
+    var first: String { self.target.first  }
+    var last: String { self.target.last }
+    var trim: String { self.target.trim }
+    var trimmedAndSingleSpaced: String { self.target.trimmedAndSingleSpaced }
+    
+    var capitalised: String { self.target.capitalised }
+    var encodedUrl: String? { self.target.encodedUrl }
+    var decodedUrl: String? { self.target.decodedUrl }
+    var reversed: String { self.target.reversed }
+    var base64Encoded: String { self.target.base64Encoded }
+    var base64Decoded: String? { self.target.base64Decoded }
+    
+    var utf8Data: Data? { self.target.utf8Data }
+    var cgFloatValue: CGFloat? { self.target.cgFloatValue }
+    var boolValue: Bool? { self.target.boolValue }
+    var doubleValue: Double? { self.target.doubleValue }
+    var intValue: Int? { self.target.intValue }
+    var dateValue: Date? { self.target.dateValue }
+    var floatValue: Float? { self.target.floatValue }
+    var decimalValue: Decimal? { self.target.decimalValue }
+    
+    var deterministicHashValue: Int { self.target.deterministicHashValue }
+    var sha1: String { self.target.sha1 }
+    var isValidEmail: Bool { self.target.isValidEmail }
+    var isAlphanumeric: Bool { self.target.isAlphanumeric }
+    var containsOnlyDigits: Bool { self.target.containsOnlyDigits }
+    func contains(subString: String, ignoreCase: Bool=true) -> Bool {
+        self.target.contains(subString: subString, ignoreCase: ignoreCase)
+    }
+    
+    var asDict: [String: Any]? { self.target.asDict }
+    var asAttributedString: NSAttributedString? { self.target.asAttributedString }
+    
+    #if !os(macOS)
+    func image(font: UIFont, size: CGSize = CGSize(width: 40, height: 40)) -> UIImage? {
+        self.target.image(font: font, size: size)
+    }
+    #endif
+    
+    func split(by: String) -> [String] { self.target.split(by: by) }
+    static func random(_ length: Int) -> String { String.random(length) }
+    
+    func replace(_ some: String, with: String) -> String {
+        self.target.replace(some, with: with)
+    }
+    
+    #if !os(macOS)
+    func htmlAttributedString(fontName: String, fontSize: Int, colorHex: String) -> NSAttributedString? {
+        self.target.htmlAttributedString(fontName: fontName, fontSize: fontSize, colorHex: colorHex)
+    }
+    #endif
+    
+}
+
 //
 // MARK: - Transformations / Operators
 //

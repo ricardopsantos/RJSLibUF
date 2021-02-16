@@ -7,11 +7,14 @@
 //
 
 #if !os(macOS)
-import Foundation
 import UIKit
 
 public extension UIApplication {
 
+    var topViewController: UIViewController? {
+        return UIApplication.topViewController()
+    }
+    
     class func topViewController(base: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
         if let nav = base as? UINavigationController {
             return topViewController(base: nav.visibleViewController)

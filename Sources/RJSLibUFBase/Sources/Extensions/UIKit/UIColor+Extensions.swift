@@ -11,6 +11,18 @@ import UIKit
 
 // MARK: - Vars
 
+public extension RJSLibExtension where Target == UIColor {
+    static var random: UIColor { UIColor.random }
+    var inverse: UIColor { self.target.inverse }
+    var uiColorStatic: UIColor { self.target.uiColorStatic  }
+    static func colorFromHexString(_ hexString: String, alpha: Float=1.0) -> UIColor {
+        UIColor.colorFromHexString(hexString, alpha: alpha)
+    }
+    static func colorFromRGBString(_ rgb: String) -> UIColor {
+        UIColor.colorFromRGBString(rgb)
+    }
+}
+
 public extension UIColor {
 
     var inverse: UIColor {

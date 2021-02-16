@@ -7,7 +7,40 @@
 import Foundation
 import UIKit
 
+public extension RJSLibExtension where Target == UIButton {
+    func paintImageWith(color: UIColor) { self.target.paintImageWith(color: color) }
+    func changeImageColor(to color: UIColor) { self.target.changeImageColor(to: color) }
+    func setImageForAllStates(_ image: UIImage, tintColor: UIColor?) { self.target.setImageForAllStates(image, tintColor: tintColor) }
+    func disable() { self.target.disable() }
+    func enable() { self.target.enable() }
+    func setTitleForAllStates(_ title: String) { self.target.setTitleForAllStates(title) }
+    func setTextColorForAllStates(_ color: UIColor) { self.target.setTextColorForAllStates(color) }
+}
+
 public extension UIButton {
+    
+    func paintImageWith(color: UIColor) {
+        changeImageColor(to: color)
+    }
+
+    /// Turn image into template image, and apply color
+    func changeImageColor(to color: UIColor) {
+        guard let origImage = self.image(for: state) else { return }
+        let tintedImage = origImage.withRenderingMode(.alwaysTemplate)
+        setImageForAllStates(tintedImage, tintColor: color)
+        tintColor = color
+    }
+
+    func setImageForAllStates(_ image: UIImage, tintColor: UIColor?) {
+        let tintedImage = (tintColor != nil) ? image.withRenderingMode(.alwaysTemplate) : image
+        setImage(tintedImage, for: .normal)
+        setImage(tintedImage, for: .disabled)
+        setImage(tintedImage, for: .highlighted)
+        setImage(tintedImage, for: .focused)
+        if tintColor != nil {
+            changeImageColor(to: tintColor!)
+        }
+    }
     
     func disable() {
         self.isUserInteractionEnabled = false
@@ -32,13 +65,14 @@ public extension UIButton {
         self.setTitleColor(color, for: .selected)
     }
     
-    private class ClosureSleeve {
-        let block: () -> Void
-        init (_ block: @escaping () -> Void) { self.block = block }
-        @objc func invoke () { block() }
-    }
-    
     func onTouchUpInside(autoDisableUserInteractionFor: Double=RJS_Constants.defaultDisableTimeAfterTap, block:@escaping () -> Void) {
+        
+        class ClosureSleeve {
+            let block: () -> Void
+            init (_ block: @escaping () -> Void) { self.block = block }
+            @objc func invoke () { block() }
+        }
+        
         self.disableUserInteractionFor(autoDisableUserInteractionFor)
         let sleeve = ClosureSleeve(block)
         addTarget(sleeve, action: #selector(ClosureSleeve.invoke), for: .touchUpInside)

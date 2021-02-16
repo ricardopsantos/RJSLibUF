@@ -11,6 +11,29 @@ public extension String {
     var detectDates: [Date]? { return try? NSDataDetector(types: NSTextCheckingResult.CheckingType.date.rawValue).matches(in: self, range: nsRange).compactMap { $0.date } }
 }
 
+public extension RJSLibExtension where Target == Date {
+    var seconds: Int { self.target.seconds }
+    var minutes: Int { self.target.minutes }
+    var hours: Int { self.target.hours }
+    var day: Int { self.target.day}
+    var month: Int { self.target.month}
+    var year: Int { self.target.year }
+    func add(seconds: Int) -> Date { self.target.add(seconds: seconds) }
+    func add(minutes: Int) -> Date { self.target.add(minutes: minutes) }
+    func add(hours: Int) -> Date { self.target.add(hours: hours) }
+    func add(days: Int) -> Date { self.target.add(days: days) }
+    func add(month: Int) -> Date { self.target.add(month: month) }
+    static func with(_ dateToParse: String, dateFormat: String="yyyy-MM-dd'T'HH:mm:ssXXX") -> Date? {
+        Date.with(dateToParse, dateFormat: dateFormat)
+    }
+    func isBiggerThan(_ dateToCompare: Date) -> Bool {
+        self.target.isBiggerThan(dateToCompare)
+    }
+    func timeAgoString(resources: [String]=["sec ago", "min ago", "hrs ago", "days ago", "weeks ago"]) -> String {
+        self.target.timeAgoString(resources: resources)
+    }
+}
+
 public extension Date {
 
     static var utcNow: Date { return Date() }

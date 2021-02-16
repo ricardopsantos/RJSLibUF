@@ -7,8 +7,13 @@
 //
 
 #if !os(macOS)
-import Foundation
 import UIKit
+
+public extension RJSLibExtension where Target == NSMutableAttributedString {
+    func setFontFace(font: UIFont, color: UIColor? = nil) {
+        self.target.setFontFace(font: font, color: color)
+    }
+}
 
 public extension NSMutableAttributedString {
      func setFontFace(font: UIFont, color: UIColor? = nil) {
