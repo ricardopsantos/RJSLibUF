@@ -23,24 +23,6 @@ public enum Result<T> {
     case failure(Error)
 }
 
-public typealias RJS_BasicNetworkClient     = RJSLib.BasicNetworkClient // Handles simple GETs (`func getDataFrom:`, `func getJSONFrom:`) and images download with caching
-
-public typealias RJS_SimpleNetworkClient    = RJSLib.SimpleNetworkClient // Handles "GET", POST, PUT, DELETE, Response decode and errors
-
-public typealias RJS_SimpleNetworkClientProtocol        = SimpleNetworkClient_Protocol
-public typealias RJS_SimpleNetworkClientRequestProtocol = SimpleNetworkClientRequest_Protocol
-public typealias RJS_SimpleNetworkClientResponse        = RJSLibNetworkClientResponse     // Response entity
-
-//
-// MARK: - FRP NetWork Clients (works with Functional Reactive Programing)
-//
-
-public typealias RJS_FRPSimpleNetworkClient = FRPSimpleNetworkAgent
-
-public typealias RJS_FRPNetworkClientProtocol     = FRPSimpleNetworkClientProtocol
-public typealias RJS_FRPNetworkClientRequestModel = FRPSimpleNetworkClientRequestModel
-public typealias RJS_FRPNetworkClientAPIError     = FRPSimpleNetworkClientAPIError
-
 public struct Response<T: Decodable> {
     public let value: T
     public let response: Any
@@ -49,6 +31,24 @@ public struct Response<T: Decodable> {
         self.response = response
     }
 }
+
+public typealias RJS_BasicHttpGetAgent = RJSLib.BasicHttpGetAgent // Handles simple GETs (`func getDataFrom:`, `func getJSONFrom:`) and images download with caching
+
+public typealias RJS_SimpleNetworkAgent = RJSLib.SimpleNetworkAgent // Handles "GET", POST, PUT, DELETE, Response decode and errors
+
+public typealias RJS_SimpleNetworkAgentProtocol        = SimpleNetworkClientProtocol
+public typealias RJS_SimpleNetworkAgentRequestProtocol = SimpleNetworkAgentRequestProtocol
+public typealias RJS_SimpleNetworkAgentResponse        = RJSLib.SimpleNetworkAgentResponse // Response entity
+
+//
+// MARK: - FRP NetWork Clients (works with Functional Reactive Programing)
+//
+
+public typealias RJS_FRPSimpleNetworkClient = FRPSimpleNetworkAgent
+
+public typealias RJS_FRPNetworkAgentProtocol     = FRPSimpleNetworkAgentProtocol
+public typealias RJS_FRPNetworkAgentRequestModel = FRPSimpleNetworkAgentRequestModel
+public typealias RJS_FRPNetworkAgentAPIError     = FRPSimpleNetworkClientAPIError
 
 //
 // MARK: - Shared between NetWork Clients and FRP NetWork Clients

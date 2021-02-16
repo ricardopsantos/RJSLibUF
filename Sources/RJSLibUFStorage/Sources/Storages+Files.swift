@@ -10,6 +10,10 @@ import UIKit
 //
 import RJSLibUFBase
 
+/**
+ DispatchSource: Detecting Changes in Files and Folders in Swift :
+ https://medium.com/better-programming/dispatchsource-detecting-changes-in-files-and-folders-in-swift-5486c4363e08
+ */
 public extension RJSLib.Storages {
     private init() {}
     

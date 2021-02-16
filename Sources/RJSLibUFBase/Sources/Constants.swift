@@ -14,16 +14,18 @@ public extension RJSLib {
 
     struct Constants {
         private init() {}
-        public static let defaultDelay: Double = 0.3
-        public static let defaultAnimationsTime: Double = 0.3
-        public static let defaultDisableTimeAfterTap: Double = 1 // Time span in which the view will be disabled after some user interaction
+        public static var defaultDelay: Double { 0.35 }
+        public static var defaultAnimationsTime: Double { defaultDelay }
+        public static var defaultDisableTimeAfterTap: Double { 1 } // Time span in which the view will be disabled after some user interaction
         public struct Tags {
-            public static let progressView = 18530186
+            public static var progressView: Int { 18530186 }
         }
-        private static let _sharedLibConstantsId: String = "RJSLib.Constants."
-        public static let notPredicted: String = "\(_sharedLibConstantsId)notPredicted"
-        public static let fail: String = "\(_sharedLibConstantsId)fail"
-        public static let referenceLost: String = "\(_sharedLibConstantsId)referenceLost"
-        public static let userInterationDisabled: String = "\(_sharedLibConstantsId)userInterationDisabled"
+        private static let sharedLibConstantsId: String = "RJSLib.Constants."
+        
+        public static var notPredicted: String = "\(sharedLibConstantsId)notPredicted"
+        public static var fail: String = "\(sharedLibConstantsId)fail"
+        public static var referenceLost: String = "\(sharedLibConstantsId)referenceLost"
+        public static var userInterationDisabled: String = "\(sharedLibConstantsId)userInterationDisabled"
+        public static var cellIdentifier: String { "\(sharedLibConstantsId)cellIdentifier" }
     }
 }

@@ -40,7 +40,14 @@ public extension UIFont {
         // Find better name
         public enum Styles: CaseIterable {
             public typealias RawValue = UIFont
-
+            public init?(rawValue: RawValue) {
+                if let some = Self.allCases.first(where: { $0.rawValue == rawValue }) {
+                    self = some
+                } else {
+                    return nil
+                }
+            }
+            
             case headingJumbo
             case headingBold
             case headingMedium
@@ -51,9 +58,7 @@ public extension UIFont {
             case captionLarge
             case caption
             case captionSmall
-
-            public init?(rawValue: RawValue) { return nil }
-
+            
             public var rawValue: RawValue {
                 let boldFontName    = RJS_Fonts.StylesBuilder.bold.fontName     // Bold
                 let mediumFontName  = RJS_Fonts.StylesBuilder.regular.fontName  // Regular/Bold

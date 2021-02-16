@@ -41,9 +41,7 @@ extension RJSLib {
                 Bundle(for: BundleFinder.self).resourceURL, // Bundle should be present here when the package is linked into a framework.
                 Bundle.main.bundleURL                       // For command-line tools.
             ].filter { $0 != nil }
-            
-            print(candidates)
-            
+                        
             for candidate in candidates {
                 let spmPackageName = "rjps-lib-uf"
                 let spmProductName = "RJSLibUFStorage"

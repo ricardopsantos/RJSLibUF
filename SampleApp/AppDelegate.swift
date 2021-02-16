@@ -23,11 +23,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         RJS_DataModelEntity.StorableKeyValue.clean()
+
+        RJS_ColdCache.shared.printReport()
+
+        let key = "LoginCount"
+        if let loginsCount = RJS_StorableKeyValue.with(key: key) {
+            RJS_Logs.info(loginsCount, tag: .rjsLib)
+            if let recordValue = loginsCount.value, let loginsCount =  Int(recordValue) {
+                _ = RJS_StorableKeyValue.save(key: key, value: "\(loginsCount+1)")
+            }
+        } else {
+            _ = RJS_StorableKeyValue.save(key: key, value: "0")
+        }
         
         #if USE_INCLUDE_TINYCONSTRAINTS
         self.window?.rootViewController = DesignLanguageVC()
         #else
-        self.window?.rootViewController = LayoutSampleVC()
+        self.window?.rootViewController = TabBarController()
         #endif
 
         return true

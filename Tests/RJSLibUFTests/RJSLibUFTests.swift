@@ -163,18 +163,6 @@ class RJSLibUFTests: XCTestCase {
         //doTestIn(folder: .temp)
     }
 
-    @available(*, deprecated)
-    func test_KeyChain() {
-        RJS_Keychain.shared.delete(key: tKey)
-        XCTAssert(RJS_Keychain.shared.get(key: tKey) == nil)
-        XCTAssert(!RJS_Keychain.shared.add(tValue, withKey: ""))
-        XCTAssert(!RJS_Keychain.shared.add(tValue, withKey: " "))
-        XCTAssert(RJS_Keychain.shared.add(tValue, withKey: tKey))
-        XCTAssert(RJS_Keychain.shared.get(key: tKey) == tValue)
-        RJS_Keychain.shared.delete(key: tKey)
-        XCTAssert(RJS_Keychain.shared.get(key: tKey) == nil)
-    }
-
     func test_FilesImages() {
         #if !os(macOS)
         let expectation = self.expectation(description: #function)
@@ -190,7 +178,7 @@ class RJSLibUFTests: XCTestCase {
             }
         }
 
-        RJS_BasicNetworkClient.downloadImageFrom(tImageURL, caching: .cold) { (image) in
+        RJS_BasicHttpGetAgent.imageFrom(tImageURL, caching: .cold) { (image) in
             XCTAssert(image != nil)
             doTestIn(folder: .documents, image: image!)
             doTestIn(folder: .temp, image: image!)
@@ -205,7 +193,7 @@ class RJSLibUFTests: XCTestCase {
         
         let api: FRPSampleAPI = FRPSampleAPI()
         
-        let requestDto = FRPSampleAPI.RequestDto.Sample(userID: "")
+        let requestDto = FRPSampleAPI.RequestDto.PortugueseZipCode(someParam: "")
         let publisher  = api.sampleRequestCVS(requestDto)
       
         publisher.sink { (result) in
@@ -228,7 +216,7 @@ class RJSLibUFTests: XCTestCase {
         
         let api: FRPSampleAPI = FRPSampleAPI()
         
-        let requestDto = FRPSampleAPI.RequestDto.Sample(userID: "")
+        let requestDto = FRPSampleAPI.RequestDto.Employee(someParam: "")
         let publisher = api.sampleRequestJSON(requestDto)
 
         publisher.sink { (result) in
@@ -263,7 +251,7 @@ class RJSLibUFTests: XCTestCase {
             }
         }
 
-        struct APIRequest: RJS_SimpleNetworkClientRequestProtocol {
+        struct APIRequest: RJS_SimpleNetworkAgentRequestProtocol {
             var returnOnMainTread: Bool = false
             var debugRequest: Bool = true
             var urlRequest: URLRequest
@@ -282,9 +270,9 @@ class RJSLibUFTests: XCTestCase {
         }
         do {
             typealias EmployeeList = [Employee]
-            let apiRequest: RJS_SimpleNetworkClientRequestProtocol = try APIRequest()
-            let api: SimpleNetworkClient_Protocol = RJS_SimpleNetworkClient()
-            api.execute(request: apiRequest, completionHandler: { (result: Result<RJS_SimpleNetworkClientResponse<EmployeeList>>) in
+            let apiRequest: RJS_SimpleNetworkAgentRequestProtocol = try APIRequest()
+            let api: SimpleNetworkClientProtocol = RJS_SimpleNetworkAgent()
+            api.execute(request: apiRequest, completionHandler: { (result: Result<RJS_SimpleNetworkAgentResponse<EmployeeList>>) in
                 switch result {
                 case .success(let some):
                     let employeeList = some.entity
@@ -302,14 +290,14 @@ class RJSLibUFTests: XCTestCase {
 
     func test_BasicNetworkClient() {
         let expectation = self.expectation(description: #function)
-        RJS_BasicNetworkClient.getDataFrom(urlString: tImageURL) { (data, success) in
+        RJS_BasicHttpGetAgent.dataFrom(urlString: tImageURL) { (data, success) in
             XCTAssert(data != nil)
             XCTAssert(success)
-            RJS_BasicNetworkClient.getJSONFrom(urlString: tJSONURL, completion: { (some, success) in
+            RJS_BasicHttpGetAgent.JSONFrom(urlString: tJSONURL, completion: { (some, success) in
                 XCTAssert(some != nil)
                 XCTAssert(success)
                 #if !os(macOS)
-                RJS_BasicNetworkClient.downloadImageFrom(tImageURL, completion: { (image) in
+                RJS_BasicHttpGetAgent.imageFrom(tImageURL, completion: { (image) in
                     XCTAssert(image != nil)
                     expectation.fulfill()
                 })
