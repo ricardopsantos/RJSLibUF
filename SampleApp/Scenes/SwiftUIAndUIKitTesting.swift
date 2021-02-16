@@ -47,13 +47,11 @@ class SwiftUIAndUIKitTestingVC: GenericViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(imageView)
-        //imageView.edgeToSuperView()
         imageView.rjsALayouts.height(200)
         imageView.rjsALayouts.width(200)
         imageView.rjsALayouts.setSame(.center, as: view)
         
         delegate.didChange.sink { (delegate) in
-            // reading selected contact with `delegate.contact`
             print(delegate.someValue)
         }.store(in: cancelBag)
     }
@@ -63,8 +61,8 @@ class SwiftUIAndUIKitTestingVC: GenericViewController {
     }
 
     private func displayLoading(style: RJS_Designables_UIKit.ActivityIndicator.Style) {
-        (imageView as UIView).rjs.startActivityIndicator(style: style)
-        RJS_Utils.delay(3) {  [weak self] in
+        view.rjs.startActivityIndicator(style: style)
+        RJS_Utils.delay(3) { [weak self] in
             self?.view.rjs.stopActivityIndicator()
         }
     }
@@ -74,22 +72,24 @@ class SwiftUIAndUIKitTestingVC: GenericViewController {
         
         //displayLoading(style: .slidingCircles)
         //displayLoading(style: .pack2_2)
-        view.backgroundColor = .red
 
-        DispatchQueue.executeWithDelay(delay: 3) {
+        DispatchQueue.executeWithDelay(delay: 3) { [weak self] in
+            guard let self = self else { return }
             self.addSubSwiftUIView(RJSLib.Designables.TestViews.SwiftUI(delegate: self.delegate), to: self.imageView)
         }
         
-        DispatchQueue.executeWithDelay(delay: 6) {
+        DispatchQueue.executeWithDelay(delay: 6) { [weak self] in
+            guard let self = self else { return }
             self.addSubSwiftUIView(RJSLib.Designables.TestViews.SwiftUI(delegate: self.delegate))
         }
         
-        DispatchQueue.executeWithDelay(delay: 9) {
+        DispatchQueue.executeWithDelay(delay: 9) { [weak self] in
+            guard let self = self else { return }
             self.presentSwiftUIView(RJSLib.Designables.TestViews.SwiftUI(delegate: self.delegate), animated: true)
         }
     }
     
     func prepareLayout() {
-        self.view.backgroundColor = .white
+        view.backgroundColor = .red
     }
 }
