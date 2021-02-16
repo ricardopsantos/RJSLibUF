@@ -88,7 +88,7 @@
 		89BA691142297CCFEE50BE0F /* typealias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC8F6B796D0F413F0685949 /* typealias.swift */; };
 		8B2FA356428B78D3209A8819 /* DispatchQueue+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03D76A7604E0D1362351551 /* DispatchQueue+Extensions.swift */; };
 		8BAF022030F76910D66FFE87 /* DataModelEntity+Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9001C93FC16BE0259978FA36 /* DataModelEntity+Cache.swift */; };
-		8C7DE8B5FF5540C2CD5D0BA4 /* DesignablesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B3253833A6D649AE2ECA07 /* DesignablesVC.swift */; };
+		8C7DE8B5FF5540C2CD5D0BA4 /* SwiftUIAndUIKitTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B3253833A6D649AE2ECA07 /* SwiftUIAndUIKitTesting.swift */; };
 		9030C046542AA72A462F1BE8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF37213AD82CB78CAB51EA0 /* AppDelegate.swift */; };
 		9394018BBA39D1EBFCF3D2E5 /* URLRequest+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2EC6E6655C7C619F73C08BB /* URLRequest+Extensions.swift */; };
 		94B61CCEB1367AC05EB160DD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41603EE15ECB31E196F82C5 /* Constants.swift */; };
@@ -129,6 +129,7 @@
 		D721F15CD0A2521AD72E0860 /* RJSLibUFBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B0D02882E22945B619357BF /* RJSLibUFBase.framework */; };
 		D73B913F3B0BFBE0931FE4D0 /* UIImageView+Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF56FDF37196BB07FF9066A /* UIImageView+Transform.swift */; };
 		D7513F3FE5CFB3E521F65790 /* Just+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC103409834D898F5EA978BE /* Just+Extensions.swift */; };
+		D7F59F3925DC56BD00FC3BC7 /* Designables+TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F59F3825DC56BD00FC3BC7 /* Designables+TestView.swift */; };
 		DA840F919F5883C711E96B13 /* SwiftUI+UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009251AEEBECF5A50CF7098F /* SwiftUI+UIKit.swift */; };
 		DB68E509A2B4BADB25EB4720 /* RJSLibUFALayouts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5CB34C80F1CD1CE82B934F5E /* RJSLibUFALayouts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DD20D97CE785A4E674A839CE /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55F9BA29C9F8130369C4634 /* String+Extensions.swift */; };
@@ -377,7 +378,7 @@
 		B7A3598B58B1A47636177F9B /* Storages+HotCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Storages+HotCache.swift"; sourceTree = "<group>"; };
 		B95ABD892ADB066A7F19C320 /* Collections+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collections+Extensions.swift"; sourceTree = "<group>"; };
 		BB5513E91F9443C2978C8E0E /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
-		C2B3253833A6D649AE2ECA07 /* DesignablesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignablesVC.swift; sourceTree = "<group>"; };
+		C2B3253833A6D649AE2ECA07 /* SwiftUIAndUIKitTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIAndUIKitTesting.swift; sourceTree = "<group>"; };
 		C3DFA7A5A5850C1AF6AF7078 /* SimpleNetworkAgentErrorsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleNetworkAgentErrorsManager.swift; sourceTree = "<group>"; };
 		C57404FBC26831AC8106F08B /* UIStackView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extensions.swift"; sourceTree = "<group>"; };
 		C7CD26E5D953535DAB3FAFED /* UILabel+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extensions.swift"; sourceTree = "<group>"; };
@@ -391,6 +392,7 @@
 		D55F9BA29C9F8130369C4634 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		D5FCBCFD8D709AF7820D020A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		D66CA57671DE0186C90E5FA4 /* NSObject+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extensions.swift"; sourceTree = "<group>"; };
+		D7F59F3825DC56BD00FC3BC7 /* Designables+TestView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Designables+TestView.swift"; sourceTree = "<group>"; };
 		DAF56FDF37196BB07FF9066A /* UIImageView+Transform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Transform.swift"; sourceTree = "<group>"; };
 		DB00DDE07F7231BF8C1CDA4C /* BasicHttpGetAgent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicHttpGetAgent.swift; sourceTree = "<group>"; };
 		DB78B3EF7B7A5DD6E60C08D7 /* NSMutableAttributedString+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+Extensions.swift"; sourceTree = "<group>"; };
@@ -627,6 +629,7 @@
 			isa = PBXGroup;
 			children = (
 				261BCF7BEB851C7999853E79 /* Designables.swift */,
+				D7F59F3825DC56BD00FC3BC7 /* Designables+TestView.swift */,
 				9032B643905597F8377CF003 /* Designable_SwiftUI */,
 				3C28D1CCAF172AB06F01E69B /* Designables_UIKit */,
 			);
@@ -727,7 +730,7 @@
 		9963AB3F709570841481C4CA /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				C2B3253833A6D649AE2ECA07 /* DesignablesVC.swift */,
+				C2B3253833A6D649AE2ECA07 /* SwiftUIAndUIKitTesting.swift */,
 				AC230213429314325192AF59 /* DesignLanguageVC.swift */,
 				8FAEA0CEB82D3206B3C63805 /* LayoutSampleVC.swift */,
 				8EC448058AC7766868AD9057 /* TabBarController.swift */,
@@ -1125,6 +1128,7 @@
 				C910739985A89B1DB61AFBC9 /* NSMutableAttributedString+Extensions.swift in Sources */,
 				EE87BC1B92B10EB835EBDBA4 /* NSObject+Extensions.swift in Sources */,
 				06963A1CD341BBBC5C0F08EF /* NetworkUtils.swift in Sources */,
+				D7F59F3925DC56BD00FC3BC7 /* Designables+TestView.swift in Sources */,
 				9CF64414EDEDDE7DCB1AD3A6 /* OperationQueues.swift in Sources */,
 				BD6FA3D9A1EE8F1B1C8BF60D /* PermissionsManager.swift in Sources */,
 				834D709F0E595A3A4583BAC5 /* PointFreeFunctions.swift in Sources */,
@@ -1177,7 +1181,7 @@
 				9030C046542AA72A462F1BE8 /* AppDelegate.swift in Sources */,
 				BDA7F783E5929B93E78DDDD8 /* Auxiliar.swift in Sources */,
 				C2216693E2FAA9D7891FD6D6 /* DesignLanguageVC.swift in Sources */,
-				8C7DE8B5FF5540C2CD5D0BA4 /* DesignablesVC.swift in Sources */,
+				8C7DE8B5FF5540C2CD5D0BA4 /* SwiftUIAndUIKitTesting.swift in Sources */,
 				25711F608627D6777A181B1E /* LayoutSampleVC.swift in Sources */,
 				2A569D45A083364181398B09 /* TabBarController.swift in Sources */,
 			);

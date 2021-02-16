@@ -13,7 +13,7 @@ class TabBarController: UITabBarController {
         super.viewDidLoad()
 
         let v1 = createControllers(tabName: "UFALayouts", vc: LayoutSampleVC())
-        let v2 = createControllers(tabName: "Designables", vc: DesignablesVC())
+        let v2 = createControllers(tabName: "SwiftUI", vc: SwiftUIAndUIKitTestingVC())
         viewControllers = [v2, v1]
         
     }

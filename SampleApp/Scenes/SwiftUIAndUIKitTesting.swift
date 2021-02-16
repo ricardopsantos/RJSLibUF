@@ -14,9 +14,9 @@ import RJSLibUFAppThemes
 
 #if canImport(SwiftUI) && DEBUG
 import SwiftUI
-struct DesignablesVCViewRepresentable: UIViewRepresentable {
+struct SwiftUIAndUIKitTestingVC_ViewRepresentable: UIViewRepresentable {
     func makeUIView(context: Context) -> UIView {
-        return SwiftUIAndUIKitTesting().view
+        return SwiftUIAndUIKitTestingVC().view
     }
     
     func updateUIView(_ view: UIView, context: Context) {
@@ -25,14 +25,14 @@ struct DesignablesVCViewRepresentable: UIViewRepresentable {
 }
 
 @available(iOS 13.0, *)
-struct DesignablesVC_Preview: PreviewProvider {
+struct SwiftUIAndUIKitTestingVC_Preview: PreviewProvider {
     static var previews: some View {
-        DesignablesVCViewRepresentable()
+        SwiftUIAndUIKitTestingVC_ViewRepresentable()
     }
 }
 #endif
 
-class SwiftUIAndUIKitTesting: GenericViewController {
+class SwiftUIAndUIKitTestingVC: GenericViewController {
 
     private let imageView: UIImageView = RJS_UIKitFactory.imageView(urlString: "http://getwallpapers.com/wallpaper/full/a/0/a/285824.jpg")
     
