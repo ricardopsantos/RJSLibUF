@@ -22,7 +22,7 @@ public extension RJSLib.Designables.SwiftUI {
         
         public struct Pack1 {
             private init() { }
-             struct SlidingCircles: View {
+            public struct SlidingCircles: View {
                 @State private var shouldAnimate = false
                 public var body: some View {
                     HStack {
@@ -48,7 +48,7 @@ public extension RJSLib.Designables.SwiftUI {
                 }
             }
             
-             struct HorizontalSlidingBar: View {
+            public struct HorizontalSlidingBar: View {
                 @State private var shouldAnimate = false
                 @State var leftOffset: CGFloat = -100
                 @State var rightOffset: CGFloat = 100
@@ -64,7 +64,7 @@ public extension RJSLib.Designables.SwiftUI {
                 }
             }
             
-             struct VerticalBar: View {
+            public struct VerticalBar: View {
                 @State private var shouldAnimate = false
                  public var body: some View {
                     HStack(alignment: .center, spacing: shouldAnimate ? 15 : 5) {
@@ -92,7 +92,7 @@ public extension RJSLib.Designables.SwiftUI {
                 }
             }
             
-             struct CicleWithWaves: View {
+            public struct CicleWithWaves: View {
                 @State private var shouldAnimate = false
                  public var body: some View {
                     Circle()
@@ -124,7 +124,7 @@ public extension RJSLib.Designables.SwiftUI {
         // https://medium.com/better-programming/activity-indicators-in-swiftui-17b66e6c0137
         //
         
-        struct Pack2 {
+        public struct Pack2 {
             public struct ActivityIndicator_V1: UIViewRepresentable {
                 public var isAnimating: Bool
                 public init(isAnimating: Bool) {
