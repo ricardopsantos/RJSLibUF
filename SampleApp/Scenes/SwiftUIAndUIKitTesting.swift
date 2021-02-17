@@ -90,6 +90,6 @@ class SwiftUIAndUIKitTestingVC: GenericViewController {
     }
     
     func prepareLayout() {
-        view.backgroundColor = .red
+        view.backgroundColor = .lightGray
     }
 }

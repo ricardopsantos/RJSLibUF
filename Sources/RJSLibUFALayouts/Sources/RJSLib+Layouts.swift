@@ -61,7 +61,6 @@ public extension RJPSLayouts where Target: NSLayoutConstraint {
     }
 }
 
-@available(*, deprecated)
 public extension RJPSLayouts where Target: UIView {
     
     /*

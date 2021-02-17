@@ -3,6 +3,7 @@
 //
 #if !os(macOS)
 import Foundation
+import UIKit
 import Combine
 //
 import RJSLibUFBase

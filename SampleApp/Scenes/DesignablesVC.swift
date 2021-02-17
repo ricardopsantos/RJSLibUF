@@ -72,9 +72,7 @@ class SwiftUIAndUIKitTesting: GenericViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        //displayLoading(style: .slidingCircles)
-        //displayLoading(style: .pack2_2)
-        view.backgroundColor = .red
+        view.backgroundColor = .lightGray
 
         DispatchQueue.executeWithDelay(delay: 3) {
             self.addSubSwiftUIView(RJSLib.Designables.TestViews.SwiftUI(delegate: self.delegate), to: self.imageView)

@@ -8,6 +8,10 @@ import Foundation
 import UIKit
 
 public extension RJSLibExtension where Target == UIView {
+    
+    var layoutConstraints: [NSLayoutConstraint] { target.constraints }
+    func removeLayoutConstraint() { target.removeLayoutConstraint() }
+
     func edgesToSuperView() { target.edgesToSuperView() }
     
     func width(_ value: CGFloat) { target.width(value) }
@@ -20,6 +24,25 @@ public extension RJSLibExtension where Target == UIView {
 }
 
 public extension UIView {
+    
+    func removeLayoutConstraint() {
+        layoutConstraints.forEach { (some) in
+            self.removeConstraint(some)
+            NSLayoutConstraint.deactivate([some])
+        }
+    }
+    
+    var layoutConstraints: [NSLayoutConstraint] {
+        var tViews: [UIView] = [self]
+        var tView: UIView = self
+        while let superview = tView.superview {
+            tViews.append(superview)
+            tView = superview
+        }
+        return tViews.flatMap({ $0.constraints }).filter { constraint in
+            return constraint.firstItem as? UIView == tView || constraint.secondItem as? UIView == tView
+        }
+    }
     
     func height(_ value: CGFloat) {
         self.translatesAutoresizingMaskIntoConstraints = false
@@ -41,7 +64,7 @@ public extension UIView {
         guard let view = view else { return }
         self.translatesAutoresizingMaskIntoConstraints = false
         let constraints = [
-            self.heightAnchor.constraint(equalTo: view.heightAnchor),
+            self.heightAnchor.constraint(equalTo: view.heightAnchor)
         ]
         NSLayoutConstraint.activate(constraints)
     }
@@ -50,7 +73,7 @@ public extension UIView {
         guard let view = view else { return }
         self.translatesAutoresizingMaskIntoConstraints = false
         let constraints = [
-            self.widthAnchor.constraint(equalTo: view.widthAnchor),
+            self.widthAnchor.constraint(equalTo: view.widthAnchor)
         ]
         NSLayoutConstraint.activate(constraints)
     }

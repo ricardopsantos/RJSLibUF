@@ -79,6 +79,9 @@ extension V {
             scrollView.edgesToSuperView()
             scrollView.height(screenHeight)
             stackViewVLevel1.edgeStackViewToSuperView()
+            self.allSubviews.filter { $0 .isKind(of: UIButton.self) }.forEach { (some) in
+                some.height(40)
+            }
         }
 
         // This function is called automatically by super BaseGenericViewVIP
@@ -88,10 +91,11 @@ extension V {
             // What should this function be used for? Extra stuff zone (not included in [prepareLayoutCreateHierarchy]
             // and [prepareLayoutBySettingAutoLayoutsRules]
             lblTitle.textAlignment = .center
+            lblTitle.numberOfLines = 0
         }
 
         public override func setupColorsAndStyles() {
-            backgroundColor = .red
+            backgroundColor = .lightGray
         }
 
         // This function is called automatically by super BaseGenericView

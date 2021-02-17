@@ -15,7 +15,8 @@ class TabBarController: UITabBarController {
         let v1 = createControllers(tabName: "UFALayouts", vc: LayoutSampleVC())
         let v2 = createControllers(tabName: "SwiftUI", vc: SwiftUIAndUIKitTestingVC())
         let v3 = createControllers(tabName: "VIP", vc: VC.___VARIABLE_sceneName___ViewController())
-        viewControllers = [v3, v2, v1]
+        let v4 = createControllers(tabName: "Testing", vc: TestingVC())
+        viewControllers = [v1, v2, v3, v4]
     }
 
     private func createControllers(tabName: String, vc: UIViewController) -> UINavigationController {
