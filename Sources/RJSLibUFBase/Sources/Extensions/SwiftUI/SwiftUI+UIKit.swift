@@ -44,14 +44,14 @@ public extension UIViewController {
         let hostingController = swiftUIView.viewController
         if let newView = hostingController.view {
             
-            /// Add as a child of the current view controller.
+            // Add as a child of the current view controller.
             addChild(hostingController)
 
-            /// Add the SwiftUI view to the view controller view hierarchy.
+            // Add the SwiftUI view to the view controller view hierarchy.
             view.addSubview(newView)
             newView.edgeToSuperView()
 
-            /// Notify the hosting controller that it has been moved to the current view controller.
+            // Notify the hosting controller that it has been moved to the current view controller.
             hostingController.didMove(toParent: self)
         }
     }
@@ -62,7 +62,7 @@ public extension UIViewController {
     
     func presentSwiftUIView<Content>(_ swiftUIView: Content,
                                      modalPresentationStyle: UIModalPresentationStyle = .fullScreen,
-                                     animated: Bool,
+                                     animated: Bool = true,
                                      completion: (() -> Void)? = nil) where Content: View {
         let viewController = swiftUIView.viewController
         viewController.modalPresentationStyle = modalPresentationStyle

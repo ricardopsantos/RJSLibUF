@@ -12,10 +12,10 @@ public extension RJSLib.Designables {
     struct TestViews {
         private init() {}
                 
-        public class SomeDelegate: ObservableObject {
+        public class ObservableObjectDelegate: ObservableObject {
             public init() { }
-            public var willChange = PassthroughSubject<SomeDelegate, Never>()
-            public var didChange = PassthroughSubject<SomeDelegate, Never>()
+            public var willChange = PassthroughSubject<ObservableObjectDelegate, Never>()
+            public var didChange = PassthroughSubject<ObservableObjectDelegate, Never>()
             public var someValue: String? {
                 willSet {
                     willChange.send(self)
@@ -27,34 +27,33 @@ public extension RJSLib.Designables {
         }
         
         public struct SwiftUI: View {
-            public init(delegate: SomeDelegate) {
+            public init(delegate: ObservableObjectDelegate) {
                 self.delegate = delegate
             }
             
-            @ObservedObject var delegate: SomeDelegate
+            @ObservedObject var delegate: ObservableObjectDelegate
 
             public var body: some View {
-                
                 List {
                     Text(String.random(100)).padding()
                     Button("Btn_1") {
                         delegate.someValue = "Btn 1 tap"
-                    }
+                    }.padding()
                     Text(String.random(100)).padding()
                     Button("Btn_2") {
                         delegate.someValue = "Btn 2 tap"
-                    }
+                    }.padding()
                     Text(String.random(100)).padding()
                 }
             }
         }
         
         public static var uiViewController: UIViewController {
-            SwiftUI(delegate: SomeDelegate()).viewController
+            SwiftUI(delegate: ObservableObjectDelegate()).viewController
         }
         
         public static var uiView: UIView {
-            SwiftUI(delegate: SomeDelegate()).uiView
+            SwiftUI(delegate: ObservableObjectDelegate()).uiView
         }
     }
 }
@@ -77,7 +76,7 @@ private struct UIKitViewToSwiftUIView: UIViewRepresentable {
 struct Previews_TestViews {
     struct Preview1: PreviewProvider {
         public static var previews: some View {
-            RJSLib.Designables.TestViews.SwiftUI(delegate: RJSLib.Designables.TestViews.SomeDelegate())
+            RJSLib.Designables.TestViews.SwiftUI(delegate: RJSLib.Designables.TestViews.ObservableObjectDelegate())
         }
     }
     
