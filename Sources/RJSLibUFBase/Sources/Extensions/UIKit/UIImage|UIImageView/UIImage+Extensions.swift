@@ -14,8 +14,8 @@ extension RJSLibExtension where Target == UIImage {
 public extension UIImage {
     
     static func downsample(imageName: String,
-                            to pointSize: CGSize,
-                            scale: CGFloat = UIScreen.main.scale) -> UIImage? {
+                           to pointSize: CGSize,
+                           scale: CGFloat = UIScreen.main.scale) -> UIImage? {
 
         var result: UIImage?
         ["png", "pdf", "jpeg"].forEach { (type) in
@@ -33,8 +33,8 @@ public extension UIImage {
     // pointSize: The desired size of the downsampled image. Usually, this will be the UIImageView's frame size.
     // scale    : The downsampling scale factor. Usually, this will be the scale factor associated with the screen
     static func downsample(imageAt imageURL: URL,
-                            to pointSize: CGSize,
-                            scale: CGFloat = UIScreen.main.scale) -> UIImage? {
+                           to pointSize: CGSize,
+                           scale: CGFloat = UIScreen.main.scale) -> UIImage? {
 
         // Create an CGImageSource that represent an image
         let imageSourceOptions = [kCGImageSourceShouldCache: false] as CFDictionary

@@ -8,7 +8,7 @@ import Foundation
 import UIKit
 
 extension RJSLibExtension where Target == UIImage {
-    var grayScale: UIImage? { return self.target.grayScale }
+    var grayScale: UIImage? { target.grayScale }
 }
 
 public extension UIImage {

@@ -38,7 +38,7 @@ public extension RJSLib.Designables.UIKit {
             view.addSubview(containerView)
             
             if true {
-                containerView.edgeToSuperView()
+                containerView.edgesToSuperView()
             } else {
                 containerView.backgroundColor = .blue
                 containerView.translatesAutoresizingMaskIntoConstraints = false

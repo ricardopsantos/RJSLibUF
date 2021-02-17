@@ -22,6 +22,9 @@ func libraryWith(name: String) -> PackageDescription.Product {
 let spmBaseTargetName = "RJSLibUFBase"
 let spmBaseDependency = dependencyWith(name: spmBaseTargetName)
 
+let spmBaseVIPTargetName = "RJSLibUFBaseVIP"
+let spmBaseVIPDependency = dependencyWith(name: spmBaseTargetName)
+
 let spmALayoutsTargetName = "RJSLibUFALayouts"
 let spmALayoutsDependency = dependencyWith(name: spmALayoutsTargetName)
 
@@ -49,6 +52,7 @@ let package = Package(
     platforms: [.iOS(.v13), .macOS(.v10_15)],
     products: [
         libraryWith(name: spmBaseTargetName),
+        libraryWith(name: spmBaseVIPTargetName),
         libraryWith(name: spmALayoutsTargetName),
         libraryWith(name: spmNetworkingTargetName),
         libraryWith(name: spmThemesTargetName),
@@ -56,6 +60,7 @@ let package = Package(
     ],
     targets: [
         .target(name: spmBaseTargetName, exclude: [plistFile]),
+        .target(name: spmBaseVIPTargetName, dependencies: [spmBaseDependency], exclude: [plistFile]),
         .target(name: spmALayoutsTargetName, dependencies: [spmBaseDependency], exclude: [plistFile]),
         .target(name: spmThemesTargetName, dependencies: [spmBaseDependency], exclude: [plistFile]),
         .target(name: spmNetworkingTargetName, dependencies: [spmBaseDependency], exclude: [plistFile]),

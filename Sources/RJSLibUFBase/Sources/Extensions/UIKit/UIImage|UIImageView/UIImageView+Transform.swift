@@ -8,9 +8,9 @@ import Foundation
 import UIKit
 
 public extension RJSLibExtension where Target == UIImageView {
-    func toGreyScale() { self.target.toGreyScale() }
-    func paintImageWith(color: UIColor) { self.target.paintImageWith(color: color) }
-    func changeImageColor(to color: UIColor) { self.target.changeImageColor(to: color) }
+    func toGreyScale() { target.toGreyScale() }
+    func paintImageWith(color: UIColor) { target.paintImageWith(color: color) }
+    func changeImageColor(to color: UIColor) { target.changeImageColor(to: color) }
 }
 
 public extension UIImageView {

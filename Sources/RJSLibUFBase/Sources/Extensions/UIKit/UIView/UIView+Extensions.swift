@@ -9,27 +9,27 @@ import UIKit
 
 public extension RJSLibExtension where Target == UIView {
     
-    var width: CGFloat { return self.target.width }
-    var height: CGFloat { return self.target.height }
+    var width: CGFloat { target.width }
+    var height: CGFloat { target.height }
 
-    var viewController: UIViewController? { self.target.viewController }
+    var viewController: UIViewController? { target.viewController }
 
-    func bringToFront() { self.target.bringToFront() }
+    func bringToFront() { target.bringToFront() }
 
-    func sendToBack() {  self.target.sendToBack() }
+    func sendToBack() { target.sendToBack() }
     
     func disableUserInteractionFor(_ seconds: Double, disableAlpha: CGFloat = 0.6) {
-        self.target.disableUserInteractionFor(seconds, disableAlpha: disableAlpha)
+        target.disableUserInteractionFor(seconds, disableAlpha: disableAlpha)
     }
 }
 
 public extension UIView {
         
-    var width: CGFloat { return self.frame.width }
-    var height: CGFloat { return self.frame.height }
+    var width: CGFloat { frame.width }
+    var height: CGFloat { frame.height }
 
     var viewController: UIViewController? {
-        if let nextResponder = self.next as? UIViewController {
+        if let nextResponder = next as? UIViewController {
             return nextResponder
         } else if let nextResponder = self.next as? UIView {
             return nextResponder.viewController

@@ -11,15 +11,25 @@ import Foundation
 import UIKit
 
 public extension RJSLibExtension where Target == UIStackView {
-    func add(_ view: UIView) { self.target.add(view) }
-    func addSub(view: UIView) { self.target.addSub(view: view) }
-    func insertArrangedSubview(_ view: UIView, belowArrangedSubview subview: UIView) { self.target.insertArrangedSubview(view, belowArrangedSubview: subview) }
-    func insertArrangedSubview(_ view: UIView, aboveArrangedSubview subview: UIView) { self.target.insertArrangedSubview(view, aboveArrangedSubview: subview) }
-    func removeAllArrangedSubviews() { self.target.removeAllArrangedSubviews() }
+    func add(_ view: UIView) { target.add(view) }
+    func addSub(view: UIView) { target.addSub(view: view) }
+    func insertArrangedSubview(_ view: UIView, belowArrangedSubview subview: UIView) { target.insertArrangedSubview(view, belowArrangedSubview: subview) }
+    func insertArrangedSubview(_ view: UIView, aboveArrangedSubview subview: UIView) { target.insertArrangedSubview(view, aboveArrangedSubview: subview) }
+    func removeAllArrangedSubviews() { target.removeAllArrangedSubviews() }
 }
 
 public extension UIStackView {
 
+    func edgeStackViewToSuperView() {
+        guard self.superview != nil else {
+            RJS_Logs.error("\(Self.self) - edgeStackViewToSuperView : No super view for [\(self)]", tag: .rjsLib)
+            return
+        }
+    
+        self.edgesToSuperView() // Don't use RJPSLayouts. It will fail if scroll view is inside of stack view with lots of elements
+        self.widthToSuperView()  // NEEDS THIS!
+    }
+        
     func add(_ view: UIView) {
         if view.superview == nil {
             self.addArrangedSubview(view)

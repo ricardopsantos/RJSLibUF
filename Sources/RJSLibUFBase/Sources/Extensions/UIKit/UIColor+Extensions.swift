@@ -13,8 +13,8 @@ import UIKit
 
 public extension RJSLibExtension where Target == UIColor {
     static var random: UIColor { UIColor.random }
-    var inverse: UIColor { self.target.inverse }
-    var uiColorStatic: UIColor { self.target.uiColorStatic  }
+    var inverse: UIColor { target.inverse }
+    var uiColorStatic: UIColor { target.uiColorStatic  }
     static func colorFromHexString(_ hexString: String, alpha: Float=1.0) -> UIColor {
         UIColor.colorFromHexString(hexString, alpha: alpha)
     }

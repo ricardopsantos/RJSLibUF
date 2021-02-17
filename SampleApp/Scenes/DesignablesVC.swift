@@ -36,7 +36,7 @@ class SwiftUIAndUIKitTesting: GenericViewController {
 
     private let imageView: UIImageView = RJS_UIKitFactory.imageView(urlString: "http://getwallpapers.com/wallpaper/full/a/0/a/285824.jpg")
     
-    private let delegate = SomeDelegate()
+    private var delegate = RJS_Designables.TestViews.ObservableObjectDelegate()
     private var cancelBag = CancelBag()
 
     override func loadView() {

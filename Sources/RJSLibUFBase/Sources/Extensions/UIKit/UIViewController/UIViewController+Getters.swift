@@ -8,15 +8,14 @@ import Foundation
 import UIKit
 
 public extension RJSLibExtension where Target == UIViewController {
-    var topViewController: UIViewController? {
-        return self.target.topViewController
-    }
+    var topViewController: UIViewController? { target.topViewController }
     
-    static var topViewController: UIViewController? {
-        return UIViewController.topViewController
-    }
+    static var topViewController: UIViewController? { UIViewController.topViewController }
     
-    var isVisible: Bool { self.target.isVisible }
+    var isVisible: Bool { target.isVisible }
+    
+    var genericAccessibilityIdentifier: String { target.genericAccessibilityIdentifier }
+
 }
 
 public extension UIViewController {
@@ -31,5 +30,10 @@ public extension UIViewController {
     
     var isVisible: Bool { return self.isViewLoaded && ((self.view.window) != nil) }
     
+    var genericAccessibilityIdentifier: String {
+        // One day we will have Accessibility on the app, and we will be ready....
+        let name = String(describing: type(of: self))
+        return "accessibilityIdentifierPrefix.\(name)"
+    }
 }
 #endif

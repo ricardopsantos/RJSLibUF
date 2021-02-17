@@ -10,9 +10,9 @@ import UIKit
 ///////////// UTILS DEV /////////////
 
 public extension RJSLibExtension where Target == UIView {
-    func removeAllSubviewsRecursive() { self.target.removeAllSubviewsRecursive() }
-    func allSubviewsRecursive<T: UIView>() -> [T] { return self.target.allSubviewsRecursive() }
-    func subViewsWith(tag: Int, recursive: Bool) -> [UIView] { self.target.subViewsWith(tag: tag, recursive: recursive) }
+    func removeAllSubviewsRecursive() { target.removeAllSubviewsRecursive() }
+    func allSubviewsRecursive<T: UIView>() -> [T] {  target.allSubviewsRecursive() }
+    func subViewsWith(tag: Int, recursive: Bool) -> [UIView] { target.subViewsWith(tag: tag, recursive: recursive) }
 }
 
 public extension UIView {

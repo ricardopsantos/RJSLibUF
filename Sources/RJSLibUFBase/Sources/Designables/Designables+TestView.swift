@@ -2,7 +2,7 @@
 //  Created by Ricardo P Santos on 2019.
 //  Copyright © 2019 Ricardo P Santos. All rights reserved.
 //
-
+#if !os(macOS)
 import UIKit
 import Foundation
 import SwiftUI
@@ -58,8 +58,6 @@ public extension RJSLib.Designables {
     }
 }
 
-
-
 //
 // MARK: - Previews
 //
@@ -86,3 +84,4 @@ struct Previews_TestViews {
         }
     }
 }
+#endif

@@ -57,7 +57,7 @@ public enum RJSLayoutsAttribute {
 
 public extension RJPSLayouts where Target: NSLayoutConstraint {
     var associatedViews: [UIView] {
-        return [self.target.firstItem, self.target.secondItem].compactMap { $0 as? UIView }
+        return [target.firstItem, target.secondItem].compactMap { $0 as? UIView }
     }
 }
 
@@ -444,13 +444,13 @@ public extension RJPSLayouts where Target: UIView {
         if priority > .defaultLow {
             RJS_Logs.info("Too higth?!", tag: .rjsLib)
         }
-        self.target.setContentHuggingPriority(priority, for: axis)
+        target.setContentHuggingPriority(priority, for: axis)
     }
     func addHightResistanceToGrow(_ priority: UILayoutPriority = .defaultHigh, axis: NSLayoutConstraint.Axis) {
         if priority > .defaultLow {
             RJS_Logs.info("Too low?!", tag: .rjsLib)
         }
-        self.target.setContentHuggingPriority(priority, for: axis)
+        target.setContentHuggingPriority(priority, for: axis)
     }
 }
 

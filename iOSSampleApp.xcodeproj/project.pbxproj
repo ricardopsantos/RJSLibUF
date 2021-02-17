@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1005FC65B558C0BDF0C16016 /* LayoutSampleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A11E4594C0FA0041971632B /* LayoutSampleVC.swift */; };
+		28C6694FEBEA09E1416FCD42 /* SwiftUIAndUIKitTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48B6D1021EF0AEE6D264091 /* SwiftUIAndUIKitTesting.swift */; };
 		3EDE17B59810354D00498610 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C850013A6A17CB2B156A7F5F /* AppDelegate.swift */; };
 		453FF2FF75CFAB7033773F8A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8607B8BF1EA049CFF6B04D2A /* LaunchScreen.storyboard */; };
 		65EBF1F6D99A9EB1B2B44FB9 /* Auxiliar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B452CD4C754EEACDA5C304 /* Auxiliar.swift */; };
@@ -34,6 +35,7 @@
 		C850013A6A17CB2B156A7F5F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2EC2B87F18CEF52A4E5B936 /* SampleApp.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = SampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9A33FF968EDCAB50893D9C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E48B6D1021EF0AEE6D264091 /* SwiftUIAndUIKitTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIAndUIKitTesting.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 				2F27D3AB3ED038B213E3762B /* DesignablesVC.swift */,
 				2CDD552CC59E7A56B45872F3 /* DesignLanguageVC.swift */,
 				4A11E4594C0FA0041971632B /* LayoutSampleVC.swift */,
+				E48B6D1021EF0AEE6D264091 /* SwiftUIAndUIKitTesting.swift */,
 				C45F6054FC568D635892D9E5 /* TabBarController.swift */,
 			);
 			path = Scenes;
@@ -180,6 +183,7 @@
 				A9F2067711B2910E32F9CFA3 /* DesignLanguageVC.swift in Sources */,
 				E825CDDB022946DF36F5FC23 /* DesignablesVC.swift in Sources */,
 				1005FC65B558C0BDF0C16016 /* LayoutSampleVC.swift in Sources */,
+				28C6694FEBEA09E1416FCD42 /* SwiftUIAndUIKitTesting.swift in Sources */,
 				F3F4F86848C497966435443D /* TabBarController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,9 +10,7 @@
 import UIKit
 
 public extension RJSLibExtension where Target == NSMutableAttributedString {
-    func setFontFace(font: UIFont, color: UIColor? = nil) {
-        self.target.setFontFace(font: font, color: color)
-    }
+    func setFontFace(font: UIFont, color: UIColor? = nil) { target.setFontFace(font: font, color: color) }
 }
 
 public extension NSMutableAttributedString {

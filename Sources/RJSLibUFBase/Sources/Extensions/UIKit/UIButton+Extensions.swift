@@ -8,13 +8,13 @@ import Foundation
 import UIKit
 
 public extension RJSLibExtension where Target == UIButton {
-    func paintImageWith(color: UIColor) { self.target.paintImageWith(color: color) }
-    func changeImageColor(to color: UIColor) { self.target.changeImageColor(to: color) }
-    func setImageForAllStates(_ image: UIImage, tintColor: UIColor?) { self.target.setImageForAllStates(image, tintColor: tintColor) }
-    func disable() { self.target.disable() }
-    func enable() { self.target.enable() }
-    func setTitleForAllStates(_ title: String) { self.target.setTitleForAllStates(title) }
-    func setTextColorForAllStates(_ color: UIColor) { self.target.setTextColorForAllStates(color) }
+    func paintImageWith(color: UIColor) { target.paintImageWith(color: color) }
+    func changeImageColor(to color: UIColor) { target.changeImageColor(to: color) }
+    func setImageForAllStates(_ image: UIImage, tintColor: UIColor?) { target.setImageForAllStates(image, tintColor: tintColor) }
+    func disable() { target.disable() }
+    func enable() { target.enable() }
+    func setTitleForAllStates(_ title: String) { target.setTitleForAllStates(title) }
+    func setTextColorForAllStates(_ color: UIColor) { target.setTextColorForAllStates(color) }
 }
 
 public extension UIButton {

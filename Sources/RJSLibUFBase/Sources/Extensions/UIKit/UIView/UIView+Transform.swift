@@ -10,25 +10,15 @@ import UIKit
 ///////////// UTILS DEV /////////////
 
 public extension RJSLibExtension where Target == UIView {
-    func addCorner(radius: CGFloat) {
-        self.target.addCorner(radius: radius)
-    }
+    func addCorner(radius: CGFloat) { target.addCorner(radius: radius) }
     
-    func addCornerCurve(method: CALayerCornerCurve, radius: CGFloat) {
-        self.target.addCornerCurve(method: method, radius: radius)
-    }
+    func addCornerCurve(method: CALayerCornerCurve, radius: CGFloat) { target.addCornerCurve(method: method, radius: radius) }
     
-    func addBorder(width: CGFloat, color: UIColor) {
-        self.target.addBorder(width: width, color: color)
-    }
+    func addBorder(width: CGFloat, color: UIColor) { target.addBorder(width: width, color: color) }
     
-    func addBlur(style: UIBlurEffect.Style = .dark) -> UIVisualEffectView {
-        self.target.addBlur(style: style)
-    }
-    
-    func fadeTo(_ value: CGFloat, duration: Double=RJS_Constants.defaultAnimationsTime) {
-        self.target.fadeTo(value, duration: duration)
-    }
+    func addBlur(style: UIBlurEffect.Style = .dark) -> UIVisualEffectView { target.addBlur(style: style) }
+
+    func fadeTo(_ value: CGFloat, duration: Double=RJS_Constants.defaultAnimationsTime) { target.fadeTo(value, duration: duration) }
 }
 
 public extension UIView {
@@ -39,6 +29,7 @@ public extension UIView {
         self.clipsToBounds     = true
         self.layoutIfNeeded()
     }
+    
     func addCornerCurve(method: CALayerCornerCurve = .circular, radius: CGFloat = 34) {
         self.layer.cornerCurve = method // .continuous | .circular
         self.layer.cornerRadius = radius

@@ -2,7 +2,7 @@
 //
 //  Created by Ricardo Santos on 14/02/2021.
 //
-
+#if !os(macOS)
 import UIKit
 import Foundation
 import SwiftUI
@@ -19,7 +19,6 @@ public extension RJSLib.Designables.SwiftUI {
         //private static var fillColor: Color { Color.primary }
         private static var fillColor: Color { Color.secondary }
 
-        
         //
         // https://medium.com/better-programming/create-an-awesome-loading-state-using-swiftui-9815ff6abb80
         //
@@ -284,3 +283,4 @@ struct Previews_LoadingAnimations {
     }
 
 }
+#endif

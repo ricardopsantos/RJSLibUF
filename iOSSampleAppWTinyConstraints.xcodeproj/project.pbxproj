@@ -19,6 +19,7 @@
 		75754F890D6EA40C4E20D523 /* RJSLibUFALayouts in Frameworks */ = {isa = PBXBuildFile; productRef = 1D5EADB6777D336A45D6133C /* RJSLibUFALayouts */; };
 		A1D5A6E1722563DFE50BF6F6 /* RJSLibUFBase in Frameworks */ = {isa = PBXBuildFile; productRef = 03F9AD62F05DBC40AACAFAD9 /* RJSLibUFBase */; };
 		A57C5F389F91FB7862481A32 /* DesignablesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1BA092559F4AD6A246308C /* DesignablesVC.swift */; };
+		C5D303E810895601D151EA55 /* SwiftUIAndUIKitTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F0E520FA8C44271A7583BA /* SwiftUIAndUIKitTesting.swift */; };
 		DF55158E7BBF35EE9258CEBC /* RJSLibUFStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 51ACB304684BDA2646D9E822 /* RJSLibUFStorage */; };
 		E7F3CB05AFC82D8949674ED3 /* LayoutSampleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47EB589AF1099AE0BF3CAA6 /* LayoutSampleVC.swift */; };
 		F35764E2C06855F7AC45D2D0 /* RJSLibUFStorage in Frameworks */ = {isa = PBXBuildFile; productRef = A7A0450F52CE5CC507C67047 /* RJSLibUFStorage */; };
@@ -34,6 +35,7 @@
 		869856C15B54DFA18D52F9C4 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		A4C58C98572262FFB23D967F /* SampleApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SampleApp.entitlements; sourceTree = "<group>"; };
 		B47EB589AF1099AE0BF3CAA6 /* LayoutSampleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutSampleVC.swift; sourceTree = "<group>"; };
+		E3F0E520FA8C44271A7583BA /* SwiftUIAndUIKitTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIAndUIKitTesting.swift; sourceTree = "<group>"; };
 		F0CDC0583743D0E47BB4C122 /* DesignLanguageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignLanguageVC.swift; sourceTree = "<group>"; };
 		FEC078F18752D6A135FCC01E /* Auxiliar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auxiliar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -70,6 +72,7 @@
 				4F1BA092559F4AD6A246308C /* DesignablesVC.swift */,
 				F0CDC0583743D0E47BB4C122 /* DesignLanguageVC.swift */,
 				B47EB589AF1099AE0BF3CAA6 /* LayoutSampleVC.swift */,
+				E3F0E520FA8C44271A7583BA /* SwiftUIAndUIKitTesting.swift */,
 				869856C15B54DFA18D52F9C4 /* TabBarController.swift */,
 			);
 			path = Scenes;
@@ -187,6 +190,7 @@
 				59DF9C57CCC0BB61EACCEEEB /* DesignLanguageVC.swift in Sources */,
 				A57C5F389F91FB7862481A32 /* DesignablesVC.swift in Sources */,
 				E7F3CB05AFC82D8949674ED3 /* LayoutSampleVC.swift in Sources */,
+				C5D303E810895601D151EA55 /* SwiftUIAndUIKitTesting.swift in Sources */,
 				486ABF7DFCB8AC365C97D19F /* TabBarController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

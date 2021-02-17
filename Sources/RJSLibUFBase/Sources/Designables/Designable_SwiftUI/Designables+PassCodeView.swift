@@ -3,6 +3,7 @@
 //  Copyright © 2020 Ricardo P Santos. All rights reserved.
 //
 
+#if !os(macOS)
 import UIKit
 import Foundation
 import SwiftUI
@@ -92,7 +93,7 @@ public extension RJSLib.Designables.SwiftUI {
             }
             guard unlocked else { return }
             // Work
-            print("Do stuff!")
+            // ("Do stuff!")
         }
     }
 
@@ -109,3 +110,4 @@ struct Previews_PassCodeView {
         }
     }
 }
+#endif

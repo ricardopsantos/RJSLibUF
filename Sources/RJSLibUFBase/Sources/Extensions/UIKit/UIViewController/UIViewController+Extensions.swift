@@ -11,9 +11,9 @@ public typealias RJSPresentedController = (UIViewController?, NSError?) -> Void
 public typealias RJSLoadedController    = (UIViewController?, NSError?) -> Void
 
 public extension RJSLibExtension where Target == UIViewController {
-    func showAlert(title: String="Alert", message: String) { self.target.showAlert(title: title, message: message) }
-    func dismissMe() { self.target.dismissMe() }
-    func dismissAll() { self.target.dismissAll() }
+    func showAlert(title: String="Alert", message: String) { target.showAlert(title: title, message: message) }
+    func dismissMe() { target.dismissMe() }
+    func dismissAll() { target.dismissAll() }
 }
 
 public extension UIViewController {

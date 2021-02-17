@@ -8,12 +8,8 @@ import Foundation
 import UIKit
 
 public extension RJSLibExtension where Target == UIView {
-    func startActivityIndicator(style: RJS_Designables_UIKit.ActivityIndicator.Style) {
-        self.target.startActivityIndicator(style: style)
-    }
-    func stopActivityIndicator() {
-        self.target.stopActivityIndicator()
-    }
+    func startActivityIndicator(style: RJS_Designables_UIKit.ActivityIndicator.Style) { target.startActivityIndicator(style: style) }
+    func stopActivityIndicator() { target.stopActivityIndicator() }
 }
 
 public extension UIView {

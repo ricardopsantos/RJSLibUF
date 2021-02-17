@@ -98,6 +98,15 @@ targets:
       - Framework
     sources: 
       - path: ../Sources/RJSLibUFBase
+    
+  RJSLibUFBaseVIP:
+    templates:
+      - Framework
+    sources:
+      - path: ../Sources/RJSLibUFBaseVIP
+    dependencies:
+      - target: RJSLibUFBase
+        link: false
         
   RJSLibUFAppThemes:
     templates: 

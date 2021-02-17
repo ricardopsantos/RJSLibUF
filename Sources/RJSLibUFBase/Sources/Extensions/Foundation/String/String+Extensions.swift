@@ -10,56 +10,56 @@ import UIKit
 import CommonCrypto
 
 public extension RJSLibExtension where Target == String {
-    var length: Int { self.target.length }
-    var first: String { self.target.first  }
-    var last: String { self.target.last }
-    var trim: String { self.target.trim }
-    var trimmedAndSingleSpaced: String { self.target.trimmedAndSingleSpaced }
+    var length: Int { target.length }
+    var first: String { target.first  }
+    var last: String { target.last }
+    var trim: String { target.trim }
+    var trimmedAndSingleSpaced: String { target.trimmedAndSingleSpaced }
     
-    var capitalised: String { self.target.capitalised }
-    var encodedUrl: String? { self.target.encodedUrl }
-    var decodedUrl: String? { self.target.decodedUrl }
-    var reversed: String { self.target.reversed }
-    var base64Encoded: String { self.target.base64Encoded }
-    var base64Decoded: String? { self.target.base64Decoded }
+    var capitalised: String { target.capitalised }
+    var encodedUrl: String? { target.encodedUrl }
+    var decodedUrl: String? { target.decodedUrl }
+    var reversed: String { target.reversed }
+    var base64Encoded: String { target.base64Encoded }
+    var base64Decoded: String? { target.base64Decoded }
     
-    var utf8Data: Data? { self.target.utf8Data }
-    var cgFloatValue: CGFloat? { self.target.cgFloatValue }
-    var boolValue: Bool? { self.target.boolValue }
-    var doubleValue: Double? { self.target.doubleValue }
-    var intValue: Int? { self.target.intValue }
-    var dateValue: Date? { self.target.dateValue }
-    var floatValue: Float? { self.target.floatValue }
-    var decimalValue: Decimal? { self.target.decimalValue }
+    var utf8Data: Data? { target.utf8Data }
+    var cgFloatValue: CGFloat? { target.cgFloatValue }
+    var boolValue: Bool? { target.boolValue }
+    var doubleValue: Double? { target.doubleValue }
+    var intValue: Int? { target.intValue }
+    var dateValue: Date? { target.dateValue }
+    var floatValue: Float? { target.floatValue }
+    var decimalValue: Decimal? { target.decimalValue }
     
-    var deterministicHashValue: Int { self.target.deterministicHashValue }
-    var sha1: String { self.target.sha1 }
-    var isValidEmail: Bool { self.target.isValidEmail }
-    var isAlphanumeric: Bool { self.target.isAlphanumeric }
-    var containsOnlyDigits: Bool { self.target.containsOnlyDigits }
+    var deterministicHashValue: Int { target.deterministicHashValue }
+    var sha1: String { target.sha1 }
+    var isValidEmail: Bool { target.isValidEmail }
+    var isAlphanumeric: Bool { target.isAlphanumeric }
+    var containsOnlyDigits: Bool { target.containsOnlyDigits }
     func contains(subString: String, ignoreCase: Bool=true) -> Bool {
-        self.target.contains(subString: subString, ignoreCase: ignoreCase)
+        target.contains(subString: subString, ignoreCase: ignoreCase)
     }
     
-    var asDict: [String: Any]? { self.target.asDict }
-    var asAttributedString: NSAttributedString? { self.target.asAttributedString }
+    var asDict: [String: Any]? { target.asDict }
+    var asAttributedString: NSAttributedString? { target.asAttributedString }
     
     #if !os(macOS)
     func image(font: UIFont, size: CGSize = CGSize(width: 40, height: 40)) -> UIImage? {
-        self.target.image(font: font, size: size)
+        target.image(font: font, size: size)
     }
     #endif
     
-    func split(by: String) -> [String] { self.target.split(by: by) }
+    func split(by: String) -> [String] { target.split(by: by) }
     static func random(_ length: Int) -> String { String.random(length) }
     
     func replace(_ some: String, with: String) -> String {
-        self.target.replace(some, with: with)
+        target.replace(some, with: with)
     }
     
     #if !os(macOS)
     func htmlAttributedString(fontName: String, fontSize: Int, colorHex: String) -> NSAttributedString? {
-        self.target.htmlAttributedString(fontName: fontName, fontSize: fontSize, colorHex: colorHex)
+        target.htmlAttributedString(fontName: fontName, fontSize: fontSize, colorHex: colorHex)
     }
     #endif
     

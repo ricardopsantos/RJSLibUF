@@ -1,7 +1,7 @@
 //
 //  Created by Ricardo Santos on 15/02/2021.
 //
-
+#if !os(macOS)
 import Foundation
 import SwiftUI
 
@@ -43,3 +43,4 @@ struct Previews_ConnectivityView {
         }
     }
 }
+#endif

@@ -1,4 +1,3 @@
-
 //
 //  Created by Ricardo P Santos on 2019.
 //  Copyright © 2019 Ricardo P Santos. All rights reserved.
@@ -9,9 +8,7 @@ import Foundation
 import UIKit
 
 public extension RJSLibExtension where Target == UIImageView {
-    func load(url: URL, downsample: Bool = true) {
-        self.target.load(url: url, downsample: downsample)
-    }
+    func load(url: URL, downsample: Bool = true) { target.load(url: url, downsample: downsample) }
 }
 
 public extension UIImageView {
