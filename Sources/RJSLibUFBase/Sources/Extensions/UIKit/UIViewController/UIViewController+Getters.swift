@@ -28,7 +28,7 @@ public extension UIViewController {
         return UIApplication.topViewController()
     }
     
-    var isVisible: Bool { return self.isViewLoaded && ((self.view.window) != nil) }
+    var isVisible: Bool { return isViewLoaded && (view.window != nil) }
     
     var genericAccessibilityIdentifier: String {
         // One day we will have Accessibility on the app, and we will be ready....

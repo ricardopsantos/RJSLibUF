@@ -43,18 +43,6 @@ public struct RJSLayoutsConstants {
 
 public enum RJSLayoutsMethod { case constraints, anchor }
 
-public enum RJSLayoutsAttribute {
-    case centerX
-    case centerY
-    case center
-    case height
-    case width
-    case top
-    case bottom
-    case left, tailing
-    case right, leading
-}
-
 public extension RJPSLayouts where Target: NSLayoutConstraint {
     var associatedViews: [UIView] {
         return [target.firstItem, target.secondItem].compactMap { $0 as? UIView }
@@ -109,7 +97,7 @@ public extension RJPSLayouts where Target: UIView {
     // - two different width constraints with the exact same value
     // - this view's width equal to another view's width
     // - another view's height equal to this view's width (this view mentioned 2nd)
-    func allConstraintsOf(type: RJSLayoutsAttribute, method: RJSLayoutsMethod = .anchor) -> [NSLayoutConstraint] {
+    func allConstraintsOf(type: RJS_LayoutsAttribute, method: RJSLayoutsMethod = .anchor) -> [NSLayoutConstraint] {
         let tView = self.target
         if method == .constraints {
             switch type {
@@ -181,7 +169,7 @@ public extension RJPSLayouts where Target: UIView {
     
     // MARK: Main
     
-    private func activate(constraint: NSLayoutConstraint?, identifier: String, priority: UILayoutPriority, method: RJSLayoutsMethod = .anchor) -> NSLayoutConstraint? {
+    func activate(constraint: NSLayoutConstraint?, identifier: String, priority: UILayoutPriority, method: RJSLayoutsMethod = .anchor) -> NSLayoutConstraint? {
         if method == .constraints {
             assert(identifier.count > 0, "Invalid identifier")
             if constraint != nil {
@@ -198,7 +186,7 @@ public extension RJPSLayouts where Target: UIView {
     }
     
     @discardableResult
-    func setSame(_ property: RJSLayoutsAttribute,
+    func setSame(_ property: RJS_LayoutsAttribute,
                  as view: UIView,
                  priority: UILayoutPriority=RJSLayoutsConstants.defaultPriority,
                  multiplier: CGFloat=1,
@@ -250,7 +238,7 @@ public extension RJPSLayouts where Target: UIView {
     
     @discardableResult
     func setMargin(_ margin: CGFloat,
-                   on property: RJSLayoutsAttribute,
+                   on property: RJS_LayoutsAttribute,
                    from: UIView?=nil,
                    priority: UILayoutPriority=RJSLayoutsConstants.defaultPriority,
                    method: RJSLayoutsMethod = .anchor) -> NSLayoutConstraint? {
@@ -324,7 +312,7 @@ public extension RJPSLayouts where Target: UIView {
     }
     
     @discardableResult
-    func setValue(_ value: CGFloat, for property: RJSLayoutsAttribute, priority: UILayoutPriority=RJSLayoutsConstants.defaultPriority, method: RJSLayoutsMethod = .anchor) -> NSLayoutConstraint? {
+    func setValue(_ value: CGFloat, for property: RJS_LayoutsAttribute, priority: UILayoutPriority=RJSLayoutsConstants.defaultPriority, method: RJSLayoutsMethod = .anchor) -> NSLayoutConstraint? {
         let tView = self.target
         func existsWith(key: String) -> NSLayoutConstraint? {
             var nsLayoutConstraint: NSLayoutConstraint?

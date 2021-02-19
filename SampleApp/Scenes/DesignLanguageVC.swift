@@ -14,33 +14,6 @@ import RJSLibUFAppThemes
 #if USE_INCLUDE_TINYCONSTRAINTS
 import TinyConstraints
 
-public extension UIView {
-    
-    func addAndSetup(scrollView: UIScrollView, stackViewV: UIStackView, hasTopBar: Bool) {
-        self.addSubview(scrollView)
-        scrollView.addSubview(stackViewV)
-        stackViewV.edgeStackViewToSuperView()
-        let topBarSize: CGFloat = hasTopBar ? 40 : 0
-        let bottomBarSize: CGFloat = 0
-        scrollView.trailingToSuperview()
-        scrollView.leftToSuperview()
-        scrollView.topToSuperview(offset: topBarSize, usingSafeArea: false)
-        scrollView.height(screenHeight - topBarSize  - bottomBarSize)
-    }
-    
-}
-
-public extension UIStackView {
-    
-    func edgeStackViewToSuperView() {
-        guard self.superview != nil else {
-            return
-        }
-        self.edgesToSuperview()
-        self.width(to: superview!) // NEEDS THIS!
-    }
-}
-
 class DesignLanguageVC: GenericViewController {
 
     private lazy var scrollView: UIScrollView = { UIKitFactory.scrollView() }()
@@ -49,7 +22,7 @@ class DesignLanguageVC: GenericViewController {
     override func loadView() {
         super.loadView()
         prepareLayout()
-        self.view.addAndSetup(scrollView: scrollView, stackViewV: stackViewVLevel1, hasTopBar: false)
+        view.addAndSetup(scrollView: scrollView, stackViewV: stackViewVLevel1, hasTopBar: false)
         stackViewVLevel1.loadWithDesignLanguageReport()
     }
 
@@ -63,7 +36,13 @@ class DesignLanguageVC: GenericViewController {
     }
 
     func prepareLayout() {
-        self.view.backgroundColor = .white
+        view.backgroundColor = .white
+    }
+}
+#else
+class DesignLanguageVC: GenericViewController {
+    override func loadView() {
+        super.loadView()
     }
 }
 #endif

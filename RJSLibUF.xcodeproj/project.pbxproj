@@ -147,7 +147,9 @@
 		D6812084BE80364A125125BC /* FRPSampleAPI+ResponseDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772C009CF5BBE31010486BEC /* FRPSampleAPI+ResponseDto.swift */; };
 		D721F15CD0A2521AD72E0860 /* RJSLibUFBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B0D02882E22945B619357BF /* RJSLibUFBase.framework */; };
 		D73B913F3B0BFBE0931FE4D0 /* UIImageView+Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF56FDF37196BB07FF9066A /* UIImageView+Transform.swift */; };
+		D749554625DE7EF200FEA31F /* E.LayoutsAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = D749553625DE7E5A00FEA31F /* E.LayoutsAttribute.swift */; };
 		D7513F3FE5CFB3E521F65790 /* Just+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC103409834D898F5EA978BE /* Just+Extensions.swift */; };
+		D77BEE4025E0144800E1FA3B /* UIControl+CombineCompatible.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77BEE3F25E0144800E1FA3B /* UIControl+CombineCompatible.swift */; };
 		D7C7AC8025DDCF5300F014F9 /* TestingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C7AC7F25DDCF5300F014F9 /* TestingVC.swift */; };
 		DB68E509A2B4BADB25EB4720 /* RJSLibUFALayouts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5CB34C80F1CD1CE82B934F5E /* RJSLibUFALayouts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DD20D97CE785A4E674A839CE /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55F9BA29C9F8130369C4634 /* String+Extensions.swift */; };
@@ -439,6 +441,8 @@
 		D55F9BA29C9F8130369C4634 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		D5FCBCFD8D709AF7820D020A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		D66CA57671DE0186C90E5FA4 /* NSObject+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extensions.swift"; sourceTree = "<group>"; };
+		D749553625DE7E5A00FEA31F /* E.LayoutsAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = E.LayoutsAttribute.swift; sourceTree = "<group>"; };
+		D77BEE3F25E0144800E1FA3B /* UIControl+CombineCompatible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+CombineCompatible.swift"; sourceTree = "<group>"; };
 		D7C7AC7F25DDCF5300F014F9 /* TestingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestingVC.swift; sourceTree = "<group>"; };
 		DAF56FDF37196BB07FF9066A /* UIImageView+Transform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Transform.swift"; sourceTree = "<group>"; };
 		DB00DDE07F7231BF8C1CDA4C /* BasicHttpGetAgent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicHttpGetAgent.swift; sourceTree = "<group>"; };
@@ -692,6 +696,7 @@
 				CC103409834D898F5EA978BE /* Just+Extensions.swift */,
 				3EA71B58E2460816F99AAA33 /* Publisher+Extensions.swift */,
 				5F9409F9A6DB102CB333BDBF /* Result+Extensions.swift */,
+				D77BEE3F25E0144800E1FA3B /* UIControl+CombineCompatible.swift */,
 			);
 			path = Combine;
 			sourceTree = "<group>";
@@ -880,6 +885,7 @@
 		C964EC9B101F6CDFCE676512 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				D749553525DE7E4B00FEA31F /* ValueTypes */,
 				5EA84DF4A3E5AD96DC7CB6ED /* Designables */,
 				2DF6B0651AF6E23755FE35F4 /* Extensions */,
 				726AAC35475548E7FA3F3808 /* Managers */,
@@ -936,6 +942,14 @@
 				CC2DBA2E7EAB2A2253FC4C7C /* FRPSampleAPI+Sample.swift */,
 			);
 			path = FRPSimpleNetworkAgentSample;
+			sourceTree = "<group>";
+		};
+		D749553525DE7E4B00FEA31F /* ValueTypes */ = {
+			isa = PBXGroup;
+			children = (
+				D749553625DE7E5A00FEA31F /* E.LayoutsAttribute.swift */,
+			);
+			path = ValueTypes;
 			sourceTree = "<group>";
 		};
 		E8160E79AD3F5522466D1223 /* FRPSimpleNetworkAgent */ = {
@@ -1261,6 +1275,7 @@
 				9C940797EE367C82DE95C658 /* Designables+ConnectivityView.swift in Sources */,
 				F69BD65E25FBE11EA890C354 /* Designables+LoadingAnimations.swift in Sources */,
 				073FE6A000208EE163F1603A /* Designables+PassCodeView.swift in Sources */,
+				D749554625DE7EF200FEA31F /* E.LayoutsAttribute.swift in Sources */,
 				3E99C7064DE7AC7AF7DC55EA /* Designables+SearchBar.swift in Sources */,
 				9170F8801D96B4EB81EC5760 /* Designables+TestView.swift in Sources */,
 				5F8A5F8C37340495B57E7E27 /* Designables.swift in Sources */,
@@ -1285,6 +1300,7 @@
 				A1B3E772E718C7E564198819 /* SwiftUI+UIKit.swift in Sources */,
 				0E1B3392272524F7ACF032F1 /* SynchronizedArray.swift in Sources */,
 				0878620A0D8FA983345D5396 /* Text+Extentions.swift in Sources */,
+				D77BEE4025E0144800E1FA3B /* UIControl+CombineCompatible.swift in Sources */,
 				ECA9AE04C6909A407436C033 /* UIApplication+Extensions.swift in Sources */,
 				2387487C4408FA34E14E9586 /* UIButton+Extensions.swift in Sources */,
 				AE930D7E1C409100B32712FE /* UIColor+Extensions.swift in Sources */,

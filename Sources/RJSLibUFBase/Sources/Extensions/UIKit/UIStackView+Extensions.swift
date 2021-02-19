@@ -21,13 +21,8 @@ public extension RJSLibExtension where Target == UIStackView {
 public extension UIStackView {
 
     func edgeStackViewToSuperView() {
-        guard self.superview != nil else {
-            RJS_Logs.error("\(Self.self) - edgeStackViewToSuperView : No super view for [\(self)]", tag: .rjsLib)
-            return
-        }
-    
-        self.edgesToSuperView() // Don't use RJPSLayouts. It will fail if scroll view is inside of stack view with lots of elements
-        self.widthToSuperView()  // NEEDS THIS!
+        edgesToSuperView()
+        widthToSuperView()  
     }
         
     func add(_ view: UIView) {

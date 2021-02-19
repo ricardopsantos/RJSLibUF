@@ -88,6 +88,6 @@ class SwiftUIAndUIKitTesting: GenericViewController {
     }
     
     func prepareLayout() {
-        self.view.backgroundColor = .white
+        view.backgroundColor = .white
     }
 }

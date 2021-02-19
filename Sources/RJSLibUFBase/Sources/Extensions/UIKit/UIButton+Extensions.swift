@@ -8,16 +8,29 @@ import Foundation
 import UIKit
 
 public extension RJSLibExtension where Target == UIButton {
+    var view: UIView { return target.view }
+    func disable() { target.disable() }
+    func doTouchUpInside() { target.doTouchUpInside() }
+    func enable() { target.enable() }
+    
     func paintImageWith(color: UIColor) { target.paintImageWith(color: color) }
     func changeImageColor(to color: UIColor) { target.changeImageColor(to: color) }
+    
     func setImageForAllStates(_ image: UIImage, tintColor: UIColor?) { target.setImageForAllStates(image, tintColor: tintColor) }
-    func disable() { target.disable() }
-    func enable() { target.enable() }
     func setTitleForAllStates(_ title: String) { target.setTitleForAllStates(title) }
     func setTextColorForAllStates(_ color: UIColor) { target.setTextColorForAllStates(color) }
 }
 
 public extension UIButton {
+    
+    var view: UIView {
+        (self as UIView)
+    }
+    
+    /// Will simulate user touch
+    func doTouchUpInside() {
+        self.sendActions(for: .touchUpInside)
+    }
     
     func paintImageWith(color: UIColor) {
         changeImageColor(to: color)

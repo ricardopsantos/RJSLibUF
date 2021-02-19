@@ -22,18 +22,27 @@ class Country {
 
 class TestingVC: GenericViewController {
 
+    private let button = UIButton(type: .system)
+    private var cancelBag = CancelBag()
+
     override func loadView() {
         super.loadView()
+        view.addSubview(button)
+        button.rjs.setTitleForAllStates("Touch me")
+        button.rjs.view.setSame(layoutAttribute: .center, as: view)
+        button.publisher(for: .touchUpInside).sink { button in
+            print("Button is pressed!")
+        }.store(in: cancelBag)
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .white
         
         let country = Country()
         print(country.name)
         print(country.location)
         print(country.population)
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.view.backgroundColor = .white
     }
 
     override func viewWillAppear(_ animated: Bool) {

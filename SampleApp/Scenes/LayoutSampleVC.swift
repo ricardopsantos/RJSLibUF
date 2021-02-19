@@ -44,9 +44,9 @@ class LayoutSampleVC: GenericViewController {
 
     private lazy var viewChangingWidth: UIView = {
         let some = UIView()
-        self.view.addSubview(some)
+        view.addSubview(some)
         some.backgroundColor = .brown
-        some.rjsALayouts.setSame(.centerX, as: self.view, method: .constraints)
+        some.rjsALayouts.setSame(.centerX, as: view, method: .constraints)
         viewMarginTopConstraint = some.rjsALayouts.setMargin(10, on: .top, method: .constraints)
         viewWidthConstraint     = some.rjsALayouts.setValue(UIScreen.main.bounds.width * 0.8, for: .width, method: .constraints)
         some.rjsALayouts.setHeight(200)
@@ -69,14 +69,14 @@ class LayoutSampleVC: GenericViewController {
 
     private lazy var lbl1: UILabel = {
         let label = UILabel()
-        self.view.addSubview(label)
+        view.addSubview(label)
         label.backgroundColor = .green
         label.rjsALayouts.setMargin(50, on: .top)
         label.rjsALayouts.setMargin(50, on: .left)
         label.rjsALayouts.setHeight(50)
         let imageView = UIImageView()
         imageView.image = UIImage(named: "sampleImage")
-        self.view.addSubview(imageView)
+        view.addSubview(imageView)
         imageView.rjsALayouts.setMargin(50, on: .top)
         imageView.rjsALayouts.setMargin(50, on: .left, from: label)
         imageView.rjsALayouts.setHeight(50)
@@ -110,7 +110,7 @@ class LayoutSampleVC: GenericViewController {
     }
 
     func prepareLayout() {
-        self.view.backgroundColor = .white
+        view.backgroundColor = .white
         collectionView1.lazyLoad()
         collectionView2.lazyLoad()
     }
