@@ -5,8 +5,6 @@
 
 import Foundation
 
-///////// GENERIC EXTENSIONS /////////
-
 public struct RJSLibExtension<Target> {
     let target: Target
     init(_ target: Target) { self.target = target }

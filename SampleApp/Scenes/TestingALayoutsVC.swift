@@ -9,7 +9,7 @@ import LocalAuthentication
 import RJSLibUFBase
 import RJSLibUFStorage
 import RJSLibUFNetworking
-import RJSLibUFALayouts
+//import RJSLibUFALayouts
 import RJSLibUFAppThemes
 
 //
@@ -24,30 +24,15 @@ struct Source1 {
 
 class TestingALayoutsVC: GenericViewController {
 
-    var viewWidthConstraint: NSLayoutConstraint!
-    var viewMarginTopConstraint: NSLayoutConstraint!
-
     private lazy var collectionView1: UICollectionView = {
         let itemSizeK: CGFloat = 0.8
         let itemSize: CGSize = CGSize(width: (screenWidth*0.8), height: (screenHeight/2)*itemSizeK)
         let some = RJS_UIKitFactory.collectionView(baseController: self, itemSize: itemSize, direction: .horizontal)
         some.backgroundColor = UIColor.random
-        some.rjsALayouts.setMargin(0, on: .top)
-        some.rjsALayouts.setMargin(0, on: .left)
-        some.rjsALayouts.setMargin(0, on: .right)
-        some.rjsALayouts.setHeight(screenHeight/4)
-        return some
-    }()
-
-    private lazy var viewChangingWidth: UIView = {
-        let some = UIView()
-        view.addSubview(some)
-        some.backgroundColor = UIColor.random
-        some.rjsALayouts.setSame(.centerX, as: view, method: .constraints)
-        viewMarginTopConstraint = some.rjsALayouts.setMargin(10, on: .top, method: .constraints)
-        viewWidthConstraint     = some.rjsALayouts.setValue(screenWidth * 0.8, for: .width, method: .constraints)
-        some.rjsALayouts.setHeight(200)
-        some.backgroundColor = .yellow
+        some.rjs.setMargin(0, on: .top)
+        some.rjs.setMargin(0, on: .left)
+        some.rjs.setMargin(0, on: .right)
+        some.rjs.height(screenHeight/4)
         return some
     }()
 
@@ -56,11 +41,11 @@ class TestingALayoutsVC: GenericViewController {
         let itemSize: CGSize = CGSize(width: (screenWidth/2)*itemSizeK, height: (screenHeight/2)*itemSizeK)
         let some = RJS_UIKitFactory.collectionView(baseController: self, itemSize: itemSize, direction: .vertical)
         some.backgroundColor = UIColor.random
-        some.rjsALayouts.setMargin(0, on: .top, from: collectionView1)
-        some.rjsALayouts.setMargin(0, on: .left)
-        some.rjsALayouts.setMargin(0, on: .right)
+        some.rjs.setMargin(0, on: .top, from: collectionView1)
+        some.rjs.setMargin(0, on: .left)
+        some.rjs.setMargin(0, on: .right)
         let overlap: CGFloat = 0//V.BottomBar.defaultHeight() - V.BottomBar.backgroundHeight()
-        some.rjsALayouts.setMargin(overlap, on: .bottom)
+        some.rjs.setMargin(overlap, on: .bottom)
         return some
     }()
 
@@ -68,14 +53,14 @@ class TestingALayoutsVC: GenericViewController {
         let label = UILabel()
         view.addSubview(label)
         label.backgroundColor = UIColor.random
-        label.rjsALayouts.setMargin(50, on: .top)
-        label.rjsALayouts.setMargin(50, on: .left)
-        label.rjsALayouts.setHeight(50)
-        let imageView = RJS_UIKitFactory.imageView(urlString: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Google_Images_2015_logo.svg/1200px-Google_Images_2015_logo.svg.png")
+        label.rjs.setMargin(50, on: .top)
+        label.rjs.setMargin(50, on: .left)
+        label.rjs.height(50)
+        let imageView = RJS_UIKitFactory.imageView(urlString: imageURL)
         view.addSubview(imageView)
-        imageView.rjsALayouts.setMargin(50, on: .top)
-        imageView.rjsALayouts.setMargin(50, on: .left, from: label)
-        imageView.rjsALayouts.setHeight(50)
+        imageView.rjs.setMargin(50, on: .top)
+        imageView.rjs.setMargin(50, on: .left, from: label)
+        imageView.rjs.height(50)
         return label
     }()
     
@@ -150,10 +135,10 @@ extension TestingALayoutsVC: UICollectionViewDataSource, UICollectionViewDelegat
             let label = RJS_UIKitFactory.label(title: item.title, style: .value)
             label.textAlignment = .center
             myCell.addSubview(label)
-            label.rjsALayouts.setMargin(0, on: .top)
-            label.rjsALayouts.setMargin(0, on: .left)
-            label.rjsALayouts.setMargin(0, on: .bottom)
-            label.rjsALayouts.setMargin(0, on: .right)
+            label.rjs.setMargin(0, on: .top)
+            label.rjs.setMargin(0, on: .left)
+            label.rjs.setMargin(0, on: .bottom)
+            label.rjs.setMargin(0, on: .right)
             return myCell
         } else {
             let myCell = collectionView.dequeueReusableCell(withReuseIdentifier: RJS_Constants.cellIdentifier, for: indexPath as IndexPath)
@@ -163,10 +148,10 @@ extension TestingALayoutsVC: UICollectionViewDataSource, UICollectionViewDelegat
             let label = RJS_UIKitFactory.label(title: item.title, style: .value)
             label.textAlignment = .center
             myCell.addSubview(label)
-            label.rjsALayouts.setMargin(0, on: .top)
-            label.rjsALayouts.setMargin(0, on: .left)
-            label.rjsALayouts.setMargin(0, on: .bottom)
-            label.rjsALayouts.setMargin(0, on: .right)
+            label.rjs.setMargin(0, on: .top)
+            label.rjs.setMargin(0, on: .left)
+            label.rjs.setMargin(0, on: .bottom)
+            label.rjs.setMargin(0, on: .right)
             return myCell
         }
     }

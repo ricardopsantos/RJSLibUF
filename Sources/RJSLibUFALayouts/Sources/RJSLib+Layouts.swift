@@ -16,7 +16,7 @@ import RJSLibUFBase
 // https://theswiftdev.com/2018/06/14/mastering-ios-auto-layout-anchors-programmatically-from-swift/
 
 // swiftlint:disable all
-
+/*
 public protocol RJPSLayoutsCompatible {
     associatedtype RJPSLayoutsType
     var rjsALayouts: RJPSLayoutsType { get }
@@ -528,5 +528,5 @@ fileprivate extension UIView {
     func rjsALayouts_getAllSubviews<T: UIView>() -> [T] { return UIView.rjsALayouts_getAllSubviews(from: self) as [T] }
     func rjsALayouts_get<T: UIView>(all type: T.Type) -> [T] { return UIView.rjsALayouts_getAllSubviews(from: self) as [T] }
     func rjsALayouts_get(all types: [UIView.Type]) -> [UIView] { return UIView.rjsALayouts_getAllSubviews(from: self, types: types) }
-}
+}*/
 #endif

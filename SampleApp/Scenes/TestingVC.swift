@@ -23,9 +23,18 @@ class Country {
 class TestingVC: GenericViewController {
 
     private var cancelBag = CancelBag()
-    private lazy var button: UIButton = {
+    private lazy var button1: UIButton = {
         let button = UIButton(type: .system)
-        button.rjs.setTitleForAllStates("Touch me")
+        button.rjs.setTitleForAllStates("Touch me 1")
+        button.publisher(for: .touchUpInside).sink { button in
+            RJS_Logs.debug("\(button) is pressed!", tag: .rjsLib)
+        }.store(in: cancelBag)
+        return button
+    }()
+    
+    private lazy var button2: UIButton = {
+        let button = UIButton(type: .system)
+        button.rjs.setTitleForAllStates("Touch me 2")
         button.publisher(for: .touchUpInside).sink { button in
             RJS_Logs.debug("\(button) is pressed!", tag: .rjsLib)
         }.store(in: cancelBag)
@@ -34,13 +43,17 @@ class TestingVC: GenericViewController {
     
     override func loadView() {
         super.loadView()
-        view.addSubview(button)
-        button.view.rjs.setSame(.center, as: view)
+        view.addSubview(button1)
+        view.addSubview(button2)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        
+        button1.view.rjs.setSame(.center, as: view)
+        button2.view.rjs.setSame(.centerX, as: view)
+        button2.view.rjs.setMargin(20, on: .top, from: button1)
         
         let country = Country()
         RJS_Logs.debug(country.name, tag: .rjsLib)

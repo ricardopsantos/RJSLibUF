@@ -47,9 +47,9 @@ class TestingSwiftUIAndUIKitVC: GenericViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(imageView)
-        imageView.rjsALayouts.height(200)
-        imageView.rjsALayouts.width(200)
-        imageView.rjsALayouts.setSame(.center, as: view)
+        imageView.rjs.height(200)
+        imageView.rjs.width(200)
+        imageView.rjs.setSame(.center, as: view)
         
         delegate.didChange.sink { (delegate) in
             print(delegate.someValue)

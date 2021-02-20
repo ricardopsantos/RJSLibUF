@@ -44,11 +44,11 @@ fileprivate extension UIView {
     var viewController: UIViewController? {
         if let nextResponder = next as? UIViewController {
             return nextResponder
-        } else if let nextResponder = self.next as? UIView {
-            return nextResponder.viewController
-        } else {
-            return nil
         }
+        if let nextResponder = next as? UIView {
+            return nextResponder.viewController
+        }
+        return nil
     }
 
     func bringToFront() { superview?.bringSubviewToFront(self) }
