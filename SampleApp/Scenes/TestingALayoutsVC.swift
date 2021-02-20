@@ -22,19 +22,16 @@ struct Source1 {
     let title: String
 }
 
-class LayoutSampleVC: GenericViewController {
+class TestingALayoutsVC: GenericViewController {
 
     var viewWidthConstraint: NSLayoutConstraint!
     var viewMarginTopConstraint: NSLayoutConstraint!
-
-    let screenWidth  = UIScreen.main.bounds.width
-    let screenHeight = UIScreen.main.bounds.height
 
     private lazy var collectionView1: UICollectionView = {
         let itemSizeK: CGFloat = 0.8
         let itemSize: CGSize = CGSize(width: (screenWidth*0.8), height: (screenHeight/2)*itemSizeK)
         let some = RJS_UIKitFactory.collectionView(baseController: self, itemSize: itemSize, direction: .horizontal)
-        some.backgroundColor = .brown
+        some.backgroundColor = UIColor.random
         some.rjsALayouts.setMargin(0, on: .top)
         some.rjsALayouts.setMargin(0, on: .left)
         some.rjsALayouts.setMargin(0, on: .right)
@@ -45,10 +42,10 @@ class LayoutSampleVC: GenericViewController {
     private lazy var viewChangingWidth: UIView = {
         let some = UIView()
         view.addSubview(some)
-        some.backgroundColor = .brown
+        some.backgroundColor = UIColor.random
         some.rjsALayouts.setSame(.centerX, as: view, method: .constraints)
         viewMarginTopConstraint = some.rjsALayouts.setMargin(10, on: .top, method: .constraints)
-        viewWidthConstraint     = some.rjsALayouts.setValue(UIScreen.main.bounds.width * 0.8, for: .width, method: .constraints)
+        viewWidthConstraint     = some.rjsALayouts.setValue(screenWidth * 0.8, for: .width, method: .constraints)
         some.rjsALayouts.setHeight(200)
         some.backgroundColor = .yellow
         return some
@@ -58,7 +55,7 @@ class LayoutSampleVC: GenericViewController {
         let itemSizeK: CGFloat = 0.8
         let itemSize: CGSize = CGSize(width: (screenWidth/2)*itemSizeK, height: (screenHeight/2)*itemSizeK)
         let some = RJS_UIKitFactory.collectionView(baseController: self, itemSize: itemSize, direction: .vertical)
-        some.backgroundColor = .orange
+        some.backgroundColor = UIColor.random
         some.rjsALayouts.setMargin(0, on: .top, from: collectionView1)
         some.rjsALayouts.setMargin(0, on: .left)
         some.rjsALayouts.setMargin(0, on: .right)
@@ -70,12 +67,11 @@ class LayoutSampleVC: GenericViewController {
     private lazy var lbl1: UILabel = {
         let label = UILabel()
         view.addSubview(label)
-        label.backgroundColor = .green
+        label.backgroundColor = UIColor.random
         label.rjsALayouts.setMargin(50, on: .top)
         label.rjsALayouts.setMargin(50, on: .left)
         label.rjsALayouts.setHeight(50)
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: "sampleImage")
+        let imageView = RJS_UIKitFactory.imageView(urlString: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Google_Images_2015_logo.svg/1200px-Google_Images_2015_logo.svg.png")
         view.addSubview(imageView)
         imageView.rjsALayouts.setMargin(50, on: .top)
         imageView.rjsALayouts.setMargin(50, on: .left, from: label)
@@ -118,7 +114,7 @@ class LayoutSampleVC: GenericViewController {
 
 // MARK: - View Protocol
 
-extension LayoutSampleVC: UICollectionViewDataSource, UICollectionViewDelegate {
+extension TestingALayoutsVC: UICollectionViewDataSource, UICollectionViewDelegate {
     
     var dataSource1: [Source1] {
         return [Source1(title: "1.1"),

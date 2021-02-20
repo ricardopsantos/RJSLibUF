@@ -22,10 +22,10 @@ public extension RJSLibExtension where Target == UIButton {
 }
 
 public extension UIButton {
-    
-    var view: UIView {
-        (self as UIView)
-    }
+    var view: UIView { self as UIView }
+}
+
+public extension UIButton {
     
     /// Will simulate user touch
     func doTouchUpInside() {
@@ -56,26 +56,26 @@ public extension UIButton {
     }
     
     func disable() {
-        self.isUserInteractionEnabled = false
-        self.fadeTo(0.6)
+        isUserInteractionEnabled = false
+        fadeTo(0.6)
     }
 
     func enable() {
-        self.isUserInteractionEnabled = true
-        self.fadeTo(1)
+        isUserInteractionEnabled = true
+        fadeTo(1)
     }
     
     func setTitleForAllStates(_ title: String) {
-        self.setTitle(title, for: .normal)
-        self.setTitle(title, for: .highlighted)
-        self.setTitle(title, for: .selected)
+        setTitle(title, for: .normal)
+        setTitle(title, for: .highlighted)
+        setTitle(title, for: .selected)
     }
     
     func setTextColorForAllStates(_ color: UIColor) {
-        self.titleLabel?.textColor = color
-        self.setTitleColor(color, for: .normal)
-        self.setTitleColor(color, for: .highlighted)
-        self.setTitleColor(color, for: .selected)
+        titleLabel?.textColor = color
+        setTitleColor(color, for: .normal)
+        setTitleColor(color, for: .highlighted)
+        setTitleColor(color, for: .selected)
     }
     
     func onTouchUpInside(autoDisableUserInteractionFor: Double=RJS_Constants.defaultDisableTimeAfterTap, block:@escaping () -> Void) {
@@ -86,7 +86,7 @@ public extension UIButton {
             @objc func invoke () { block() }
         }
         
-        self.disableUserInteractionFor(autoDisableUserInteractionFor)
+        self.view.rjs.disableUserInteractionFor(autoDisableUserInteractionFor)
         let sleeve = ClosureSleeve(block)
         addTarget(sleeve, action: #selector(ClosureSleeve.invoke), for: .touchUpInside)
         objc_setAssociatedObject(self, "[\(arc4random())]", sleeve, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN)
@@ -95,7 +95,7 @@ public extension UIButton {
     func bumpAndPerform(scale: CGFloat=1.05,
                         disableUserInteractionFor: Double=RJS_Constants.defaultDisableTimeAfterTap,
                         block:@escaping () -> Void) {
-        self.disableUserInteractionFor(disableUserInteractionFor)
+        self.view.rjs.disableUserInteractionFor(disableUserInteractionFor)
         UIView.animate(withDuration: RJS_Constants.defaultAnimationsTime/2.0, animations: { [weak self] in
             guard let self = self else {
                 RJS_Logs.warning(RJS_Constants.referenceLost, tag: .rjsLib)

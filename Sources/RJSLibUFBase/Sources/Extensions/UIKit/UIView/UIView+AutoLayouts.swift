@@ -9,50 +9,222 @@ import UIKit
 
 public extension RJSLibExtension where Target == UIView {
     
+    //
+    // Getters
+    //
+    
     var layoutConstraints: [NSLayoutConstraint] { target.constraints }
-    func removeLayoutConstraint() { target.removeLayoutConstraint() }
-
-    func setSame(layoutAttribute: RJS_LayoutsAttribute, as view: UIView?) {
-        target.setSame(layoutAttribute: layoutAttribute, as: view)
+    
+    //
+    // Base
+    //
+    
+    @discardableResult
+    func setSame(_ layoutAttribute: RJS_LayoutsAttribute, as view: UIView?) -> [NSLayoutConstraint]? {
+        target.setSame(layoutAttribute, as: view)
     }
     
-    func setLayoutAttribute(_ layoutAttribute: RJS_LayoutsAttribute, with value: CGFloat) {
+    @discardableResult
+    func setLayoutAttribute(_ layoutAttribute: RJS_LayoutsAttribute, with value: CGFloat) -> [NSLayoutConstraint]? {
         target.setLayoutAttribute(layoutAttribute, with: value)
     }
     
-    func edgesToSuperView() { target.edgesToSuperView() }
+    @discardableResult
+    func setMargin(_ margin: CGFloat,
+                   on layoutAttribute: RJS_LayoutsAttribute,
+                   from: UIView?,
+                   priority: UILayoutPriority? = nil) -> [NSLayoutConstraint]? {
+        target.setMargin(margin, on: layoutAttribute, from: from, priority: priority)
+    }
+
+    //
+    // Utils
+    //
     
-    func width(_ value: CGFloat) { target.width(value) }
-    func widthTo(_ view: UIView?) { target.widthTo(view) }
-    func widthToSuperView() { target.widthToSuperView() }
+    func removeAllLayoutConstraints() {
+        target.removeAllLayoutConstraints()
+    }
+
+    @discardableResult
+    func addAndSetup(scrollView: UIScrollView, with stackViewV: UIStackView, hasTopBar: Bool) -> [NSLayoutConstraint]? {
+        target.addAndSetup(scrollView: scrollView, with: stackViewV, hasTopBar: hasTopBar)
+    }
     
-    func height(_ value: CGFloat) { target.height(value) }
-    func heightTo(_ view: UIView?) { target.heightTo(view) }
-    func heightToSuperview() { target.heightToSuperview() }
+    @discardableResult
+    func edgesToSuperView() -> [NSLayoutConstraint]? {
+        var result: [NSLayoutConstraint]?
+        if let c = setSame(.top, as: target.superview) {
+            result?.append(contentsOf: c)
+        }
+        if let c = setSame(.left, as: target.superview) {
+            result?.append(contentsOf: c)
+        }
+        if let c = setSame(.right, as: target.superview) {
+            result?.append(contentsOf: c)
+        }
+        if let c = setSame(.bottom, as: target.superview) {
+            result?.append(contentsOf: c)
+        }
+        return result
+    }
+    
+    @discardableResult
+    func width(_ value: CGFloat) -> NSLayoutConstraint? {
+        target.setLayoutAttribute(.width, with: value)?.first
+    }
+    
+    @discardableResult
+    func widthTo(_ view: UIView) -> NSLayoutConstraint? {
+        setSame(.width, as: view)?.first
+    }
+    
+    @discardableResult
+    func widthToSuperView() -> NSLayoutConstraint? {
+        setSame(.width, as: target.superview)?.first
+    }
+    
+    @discardableResult
+    func height(_ value: CGFloat) -> NSLayoutConstraint? {
+        target.setLayoutAttribute(.height, with: value)?.first
+    }
+    
+    @discardableResult
+    func heightTo(_ view: UIView) -> NSLayoutConstraint? {
+        setSame(.height, as: view)?.first
+    }
+    
+    @discardableResult
+    func heightToSuperview() -> NSLayoutConstraint? {
+        setSame(.height, as: target.superview)?.first
+    }
 }
 
-public extension UIView {
+//
+// Hide the implementation and force the use of the `rjs` alias
+//
 
-    func addAndSetup(scrollView: UIScrollView, with stackViewV: UIStackView, hasTopBar: Bool) {
+fileprivate extension UIView {
+    
+    var layoutConstraints: [NSLayoutConstraint] {
+        var tViews: [UIView] = [self]
+        var tView: UIView = self
+        while let superview = tView.superview {
+            tViews.append(superview)
+            tView = superview
+        }
+        return tViews.flatMap({ $0.constraints }).filter { constraint in
+            return constraint.firstItem as? UIView == tView || constraint.secondItem as? UIView == tView
+        }
+    }
+    
+    func removeAllLayoutConstraints() {
+        layoutConstraints.forEach { (some) in
+            NSLayoutConstraint.deactivate([some])
+            self.removeConstraint(some)
+        }
+    }
+    
+    func removeConstraintWithIdentifier(_ identifier: String) {
+        let toRemove = layoutConstraints.filter { $0.identifier == identifier }.first
+        if toRemove != nil {
+            self.removeConstraint(toRemove!)
+            NSLayoutConstraint.deactivate([toRemove!])
+        }
+        let constraints = layoutConstraints.filter({ (some) -> Bool in some.identifier == identifier })
+        self.superview?.removeConstraints(constraints)
+        self.removeConstraints(constraints)
+    }
+    
+    func addAndSetup(scrollView: UIScrollView, with stackViewV: UIStackView, hasTopBar: Bool) -> [NSLayoutConstraint]? {
         if scrollView.superview == nil {
             addSubview(scrollView)
         }
         if stackViewV.superview == nil {
             scrollView.addSubview(stackViewV)
         }
-        
-        scrollView.edgesToSuperView()
-        scrollView.height(screenHeight)
-        stackViewV.edgeStackViewToSuperView()
+        var result: [NSLayoutConstraint]?
+        if let c = scrollView.view.rjs.edgesToSuperView() {
+            result?.append(contentsOf: c)
+        }
+        if let c = scrollView.view.rjs.height(screenHeight) {
+            result?.append(c)
+        }
+        if let c = stackViewV.rjs.edgeStackViewToSuperView() {
+            result?.append(contentsOf: c)
+        }
+        return result
     }
     
-}
-
-public extension UIView {
+    func activate(constraint: NSLayoutConstraint,
+                  identifier: String = "",
+                  priority: UILayoutPriority? = nil) -> NSLayoutConstraint? {
+        
+        removeConstraintWithIdentifier(identifier)
+        if !identifier.trim.isEmpty {
+            constraint.identifier = identifier
+        }
+        if let priority = priority {
+            constraint.priority   = priority
+        }
+        NSLayoutConstraint.activate([constraint])
+        return constraint
+    }
     
-    func setSame(layoutAttribute: RJS_LayoutsAttribute, as view: UIView?) {
+    @discardableResult
+    func setMargin(_ margin: CGFloat,
+                   on layoutAttribute: RJS_LayoutsAttribute,
+                   from: UIView?,
+                   priority: UILayoutPriority? = nil) -> [NSLayoutConstraint]? {
+
+        guard let from = from else {
+           fatalError("Fail to apply margin on [\(layoutAttribute)]. Target view is nil.")
+        }
+
+        self.translatesAutoresizingMaskIntoConstraints = false
+        var constraints: [NSLayoutConstraint] = []
+
+            switch layoutAttribute {
+            case .top:
+                if from == self.superview {
+                    constraints.append(topAnchor.constraint(equalTo: self.superview!.safeAreaLayoutGuide.topAnchor, constant: margin))
+                } else {
+                    constraints.append(topAnchor.constraint(equalTo: from.bottomAnchor, constant: margin))
+                }
+            case .bottom:
+                let constant = margin
+                // Add if statement for safe area check
+                if from == self.superview {
+                    constraints.append(bottomAnchor.constraint(equalTo: self.superview!.safeAreaLayoutGuide.bottomAnchor, constant: -constant))
+                } else {
+                    constraints.append(bottomAnchor.constraint(equalTo: from.topAnchor, constant: constant))
+                }
+            case .left, .tailing:
+                let constant = margin
+                if from == self.superview {
+                    constraints.append(leftAnchor.constraint(equalTo: self.superview!.leftAnchor, constant: constant))
+                } else {
+                    constraints.append(leftAnchor.constraint(equalTo: from.rightAnchor, constant: constant))
+                }
+            case .right, .leading:
+                let constant = margin
+                if from == self.superview {
+                    constraints.append(rightAnchor.constraint(equalTo: self.superview!.rightAnchor, constant: -constant))
+                } else {
+                    constraints.append(rightAnchor.constraint(equalTo: from.leftAnchor, constant: -constant))
+                }
+            default:
+                _ = 1
+            }
+        
+        return constraints.compactMap {
+            activate(constraint: $0, identifier: "id__\(#function)_\(layoutAttribute)_\(from.rjs.printableMemoryAddress)")
+        }
+    }
+    
+    @discardableResult
+    func setSame(_ layoutAttribute: RJS_LayoutsAttribute, as view: UIView?) -> [NSLayoutConstraint]? {
         guard let view = view else {
-            preconditionFailure("Target view is nil")
+            fatalError("Target view is nil")
         }
         self.translatesAutoresizingMaskIntoConstraints = false
         var constraints: [NSLayoutConstraint] = []
@@ -71,12 +243,13 @@ public extension UIView {
             constraints.append(centerYAnchor.constraint(equalTo: view.centerYAnchor))
             constraints.append(centerXAnchor.constraint(equalTo: view.centerXAnchor))
         }
-        if !constraints.isEmpty {
-            NSLayoutConstraint.activate(constraints)
+        return constraints.compactMap {
+            activate(constraint: $0, identifier: "id_\(#function)_\(layoutAttribute)_\(view.rjs.printableMemoryAddress)")
         }
     }
     
-    func setLayoutAttribute(_ layoutAttribute: RJS_LayoutsAttribute, with value: CGFloat) {
+    @discardableResult
+    func setLayoutAttribute(_ layoutAttribute: RJS_LayoutsAttribute, with value: CGFloat) -> [NSLayoutConstraint]? {
         self.translatesAutoresizingMaskIntoConstraints = false
         var constraints: [NSLayoutConstraint] = []
         switch layoutAttribute {
@@ -92,59 +265,10 @@ public extension UIView {
         case .centerY : _ = ()
         case .center  : _ = ()
         }
-        if !constraints.isEmpty {
-            NSLayoutConstraint.activate(constraints)
+        return constraints.compactMap {
+            activate(constraint: $0, identifier: "id__\(#function)_\(layoutAttribute)")
         }
     }
-    
-    func removeLayoutConstraint() {
-        layoutConstraints.forEach { (some) in
-            self.removeConstraint(some)
-            NSLayoutConstraint.deactivate([some])
-        }
-    }
-    
-    var layoutConstraints: [NSLayoutConstraint] {
-        var tViews: [UIView] = [self]
-        var tView: UIView = self
-        while let superview = tView.superview {
-            tViews.append(superview)
-            tView = superview
-        }
-        return tViews.flatMap({ $0.constraints }).filter { constraint in
-            return constraint.firstItem as? UIView == tView || constraint.secondItem as? UIView == tView
-        }
-    }
-    
-    func height(_ value: CGFloat) {
-        setLayoutAttribute(.height, with: value)
-    }
-    
-    func width(_ value: CGFloat) {
-        setLayoutAttribute(.width, with: value)
-    }
-    
-    func heightTo(_ view: UIView?) {
-        setSame(layoutAttribute: .height, as: view)
-    }
-    
-    func widthTo(_ view: UIView?) {
-        setSame(layoutAttribute: .width, as: view)
-    }
-    
-    func heightToSuperview() {
-        heightTo(superview)
-    }
-    
-    func widthToSuperView() {
-        widthTo(superview)
-    }
-    
-    func edgesToSuperView() {
-        setSame(layoutAttribute: .top, as: superview)
-        setSame(layoutAttribute: .left, as: superview)
-        setSame(layoutAttribute: .right, as: superview)
-        setSame(layoutAttribute: .bottom, as: superview)
-    }
+
 }
 #endif

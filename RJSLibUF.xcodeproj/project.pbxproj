@@ -41,7 +41,7 @@
 		212C38EC432242C991F05E52 /* NetworkAgentUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A9E3428131246AB08C31AC /* NetworkAgentUtils.swift */; };
 		21ED7F7EE04D92B1502549BA /* RJPSLibDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 058CDCA81CF8A6FAF10211DE /* RJPSLibDataModel.xcdatamodeld */; };
 		2387487C4408FA34E14E9586 /* UIButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8534B86522ACDC60A0B2D929 /* UIButton+Extensions.swift */; };
-		25711F608627D6777A181B1E /* LayoutSampleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FAEA0CEB82D3206B3C63805 /* LayoutSampleVC.swift */; };
+		25711F608627D6777A181B1E /* TestingALayoutsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FAEA0CEB82D3206B3C63805 /* TestingALayoutsVC.swift */; };
 		2624BBE85226AAE0C1E46AB6 /* VC.BaseGenericViewControllerVIP.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F4482E3E65E8C4EF357044 /* VC.BaseGenericViewControllerVIP.swift */; };
 		28262BBBC7E7328108FCDB3C /* UIView+SubViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61953EEBE6CA0B857F0C9912 /* UIView+SubViews.swift */; };
 		2A1FB7B62833BF4B87D38F92 /* R.BaseRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46A2BDACDF28964E494742E /* R.BaseRouterProtocol.swift */; };
@@ -99,7 +99,6 @@
 		89BA691142297CCFEE50BE0F /* typealias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC8F6B796D0F413F0685949 /* typealias.swift */; };
 		8B2FA356428B78D3209A8819 /* DispatchQueue+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03D76A7604E0D1362351551 /* DispatchQueue+Extensions.swift */; };
 		8BAF022030F76910D66FFE87 /* DataModelEntity+Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9001C93FC16BE0259978FA36 /* DataModelEntity+Cache.swift */; };
-		8C7DE8B5FF5540C2CD5D0BA4 /* DesignablesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B3253833A6D649AE2ECA07 /* DesignablesVC.swift */; };
 		9030C046542AA72A462F1BE8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF37213AD82CB78CAB51EA0 /* AppDelegate.swift */; };
 		9170F8801D96B4EB81EC5760 /* Designables+TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFE5DFB5E40866AA7639D7F /* Designables+TestView.swift */; };
 		9394018BBA39D1EBFCF3D2E5 /* URLRequest+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2EC6E6655C7C619F73C08BB /* URLRequest+Extensions.swift */; };
@@ -120,7 +119,7 @@
 		A26E9B849C90CE5989972AB0 /* RJSLibUFAppThemes.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F20CF5BF19068E6B3A1440D1 /* RJSLibUFAppThemes.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A39089CDCA382807D447181A /* UIView+Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB20EC14DD1A532B6876338 /* UIView+Transform.swift */; };
 		A47EE648D8C085C9601D0C6B /* DependencyInjection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1365CF440985635B3CC77A11 /* DependencyInjection.swift */; };
-		A4905F34DA6E2E6F7EAC92AB /* SwiftUIAndUIKitTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D1ECF421C91118A786E394 /* SwiftUIAndUIKitTesting.swift */; };
+		A4905F34DA6E2E6F7EAC92AB /* TestingSwiftUIAndUIKitVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D1ECF421C91118A786E394 /* TestingSwiftUIAndUIKitVC.swift */; };
 		A96BFA6C19318FA5CE5B7142 /* UIScreen+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1612484DFC6421E987CBE6F0 /* UIScreen+Extensions.swift */; };
 		ACA49CB5471DAC40E0692DCA /* VC.BaseViewControllerVIP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547660CEB414EEF2708240F3 /* VC.BaseViewControllerVIP.swift */; };
 		AE930D7E1C409100B32712FE /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D8575DA32821D4D60E585F /* UIColor+Extensions.swift */; };
@@ -134,7 +133,7 @@
 		BFC7C9FA577722B45B2D0A01 /* RJSLibraryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0620F4B1D5D48E817CCDA3 /* RJSLibraryExtension.swift */; };
 		C0F66F4438BBA387B0262B77 /* FRPSampleAPI+RequestDto+Employee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F69D66B99E99E3023D1D1FF /* FRPSampleAPI+RequestDto+Employee.swift */; };
 		C1A6218D5BF95CB64521224F /* Storages+Files.swift in Sources */ = {isa = PBXBuildFile; fileRef = A530E5DD62B601A634395AD4 /* Storages+Files.swift */; };
-		C2216693E2FAA9D7891FD6D6 /* DesignLanguageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC230213429314325192AF59 /* DesignLanguageVC.swift */; };
+		C2216693E2FAA9D7891FD6D6 /* TestingDesignLanguageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC230213429314325192AF59 /* TestingDesignLanguageVC.swift */; };
 		C29F2AF694D1F2AFE12C69D5 /* Combine+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F38550A8CC6C3DADF0D438E /* Combine+Extensions.swift */; };
 		C345DAA53C291F1F2B58EA04 /* RJSLibUFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD4DEAB85D959C8F029F2E0F /* RJSLibUFNetworking.framework */; };
 		C37B94614E8936F981833458 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609D69AB09369C6BDDE5D2ED /* UIView+Extensions.swift */; };
@@ -147,6 +146,7 @@
 		D6812084BE80364A125125BC /* FRPSampleAPI+ResponseDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772C009CF5BBE31010486BEC /* FRPSampleAPI+ResponseDto.swift */; };
 		D721F15CD0A2521AD72E0860 /* RJSLibUFBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B0D02882E22945B619357BF /* RJSLibUFBase.framework */; };
 		D73B913F3B0BFBE0931FE4D0 /* UIImageView+Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF56FDF37196BB07FF9066A /* UIImageView+Transform.swift */; };
+		D747026B25E1372200BCD226 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = D747026A25E1372200BCD226 /* File.swift */; };
 		D749554625DE7EF200FEA31F /* E.LayoutsAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = D749553625DE7E5A00FEA31F /* E.LayoutsAttribute.swift */; };
 		D7513F3FE5CFB3E521F65790 /* Just+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC103409834D898F5EA978BE /* Just+Extensions.swift */; };
 		D77BEE4025E0144800E1FA3B /* UIControl+CombineCompatible.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77BEE3F25E0144800E1FA3B /* UIControl+CombineCompatible.swift */; };
@@ -389,12 +389,12 @@
 		8EC14E7489D975E66FAC35A1 /* FRPSampleAPI+ResponseDto+Employee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FRPSampleAPI+ResponseDto+Employee.swift"; sourceTree = "<group>"; };
 		8EC448058AC7766868AD9057 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		8EDD993373DA46E378B05E1B /* SampleApp.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = SampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		8FAEA0CEB82D3206B3C63805 /* LayoutSampleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutSampleVC.swift; sourceTree = "<group>"; };
+		8FAEA0CEB82D3206B3C63805 /* TestingALayoutsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingALayoutsVC.swift; sourceTree = "<group>"; };
 		9001C93FC16BE0259978FA36 /* DataModelEntity+Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataModelEntity+Cache.swift"; sourceTree = "<group>"; };
 		905BC0621255B60BDF550CDC /* BaseViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewProtocol.swift; sourceTree = "<group>"; };
 		90B799B66AA64CE4D70B7DDD /* P.BasePresenterVIP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = P.BasePresenterVIP.swift; sourceTree = "<group>"; };
 		9130CF7C9372352C58CD627E /* E.FRPSimpleNetworkClientAPIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = E.FRPSimpleNetworkClientAPIError.swift; sourceTree = "<group>"; };
-		93D1ECF421C91118A786E394 /* SwiftUIAndUIKitTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIAndUIKitTesting.swift; sourceTree = "<group>"; };
+		93D1ECF421C91118A786E394 /* TestingSwiftUIAndUIKitVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingSwiftUIAndUIKitVC.swift; sourceTree = "<group>"; };
 		94F2E1C0AA0FD14A9E52DACC /* E.AlertType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = E.AlertType.swift; sourceTree = "<group>"; };
 		95727F8CD6B9E9042D54DFBB /* typealias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = typealias.swift; sourceTree = "<group>"; };
 		97CA582127350ABCE6EAAF42 /* D.___FILEBASENAME___Domain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "D.___FILEBASENAME___Domain.swift"; sourceTree = "<group>"; };
@@ -413,7 +413,7 @@
 		A5399970AE8507F061D3C43D /* FRPSampleAPI+RequestsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FRPSampleAPI+RequestsBuilder.swift"; sourceTree = "<group>"; };
 		A7D1072252EB41BDF9BCF108 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		A7FD55FC4B395C68DA9ACEC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		AC230213429314325192AF59 /* DesignLanguageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignLanguageVC.swift; sourceTree = "<group>"; };
+		AC230213429314325192AF59 /* TestingDesignLanguageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingDesignLanguageVC.swift; sourceTree = "<group>"; };
 		AC5F6BF972E99C1061D97E39 /* Text+Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Text+Extentions.swift"; sourceTree = "<group>"; };
 		AC8F8854563A612770551D88 /* PermissionsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionsManager.swift; sourceTree = "<group>"; };
 		ADCA7B8B9E275C6A79B6EA35 /* Convert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Convert.swift; sourceTree = "<group>"; };
@@ -423,7 +423,6 @@
 		B7A3598B58B1A47636177F9B /* Storages+HotCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Storages+HotCache.swift"; sourceTree = "<group>"; };
 		B95ABD892ADB066A7F19C320 /* Collections+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collections+Extensions.swift"; sourceTree = "<group>"; };
 		BB5513E91F9443C2978C8E0E /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
-		C2B3253833A6D649AE2ECA07 /* DesignablesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignablesVC.swift; sourceTree = "<group>"; };
 		C35703BC4EB4A360B8657953 /* I.___FILEBASENAME___Interactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "I.___FILEBASENAME___Interactor.swift"; sourceTree = "<group>"; };
 		C3DFA7A5A5850C1AF6AF7078 /* SimpleNetworkAgentErrorsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleNetworkAgentErrorsManager.swift; sourceTree = "<group>"; };
 		C57404FBC26831AC8106F08B /* UIStackView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extensions.swift"; sourceTree = "<group>"; };
@@ -441,6 +440,7 @@
 		D55F9BA29C9F8130369C4634 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		D5FCBCFD8D709AF7820D020A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		D66CA57671DE0186C90E5FA4 /* NSObject+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extensions.swift"; sourceTree = "<group>"; };
+		D747026A25E1372200BCD226 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		D749553625DE7E5A00FEA31F /* E.LayoutsAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = E.LayoutsAttribute.swift; sourceTree = "<group>"; };
 		D77BEE3F25E0144800E1FA3B /* UIControl+CombineCompatible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+CombineCompatible.swift"; sourceTree = "<group>"; };
 		D7C7AC7F25DDCF5300F014F9 /* TestingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestingVC.swift; sourceTree = "<group>"; };
@@ -767,6 +767,7 @@
 				15D8575DA32821D4D60E585F /* UIColor+Extensions.swift */,
 				1612484DFC6421E987CBE6F0 /* UIScreen+Extensions.swift */,
 				C57404FBC26831AC8106F08B /* UIStackView+Extensions.swift */,
+				D747026A25E1372200BCD226 /* File.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -794,6 +795,7 @@
 		9143D516AC7B12E76CB1F833 /* SampleApp */ = {
 			isa = PBXGroup;
 			children = (
+				8EC448058AC7766868AD9057 /* TabBarController.swift */,
 				9963AB3F709570841481C4CA /* Scenes */,
 				A50A085FEB3DEEF32F879ED7 /* Scenes.Auxiliar */,
 				9FF37213AD82CB78CAB51EA0 /* AppDelegate.swift */,
@@ -820,11 +822,9 @@
 		9963AB3F709570841481C4CA /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				C2B3253833A6D649AE2ECA07 /* DesignablesVC.swift */,
-				AC230213429314325192AF59 /* DesignLanguageVC.swift */,
-				8FAEA0CEB82D3206B3C63805 /* LayoutSampleVC.swift */,
-				93D1ECF421C91118A786E394 /* SwiftUIAndUIKitTesting.swift */,
-				8EC448058AC7766868AD9057 /* TabBarController.swift */,
+				AC230213429314325192AF59 /* TestingDesignLanguageVC.swift */,
+				8FAEA0CEB82D3206B3C63805 /* TestingALayoutsVC.swift */,
+				93D1ECF421C91118A786E394 /* TestingSwiftUIAndUIKitVC.swift */,
 				D7C7AC7F25DDCF5300F014F9 /* TestingVC.swift */,
 			);
 			path = Scenes;
@@ -1093,6 +1093,7 @@
 			buildConfigurationList = 3E30F12AEF3FFBF85122FA0F /* Build configuration list for PBXNativeTarget "RJSLibUFALayouts" */;
 			buildPhases = (
 				26AA389F4F1EE1AD09A56DB1 /* Sources */,
+				D747026225E123B300BCD226 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1230,6 +1231,23 @@
 			shellPath = /bin/bash;
 			shellScript = "${SRCROOT}/Scripts/swiftlint.sh\n";
 		};
+		D747026225E123B300BCD226 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "    if which swiftlint >/dev/null; then\n        swiftlint --quiet\n    else\n        echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\n        exit -1\n    fi\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1277,6 +1295,7 @@
 				073FE6A000208EE163F1603A /* Designables+PassCodeView.swift in Sources */,
 				D749554625DE7EF200FEA31F /* E.LayoutsAttribute.swift in Sources */,
 				3E99C7064DE7AC7AF7DC55EA /* Designables+SearchBar.swift in Sources */,
+				D747026B25E1372200BCD226 /* File.swift in Sources */,
 				9170F8801D96B4EB81EC5760 /* Designables+TestView.swift in Sources */,
 				5F8A5F8C37340495B57E7E27 /* Designables.swift in Sources */,
 				8B2FA356428B78D3209A8819 /* DispatchQueue+Extensions.swift in Sources */,
@@ -1340,11 +1359,10 @@
 			files = (
 				9030C046542AA72A462F1BE8 /* AppDelegate.swift in Sources */,
 				BDA7F783E5929B93E78DDDD8 /* Auxiliar.swift in Sources */,
-				C2216693E2FAA9D7891FD6D6 /* DesignLanguageVC.swift in Sources */,
+				C2216693E2FAA9D7891FD6D6 /* TestingDesignLanguageVC.swift in Sources */,
 				D7C7AC8025DDCF5300F014F9 /* TestingVC.swift in Sources */,
-				8C7DE8B5FF5540C2CD5D0BA4 /* DesignablesVC.swift in Sources */,
-				25711F608627D6777A181B1E /* LayoutSampleVC.swift in Sources */,
-				A4905F34DA6E2E6F7EAC92AB /* SwiftUIAndUIKitTesting.swift in Sources */,
+				25711F608627D6777A181B1E /* TestingALayoutsVC.swift in Sources */,
+				A4905F34DA6E2E6F7EAC92AB /* TestingSwiftUIAndUIKitVC.swift in Sources */,
 				2A569D45A083364181398B09 /* TabBarController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

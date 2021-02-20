@@ -16,13 +16,24 @@ public extension RJSLibExtension where Target == UIStackView {
     func insertArrangedSubview(_ view: UIView, belowArrangedSubview subview: UIView) { target.insertArrangedSubview(view, belowArrangedSubview: subview) }
     func insertArrangedSubview(_ view: UIView, aboveArrangedSubview subview: UIView) { target.insertArrangedSubview(view, aboveArrangedSubview: subview) }
     func removeAllArrangedSubviews() { target.removeAllArrangedSubviews() }
+    func edgeStackViewToSuperView() -> [NSLayoutConstraint]? { target.edgeStackViewToSuperView() }
 }
 
 public extension UIStackView {
+    var view: UIView { (self as UIView) }
+}
 
-    func edgeStackViewToSuperView() {
-        edgesToSuperView()
-        widthToSuperView()  
+fileprivate extension UIStackView {
+    
+    func edgeStackViewToSuperView() -> [NSLayoutConstraint]? {
+        var result: [NSLayoutConstraint]?
+        if let c = view.rjs.edgesToSuperView() {
+            result?.append(contentsOf: c)
+        }
+        if let c = view.rjs.widthToSuperView() {
+            result?.append(c)
+        }
+        return result
     }
         
     func add(_ view: UIView) {

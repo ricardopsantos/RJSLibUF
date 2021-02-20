@@ -14,7 +14,7 @@ import RJSLibUFAppThemes
 #if USE_INCLUDE_TINYCONSTRAINTS
 import TinyConstraints
 
-class DesignLanguageVC: GenericViewController {
+class TestingDesignLanguageVC: GenericViewController {
 
     private lazy var scrollView: UIScrollView = { UIKitFactory.scrollView() }()
     private lazy var stackViewVLevel1: UIStackView = { UIKitFactory.stackView(axis: .vertical) }()
@@ -40,7 +40,7 @@ class DesignLanguageVC: GenericViewController {
     }
 }
 #else
-class DesignLanguageVC: GenericViewController {
+class TestingDesignLanguageVC: GenericViewController {
     override func loadView() {
         super.loadView()
     }

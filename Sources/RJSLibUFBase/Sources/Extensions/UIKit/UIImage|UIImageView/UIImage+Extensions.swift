@@ -39,7 +39,7 @@ public extension UIImage {
         // Create an CGImageSource that represent an image
         let imageSourceOptions = [kCGImageSourceShouldCache: false] as CFDictionary
         guard let imageSource = CGImageSourceCreateWithURL(imageURL as CFURL, imageSourceOptions) else {
-            RJS_Logs.error("Failed on CGImageSourceCreateWithURL")
+            RJS_Logs.error("Failed on CGImageSourceCreateWithURL", tag: .rjsLib)
             return nil
         }
         
@@ -54,7 +54,7 @@ public extension UIImage {
             kCGImageSourceThumbnailMaxPixelSize: maxDimensionInPixels
         ] as CFDictionary
         guard let downsampledImage = CGImageSourceCreateThumbnailAtIndex(imageSource, 0, downsampleOptions) else {
-            RJS_Logs.error("Failed on CGImageSourceCreateThumbnailAtIndex")
+            RJS_Logs.error("Failed on CGImageSourceCreateThumbnailAtIndex with url [\(imageURL)]", tag: .rjsLib)
             return nil
         }
         

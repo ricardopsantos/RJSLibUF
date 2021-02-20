@@ -20,8 +20,8 @@ public extension UIImageView {
                 DispatchQueue.main.async { [weak self] in
                     guard let self = self else { return }
                     //(self as UIView).rjs.stopActivityIndicator()
-                    if downsample {
-                        self.image = UIImage.downsample(imageAt: url, to: self.bounds.size)
+                    if downsample, let donwsampleImage = UIImage.downsample(imageAt: url, to: self.bounds.size) {
+                        self.image = donwsampleImage
                     } else {
                         self.image = image
                     }

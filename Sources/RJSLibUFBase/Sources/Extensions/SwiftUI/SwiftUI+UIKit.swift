@@ -29,7 +29,7 @@ public extension UIView {
     func addSubSwiftUIView<Content>(_ swiftUIView: Content) where Content: View {
         if let view = swiftUIView.viewController.view {
             self.addSubview(view)
-            view.edgesToSuperView()
+            view.rjs.edgesToSuperView()
         }
     }
 }
@@ -49,7 +49,7 @@ public extension UIViewController {
 
             // Add the SwiftUI view to the view controller view hierarchy.
             view.addSubview(newView)
-            newView.edgesToSuperView()
+            newView.rjs.edgesToSuperView()
 
             // Notify the hosting controller that it has been moved to the current view controller.
             hostingController.didMove(toParent: self)

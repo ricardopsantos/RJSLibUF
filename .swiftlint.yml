@@ -108,21 +108,22 @@ type_name:
     excluded:
         - iPhone
         - R
-        - RP
-        - AC
-        - UC
-        - MP
         - V
-        - VM
-        - VC
-        - AS
-        - Rx
         - W
         - P
         - I
         - E
-        - MD
         - M
+        - S
+        - VM
+        - VC
+        - AS
+        - Rx
+        - MD
+        - RP
+        - AC
+        - UC
+        - MP
         - Id
 
 identifier_name:

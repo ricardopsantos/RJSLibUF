@@ -12,6 +12,10 @@ public extension RJSLibExtension where Target == UIView {
     var width: CGFloat { target.width }
     var height: CGFloat { target.height }
 
+    var printableMemoryAddress: String {
+        target.printableMemoryAddress
+    }
+    
     var viewController: UIViewController? { target.viewController }
 
     func bringToFront() { target.bringToFront() }
@@ -23,8 +27,17 @@ public extension RJSLibExtension where Target == UIView {
     }
 }
 
-public extension UIView {
-        
+//
+// Hide the implementation and force the use of the `rjs` alias
+//
+
+fileprivate extension UIView {
+       
+    var printableMemoryAddress: String {
+        // https://stackoverflow.com/questions/24058906/printing-a-variable-memory-address-in-swift
+        "\(Unmanaged.passUnretained(self).toOpaque())"
+    }
+    
     var width: CGFloat { frame.width }
     var height: CGFloat { frame.height }
 
