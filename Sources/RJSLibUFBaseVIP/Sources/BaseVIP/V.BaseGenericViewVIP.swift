@@ -62,7 +62,7 @@ extension RJSLib {
         
         // Can (and should) be overriden
         public func displayMessage(_ message: String, type: AlertType) {
-            (self as? UIViewController).showAlert(title: "\(type)", message: message)
+            (self as? UIViewController)?.showAlert(title: "\(type)", message: message)
         }
     }
 }

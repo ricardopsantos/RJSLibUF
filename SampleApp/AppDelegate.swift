@@ -13,7 +13,6 @@ import RJSLibUFBase
 import RJSLibUFNetworking
 import RJSLibUFStorage
 import RJSLibUFAppThemes
-import RJSLibUFALayouts
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

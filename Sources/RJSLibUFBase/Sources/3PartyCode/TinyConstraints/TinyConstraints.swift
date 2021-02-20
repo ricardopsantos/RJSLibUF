@@ -23,12 +23,10 @@
 //
 
 // swiftlint:disable all
+/*
+#if !os(macOS)
 
-#if os(OSX)
-    import AppKit
-#else
-    import UIKit
-#endif
+import UIKit
 
 public extension Constrainable {
     
@@ -351,3 +349,6 @@ public extension View {
         setContentCompressionResistancePriority(priority, for: axis)
     }
 }
+
+#endif
+*/

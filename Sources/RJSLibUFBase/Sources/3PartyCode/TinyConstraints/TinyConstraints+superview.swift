@@ -23,36 +23,9 @@
 //
 
 // swiftlint:disable all
+/*
+#if !os(macOS)
 
-#if os(OSX)
-    import AppKit
-    
-    public extension View {
-        
-        @discardableResult
-        func edgesToSuperview(excluding excludedEdge: LayoutEdge = .none, insets: TinyEdgeInsets = .zero, usingSafeArea: Bool = false) -> Constraints {
-            var constraints = Constraints()
-            
-            if !excludedEdge.contains(.top) {
-                constraints.append(topToSuperview(offset: insets.top, usingSafeArea: usingSafeArea))
-            }
-            
-            if !excludedEdge.contains(.left) {
-                constraints.append(leftToSuperview(offset: insets.left, usingSafeArea: usingSafeArea))
-            }
-            
-            if !excludedEdge.contains(.right) {
-                constraints.append(rightToSuperview(offset: -insets.right, usingSafeArea: usingSafeArea))
-            }
-            
-            if !excludedEdge.contains(.bottom) {
-                constraints.append(bottomToSuperview(offset: -insets.bottom, usingSafeArea: usingSafeArea))
-            }
-            
-            return constraints
-        }
-    }
-#else
     import UIKit
     
     public extension View {
@@ -150,7 +123,7 @@
             return constraints
         }
     }
-#endif
+
 
 public struct LayoutEdge: OptionSet {
     public let rawValue: UInt8
@@ -246,3 +219,6 @@ public extension View {
         return centerY(to: constrainable, anchor, multiplier: multiplier, offset: offset, priority: priority, isActive: isActive)
     }
 }
+
+#endif
+*/

@@ -1,10 +1,10 @@
 //
 //  Created by Ricardo Santos on 19/02/2021.
 //
-
+#if !os(macOS)
 import Foundation
-import UIKit
 import Combine
+import UIKit
 
 //
 // Based on https://www.avanderlee.com/swift/custom-combine-publisher/
@@ -66,3 +66,4 @@ extension RJSLib {
         }
     }
 }
+#endif

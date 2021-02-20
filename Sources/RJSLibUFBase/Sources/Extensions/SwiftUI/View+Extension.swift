@@ -2,32 +2,25 @@
 //  Created by Ricardo Santos
 //  Copyright © 2020 Ricardo P Santos. All rights reserved.
 //
-
+#if !os(macOS)
 import Foundation
 import SwiftUI
-#if !os(macOS)
-import UIKit
-#endif
 
-public extension Shape {
-    #if !os(macOS)
+public extension SwiftUI.Shape {
     func addSimpleStroke(color: UIColor, width: CGFloat) -> some View {
         self.stroke(Color(color), lineWidth: width)
     }
-    #endif
 }
 
 public extension RoundedRectangle {
-    #if !os(macOS)
     func addDashedStroke(color: UIColor, width: CGFloat) -> some View {
         self.strokeBorder(style: StrokeStyle(lineWidth: width, dash: [15])).foregroundColor(Color(color))
     }
-    #endif
 }
 
-public extension View {
+public extension SwiftUI.View {
 
-    func buildPreviews() -> some View {
+    func buildPreviews() -> some SwiftUI.View {
         Group {
             self.previewDisplayName("Default")
             self.environment(\.colorScheme, .dark).previewDisplayName("Dark")
@@ -151,7 +144,6 @@ public extension View {
     }
 }
 
-#if !os(macOS)
 public extension View {
     // Draw a corner, outside the View
     func addOuterCornerOverlaying(color: UIColor, radius: CGFloat = 3, width: CGFloat = 2, padding: Bool) -> some View {

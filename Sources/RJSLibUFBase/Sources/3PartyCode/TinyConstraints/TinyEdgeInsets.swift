@@ -23,12 +23,10 @@
 //
 
 // swiftlint:disable all
+/*
+#if !os(macOS)
 
-#if os(OSX)
-    import AppKit
-#else
-    import UIKit
-#endif
+import UIKit
 
 extension TinyEdgeInsets {
     
@@ -64,3 +62,6 @@ extension TinyEdgeInsets {
 public func + (lhs: TinyEdgeInsets, rhs: TinyEdgeInsets) -> TinyEdgeInsets {
     return .init(top: lhs.top + rhs.top, left: lhs.left + rhs.left, bottom: lhs.bottom + rhs.bottom, right: lhs.right + rhs.right)
 }
+
+#endif
+*/

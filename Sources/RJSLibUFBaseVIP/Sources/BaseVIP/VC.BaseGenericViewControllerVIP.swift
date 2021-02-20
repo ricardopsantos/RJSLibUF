@@ -26,7 +26,7 @@ public extension RJSLib {
             setup()
             genericView = T()
             view.addSubview(genericView)
-            genericView.rjs.edgesToSuperView()
+            (genericView as UIView).layouts.edgesToSuperView()
             setupViewUIRx()
         }
 

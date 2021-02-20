@@ -22,13 +22,11 @@
 //    THE SOFTWARE.
 //
 
+/*
 // swiftlint:disable all
+#if !os(macOS)
 
-#if os(OSX)
-    import AppKit
-#else
-    import UIKit
-#endif
+import UIKit
 
 public typealias Constraint = NSLayoutConstraint
 public typealias Constraints = [Constraint]
@@ -56,30 +54,19 @@ public extension Collection where Iterator.Element == Constraint {
     }
 }
 
-#if os(OSX)
+
 public extension Constraint {
     @objc
-    func with(_ p: Constraint.Priority) -> Self {
+    func with(_ p: LayoutPriority) -> Self {
         priority = p
         return self
     }
-
+        
     func set(_ active: Bool) -> Self {
         isActive = active
         return self
     }
 }
-#else
-    public extension Constraint {
-        @objc
-        func with(_ p: LayoutPriority) -> Self {
-            priority = p
-            return self
-        }
-        
-        func set(_ active: Bool) -> Self {
-            isActive = active
-            return self
-        }
-}
+
 #endif
+*/

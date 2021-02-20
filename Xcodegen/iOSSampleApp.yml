@@ -52,7 +52,7 @@ targets:
         product: RJSLibUFAppThemes
         link: true
       - package: RJSLibUF
-        product: RJSLibUFALayouts
+        product: RJSLibUFBaseVIP
         link: true
       - package: RJSLibUF
         product: RJSLibUFStorage

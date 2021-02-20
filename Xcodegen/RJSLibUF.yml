@@ -78,10 +78,11 @@ targets:
         link: true
       - target: RJSLibUFNetworking
         link: true
-      - target: RJSLibUFALayouts
-        link: true
       - target: RJSLibUFStorage
         link: true
+      - target: RJSLibUFBaseVIP
+        link: true
+        
 #    postCompileScripts:
 #      - script: |
 #                if which swiftlint >/dev/null; then
@@ -126,15 +127,6 @@ targets:
       - target: RJSLibUFBase
         link: false
 
-  RJSLibUFALayouts:
-    templates: 
-      - Framework
-    sources: 
-      - path: ../Sources/RJSLibUFALayouts
-    dependencies:
-      - target: RJSLibUFBase
-        link: false
-
   RJSLibUFStorage:
     templates: 
       - Framework
@@ -160,8 +152,6 @@ targets:
       - target: RJSLibUFBase
         link: false
       - target: RJSLibUFNetworking
-        link: false
-      - target: RJSLibUFALayouts
         link: false
       - target: RJSLibUFStorage
         link: false

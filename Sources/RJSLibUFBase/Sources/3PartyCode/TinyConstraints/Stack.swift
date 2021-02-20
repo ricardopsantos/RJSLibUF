@@ -24,11 +24,10 @@
 
 // swiftlint:disable all
 
-#if os(OSX)
-    import AppKit
-#else
-    import UIKit
-#endif
+/*
+#if !os(macOS)
+
+import UIKit
 
 public extension View {
     
@@ -81,3 +80,7 @@ public extension View {
         return constraints
     }
 }
+
+#endif
+
+*/

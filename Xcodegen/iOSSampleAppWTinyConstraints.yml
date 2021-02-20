@@ -58,7 +58,7 @@ targets:
       - package: RJSLibUF
         product: RJSLibUFStorage
       - package: RJSLibUF
-        product: RJSLibUFStorage
+        product: RJSLibUFBaseVIP
         
       - package: TinyConstraints
         product: TinyConstraints
