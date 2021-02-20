@@ -16,9 +16,9 @@ public protocol BaseViewControllerVIPProtocol: class {
     func displayStatus(viewModel: RJS_BaseDisplayLogicModels.Status)
 }
 
-extension RJSLib {
+public extension RJSLib {
     
-    open class BaseViewControllerVIP: UIViewController, BaseViewControllerVIPProtocol, RJS_BaseViewProtocol {
+    class BaseViewControllerVIP: UIViewController, BaseViewControllerVIPProtocol, RJS_BaseViewProtocol {
 
         public var firstAppearance = true
 

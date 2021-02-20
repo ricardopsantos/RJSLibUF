@@ -15,8 +15,8 @@ public struct RJSLayouts<Target> {
 public protocol RJSLayoutsCompatible { }
 
 public extension RJSLayoutsCompatible {
-    var rjs: RJSLayouts<Self> { return RJSLayouts(self) }                   /* instance extension */
-    static var rjs: RJSLayouts<Self>.Type { return RJSLayouts<Self>.self }  /* static extension */
+    var layouts: RJSLayouts<Self> { return RJSLayouts(self) }                   /* instance extension */
+    static var layouts: RJSLayouts<Self>.Type { return RJSLayouts<Self>.self }  /* static extension */
 }
 
 extension UIView: RJSLayoutsCompatible { }
@@ -28,35 +28,6 @@ public extension RJSLayouts where Target: UIView {
     //
     
     var layoutConstraints: [NSLayoutConstraint] { target.layoutConstraints }
-    
-    //
-    // Base
-    //
-    
-    @discardableResult
-    func setSame(_ layoutAttribute: RJS_LayoutsAttribute, as view: UIView?, multiplier: CGFloat = 1) -> [NSLayoutConstraint]? {
-        target.setSame(layoutAttribute, as: view, multiplier: multiplier)
-    }
-    
-    @discardableResult
-    func setLayoutAttribute(_ layoutAttribute: RJS_LayoutsAttribute, with value: CGFloat) -> [NSLayoutConstraint]? {
-        target.setLayoutAttribute(layoutAttribute, with: value)
-    }
-    
-    @discardableResult
-    func setMargin(_ margin: CGFloat,
-                   on layoutAttribute: RJS_LayoutsAttribute,
-                   from: UIView?,
-                   priority: UILayoutPriority? = nil) -> NSLayoutConstraint? {
-        target.setMargin(margin, on: layoutAttribute, from: from, priority: priority)?.first
-    }
-
-    @discardableResult
-    func setMargin(_ margin: CGFloat,
-                   on layoutAttribute: RJS_LayoutsAttribute,
-                   priority: UILayoutPriority? = nil) -> NSLayoutConstraint? {
-        target.setMargin(margin, on: layoutAttribute, from: target.superview, priority: priority)?.first
-    }
     
     //
     // Utils
@@ -79,13 +50,23 @@ public extension RJSLayouts where Target: UIView {
     //
     
     @discardableResult
-    func topToBottom(of view: UIView, priority: UILayoutPriority? = nil) -> NSLayoutConstraint? {
-        return target.setMargin(0, on: .top, from: view, priority: priority)?.first
+    func bottom(to view: UIView, margin: CGFloat = 0, priority: UILayoutPriority? = nil) -> NSLayoutConstraint? {
+        return target.setSame(.bottom, as: view, offset: margin)?.first
     }
     
     @discardableResult
-    func topToBottomOfSuperView(priority: UILayoutPriority? = nil) -> NSLayoutConstraint? {
-        return target.setMargin(0, on: .top, from: target.superview, priority: priority)?.first
+    func top(to view: UIView, margin: CGFloat = 0, priority: UILayoutPriority? = nil) -> NSLayoutConstraint? {
+        return target.setSame(.top, as: view, offset: margin)?.first
+    }
+    
+    @discardableResult
+    func topToBottom(of view: UIView, margin: CGFloat = 0, priority: UILayoutPriority? = nil) -> NSLayoutConstraint? {
+        return target.setMargin(margin, on: .top, from: view, priority: priority)?.first
+    }
+    
+    @discardableResult
+    func topToBottomOfSuperView(margin: CGFloat = 0, priority: UILayoutPriority? = nil) -> NSLayoutConstraint? {
+        return target.setMargin(margin, on: .top, from: target.superview, priority: priority)?.first
     }
     
     @discardableResult
@@ -132,6 +113,36 @@ public extension RJSLayouts where Target: UIView {
     func heightToSuperview() -> NSLayoutConstraint? {
         setSame(.height, as: target.superview)?.first
     }
+    
+    //
+    // Base
+    //
+    
+    @discardableResult
+    func setSame(_ layoutAttribute: RJS_LayoutsAttribute, as view: UIView?, multiplier: CGFloat = 1) -> [NSLayoutConstraint]? {
+        target.setSame(layoutAttribute, as: view, multiplier: multiplier)
+    }
+    
+    @discardableResult
+    func setLayoutAttribute(_ layoutAttribute: RJS_LayoutsAttribute, with value: CGFloat) -> [NSLayoutConstraint]? {
+        target.setLayoutAttribute(layoutAttribute, with: value)
+    }
+    
+    @discardableResult
+    func setMargin(_ margin: CGFloat,
+                   on layoutAttribute: RJS_LayoutsAttribute,
+                   from: UIView?,
+                   priority: UILayoutPriority? = nil) -> NSLayoutConstraint? {
+        target.setMargin(margin, on: layoutAttribute, from: from, priority: priority)?.first
+    }
+
+    @discardableResult
+    func setMargin(_ margin: CGFloat,
+                   on layoutAttribute: RJS_LayoutsAttribute,
+                   priority: UILayoutPriority? = nil) -> NSLayoutConstraint? {
+        target.setMargin(margin, on: layoutAttribute, from: target.superview, priority: priority)?.first
+    }
+    
 }
 
 //
@@ -180,10 +191,10 @@ fileprivate extension UIView {
             scrollView.addSubview(stackViewV)
         }
         var result: [NSLayoutConstraint]?
-        if let c = scrollView.rjs.edgesToSuperView() {
+        if let c = scrollView.layouts.edgesToSuperView() {
             result?.append(contentsOf: c)
         }
-        if let c = scrollView.rjs.height(screenHeight) {
+        if let c = scrollView.layouts.height(screenHeight) {
             result?.append(c)
         }
         if let c = stackViewV.rjs.edgeStackViewToSuperView() {
@@ -262,7 +273,7 @@ fileprivate extension UIView {
     }
     
     @discardableResult
-    func setSame(_ layoutAttribute: RJS_LayoutsAttribute, as view: UIView?, multiplier: CGFloat = 1) -> [NSLayoutConstraint]? {
+    func setSame(_ layoutAttribute: RJS_LayoutsAttribute, as view: UIView?, offset: CGFloat = 0, multiplier: CGFloat = 1) -> [NSLayoutConstraint]? {
         guard let view = view else {
             fatalError("Target view is nil")
         }
@@ -271,14 +282,14 @@ fileprivate extension UIView {
         switch layoutAttribute {
         case .height  : constraints.append(heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: multiplier))
         case .width   : constraints.append(widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: multiplier))
-        case .top     : constraints.append(topAnchor.constraint(equalTo: view.topAnchor))
-        case .bottom  : constraints.append(bottomAnchor.constraint(equalTo: view.bottomAnchor))
-        case .left    : constraints.append(leftAnchor.constraint(equalTo: view.leftAnchor))
-        case .tailing : constraints.append(trailingAnchor.constraint(equalTo: view.trailingAnchor))
-        case .right   : constraints.append(rightAnchor.constraint(equalTo: view.rightAnchor))
-        case .leading : constraints.append(leadingAnchor.constraint(equalTo: view.leadingAnchor))
-        case .centerX : constraints.append(centerXAnchor.constraint(equalTo: view.centerXAnchor))
-        case .centerY : constraints.append(centerYAnchor.constraint(equalTo: view.centerYAnchor))
+        case .top     : constraints.append(topAnchor.constraint(equalTo: view.topAnchor, constant: offset))
+        case .bottom  : constraints.append(bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: offset))
+        case .left    : constraints.append(leftAnchor.constraint(equalTo: view.leftAnchor, constant: offset))
+        case .tailing : constraints.append(trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: offset))
+        case .right   : constraints.append(rightAnchor.constraint(equalTo: view.rightAnchor, constant: offset))
+        case .leading : constraints.append(leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: offset))
+        case .centerX : constraints.append(centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: offset))
+        case .centerY : constraints.append(centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: offset))
         case .center  :
             constraints.append(centerYAnchor.constraint(equalTo: view.centerYAnchor))
             constraints.append(centerXAnchor.constraint(equalTo: view.centerXAnchor))

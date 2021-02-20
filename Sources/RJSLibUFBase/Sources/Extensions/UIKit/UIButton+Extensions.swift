@@ -8,7 +8,6 @@ import Foundation
 import UIKit
 
 public extension RJSLibExtension where Target == UIButton {
-    var view: UIView { return target.view }
     func disable() { target.disable() }
     func doTouchUpInside() { target.doTouchUpInside() }
     func enable() { target.enable() }
@@ -19,10 +18,6 @@ public extension RJSLibExtension where Target == UIButton {
     func setImageForAllStates(_ image: UIImage, tintColor: UIColor?) { target.setImageForAllStates(image, tintColor: tintColor) }
     func setTitleForAllStates(_ title: String) { target.setTitleForAllStates(title) }
     func setTextColorForAllStates(_ color: UIColor) { target.setTextColorForAllStates(color) }
-}
-
-public extension UIButton {
-    var view: UIView { self as UIView }
 }
 
 public extension UIButton {
@@ -86,16 +81,16 @@ public extension UIButton {
             @objc func invoke () { block() }
         }
         
-        self.view.rjs.disableUserInteractionFor(autoDisableUserInteractionFor)
+        (self as UIView).rjs.disableUserInteractionFor(autoDisableUserInteractionFor)
         let sleeve = ClosureSleeve(block)
         addTarget(sleeve, action: #selector(ClosureSleeve.invoke), for: .touchUpInside)
-        objc_setAssociatedObject(self, "[\(arc4random())]", sleeve, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN)
+        objc_setAssociatedObject(self, "[\(arc4random())]", sleeve, objc_AssociationPolicy.OBJC_ASSOCIATION_ASSIGN)
     }
     
-    func bumpAndPerform(scale: CGFloat=1.05,
-                        disableUserInteractionFor: Double=RJS_Constants.defaultDisableTimeAfterTap,
+    func bumpAndPerform(scale: CGFloat = 1.05,
+                        disableUserInteractionFor: Double = RJS_Constants.defaultDisableTimeAfterTap,
                         block:@escaping () -> Void) {
-        self.view.rjs.disableUserInteractionFor(disableUserInteractionFor)
+        (self as UIView).rjs.disableUserInteractionFor(disableUserInteractionFor)
         UIView.animate(withDuration: RJS_Constants.defaultAnimationsTime/2.0, animations: { [weak self] in
             guard let self = self else {
                 RJS_Logs.warning(RJS_Constants.referenceLost, tag: .rjsLib)

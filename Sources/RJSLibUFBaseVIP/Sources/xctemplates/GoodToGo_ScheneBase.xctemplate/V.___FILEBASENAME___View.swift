@@ -67,19 +67,19 @@ extension V {
         public override func prepareLayoutCreateHierarchy() {
             addSubview(scrollView)
             scrollView.addSubview(stackViewVLevel1)
-            stackViewVLevel1.addSub(view: lblTitle)
-            stackViewVLevel1.addSub(view: btnSample1)
-            stackViewVLevel1.addSub(view: btnSample2)
+            stackViewVLevel1.rjs.addSub(view: lblTitle)
+            stackViewVLevel1.rjs.addSub(view: btnSample1)
+            stackViewVLevel1.rjs.addSub(view: btnSample2)
         }
 
         // This function is called automatically by super BaseGenericViewVIP
         // There are 3 functions specialised according to what we are doing. Please use them accordingly
         // Function 2/3 : JUST to setup layout rules zone....
         public override func prepareLayoutBySettingAutoLayoutsRules() {
-            addAndSetup(scrollView: scrollView, with: stackViewVLevel1, hasTopBar: false)
+            rjs.addAndSetup(scrollView: scrollView, with: stackViewVLevel1, hasTopBar: false)
             //addSubview(scrollView: scrollView, with: stackViewVLevel1, hasTopBar: false)
             self.allSubviews.filter { $0 .isKind(of: UIButton.self) }.forEach { (some) in
-                some.height(40)
+                some.rjs.height(40)
             }
         }
 

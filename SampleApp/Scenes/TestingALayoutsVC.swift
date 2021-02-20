@@ -29,10 +29,10 @@ class TestingALayoutsVC: GenericViewController {
         let itemSize: CGSize = CGSize(width: (screenWidth*0.8), height: (screenHeight/2)*itemSizeK)
         let some = RJS_UIKitFactory.collectionView(baseController: self, itemSize: itemSize, direction: .horizontal)
         some.backgroundColor = UIColor.random
-        some.rjs.setMargin(0, on: .top)
-        some.rjs.setMargin(0, on: .left)
-        some.rjs.setMargin(0, on: .right)
-        some.rjs.height(screenHeight/4)
+        some.layouts.setMargin(0, on: .top)
+        some.layouts.setMargin(0, on: .left)
+        some.layouts.setMargin(0, on: .right)
+        some.layouts.height(screenHeight/4)
         return some
     }()
 
@@ -41,11 +41,11 @@ class TestingALayoutsVC: GenericViewController {
         let itemSize: CGSize = CGSize(width: (screenWidth/2)*itemSizeK, height: (screenHeight/2)*itemSizeK)
         let some = RJS_UIKitFactory.collectionView(baseController: self, itemSize: itemSize, direction: .vertical)
         some.backgroundColor = UIColor.random
-        some.rjs.setMargin(0, on: .top, from: collectionView1)
-        some.rjs.setMargin(0, on: .left)
-        some.rjs.setMargin(0, on: .right)
+        some.layouts.setMargin(0, on: .top, from: collectionView1)
+        some.layouts.setMargin(0, on: .left)
+        some.layouts.setMargin(0, on: .right)
         let overlap: CGFloat = 0//V.BottomBar.defaultHeight() - V.BottomBar.backgroundHeight()
-        some.rjs.setMargin(overlap, on: .bottom)
+        some.layouts.setMargin(overlap, on: .bottom)
         return some
     }()
 
@@ -53,14 +53,14 @@ class TestingALayoutsVC: GenericViewController {
         let label = UILabel()
         view.addSubview(label)
         label.backgroundColor = UIColor.random
-        label.rjs.setMargin(50, on: .top)
-        label.rjs.setMargin(50, on: .left)
-        label.rjs.height(50)
+        label.layouts.setMargin(50, on: .top)
+        label.layouts.setMargin(50, on: .left)
+        label.layouts.height(50)
         let imageView = RJS_UIKitFactory.imageView(urlString: imageURL)
         view.addSubview(imageView)
-        imageView.rjs.setMargin(50, on: .top)
-        imageView.rjs.setMargin(50, on: .left, from: label)
-        imageView.rjs.height(50)
+        imageView.layouts.setMargin(50, on: .top)
+        imageView.layouts.setMargin(50, on: .left, from: label)
+        imageView.layouts.height(50)
         return label
     }()
     
@@ -135,10 +135,10 @@ extension TestingALayoutsVC: UICollectionViewDataSource, UICollectionViewDelegat
             let label = RJS_UIKitFactory.label(title: item.title, style: .value)
             label.textAlignment = .center
             myCell.addSubview(label)
-            label.rjs.setMargin(0, on: .top)
-            label.rjs.setMargin(0, on: .left)
-            label.rjs.setMargin(0, on: .bottom)
-            label.rjs.setMargin(0, on: .right)
+            label.layouts.setMargin(0, on: .top)
+            label.layouts.setMargin(0, on: .left)
+            label.layouts.setMargin(0, on: .bottom)
+            label.layouts.setMargin(0, on: .right)
             return myCell
         } else {
             let myCell = collectionView.dequeueReusableCell(withReuseIdentifier: RJS_Constants.cellIdentifier, for: indexPath as IndexPath)
@@ -148,10 +148,10 @@ extension TestingALayoutsVC: UICollectionViewDataSource, UICollectionViewDelegat
             let label = RJS_UIKitFactory.label(title: item.title, style: .value)
             label.textAlignment = .center
             myCell.addSubview(label)
-            label.rjs.setMargin(0, on: .top)
-            label.rjs.setMargin(0, on: .left)
-            label.rjs.setMargin(0, on: .bottom)
-            label.rjs.setMargin(0, on: .right)
+            label.layouts.setMargin(0, on: .top)
+            label.layouts.setMargin(0, on: .left)
+            label.layouts.setMargin(0, on: .bottom)
+            label.layouts.setMargin(0, on: .right)
             return myCell
         }
     }

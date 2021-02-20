@@ -27,10 +27,10 @@ fileprivate extension UIStackView {
     
     func edgeStackViewToSuperView() -> [NSLayoutConstraint]? {
         var result: [NSLayoutConstraint]?
-        if let c = view.rjs.edgesToSuperView() {
+        if let c = view.layouts.edgesToSuperView() {
             result?.append(contentsOf: c)
         }
-        if let c = view.rjs.widthToSuperView() {
+        if let c = view.layouts.widthToSuperView() {
             result?.append(c)
         }
         return result

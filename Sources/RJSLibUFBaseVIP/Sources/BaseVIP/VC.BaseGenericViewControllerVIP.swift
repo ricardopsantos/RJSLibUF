@@ -7,9 +7,9 @@ import UIKit
 //
 import RJSLibUFBase
 
-extension RJSLib {
+public extension RJSLib {
     
-    open class BaseGenericViewControllerVIP<T: StylableView>: BaseViewControllerVIP {
+    class BaseGenericViewControllerVIP<T: StylableView>: BaseViewControllerVIP {
 
         public let cancelBag = CancelBag()
         deinit {
@@ -26,7 +26,7 @@ extension RJSLib {
             setup()
             genericView = T()
             view.addSubview(genericView)
-            (genericView as UIView).edgesToSuperView()
+            genericView.rjs.edgesToSuperView()
             setupViewUIRx()
         }
 

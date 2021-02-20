@@ -445,6 +445,13 @@
 		D747026A25E1372200BCD226 /* UIScrollView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Extensions.swift"; sourceTree = "<group>"; };
 		D747027325E152B300BCD226 /* UsesAutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsesAutoLayout.swift; sourceTree = "<group>"; };
 		D747028325E1559B00BCD226 /* UILayoutPriority+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILayoutPriority+Extensions.swift"; sourceTree = "<group>"; };
+		D747029C25E17B1A00BCD226 /* TinyConstraints+superview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TinyConstraints+superview.swift"; sourceTree = "<group>"; };
+		D747029D25E17B1A00BCD226 /* Constrainable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constrainable.swift; sourceTree = "<group>"; };
+		D747029E25E17B1A00BCD226 /* TinyEdgeInsets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TinyEdgeInsets.swift; sourceTree = "<group>"; };
+		D747029F25E17B1A00BCD226 /* Stack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
+		D74702A025E17B1A00BCD226 /* Abstraction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Abstraction.swift; sourceTree = "<group>"; };
+		D74702A125E17B1A00BCD226 /* TinyConstraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TinyConstraints.swift; sourceTree = "<group>"; };
+		D74702A225E17B1A00BCD226 /* Constraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constraints.swift; sourceTree = "<group>"; };
 		D749553625DE7E5A00FEA31F /* E.LayoutsAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = E.LayoutsAttribute.swift; sourceTree = "<group>"; };
 		D77BEE3F25E0144800E1FA3B /* UIControl+CombineCompatible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+CombineCompatible.swift"; sourceTree = "<group>"; };
 		D7C7AC7F25DDCF5300F014F9 /* TestingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestingVC.swift; sourceTree = "<group>"; };
@@ -891,6 +898,7 @@
 		C964EC9B101F6CDFCE676512 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				D70BE67525E17FD00056DC5C /* 3PartyCode */,
 				D749553525DE7E4B00FEA31F /* ValueTypes */,
 				5EA84DF4A3E5AD96DC7CB6ED /* Designables */,
 				2DF6B0651AF6E23755FE35F4 /* Extensions */,
@@ -948,6 +956,28 @@
 				CC2DBA2E7EAB2A2253FC4C7C /* FRPSampleAPI+Sample.swift */,
 			);
 			path = FRPSimpleNetworkAgentSample;
+			sourceTree = "<group>";
+		};
+		D70BE67525E17FD00056DC5C /* 3PartyCode */ = {
+			isa = PBXGroup;
+			children = (
+				D747029B25E17AFA00BCD226 /* TinyConstraints */,
+			);
+			path = 3PartyCode;
+			sourceTree = "<group>";
+		};
+		D747029B25E17AFA00BCD226 /* TinyConstraints */ = {
+			isa = PBXGroup;
+			children = (
+				D74702A025E17B1A00BCD226 /* Abstraction.swift */,
+				D747029D25E17B1A00BCD226 /* Constrainable.swift */,
+				D74702A225E17B1A00BCD226 /* Constraints.swift */,
+				D747029F25E17B1A00BCD226 /* Stack.swift */,
+				D74702A125E17B1A00BCD226 /* TinyConstraints.swift */,
+				D747029C25E17B1A00BCD226 /* TinyConstraints+superview.swift */,
+				D747029E25E17B1A00BCD226 /* TinyEdgeInsets.swift */,
+			);
+			path = TinyConstraints;
 			sourceTree = "<group>";
 		};
 		D749553525DE7E4B00FEA31F /* ValueTypes */ = {

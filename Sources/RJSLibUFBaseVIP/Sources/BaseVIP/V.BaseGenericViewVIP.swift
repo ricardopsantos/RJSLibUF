@@ -62,11 +62,7 @@ extension RJSLib {
         
         // Can (and should) be overriden
         public func displayMessage(_ message: String, type: AlertType) {
-            if let viewController = viewController as? RJS_BaseViewControllerVIP {
-                viewController.displayMessage(message, type: type)
-            } else {
-                RJS_Logs.error("Failed to display [\(message)]")
-            }
+            (self as? UIViewController).showAlert(title: "\(type)", message: message)
         }
     }
 }

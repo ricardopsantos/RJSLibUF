@@ -51,9 +51,9 @@ class TestingVC: GenericViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         
-        button1.view.rjs.setSame(.center, as: view)
-        button2.view.rjs.setSame(.centerX, as: view)
-        button2.view.rjs.setMargin(20, on: .top, from: button1)
+        button1.layouts.setSame(.center, as: view)
+        button2.layouts.setSame(.centerX, as: view)
+        button2.layouts.setMargin(20, on: .top, from: button1)
         
         let country = Country()
         RJS_Logs.debug(country.name, tag: .rjsLib)
