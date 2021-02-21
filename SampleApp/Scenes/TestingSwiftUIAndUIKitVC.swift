@@ -84,13 +84,16 @@ class TestingSwiftUIAndUIKitVC: GenericViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(containerView1)
-        containerView1.layouts.topToSuperview(offset: 10)
-        containerView1.layouts.leftToSuperview(offset: 10)
-        containerView1.layouts.rightToSuperview(offset: -10)
-        containerView1.layouts.bottomToSuperview(offset: 10)
-
+        
         let margin: CGFloat = 16
-        containerView1.layouts.stack([containerView2, button1, button2, button3], margin: margin)
+
+        containerView1.layouts.topToSuperview(offset: margin)
+        containerView1.layouts.leftToSuperview(offset: margin)
+        containerView1.layouts.rightToSuperview(offset: -margin)
+        containerView1.layouts.bottomToSuperview(offset: margin)
+
+        containerView1.layouts.stack([containerView2, button1, button2, button3])
+        containerView2.layouts.widthToSuperview()
         containerView2.layouts.height(200)
         containerView2.backgroundColor = .red
         

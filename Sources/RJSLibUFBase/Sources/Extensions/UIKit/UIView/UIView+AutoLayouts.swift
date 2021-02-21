@@ -78,7 +78,7 @@ public extension RJSLayouts {
                height: CGFloat? = nil,
                spacing: CGFloat = 0,
                fill: Bool = false,
-               margin: CGFloat) -> [NSLayoutConstraint] {
+               margin: CGFloat? = nil) -> [NSLayoutConstraint] {
         target.stack(views, axis: axis, width: width, height: height, spacing: spacing, fill: fill, margin: margin)
     }
     
