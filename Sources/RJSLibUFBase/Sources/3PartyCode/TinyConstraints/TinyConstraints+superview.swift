@@ -23,12 +23,12 @@
 //
 
 // swiftlint:disable all
-/*
+
 #if !os(macOS)
 
     import UIKit
     
-    public extension View {
+    public extension UIView {
         
         @available(tvOS 10.0, *)
         @available(iOS 10.0, *)
@@ -139,9 +139,9 @@ public struct LayoutEdge: OptionSet {
     public static let none = LayoutEdge(rawValue: 1 << 6)
 }
 
-public extension View {
+public extension UIView {
     
-    private func safeConstrainable(for superview: View?, usingSafeArea: Bool) -> Constrainable {
+    private func safeConstrainable(for superview: UIView?, usingSafeArea: Bool) -> Constrainable {
         guard let superview = superview else {
             fatalError("Unable to create this constraint to it's superview, because it has no superview.")
         }
@@ -221,4 +221,4 @@ public extension View {
 }
 
 #endif
-*/
+

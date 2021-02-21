@@ -23,12 +23,12 @@
 
 // swiftlint:disable all
 
-/*
+
 #if !os(macOS)
 
 import UIKit
 
-extension View: Constrainable {
+extension UIView: Constrainable {
     
     @discardableResult
     public func prepareForLayout() -> Self {
@@ -60,4 +60,4 @@ public protocol Constrainable {
     func prepareForLayout() -> Self
 }
 #endif
-*/
+

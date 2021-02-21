@@ -23,7 +23,7 @@
 //
 
 // swiftlint:disable all
-/*
+
 #if !os(macOS)
 
 import UIKit
@@ -64,4 +64,4 @@ public func + (lhs: TinyEdgeInsets, rhs: TinyEdgeInsets) -> TinyEdgeInsets {
 }
 
 #endif
-*/
+

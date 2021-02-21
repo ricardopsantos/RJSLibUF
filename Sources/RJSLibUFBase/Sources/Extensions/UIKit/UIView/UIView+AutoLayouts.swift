@@ -21,34 +21,52 @@ public extension RJSLayoutsCompatible {
 
 extension UIView: RJSLayoutsCompatible { }
 
-public extension RJSLayouts where Target: UIView {
+//
+// MARK: - Getters
+//
 
-    //
-    // Getters
-    //
-    
+public extension RJSLayouts where Target: UIView {
     var layoutConstraints: [NSLayoutConstraint] { target.layoutConstraints }
+}
+
+//
+// MARK: -  Hugging and Compression
+//
+
+public extension RJSLayouts where Target: UIView {
     
-    //
-    // Utils
-    //
+    // Hugging                =>  Dont want to grow
+    // Compression Resistance =>  Dont want to shrink
+    func setGrowResistanceWith(_ priority: UILayoutPriority, for axis: NSLayoutConstraint.Axis) {
+        target.setGrowResistanceWith(priority, for: axis)
+    }
     
+    func setCompressionResistanceWith(_ priority: UILayoutPriority, for axis: NSLayoutConstraint.Axis) {
+        target.setCompressionResistanceWith(priority, for: axis)
+    }
+}
+
+//
+// MARK: - Destructive
+//
+
+public extension RJSLayouts where Target: UIView {
     func removeLayoutConstraints() {
         target.removeLayoutConstraints()
     }
     
-    func setLowResistanceToGrow(_ priority: UILayoutPriority = .defaultLow, axis: NSLayoutConstraint.Axis) {
-        target.setLowResistanceToGrow(priority, axis: axis)
+    func remove(constraint: NSLayoutConstraint) {
+        target.remove(constraint: constraint)
     }
     
-    func setHightResistanceToGrow(_ priority: UILayoutPriority = .defaultHigh, axis: NSLayoutConstraint.Axis) {
-        target.setHightResistanceToGrow(priority, axis: axis)
-    }
-    
-    //
-    // Sugar
-    //
-    
+}
+
+//
+// MARK: - Sugar
+//
+
+public extension RJSLayouts where Target: UIView {
+        
     @discardableResult
     func bottom(to view: UIView, margin: CGFloat = 0, priority: UILayoutPriority? = nil) -> NSLayoutConstraint? {
         return target.setSame(.bottom, as: view, offset: margin)?.first
@@ -114,9 +132,13 @@ public extension RJSLayouts where Target: UIView {
         setSame(.height, as: target.superview)?.first
     }
     
-    //
-    // Base
-    //
+}
+
+//
+// MARK: - Base
+//
+
+public extension RJSLayouts where Target: UIView {
     
     @discardableResult
     func setSame(_ layoutAttribute: RJS_LayoutsAttribute, as view: UIView?, multiplier: CGFloat = 1) -> [NSLayoutConstraint]? {
@@ -146,20 +168,27 @@ public extension RJSLayouts where Target: UIView {
 }
 
 //
-// Hide the implementation and force the use of the `rjs` alias
+// MARK: - Private : Hugging and Compression
 //
 
 fileprivate extension UIView {
     
     // Hugging                =>  Dont want to grow
     // Compression Resistance =>  Dont want to shrink
-    func setLowResistanceToGrow(_ priority: UILayoutPriority = UILayoutPriority.defaultHigh, axis: NSLayoutConstraint.Axis) {
+    func setGrowResistanceWith(_ priority: UILayoutPriority, for axis: NSLayoutConstraint.Axis) {
         setContentHuggingPriority(priority, for: axis)
     }
     
-    func setHightResistanceToGrow(_ priority: UILayoutPriority = UILayoutPriority.defaultLow, axis: NSLayoutConstraint.Axis) {
-        setContentHuggingPriority(priority, for: axis)
+    func setCompressionResistanceWith(_ priority: UILayoutPriority, for axis: NSLayoutConstraint.Axis) {
+        setContentCompressionResistancePriority(priority, for: axis)
     }
+}
+
+//
+// MARK: - Private : Destructive
+//
+
+fileprivate extension UIView {
     
     func removeLayoutConstraints() {
         _ = layoutConstraints.map { remove(constraint: $0) }
@@ -170,19 +199,33 @@ fileprivate extension UIView {
         NSLayoutConstraint.deactivate([constraint])
     }
     
+    func removeLayoutConstraintWith(identifier: String) {
+        if let old = layoutConstraints.filter({ $0.identifier == identifier }).first {
+            remove(constraint: old)
+        }
+    }
+}
+
+//
+// MARK: - Private : Getters
+//
+fileprivate extension UIView {
+    
     var layoutConstraints: [NSLayoutConstraint] {
         (self.constraints + (self.superview?.constraints ?? []))
             .filter {
                 $0.firstItem as? UIView == self || $0.secondItem as? UIView == self
             }
     }
-    
-    func removeLayoutConstraintWith(identifier: String) {
-        if let old = layoutConstraints.filter({ $0.identifier == identifier }).first {
-            remove(constraint: old)
-        }
-    }
-    
+}
+
+//
+// MARK: - Base methods
+//
+
+fileprivate extension UIView {
+       
+    @discardableResult
     func addAndSetup(scrollView: UIScrollView, with stackViewV: UIStackView, hasTopBar: Bool) -> [NSLayoutConstraint]? {
         if scrollView.superview == nil {
             addSubview(scrollView)
@@ -203,6 +246,7 @@ fileprivate extension UIView {
         return result
     }
     
+    @discardableResult
     func activate(constraint: NSLayoutConstraint,
                   with identifier: String,
                   priority: UILayoutPriority? = nil) -> NSLayoutConstraint? {

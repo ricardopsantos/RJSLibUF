@@ -22,7 +22,7 @@
 //    THE SOFTWARE.
 //
 
-/*
+
 // swiftlint:disable all
 #if !os(macOS)
 
@@ -69,4 +69,4 @@ public extension Constraint {
 }
 
 #endif
-*/
+

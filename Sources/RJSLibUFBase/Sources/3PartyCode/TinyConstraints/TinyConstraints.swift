@@ -23,7 +23,7 @@
 //
 
 // swiftlint:disable all
-/*
+
 #if !os(macOS)
 
 import UIKit
@@ -339,7 +339,7 @@ public extension Constrainable {
     }
 }
 
-public extension View {
+public extension UIView {
     
     func setHugging(_ priority: LayoutPriority, for axis: ConstraintAxis) {
         setContentHuggingPriority(priority, for: axis)
@@ -351,4 +351,4 @@ public extension View {
 }
 
 #endif
-*/
+
