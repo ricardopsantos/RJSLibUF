@@ -33,11 +33,43 @@ struct SwiftUIAndUIKitTestingVC_Preview: PreviewProvider {
 
 class TestingSwiftUIAndUIKitVC: GenericViewController {
 
-    private let imageView: UIImageView = RJS_UIKitFactory.imageView(urlString: imageURL)
-    
     private var delegate = RJSLib.Designables.TestViews.ObservableObjectDelegate()
+    private let containerView: UIView = UIView()
     private var cancelBag = CancelBag()
 
+    private lazy var button1: UIButton = {
+        let button = UIButton(type: .system)
+        button.rjs.setTitleForAllStates("Tap to load inside container")
+        button.publisher(for: .touchUpInside).sink { [weak self] button in
+            guard let self = self else { return }
+            let swiftUIView = RJSLib.Designables.TestViews.SwiftUI(delegate: self.delegate)
+            swiftUIView.loadInside(view: self.containerView)
+        }.store(in: cancelBag)
+        return button
+    }()
+    
+    private lazy var button2: UIButton = {
+        let button = UIButton(type: .system)
+        button.rjs.setTitleForAllStates("Tap to load inside view controller")
+        button.publisher(for: .touchUpInside).sink { [weak self] button in
+            guard let self = self else { return }
+            let swiftUIView = RJSLib.Designables.TestViews.SwiftUI(delegate: self.delegate)
+            swiftUIView.loadInside(viewController: self)
+        }.store(in: cancelBag)
+        return button
+    }()
+    
+    private lazy var button3: UIButton = {
+        let button = UIButton(type: .system)
+        button.rjs.setTitleForAllStates("Tap to present")
+        button.publisher(for: .touchUpInside).sink { [weak self] button in
+            guard let self = self else { return }
+            let swiftUIView = RJSLib.Designables.TestViews.SwiftUI(delegate: self.delegate)
+            self.presentSwiftUIView(RJSLib.Designables.TestViews.SwiftUI(delegate: self.delegate), animated: true)
+        }.store(in: cancelBag)
+        return button
+    }()
+    
     override func loadView() {
         super.loadView()
         prepareLayout()
@@ -45,13 +77,23 @@ class TestingSwiftUIAndUIKitVC: GenericViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(imageView)
-        imageView.layouts.height(200)
-        imageView.layouts.width(200)
-        imageView.layouts.setSame(.center, as: view)
+        view.addSubview(containerView)
+        view.addSubview(button1)
+        view.addSubview(button2)
+        view.addSubview(button3)
+        containerView.heightToSuperview(multiplier: 0.3)
+        containerView.widthToSuperview(multiplier: 0.8)
+        containerView.layouts.centerToSuperView()
+        containerView.backgroundColor = .red
+        button1.layouts.setSame(.centerX, as: view)
+        button2.layouts.setSame(.centerX, as: view)
+        button3.layouts.setSame(.centerX, as: view)
+        button1.layouts.topToBottom(of: containerView)
+        button2.layouts.topToBottom(of: button1)
+        button3.layouts.topToBottom(of: button2)
         
-        delegate.didChange.sink { (delegate) in
-            print(delegate.someValue)
+        delegate.didChange.sink { (some) in
+            print(some)
         }.store(in: cancelBag)
     }
 
@@ -59,33 +101,8 @@ class TestingSwiftUIAndUIKitVC: GenericViewController {
         super.viewWillAppear(animated)
     }
 
-    private func displayLoading(style: RJS_Designables_UIKit.ActivityIndicator.Style) {
-        view.rjs.startActivityIndicator(style: style)
-        RJS_Utils.delay(3) { [weak self] in
-            self?.view.rjs.stopActivityIndicator()
-        }
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        //displayLoading(style: .slidingCircles)
-        //displayLoading(style: .pack2_2)
-
-        DispatchQueue.executeWithDelay(delay: 3) { [weak self] in
-            guard let self = self else { return }
-            self.addSubSwiftUIView(RJSLib.Designables.TestViews.SwiftUI(delegate: self.delegate), to: self.imageView)
-        }
-        
-        DispatchQueue.executeWithDelay(delay: 6) { [weak self] in
-            guard let self = self else { return }
-            self.addSubSwiftUIView(RJSLib.Designables.TestViews.SwiftUI(delegate: self.delegate))
-        }
-        
-        DispatchQueue.executeWithDelay(delay: 9) { [weak self] in
-            guard let self = self else { return }
-            self.presentSwiftUIView(RJSLib.Designables.TestViews.SwiftUI(delegate: self.delegate), animated: true)
-        }
     }
     
     func prepareLayout() {

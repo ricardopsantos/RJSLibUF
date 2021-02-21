@@ -6,7 +6,7 @@
 import Foundation
 
 public struct RJSLibExtension<Target> {
-    let target: Target
+    public let target: Target
     init(_ target: Target) { self.target = target }
 }
 

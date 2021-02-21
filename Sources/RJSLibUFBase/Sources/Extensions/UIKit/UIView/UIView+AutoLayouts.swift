@@ -93,13 +93,26 @@ public extension RJSLayouts where Target: UIView {
     }
     
     @discardableResult
-    func edgesToSuperView() -> [NSLayoutConstraint]? {
-        var result: [NSLayoutConstraint]?
-        if let c = setSame(.top, as: target.superview) { result?.append(contentsOf: c) }
-        if let c = setSame(.left, as: target.superview) { result?.append(contentsOf: c) }
-        if let c = setSame(.right, as: target.superview) { result?.append(contentsOf: c) }
-        if let c = setSame(.bottom, as: target.superview) { result?.append(contentsOf: c) }
-        return result
+    func edgesToSuperview() -> [NSLayoutConstraint]? {
+        if false {
+            var result: [NSLayoutConstraint]?
+            if let c = setSame(.top, as: target.superview) { result?.append(contentsOf: c) }
+            if let c = setSame(.left, as: target.superview) { result?.append(contentsOf: c) }
+            if let c = setSame(.right, as: target.superview) { result?.append(contentsOf: c) }
+            if let c = setSame(.bottom, as: target.superview) { result?.append(contentsOf: c) }
+            return result
+        }
+        return target.edgesToSuperview()
+    }
+    
+    @discardableResult
+    func centerToSuperView() -> [NSLayoutConstraint]? {
+        setSame(.center, as: target.superview)
+    }
+    
+    @discardableResult
+    func centerTo(_ view: UIView) -> [NSLayoutConstraint]? {
+        setSame(.center, as: view)
     }
     
     @discardableResult
@@ -108,13 +121,13 @@ public extension RJSLayouts where Target: UIView {
     }
     
     @discardableResult
-    func widthTo(_ view: UIView) -> NSLayoutConstraint? {
-        setSame(.width, as: view)?.first
+    func widthTo(_ view: UIView, multiplier: CGFloat = 1) -> NSLayoutConstraint? {
+        setSame(.width, as: view, multiplier: multiplier)?.first
     }
     
     @discardableResult
-    func widthToSuperView() -> NSLayoutConstraint? {
-        setSame(.width, as: target.superview)?.first
+    func widthToSuperview(multiplier: CGFloat = 1) -> NSLayoutConstraint? {
+        setSame(.width, as: target.superview, multiplier: multiplier)?.first
     }
     
     @discardableResult
@@ -123,13 +136,13 @@ public extension RJSLayouts where Target: UIView {
     }
     
     @discardableResult
-    func heightTo(_ view: UIView) -> NSLayoutConstraint? {
-        setSame(.height, as: view)?.first
+    func heightTo(_ view: UIView, multiplier: CGFloat = 1) -> NSLayoutConstraint? {
+        setSame(.height, as: view, multiplier: multiplier)?.first
     }
     
     @discardableResult
-    func heightToSuperview() -> NSLayoutConstraint? {
-        setSame(.height, as: target.superview)?.first
+    func heightToSuperview(multiplier: CGFloat = 1) -> NSLayoutConstraint? {
+        setSame(.height, as: target.superview, multiplier: multiplier)?.first
     }
     
 }
@@ -234,7 +247,7 @@ fileprivate extension UIView {
             scrollView.addSubview(stackViewV)
         }
         var result: [NSLayoutConstraint]?
-        if let c = scrollView.layouts.edgesToSuperView() {
+        if let c = scrollView.layouts.edgesToSuperview() {
             result?.append(contentsOf: c)
         }
         if let c = scrollView.layouts.height(screenHeight) {
@@ -317,7 +330,11 @@ fileprivate extension UIView {
     }
     
     @discardableResult
-    func setSame(_ layoutAttribute: RJS_LayoutsAttribute, as view: UIView?, offset: CGFloat = 0, multiplier: CGFloat = 1) -> [NSLayoutConstraint]? {
+    func setSame(_ layoutAttribute: RJS_LayoutsAttribute,
+                 as view: UIView?,
+                 offset: CGFloat = 0,
+                 multiplier: CGFloat = 1) -> [NSLayoutConstraint]? {
+
         guard let view = view else {
             fatalError("Target view is nil")
         }

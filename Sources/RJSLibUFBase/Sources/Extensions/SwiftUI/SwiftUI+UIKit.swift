@@ -22,14 +22,26 @@ public extension View {
     var uiView: UIView {
         viewController.view
     }
+    
+    func loadInside(view: UIView) {
+        view.loadWithSwiftUIView(self)
+    }
+    
+    func loadInside(viewController: UIViewController) {
+        viewController.addChildSwiftUIView(self)
+    }
 }
 
 public extension UIView {
     
-    func addSubSwiftUIView<Content>(_ swiftUIView: Content) where Content: View {
+    func loadWithSwiftUIView<Content>(_ swiftUIView: Content) where Content: View {
+        addSwiftUIView(swiftUIView)
+    }
+    
+    func addSwiftUIView<Content>(_ swiftUIView: Content) where Content: View {
         if let view = swiftUIView.viewController.view {
             self.addSubview(view)
-            view.layouts.edgesToSuperView()
+            view.edgesToSuperview()
         }
     }
 }
@@ -40,7 +52,7 @@ public extension UIViewController {
     /// - Parameters:
     ///   - swiftUIView: The SwiftUI `View` to add as a child.
     ///   - view: The `UIView` instance to which the view should be added.
-    func addSubSwiftUIView<Content>(_ swiftUIView: Content, to view: UIView) where Content: View {
+    private func addSwiftUIView<Content>(_ swiftUIView: Content, to view: UIView) where Content: View {
         let hostingController = swiftUIView.viewController
         if let newView = hostingController.view {
             
@@ -49,17 +61,25 @@ public extension UIViewController {
 
             // Add the SwiftUI view to the view controller view hierarchy.
             view.addSubview(newView)
-            newView.layouts.edgesToSuperView()
+            newView.layouts.edgesToSuperview()
 
             // Notify the hosting controller that it has been moved to the current view controller.
             hostingController.didMove(toParent: self)
         }
     }
     
-    func addSubSwiftUIView<Content>(_ swiftUIView: Content) where Content: View {
-        addSubSwiftUIView(swiftUIView, to: view)
+
+    // Add Content inside a container
+    func addChildSwiftUIView<Content>(_ swiftUIView: Content, into view: UIView) where Content: View {
+        addSwiftUIView(swiftUIView, to: view)
     }
     
+    // Add Content inside the UIViewController view
+    func addChildSwiftUIView<Content>(_ swiftUIView: Content) where Content: View {
+        addSwiftUIView(swiftUIView, to: view)
+    }
+    
+    // Present Content from UIViewController 
     func presentSwiftUIView<Content>(_ swiftUIView: Content,
                                      modalPresentationStyle: UIModalPresentationStyle = .fullScreen,
                                      animated: Bool = true,

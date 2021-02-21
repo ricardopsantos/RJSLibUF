@@ -7,6 +7,15 @@ import Foundation
 import UIKit
 import RJSLibUFBase
 
+public extension RJSLibExtension where Target == UIView {
+    func addShadow(color: UIColor = UIView.defaultShadowColor,
+                   offset: CGSize = UIView.defaultShadowOffset,
+                   radius: CGFloat = UIView.defaultShadowOffset.height,
+                   shadowType: RJS_ShadowType = .superLight) {
+        target.addShadow(color: color, offset: offset, radius: radius, shadowType: shadowType)
+    }
+}
+
 public extension UIView {
 
     static var defaultShadowColor = UIColor(red: CGFloat(80/255.0), green: CGFloat(88/255.0), blue: CGFloat(93/255.0), alpha: 1)

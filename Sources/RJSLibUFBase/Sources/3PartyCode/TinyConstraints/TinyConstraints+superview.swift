@@ -29,11 +29,18 @@
     import UIKit
     
     public extension UIView {
-        
+        func tnEdgesToSuperview() {
+            self.edgesToSuperview()
+        }
         @available(tvOS 10.0, *)
         @available(iOS 10.0, *)
         @discardableResult
-        func edgesToSuperview(excluding excludedEdge: LayoutEdge = .none, insets: TinyEdgeInsets = .zero, relation: ConstraintRelation = .equal, priority: LayoutPriority = .required, isActive: Bool = true, usingSafeArea: Bool = false) -> Constraints {
+        func edgesToSuperview(excluding excludedEdge: LayoutEdge = .none,
+                              insets: TinyEdgeInsets = .zero,
+                              relation: ConstraintRelation = .equal,
+                              priority: LayoutPriority = .required,
+                              isActive: Bool = true,
+                              usingSafeArea: Bool = false) -> Constraints {
             var constraints = Constraints()
             
             if !excludedEdge.contains(.top) {

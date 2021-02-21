@@ -38,7 +38,7 @@ public extension RJSLib.Designables.UIKit {
             view.addSubview(containerView)
             
             if true {
-                containerView.layouts.edgesToSuperView()
+                containerView.layouts.edgesToSuperview()
             } else {
                 containerView.backgroundColor = .blue
                 containerView.translatesAutoresizingMaskIntoConstraints = false
@@ -54,12 +54,12 @@ public extension RJSLib.Designables.UIKit {
             let animationPack1 = RJS_Designables_SwiftUI.LoadingAnimations.Pack1.self
             let animationPack2 = RJS_Designables_SwiftUI.LoadingAnimations.Pack2.self
             switch style {
-            case .slidingCircles: containerView.addSubSwiftUIView(animationPack1.SlidingCircles())
-            case .horizontalSlidingBar: containerView.addSubSwiftUIView(animationPack1.HorizontalSlidingBar())
-            case .verticalBar: containerView.addSubSwiftUIView(animationPack1.VerticalBar())
-            case .cicleWithWaves: containerView.addSubSwiftUIView(animationPack1.CicleWithWaves())
-            case .pack2_1: containerView.addSubSwiftUIView(animationPack2.ActivityIndicator_V1(isAnimating: true))
-            case .pack2_2: containerView.addSubSwiftUIView(animationPack2.ActivityIndicator_V2(isAnimating: .constant(true)))
+            case .slidingCircles: containerView.loadWithSwiftUIView(animationPack1.SlidingCircles())
+            case .horizontalSlidingBar: containerView.loadWithSwiftUIView(animationPack1.HorizontalSlidingBar())
+            case .verticalBar: containerView.loadWithSwiftUIView(animationPack1.VerticalBar())
+            case .cicleWithWaves: containerView.loadWithSwiftUIView(animationPack1.CicleWithWaves())
+            case .pack2_1: containerView.loadWithSwiftUIView(animationPack2.ActivityIndicator_V1(isAnimating: true))
+            case .pack2_2: containerView.loadWithSwiftUIView(animationPack2.ActivityIndicator_V2(isAnimating: .constant(true)))
             case .pack2_3: _ = 1//containerView.addSubSwiftUIView(animationPack2.ActivityIndicator_V3())
             }
             UIView.animate(withDuration: RJS_Constants.defaultDelay, animations: { [weak self] in
