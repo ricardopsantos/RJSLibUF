@@ -8,16 +8,16 @@ import Foundation
 import UIKit
 
 public extension RJSLibExtension where Target == UIView {
-    func startActivityIndicator(style: RJS_Designables_UIKit.ActivityIndicator.Style) { target.startActivityIndicator(style: style) }
-    func stopActivityIndicator() { target.stopActivityIndicator() }
+    func startLoading(style: RJS_Designables_UIKit.ActivityIndicator.Style) { target.startLoading(style: style) }
+    func stopLoading() { target.stopLoading() }
 }
 
 public extension UIView {
-    func startActivityIndicator(style: RJS_Designables_UIKit.ActivityIndicator.Style) {
+    func startLoading(style: RJS_Designables_UIKit.ActivityIndicator.Style) {
         RJS_Designables_UIKit.ActivityIndicator.shared.showProgressView(view: self, style: style)
     }
     
-    func stopActivityIndicator() {
+    func stopLoading() {
         RJS_Designables_UIKit.ActivityIndicator.shared.hideProgressView()
     }
 }

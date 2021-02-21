@@ -5,12 +5,6 @@
 
 import Foundation
 
-public extension String {
-    var nsString: NSString { return self as NSString }
-    var nsRange: NSRange { return NSRange(location: 0, length: length) }
-    var detectDates: [Date]? { return try? NSDataDetector(types: NSTextCheckingResult.CheckingType.date.rawValue).matches(in: self, range: nsRange).compactMap { $0.date } }
-}
-
 public extension RJSLibExtension where Target == Date {
     var seconds: Int { target.seconds }
     var minutes: Int { target.minutes }
@@ -38,6 +32,21 @@ public extension Date {
 
     static var utcNow: Date { return Date() }
     
+    init(string: String) {
+        self = Date.with(string) ?? Date.utcNow
+    }
+    
+    static func with(_ dateToParse: String, dateFormat: String="yyyy-MM-dd'T'HH:mm:ssXXX") -> Date? {
+        guard dateToParse != "null" else { return nil }
+        guard dateToParse != "nil" else { return nil }
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
+        dateFormatter.dateFormat = dateFormat // http://userguide.icu-project.org/formatparse/datetime
+        if let result = dateFormatter.date(from: dateToParse) { return result }
+        if let date = dateToParse.dates?.first { return date }
+        return nil
+    }
+    
     var seconds: Int { return ((Calendar.current as NSCalendar).components([.second], from: self).second)! }
     var minutes: Int { return ((Calendar.current as NSCalendar).components([.minute], from: self).minute)! }
     var hours: Int { return ((Calendar.current as NSCalendar).components([.hour], from: self).hour)! }
@@ -50,17 +59,6 @@ public extension Date {
     func add(minutes: Int) -> Date { return self.add(seconds: minutes * 60) }
     func add(seconds: Int) -> Date { return self.addingTimeInterval(Double(seconds)) }
     func add(month: Int) -> Date { return NSCalendar.current.date(byAdding: .month, value: month, to: self)! }
-    
-    static func with(_ dateToParse: String, dateFormat: String="yyyy-MM-dd'T'HH:mm:ssXXX") -> Date? {
-        guard !dateToParse.contains(subString: "null") else { return nil }
-        guard !dateToParse.contains(subString: "nil") else { return nil }
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
-        dateFormatter.dateFormat = dateFormat // http://userguide.icu-project.org/formatparse/datetime
-        if let result = dateFormatter.date(from: dateToParse) { return result }
-        if let date = dateToParse.detectDates?.first { return date }
-        return Date.utcNow
-    }
     
     func isBiggerThan(_ dateToCompare: Date) -> Bool {
         return self.compare(dateToCompare) == ComparisonResult.orderedDescending

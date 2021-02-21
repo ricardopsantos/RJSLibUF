@@ -14,7 +14,6 @@ public extension RJSLibExtension where Target == String {
     var first: String { target.first  }
     var last: String { target.last }
     var trim: String { target.trim }
-    var trimmedAndSingleSpaced: String { target.trimmedAndSingleSpaced }
     
     var capitalised: String { target.capitalised }
     var encodedUrl: String? { target.encodedUrl }
@@ -36,9 +35,9 @@ public extension RJSLibExtension where Target == String {
     var sha1: String { target.sha1 }
     var isValidEmail: Bool { target.isValidEmail }
     var isAlphanumeric: Bool { target.isAlphanumeric }
-    var containsOnlyDigits: Bool { target.containsOnlyDigits }
-    func contains(subString: String, ignoreCase: Bool=true) -> Bool {
-        target.contains(subString: subString, ignoreCase: ignoreCase)
+    var isOnlyDigits: Bool { target.isOnlyDigits }
+    func contains(_ subString: String, ignoreCase: Bool=true) -> Bool {
+        target.contains(subString, ignoreCase: ignoreCase)
     }
     
     var asDict: [String: Any]? { target.asDict }
@@ -69,14 +68,20 @@ public extension RJSLibExtension where Target == String {
 // MARK: - Transformations / Operators
 //
 
+private extension String {
+    private var cleanBeforeConversion: String {
+        return replacingOccurrences(of: "\n", with: "").replacingOccurrences(of: " ", with: "")
+    }
+}
 public extension String {
     
+    var random: String { String.random(Int.random(in: 1...100)) }
     var length: Int { return self.count }
     var first: String { return String(self.prefix(1)) }
     var last: String { if self.count == 0 { return "" } else { return String(self.suffix(1))} }
-    var trim: String { return self.trimmingCharacters(in: .whitespacesAndNewlines) }
-    var trimmedAndSingleSpaced: String { return replacingOccurrences(of: "\\s+", with: " ", options: .regularExpression).trim }
-    
+    var trim: String { // Trim and single spaces
+        return replacingOccurrences(of: "\\s+", with: " ", options: .regularExpression).trimmingCharacters(in: .whitespacesAndNewlines)
+    }
     var capitalised: String { self.count >= 1 ? prefix(1).uppercased() + self.lowercased().dropFirst() : "" }
     var encodedUrl: String? { self.addingPercentEncoding( withAllowedCharacters: NSCharacterSet.urlQueryAllowed) }
     var decodedUrl: String? { self.removingPercentEncoding }
@@ -84,13 +89,44 @@ public extension String {
     var base64Encoded: String { RJS_Convert.Base64.toB64String(self as AnyObject) ?? ""}
     var base64Decoded: String? { RJS_Convert.Base64.toPlainString(self) }
     
+    var dateValue: Date? { Date.with(self) }
+    var dates: [Date]? {
+        var nsRange: NSRange { return NSRange(location: 0, length: length) }
+        return try? NSDataDetector(types: NSTextCheckingResult.CheckingType.date.rawValue).matches(in: self, range: nsRange).compactMap { $0.date }
+    }
+    
+    var numberValue: NSNumber? { NumberFormatter().number(from: self.cleanBeforeConversion.replace(",", with: ".")) }
     var utf8Data: Data? { self.data(using: .utf8) }
-    var cgFloatValue: CGFloat? { RJS_Convert.toCGFloat(self) }
-    var boolValue: Bool? { RJS_Convert.toBool(self) }
-    var doubleValue: Double? { RJS_Convert.toDouble(self) }
-    var intValue: Int? { RJS_Convert.toInt(self) }
-    var dateValue: Date? { RJS_Convert.toDate("\(self)" as AnyObject) }
-    var floatValue: Float? { floatValueA }
+    var boolValue: Bool? {
+        if let some = self.cleanBeforeConversion.numberValue {
+            return Bool(truncating: some)
+        }
+        return Bool((self as NSString).boolValue)
+    }
+    var intValue: Int? {
+        if let some = self.cleanBeforeConversion.numberValue {
+            return Int(truncating: some)
+        }
+        return Int((self as NSString).intValue)
+    }
+    var doubleValue: Double? {
+        if let some = self.cleanBeforeConversion.numberValue {
+            return Double(truncating: some)
+        }
+        return Double((self as NSString).doubleValue)
+    }
+    var cgFloatValue: CGFloat? {
+        if let some = self.cleanBeforeConversion.numberValue {
+            return CGFloat(truncating: some)
+        }
+        return CGFloat((self as NSString).floatValue)
+    }
+    var floatValue: Float? {
+        if let some = self.cleanBeforeConversion.numberValue {
+            return Float(truncating: some)
+        }
+        return Float((self as NSString).floatValue)
+    }
     var decimalValue: Decimal? {
         let decimalSeparator = Locale.current.decimalSeparator ?? "."
         let groupingSeparator = Locale.current.groupingSeparator ?? ","
@@ -103,7 +139,6 @@ public extension String {
             formatter.maximumFractionDigits = 2
             return formatter
         }
-
         let regexedString = regex.stringByReplacingMatches(in: self,
                                                            options: NSRegularExpression.MatchingOptions(rawValue: 0),
                                                            range: NSRange(location: 0, length: self.count),
@@ -111,10 +146,6 @@ public extension String {
 
         return formatter.number(from: regexedString)?.decimalValue
     }
-    
-    private var floatValueA: Float? { RJS_Convert.toFloat(self) }
-    private var floatValueB: CGFloat { CGFloat((self as NSString).floatValue) }
-    
 }
 
 //
@@ -173,12 +204,12 @@ public extension String {
         !isEmpty && range(of: "[^a-zA-Z0-9]", options: .regularExpression) == nil
     }
     
-    var containsOnlyDigits: Bool {
+    var isOnlyDigits: Bool {
         let notDigits = NSCharacterSet.decimalDigits.inverted
         return rangeOfCharacter(from: notDigits, options: String.CompareOptions.literal, range: nil) == nil
     }
     
-    func contains(subString: String, ignoreCase: Bool=true) -> Bool {
+    func contains(_ subString: String, ignoreCase: Bool=true) -> Bool {
         if ignoreCase {
             return self.lowercased().range(of: subString.lowercased()) != nil
         } else {

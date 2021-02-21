@@ -15,10 +15,11 @@ public extension UIView {
     //
     // More about shadows : https://medium.com/swlh/how-to-create-advanced-shadows-in-swift-ios-swift-guide-9d2844b653f8
     //
+    
     func addShadow(color: UIColor = defaultShadowColor,
                    offset: CGSize = defaultShadowOffset,
                    radius: CGFloat = defaultShadowOffset.height,
-                   shadowType: ShadowType = ShadowType.superLight) {
+                   shadowType: RJS_ShadowType = .superLight) {
         self.layer.shadowColor   = color.cgColor
         self.layer.shadowOpacity = Float(1 - shadowType.rawValue)
         self.layer.shadowOffset  = offset

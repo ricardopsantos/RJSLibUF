@@ -24,7 +24,7 @@ public extension UILabel {
             self.font            = RJS_Fonts.Styles.paragraphBold.rawValue
         }
         let value = {
-            self.textColor       = RJS_AppBrand1.UILabel.lblTextColor.withAlphaComponent(FadeType.superLight.rawValue)
+            self.textColor       = RJS_AppBrand1.UILabel.lblTextColor.withAlphaComponent(RJS_FadeType.superLight.rawValue)
             self.font            = RJS_Fonts.Styles.paragraphSmall.rawValue
         }
         let text = {

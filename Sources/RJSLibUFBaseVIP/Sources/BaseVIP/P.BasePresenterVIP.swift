@@ -62,9 +62,9 @@ public extension BasePresenterVIPProtocol {
         DispatchQueue.main.async { [weak self] in
             if let viewController = self?.baseViewController as? UIViewController {
                 if response.isLoading {
-                    viewController.view.rjs.startActivityIndicator(style: .pack2_2)
+                    viewController.view.rjs.startLoading(style: .pack2_2)
                 } else {
-                    viewController.view.rjs.stopActivityIndicator()
+                    viewController.view.rjs.stopLoading()
                 }
             }
         }

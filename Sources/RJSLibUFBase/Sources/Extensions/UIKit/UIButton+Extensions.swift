@@ -12,7 +12,7 @@ public extension RJSLibExtension where Target == UIButton {
     func doTouchUpInside() { target.doTouchUpInside() }
     func enable() { target.enable() }
     
-    func paintImageWith(color: UIColor) { target.paintImageWith(color: color) }
+    func paintImage(with color: UIColor) { target.paintImage(with: color) }
     func changeImageColor(to color: UIColor) { target.changeImageColor(to: color) }
     
     func setImageForAllStates(_ image: UIImage, tintColor: UIColor?) { target.setImageForAllStates(image, tintColor: tintColor) }
@@ -27,7 +27,7 @@ public extension UIButton {
         self.sendActions(for: .touchUpInside)
     }
     
-    func paintImageWith(color: UIColor) {
+    func paintImage(with color: UIColor) {
         changeImageColor(to: color)
     }
 

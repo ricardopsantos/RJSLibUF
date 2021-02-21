@@ -23,7 +23,7 @@ public extension UIButton {
     
     func setState(enabled: Bool) {
         self.isUserInteractionEnabled = enabled
-        self.alpha = enabled ? 1.0 : FadeType.disabledUIElementDefaultValue.rawValue
+        self.alpha = enabled ? 1.0 : RJS_FadeType.disabledUIElementDefaultValue.rawValue
     }
 
     func apply(style: RJS_ButtontStyle) {

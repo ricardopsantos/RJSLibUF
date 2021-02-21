@@ -46,6 +46,6 @@ public typealias RJS_DataModelManager = RJSLib.CoreDataManager
 // MARK: - Other Storages Support
 //
 
-public typealias RJS_Files        = RJSLib.Storages.Files                        // Files utils (delete, save, files on folder, ...)
-public typealias RJS_UserDefaults = RJSLib.Storages.NSUserDefaults               // NSUserDefaults utilities (save, delete, get, exits, ...)
+public typealias RJS_Files        = RJSLib.Storages.Files          // Files utils (delete, save, files on folder, ...)
+public typealias RJS_UserDefaults = RJSLib.Storages.NSUserDefaults // NSUserDefaults utilities (save, delete, get, exits, ...)
 public typealias RJS_Defaults     = RJSLib.UserDefaults

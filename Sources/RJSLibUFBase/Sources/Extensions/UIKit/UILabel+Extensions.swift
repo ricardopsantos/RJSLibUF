@@ -7,6 +7,13 @@
 import Foundation
 import UIKit
 
+public extension RJSLibExtension where Target == UILabel {
+    var textAnimated: String? {
+        set { target.textAnimated = newValue }
+        get { target.text }
+    }
+}
+
 public extension UILabel {
     var textAnimated: String? {
         set { fadeTransition(); self.text = newValue ?? "" }

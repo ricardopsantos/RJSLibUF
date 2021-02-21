@@ -34,10 +34,13 @@ public typealias RJS_AppBrand1 = UIColor.AppBrand1
 // Font styles utils with a font builder for Bold, Regular and Light, and also pre-built styles like : headingJumbo, headingBold, headingMedium, headingSmall
 public typealias RJS_Fonts = UIFont.RJS_Fonts
 
-public typealias RJS_SizeNames = SizesNames
+public typealias RJS_SizeNames = RJSLib.SizesNames
 
 public typealias RJS_UIKitFactory = RJSLib.UIKitFactory
 public typealias RJS_ButtontStyle = UIButton.RJSLibUFLayoutStyle
 public typealias RJS_LabelStyle   = UILabel.RJSLibUFLayoutStyle
 
+public typealias RJS_ShadowType     = RJSLib.FilterStrength
+public typealias RJS_FadeType       = RJSLib.FilterStrength
+public typealias RJS_FilterStrength = RJSLib.FilterStrength
 #endif

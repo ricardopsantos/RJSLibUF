@@ -102,9 +102,9 @@ private extension RJS_BaseViewControllerVIP {
 
     func setActivityState(_ state: Bool) {
         if state {
-            view.rjs.startActivityIndicator(style: .pack2_2)
+            view.rjs.startLoading(style: .pack2_2)
         } else {
-            view.rjs.stopActivityIndicator()
+            view.rjs.stopLoading()
         }
     }
 
