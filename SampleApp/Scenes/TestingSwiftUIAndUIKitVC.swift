@@ -92,8 +92,9 @@ class TestingSwiftUIAndUIKitVC: GenericViewController {
         containerView1.layouts.rightToSuperview(offset: -margin)
         containerView1.layouts.bottomToSuperview(offset: margin)
 
-        containerView1.layouts.stack([containerView2, button1, button2, button3])
-        containerView2.layouts.widthToSuperview()
+        //containerView1.layouts.stackHorizontal([containerView2, button1, button2, button3])
+        containerView1.layouts.stackVertical([containerView2, button1, button2, button3], margin: 5)
+        //containerView2.layouts.widthToSuperview()
         containerView2.layouts.height(200)
         containerView2.backgroundColor = .red
         

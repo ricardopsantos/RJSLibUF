@@ -34,20 +34,10 @@ extension UIView {
     @discardableResult
     func stack(_ views: [UIView],
                axis: NSLayoutConstraint.Axis = .vertical,
-               width: CGFloat? = nil,
-               height: CGFloat? = nil,
                spacing: CGFloat = 0, // Space between subviews
                fill: Bool, // If true, last view try to hanchor on super view (bottom or rigth)
                margin: CGFloat? // Space between subviews and super view margin
     ) -> [NSLayoutConstraint] {
-        
-        if axis == .vertical, let _ = width, let _ = margin {
-            fatalError("Cant have a width and a margin at same time")
-        }
-        
-        if axis == .horizontal, let _ = height, let _ = margin {
-            fatalError("Cant have a height and a margin at same time")
-        }
         
         var offset: CGFloat = 0
         var previous: UIView?
@@ -86,9 +76,6 @@ extension UIView {
                 fatalError()
             }
             
-            if let width = width { constraints.append(view.width(width)) }
-            if let height = height { constraints.append(view.height(height)) }
-			
             offset = spacing
             previous = view
         }

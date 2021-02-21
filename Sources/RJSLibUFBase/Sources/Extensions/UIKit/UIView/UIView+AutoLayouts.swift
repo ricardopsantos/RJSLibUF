@@ -72,14 +72,19 @@ public extension RJSLayouts {
 public extension RJSLayouts {
     
     @discardableResult
-    func stack(_ views: [UIView],
-               axis: NSLayoutConstraint.Axis = .vertical,
-               width: CGFloat? = nil,
-               height: CGFloat? = nil,
+    func stackVertical(_ views: [UIView],
                spacing: CGFloat = 0,
                fill: Bool = false,
                margin: CGFloat? = nil) -> [NSLayoutConstraint] {
-        target.stack(views, axis: axis, width: width, height: height, spacing: spacing, fill: fill, margin: margin)
+        target.stack(views, axis: .vertical, spacing: spacing, fill: fill, margin: margin)
+    }
+    
+    @discardableResult
+    func stackHorizontal(_ views: [UIView],
+               spacing: CGFloat = 0,
+               fill: Bool = false,
+               margin: CGFloat? = nil) -> [NSLayoutConstraint] {
+        target.stack(views, axis: .horizontal, spacing: spacing, fill: fill, margin: margin)
     }
     
     @discardableResult
