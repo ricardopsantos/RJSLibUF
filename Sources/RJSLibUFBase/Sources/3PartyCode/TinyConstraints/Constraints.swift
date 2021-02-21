@@ -22,42 +22,35 @@
 //    THE SOFTWARE.
 //
 
-
 // swiftlint:disable all
 #if !os(macOS)
 
 import UIKit
 
-public typealias Constraint = NSLayoutConstraint
-public typealias Constraints = [Constraint]
-
-public enum ConstraintRelation: Int {
+public enum TNConstraintRelation: Int {
     case equal = 0
     case equalOrLess = -1
     case equalOrGreater = 1
 }
 
-public extension Collection where Iterator.Element == Constraint {
+extension Collection where Iterator.Element == NSLayoutConstraint {
     
     func activate() {
-        
-        if let constraints = self as? Constraints {
-            Constraint.activate(constraints)
+        if let constraints = self as? [NSLayoutConstraint] {
+            NSLayoutConstraint.activate(constraints)
         }
     }
     
     func deActivate() {
-        
-        if let constraints = self as? Constraints {
-            Constraint.deactivate(constraints)
+        if let constraints = self as? [NSLayoutConstraint] {
+            NSLayoutConstraint.deactivate(constraints)
         }
     }
 }
 
-
-public extension Constraint {
+extension NSLayoutConstraint {
     @objc
-    func with(_ p: LayoutPriority) -> Self {
+    func with(_ p: UILayoutPriority) -> Self {
         priority = p
         return self
     }

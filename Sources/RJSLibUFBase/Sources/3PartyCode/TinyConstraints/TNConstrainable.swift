@@ -25,12 +25,38 @@
 
 
 #if !os(macOS)
-import Foundation
+
 import UIKit
 
-public typealias LayoutGuide = UILayoutGuide
-public typealias ConstraintAxis = NSLayoutConstraint.Axis
-public typealias LayoutPriority = UILayoutPriority
+extension UIView: TNConstrainable {
+    @discardableResult
+    public func prepareForLayout() -> Self {
+        translatesAutoresizingMaskIntoConstraints = false
+        return self
+    }
+}
 
-public typealias TinyEdgeInsets = UIEdgeInsets
+extension UILayoutGuide: TNConstrainable {
+    @discardableResult
+    public func prepareForLayout() -> Self { return self }
+}
+
+public protocol TNConstrainable {
+    var topAnchor: NSLayoutYAxisAnchor { get }
+    var bottomAnchor: NSLayoutYAxisAnchor { get }
+    var leftAnchor: NSLayoutXAxisAnchor { get }
+    var rightAnchor: NSLayoutXAxisAnchor { get }
+    var leadingAnchor: NSLayoutXAxisAnchor { get }
+    var trailingAnchor: NSLayoutXAxisAnchor { get }
+    
+    var centerXAnchor: NSLayoutXAxisAnchor { get }
+    var centerYAnchor: NSLayoutYAxisAnchor { get }
+    
+    var widthAnchor: NSLayoutDimension { get }
+    var heightAnchor: NSLayoutDimension { get }
+
+    @discardableResult
+    func prepareForLayout() -> Self
+}
 #endif
+

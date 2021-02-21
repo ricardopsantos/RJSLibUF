@@ -68,7 +68,6 @@ public extension UIViewController {
         }
     }
     
-
     // Add Content inside a container
     func addChildSwiftUIView<Content>(_ swiftUIView: Content, into view: UIView) where Content: View {
         addSwiftUIView(swiftUIView, to: view)

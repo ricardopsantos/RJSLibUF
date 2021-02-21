@@ -23,7 +23,6 @@ struct TestingSwiftUIAndUIKitVC_ViewRepresentable: UIViewRepresentable {
     }
 }
 
-@available(iOS 13.0, *)
 struct SwiftUIAndUIKitTestingVC_Preview: PreviewProvider {
     static var previews: some View {
         TestingSwiftUIAndUIKitVC_ViewRepresentable()
@@ -40,7 +39,7 @@ class TestingSwiftUIAndUIKitVC: GenericViewController {
     private lazy var button1: UIButton = {
         let button = UIButton(type: .system)
         button.rjs.setTitleForAllStates("Tap to load inside container")
-        button.publisher(for: .touchUpInside).sink { [weak self] button in
+        button.publisher(for: .touchUpInside).sink { [weak self] _ in
             guard let self = self else { return }
             let swiftUIView = RJSLib.Designables.TestViews.SwiftUI(delegate: self.delegate)
             swiftUIView.loadInside(view: self.containerView)
@@ -51,7 +50,7 @@ class TestingSwiftUIAndUIKitVC: GenericViewController {
     private lazy var button2: UIButton = {
         let button = UIButton(type: .system)
         button.rjs.setTitleForAllStates("Tap to load inside view controller")
-        button.publisher(for: .touchUpInside).sink { [weak self] button in
+        button.publisher(for: .touchUpInside).sink { [weak self] _ in
             guard let self = self else { return }
             let swiftUIView = RJSLib.Designables.TestViews.SwiftUI(delegate: self.delegate)
             swiftUIView.loadInside(viewController: self)
@@ -62,7 +61,7 @@ class TestingSwiftUIAndUIKitVC: GenericViewController {
     private lazy var button3: UIButton = {
         let button = UIButton(type: .system)
         button.rjs.setTitleForAllStates("Tap to present")
-        button.publisher(for: .touchUpInside).sink { [weak self] button in
+        button.publisher(for: .touchUpInside).sink { [weak self] _ in
             guard let self = self else { return }
             let swiftUIView = RJSLib.Designables.TestViews.SwiftUI(delegate: self.delegate)
             self.presentSwiftUIView(RJSLib.Designables.TestViews.SwiftUI(delegate: self.delegate), animated: true)
@@ -81,8 +80,8 @@ class TestingSwiftUIAndUIKitVC: GenericViewController {
         view.addSubview(button1)
         view.addSubview(button2)
         view.addSubview(button3)
-        containerView.heightToSuperview(multiplier: 0.3)
-        containerView.widthToSuperview(multiplier: 0.8)
+        containerView.layouts.heightToSuperview(multiplier: 0.3)
+        containerView.layouts.widthToSuperview(multiplier: 0.8)
         containerView.layouts.centerToSuperView()
         containerView.backgroundColor = .red
         button1.layouts.setSame(.centerX, as: view)

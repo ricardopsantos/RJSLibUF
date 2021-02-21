@@ -8,7 +8,7 @@ import UIKit
 public extension RJSLibExtension where Target == UILayoutPriority {
     static var almostRequired: UILayoutPriority { UILayoutPriority.almostRequired }
     static var almostNotRequired: UILayoutPriority { UILayoutPriority.almostNotRequired }
-    static var notRequired: UILayoutPriority  { UILayoutPriority.notRequired }
+    static var notRequired: UILayoutPriority { UILayoutPriority.notRequired }
 }
 
 public extension UILayoutPriority {

@@ -26,13 +26,9 @@ public extension UIStackView {
 fileprivate extension UIStackView {
     
     func edgeStackViewToSuperView() -> [NSLayoutConstraint]? {
-        var result: [NSLayoutConstraint]?
-        if let c = view.layouts.edgesToSuperview() {
-            result?.append(contentsOf: c)
-        }
-        if let c = view.layouts.widthToSuperview() {
-            result?.append(c)
-        }
+        var result: [NSLayoutConstraint] = []
+        result.append(contentsOf: view.layouts.edgesToSuperview())
+        result.append(view.layouts.widthToSuperview())
         return result
     }
         

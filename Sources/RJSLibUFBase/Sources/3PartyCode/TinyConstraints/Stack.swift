@@ -29,16 +29,16 @@
 
 import UIKit
 
-public extension UIView {
+extension UIView {
     
     @discardableResult
-    func stack(_ views: [UIView], axis: ConstraintAxis = .vertical, width: CGFloat? = nil, height: CGFloat? = nil, spacing: CGFloat = 0) -> Constraints {
+    func stack(_ views: [UIView], axis: NSLayoutConstraint.Axis = .vertical, width: CGFloat? = nil, height: CGFloat? = nil, spacing: CGFloat = 0) -> [NSLayoutConstraint] {
         
         translatesAutoresizingMaskIntoConstraints = false
         
         var offset: CGFloat = 0
         var previous: UIView?
-        var constraints: Constraints = []
+        var constraints: [NSLayoutConstraint] = []
         
         for view in views {
             view.translatesAutoresizingMaskIntoConstraints = false
