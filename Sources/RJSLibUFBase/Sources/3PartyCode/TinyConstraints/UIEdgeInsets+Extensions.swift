@@ -28,7 +28,7 @@
 
 import UIKit
 
-extension UIEdgeInsets {
+public extension UIEdgeInsets {
     
     static func uniform(_ value: CGFloat) -> UIEdgeInsets {
         return UIEdgeInsets(top: value, left: value, bottom: value, right: value)

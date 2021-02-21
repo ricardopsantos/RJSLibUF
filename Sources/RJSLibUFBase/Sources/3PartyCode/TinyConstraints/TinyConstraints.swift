@@ -41,7 +41,7 @@ extension TNConstrainable {
     }
     
     @discardableResult
-    func edges(to view: TNConstrainable, excluding excludedEdge: TNLayoutEdge = .none, insets: UIEdgeInsets = .zero, relation: TNConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> [NSLayoutConstraint] {
+    func edges(to view: TNConstrainable, excluding excludedEdge: TNLayoutEdge = .none, insets: UIEdgeInsets = .zero, relation: RJSLib.ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> [NSLayoutConstraint] {
         prepareForLayout()
         var constraints: [NSLayoutConstraint] = []
         if !excludedEdge.contains(.top) {
@@ -60,7 +60,7 @@ extension TNConstrainable {
     }
     
     @discardableResult
-    func size(_ size: CGSize, relation: TNConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> [NSLayoutConstraint] {
+    func size(_ size: CGSize, relation: RJSLib.ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> [NSLayoutConstraint] {
         prepareForLayout()
         var constraints: [NSLayoutConstraint] = []
         constraints.append(width(size.width, relation: relation, priority: priority, isActive: isActive))
@@ -69,7 +69,7 @@ extension TNConstrainable {
     }
     
     @discardableResult
-    func size(to view: TNConstrainable, multiplier: CGFloat = 1, insets: CGSize = .zero, relation: TNConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> [NSLayoutConstraint] {
+    func size(to view: TNConstrainable, multiplier: CGFloat = 1, insets: CGSize = .zero, relation: RJSLib.ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> [NSLayoutConstraint] {
         prepareForLayout()
         let constraints = [
             width(to: view, multiplier: multiplier, offset: insets.width, relation: relation, priority: priority, isActive: isActive),
@@ -79,7 +79,7 @@ extension TNConstrainable {
     }
     
     @discardableResult
-    func origin(to view: TNConstrainable, insets: UIEdgeInsets = .zero, relation: TNConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> [NSLayoutConstraint] {
+    func origin(to view: TNConstrainable, insets: UIEdgeInsets = .zero, relation: RJSLib.ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> [NSLayoutConstraint] {
         prepareForLayout()
         let constraints = [
             left(to: view, offset: insets.left, relation: relation, priority: priority, isActive: isActive),
@@ -89,7 +89,7 @@ extension TNConstrainable {
     }
     
     @discardableResult
-    func width(_ width: CGFloat, relation: TNConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
+    func width(_ width: CGFloat, relation: RJSLib.ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
         prepareForLayout()
         switch relation {
         case .equal: return widthAnchor.constraint(equalToConstant: width).with(priority).set(isActive)
@@ -99,7 +99,7 @@ extension TNConstrainable {
     }
     
     @discardableResult
-    func width(to view: TNConstrainable, _ dimension: NSLayoutDimension? = nil, multiplier: CGFloat = 1, offset: CGFloat = 0, relation: TNConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
+    func width(to view: TNConstrainable, _ dimension: NSLayoutDimension? = nil, multiplier: CGFloat = 1, offset: CGFloat = 0, relation: RJSLib.ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
         prepareForLayout()
         switch relation {
         case .equal: return widthAnchor.constraint(equalTo: dimension ?? view.widthAnchor, multiplier: multiplier, constant: offset).with(priority).set(isActive)
@@ -109,7 +109,7 @@ extension TNConstrainable {
     }
 
     @discardableResult
-    func widthToHeight(of view: TNConstrainable, multiplier: CGFloat = 1, offset: CGFloat = 0, relation: TNConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
+    func widthToHeight(of view: TNConstrainable, multiplier: CGFloat = 1, offset: CGFloat = 0, relation: RJSLib.ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
         return width(to: view, view.heightAnchor, multiplier: multiplier, offset: offset, relation: relation, priority: priority, isActive: isActive)
     }
     
@@ -131,7 +131,7 @@ extension TNConstrainable {
     }
     
     @discardableResult
-    func height(_ height: CGFloat, relation: TNConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
+    func height(_ height: CGFloat, relation: RJSLib.ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
         prepareForLayout()
         switch relation {
         case .equal: return heightAnchor.constraint(equalToConstant: height).with(priority).set(isActive)
@@ -141,7 +141,7 @@ extension TNConstrainable {
     }
     
     @discardableResult
-    func height(to view: TNConstrainable, _ dimension: NSLayoutDimension? = nil, multiplier: CGFloat = 1, offset: CGFloat = 0, relation: TNConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
+    func height(to view: TNConstrainable, _ dimension: NSLayoutDimension? = nil, multiplier: CGFloat = 1, offset: CGFloat = 0, relation: RJSLib.ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
         prepareForLayout()
         switch relation {
         case .equal: return heightAnchor.constraint(equalTo: dimension ?? view.heightAnchor, multiplier: multiplier, constant: offset).with(priority).set(isActive)
@@ -151,7 +151,7 @@ extension TNConstrainable {
     }
 
     @discardableResult
-    func heightToWidth(of view: TNConstrainable, multiplier: CGFloat = 1, offset: CGFloat = 0, relation: TNConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
+    func heightToWidth(of view: TNConstrainable, multiplier: CGFloat = 1, offset: CGFloat = 0, relation: RJSLib.ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
         return height(to: view, view.widthAnchor, multiplier: multiplier, offset: offset, relation: relation, priority: priority, isActive: isActive)
     }
     
@@ -173,18 +173,18 @@ extension TNConstrainable {
     }
 
     @discardableResult
-    func aspectRatio(_ ratio: CGFloat, relation: TNConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
+    func aspectRatio(_ ratio: CGFloat, relation: RJSLib.ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
         return widthToHeight(of: self, multiplier: ratio, offset: 0, relation: relation, priority: priority, isActive: isActive)
     }
     
     @discardableResult
-    func leadingToTrailing(of view: TNConstrainable, offset: CGFloat = 0, relation: TNConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
+    func leadingToTrailing(of view: TNConstrainable, offset: CGFloat = 0, relation: RJSLib.ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
         prepareForLayout()
         return leading(to: view, view.trailingAnchor, offset: offset, relation: relation, priority: priority, isActive: isActive)
     }
     
     @discardableResult
-    func leading(to view: TNConstrainable, _ anchor: NSLayoutXAxisAnchor? = nil, offset: CGFloat = 0, relation: TNConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
+    func leading(to view: TNConstrainable, _ anchor: NSLayoutXAxisAnchor? = nil, offset: CGFloat = 0, relation: RJSLib.ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
         prepareForLayout()
         
         switch relation {
@@ -195,13 +195,13 @@ extension TNConstrainable {
     }
     
     @discardableResult
-    func leftToRight(of view: TNConstrainable, offset: CGFloat = 0, relation: TNConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
+    func leftToRight(of view: TNConstrainable, offset: CGFloat = 0, relation: RJSLib.ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
         prepareForLayout()
         return left(to: view, view.rightAnchor, offset: offset, relation: relation, priority: priority, isActive: isActive)
     }
     
     @discardableResult
-    func left(to view: TNConstrainable, _ anchor: NSLayoutXAxisAnchor? = nil, offset: CGFloat = 0, relation: TNConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
+    func left(to view: TNConstrainable, _ anchor: NSLayoutXAxisAnchor? = nil, offset: CGFloat = 0, relation: RJSLib.ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
         prepareForLayout()
         switch relation {
         case .equal: return leftAnchor.constraint(equalTo: anchor ?? view.leftAnchor, constant: offset).with(priority).set(isActive)
@@ -211,13 +211,13 @@ extension TNConstrainable {
     }
     
     @discardableResult
-    func trailingToLeading(of view: TNConstrainable, offset: CGFloat = 0, relation: TNConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
+    func trailingToLeading(of view: TNConstrainable, offset: CGFloat = 0, relation: RJSLib.ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
         prepareForLayout()
         return trailing(to: view, view.leadingAnchor, offset: offset, relation: relation, priority: priority, isActive: isActive)
     }
     
     @discardableResult
-    func trailing(to view: TNConstrainable, _ anchor: NSLayoutXAxisAnchor? = nil, offset: CGFloat = 0, relation: TNConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
+    func trailing(to view: TNConstrainable, _ anchor: NSLayoutXAxisAnchor? = nil, offset: CGFloat = 0, relation: RJSLib.ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
         prepareForLayout()
         switch relation {
         case .equal: return trailingAnchor.constraint(equalTo: anchor ?? view.trailingAnchor, constant: offset).with(priority).set(isActive)
@@ -227,13 +227,13 @@ extension TNConstrainable {
     }
     
     @discardableResult
-    func rightToLeft(of view: TNConstrainable, offset: CGFloat = 0, relation: TNConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
+    func rightToLeft(of view: TNConstrainable, offset: CGFloat = 0, relation: RJSLib.ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
         prepareForLayout()
         return right(to: view, view.leftAnchor, offset: offset, relation: relation, priority: priority, isActive: isActive)
     }
     
     @discardableResult
-    func right(to view: TNConstrainable, _ anchor: NSLayoutXAxisAnchor? = nil, offset: CGFloat = 0, relation: TNConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
+    func right(to view: TNConstrainable, _ anchor: NSLayoutXAxisAnchor? = nil, offset: CGFloat = 0, relation: RJSLib.ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
         prepareForLayout()
         switch relation {
         case .equal: return rightAnchor.constraint(equalTo: anchor ?? view.rightAnchor, constant: offset).with(priority).set(isActive)
@@ -243,13 +243,13 @@ extension TNConstrainable {
     }
     
     @discardableResult
-    func topToBottom(of view: TNConstrainable, offset: CGFloat = 0, relation: TNConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
+    func topToBottom(of view: TNConstrainable, offset: CGFloat = 0, relation: RJSLib.ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
         prepareForLayout()
         return top(to: view, view.bottomAnchor, offset: offset, relation: relation, priority: priority, isActive: isActive)
     }
     
     @discardableResult
-    func top(to view: TNConstrainable, _ anchor: NSLayoutYAxisAnchor? = nil, offset: CGFloat = 0, relation: TNConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
+    func top(to view: TNConstrainable, _ anchor: NSLayoutYAxisAnchor? = nil, offset: CGFloat = 0, relation: RJSLib.ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
         prepareForLayout()
         switch relation {
         case .equal: return topAnchor.constraint(equalTo: anchor ?? view.topAnchor, constant: offset).with(priority).set(isActive)
@@ -259,13 +259,13 @@ extension TNConstrainable {
     }
     
     @discardableResult
-    func bottomToTop(of view: TNConstrainable, offset: CGFloat = 0, relation: TNConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
+    func bottomToTop(of view: TNConstrainable, offset: CGFloat = 0, relation: RJSLib.ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
         prepareForLayout()
         return bottom(to: view, view.topAnchor, offset: offset, relation: relation, priority: priority, isActive: isActive)
     }
     
     @discardableResult
-    func bottom(to view: TNConstrainable, _ anchor: NSLayoutYAxisAnchor? = nil, offset: CGFloat = 0, relation: TNConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
+    func bottom(to view: TNConstrainable, _ anchor: NSLayoutYAxisAnchor? = nil, offset: CGFloat = 0, relation: RJSLib.ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
         prepareForLayout()
         switch relation {
         case .equal: return bottomAnchor.constraint(equalTo: anchor ?? view.bottomAnchor, constant: offset).with(priority).set(isActive)
@@ -299,16 +299,6 @@ extension TNConstrainable {
         }
         constraint.isActive = isActive
         return constraint
-    }
-}
-
-extension UIView {
-    func setHugging(_ priority: UILayoutPriority, for axis: NSLayoutConstraint.Axis) {
-        setContentHuggingPriority(priority, for: axis)
-    }
-    
-    func setCompressionResistance(_ priority: UILayoutPriority, for axis: NSLayoutConstraint.Axis) {
-        setContentCompressionResistancePriority(priority, for: axis)
     }
 }
 

@@ -33,16 +33,23 @@ struct SwiftUIAndUIKitTestingVC_Preview: PreviewProvider {
 class TestingSwiftUIAndUIKitVC: GenericViewController {
 
     private var delegate = RJSLib.Designables.TestViews.ObservableObjectDelegate()
-    private let containerView: UIView = UIView()
     private var cancelBag = CancelBag()
 
+    private lazy var containerView1: UIView = {
+        UIView()
+    }()
+    
+    private lazy var containerView2: UIView = {
+        UIView()
+    }()
+    
     private lazy var button1: UIButton = {
         let button = UIButton(type: .system)
         button.rjs.setTitleForAllStates("Tap to load inside container")
         button.publisher(for: .touchUpInside).sink { [weak self] _ in
             guard let self = self else { return }
             let swiftUIView = RJSLib.Designables.TestViews.SwiftUI(delegate: self.delegate)
-            swiftUIView.loadInside(view: self.containerView)
+            swiftUIView.loadInside(view: self.containerView2)
         }.store(in: cancelBag)
         return button
     }()
@@ -76,20 +83,16 @@ class TestingSwiftUIAndUIKitVC: GenericViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(containerView)
-        view.addSubview(button1)
-        view.addSubview(button2)
-        view.addSubview(button3)
-        containerView.layouts.heightToSuperview(multiplier: 0.3)
-        containerView.layouts.widthToSuperview(multiplier: 0.8)
-        containerView.layouts.centerToSuperView()
-        containerView.backgroundColor = .red
-        button1.layouts.setSame(.centerX, as: view)
-        button2.layouts.setSame(.centerX, as: view)
-        button3.layouts.setSame(.centerX, as: view)
-        button1.layouts.topToBottom(of: containerView)
-        button2.layouts.topToBottom(of: button1)
-        button3.layouts.topToBottom(of: button2)
+        view.addSubview(containerView1)
+        containerView1.layouts.topToSuperview(offset: 10)
+        containerView1.layouts.leftToSuperview(offset: 10)
+        containerView1.layouts.rightToSuperview(offset: -10)
+        containerView1.layouts.bottomToSuperview(offset: 10)
+
+        let margin: CGFloat = 16
+        containerView1.layouts.stack([containerView2, button1, button2, button3], margin: margin)
+        containerView2.layouts.height(200)
+        containerView2.backgroundColor = .red
         
         delegate.didChange.sink { (some) in
             print(some)

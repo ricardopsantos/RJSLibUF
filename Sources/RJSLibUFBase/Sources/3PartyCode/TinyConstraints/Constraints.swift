@@ -27,10 +27,12 @@
 
 import UIKit
 
-public enum TNConstraintRelation: Int {
-    case equal = 0
-    case equalOrLess = -1
-    case equalOrGreater = 1
+public extension RJSLib {
+    enum ConstraintRelation: Int {
+        case equal = 0
+        case equalOrLess = -1
+        case equalOrGreater = 1
+    }
 }
 
 extension Collection where Iterator.Element == NSLayoutConstraint {

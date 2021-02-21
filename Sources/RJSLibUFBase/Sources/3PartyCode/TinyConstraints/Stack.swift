@@ -32,9 +32,22 @@ import UIKit
 extension UIView {
     
     @discardableResult
-    func stack(_ views: [UIView], axis: NSLayoutConstraint.Axis = .vertical, width: CGFloat? = nil, height: CGFloat? = nil, spacing: CGFloat = 0) -> [NSLayoutConstraint] {
+    func stack(_ views: [UIView],
+               axis: NSLayoutConstraint.Axis = .vertical,
+               width: CGFloat? = nil,
+               height: CGFloat? = nil,
+               spacing: CGFloat = 0, // Space between subviews
+               fill: Bool, // If true, last view try to hanchor on super view (bottom or rigth)
+               margin: CGFloat? // Space between subviews and super view margin
+    ) -> [NSLayoutConstraint] {
         
-        translatesAutoresizingMaskIntoConstraints = false
+        if axis == .vertical, let _ = width, let _ = margin {
+            fatalError("Cant have a width and a margin at same time")
+        }
+        
+        if axis == .horizontal, let _ = height, let _ = margin {
+            fatalError("Cant have a height and a margin at same time")
+        }
         
         var offset: CGFloat = 0
         var previous: UIView?
@@ -42,36 +55,39 @@ extension UIView {
         
         for view in views {
             view.translatesAutoresizingMaskIntoConstraints = false
-            addSubview(view)
+            if view.superview == nil {
+                addSubview(view)
+            }
             
             switch axis {
             case .vertical:
-                constraints.append(view.top(to: previous ?? self, previous?.bottomAnchor ?? topAnchor, offset: offset))
-                constraints.append(view.leftToSuperview())
-                constraints.append(view.rightToSuperview())
-                
-                if let lastView = views.last, view == lastView {
-                    constraints.append(view.bottomToSuperview())
+                constraints.append(view.top(to: previous ?? self, previous?.bottomAnchor ?? topAnchor, offset: 0))
+                if let margin = margin {
+                    constraints.append(view.leftToSuperview(offset: margin))
+                }
+                if let margin = margin {
+                    constraints.append(view.rightToSuperview(offset: -margin))
+                }
+                if fill, let lastView = views.last, view == lastView {
+                    constraints.append(view.bottomToSuperview(offset: offset))
                 }
             case .horizontal:
-                constraints.append(view.topToSuperview())
-                constraints.append(view.bottomToSuperview())
-                constraints.append(view.left(to: previous ?? self, previous?.rightAnchor ?? leftAnchor, offset: offset))
-                
-                if let lastView = views.last, view == lastView {
-                    constraints.append(view.rightToSuperview())
+                constraints.append(view.left(to: previous ?? self, previous?.rightAnchor ?? leftAnchor, offset: 0))
+                if let margin = margin {
+                    constraints.append(view.topToSuperview(offset: margin))
                 }
+                if let margin = margin {
+                    constraints.append(view.bottomToSuperview(offset: -margin))
+                }
+            if fill, let lastView = views.last, view == lastView {
+                constraints.append(view.rightToSuperview(offset: offset))
+            }
             @unknown default:
                 fatalError()
             }
             
-            if let width = width {
-                constraints.append(view.width(width))
-            }
-            
-            if let height = height {
-                constraints.append(view.height(height))
-            }
+            if let width = width { constraints.append(view.width(width)) }
+            if let height = height { constraints.append(view.height(height)) }
 			
             offset = spacing
             previous = view

@@ -76,7 +76,7 @@ extension V {
         // There are 3 functions specialised according to what we are doing. Please use them accordingly
         // Function 2/3 : JUST to setup layout rules zone....
         public override func prepareLayoutBySettingAutoLayoutsRules() {
-            (self as UIView).layouts.addAndSetup(scrollView: scrollView, with: stackViewVLevel1, hasTopBar: false)
+            self.layouts.addAndSetup(scrollView: scrollView, with: stackViewVLevel1, usingSafeArea: true)
             //addSubview(scrollView: scrollView, with: stackViewVLevel1, hasTopBar: false)
             self.allSubviews.filter { $0 .isKind(of: UIButton.self) }.forEach { (some) in
                 some.layouts.height(40)

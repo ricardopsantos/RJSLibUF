@@ -50,98 +50,6 @@ RJSLibUFBase contains things like:
 
 ---
 
-### RJSLibUFAppThemes
-
-_To do..._
-
----
-
-### RJSLibUFALayouts (deprecated)
-
-Auto-layout framework (supports constraints or anchors)
-
-```swift
-let label = UILabel()
-let imageView = UIImageView()
-self.view.addSubview(label)
-self.view.addSubview(imageView)
-
-label.rjsALayouts.setMargin(50, on: .top)
-label.rjsALayouts.setMargin(50, on: .left)
-label.rjsALayouts.setHeight(50)
-
-imageView.rjsALayouts.setMargin(50, on: .top)
-imageView.rjsALayouts.setMargin(50, on: .left, from: label)
-imageView.rjsALayouts.setHeight(50)
-```
-
----
-
-### RJSLibUFNetworking
-
-RJSLibUFNetworking allow you to do things like:
-
-__Model:__
-
-```swift
-struct Employee: Codable {
-    // https://app.quicktype.io/
-    let identifier, employeeName, employeeSalary, employeeAge: String
-    let profileImage: String
-    enum CodingKeys: String, CodingKey {
-        case identifier     = "id"
-        case employeeName   = "employee_name"
-        case employeeSalary = "employee_salary"
-        case employeeAge    = "employee_age"
-        case profileImage   = "profile_image"
-    }
-}
-```
-
-__API Target Request:__
-
-```swift
-struct APIRequest: RJS_SimpleNetworkClientRequestProtocol {
-    var returnOnMainTread: Bool = false
-    var debugRequest: Bool = true
-    var urlRequest: URLRequest
-    var responseType: RJS_SimpleNetworkClientResponseType
-    var mockedData: String? = """
-[{"id":"36253","employee_name":"Mike Cooper","employee_salary":"80","employee_age":"23","profile_image":""},{"id":"36255","employee_name":"Eldon","employee_salary":"9452","employee_age":"66","profile_image":""}]
-"""
-    init() throws {
-        if let url = URL(string: "http://dummy.restapiexample.com/api/v1/employees") {
-            urlRequest            = URLRequest(url: url)
-            urlRequest.httpMethod = RJS_SimpleNetworkClient.HttpMethod.get.rawValue
-            responseType          = .json
-        } else {
-            throw NSError(domain: "com.example.error", code: 0, userInfo: nil)
-        }
-    }
-}
-```
-
-__Request:__
-
-```swift
-do {
-    typealias EmployeeList = [Employee]
-    let apiRequest: RJS_SimpleNetworkClientRequestProtocol = try APIRequest()
-    let api: SimpleNetworkClient_Protocol = RJS_SimpleNetworkClient()
-    api.execute(request: apiRequest, completionHandler: { (result: Result<RJS_SimpleNetworkClientResponse<EmployeeList>>) in
-        switch result {
-        case .success(let some): print(some.entity)
-        case .failure(let error): print(error)
-        }
-    })
-} catch {
-    print(error)
-}
-}
-```
-
----
-
 ### RJSLibUFStorage
 
 RJSLibUFStorage includes storage helpers for:
@@ -153,6 +61,25 @@ RJSLibUFStorage includes storage helpers for:
 * Caching 
    * Hot cache using NSCache
    * Cold cache using CoreData
+
+
+### RJSLibUFBaseVIP
+
+_To do..._
+
+---
+
+### RJSLibUFAppThemes
+
+_To do..._
+
+---
+
+### RJSLibUFNetworking
+
+_To do..._
+
+---
 
 # Install
 
@@ -235,3 +162,7 @@ __Install dependency on other SPM packages__
 __SPM Generic Usage__
 
 ![Preview](Documents/readme.spm2.png)
+
+# 3 party code
+
+[https://github.com/roberthein/TinyConstraints](https://github.com/roberthein/TinyConstraints)

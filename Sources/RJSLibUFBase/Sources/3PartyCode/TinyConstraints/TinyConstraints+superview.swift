@@ -29,14 +29,11 @@
     import UIKit
     
 extension UIView {
-    func tnEdgesToSuperview() {
-        self.edgesToSuperview()
-    }
     
     @discardableResult
     func edgesToSuperview(excluding excludedEdge: TNLayoutEdge = .none,
                             insets: UIEdgeInsets = .zero,
-                            relation: TNConstraintRelation = .equal,
+                            relation: RJSLib.ConstraintRelation = .equal,
                             priority: UILayoutPriority = .required,
                             isActive: Bool = true,
                             usingSafeArea: Bool = false) -> [NSLayoutConstraint] {
@@ -74,7 +71,7 @@ extension UIView {
     }
         
     @discardableResult
-    func leadingToSuperview( _ anchor: NSLayoutXAxisAnchor? = nil, offset: CGFloat = 0, relation: TNConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true, usingSafeArea: Bool = false) -> NSLayoutConstraint {
+    func leadingToSuperview( _ anchor: NSLayoutXAxisAnchor? = nil, offset: CGFloat = 0, relation: RJSLib.ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true, usingSafeArea: Bool = false) -> NSLayoutConstraint {
         let constrainable = safeConstrainable(for: superview, usingSafeArea: usingSafeArea)
         if effectiveUserInterfaceLayoutDirection == .rightToLeft {
             return leading(to: constrainable, anchor, offset: -offset, relation: relation, priority: priority, isActive: isActive)
@@ -84,7 +81,7 @@ extension UIView {
     }
         
     @discardableResult
-    func trailingToSuperview( _ anchor: NSLayoutXAxisAnchor? = nil, offset: CGFloat = 0, relation: TNConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true, usingSafeArea: Bool = false) -> NSLayoutConstraint {
+    func trailingToSuperview( _ anchor: NSLayoutXAxisAnchor? = nil, offset: CGFloat = 0, relation: RJSLib.ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true, usingSafeArea: Bool = false) -> NSLayoutConstraint {
         let constrainable = safeConstrainable(for: superview, usingSafeArea: usingSafeArea)
         if effectiveUserInterfaceLayoutDirection == .rightToLeft {
             return trailing(to: constrainable, anchor, offset: offset, relation: relation, priority: priority, isActive: isActive)
@@ -94,7 +91,7 @@ extension UIView {
     }
         
     @discardableResult
-    func horizontalToSuperview(insets: UIEdgeInsets = .zero, relation: TNConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true, usingSafeArea: Bool = false) -> [NSLayoutConstraint] {
+    func horizontalToSuperview(insets: UIEdgeInsets = .zero, relation: RJSLib.ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true, usingSafeArea: Bool = false) -> [NSLayoutConstraint] {
         var constraints: [NSLayoutConstraint] = []
         if effectiveUserInterfaceLayoutDirection == .leftToRight {
             constraints.append(leftToSuperview(offset: insets.left, relation: relation, priority: priority, isActive: isActive, usingSafeArea: usingSafeArea))
@@ -107,7 +104,7 @@ extension UIView {
     }
         
     @discardableResult
-    func verticalToSuperview(insets: UIEdgeInsets = .zero, relation: TNConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true, usingSafeArea: Bool = false) -> [NSLayoutConstraint] {
+    func verticalToSuperview(insets: UIEdgeInsets = .zero, relation: RJSLib.ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true, usingSafeArea: Bool = false) -> [NSLayoutConstraint] {
         var constraints: [NSLayoutConstraint] = []
         constraints.append(topToSuperview(offset: insets.top, relation: relation, priority: priority, isActive: isActive, usingSafeArea: usingSafeArea))
         constraints.append(bottomToSuperview(offset: -insets.bottom, relation: relation, priority: priority, isActive: isActive, usingSafeArea: usingSafeArea))
@@ -157,43 +154,43 @@ extension UIView {
     }
     
     @discardableResult
-    func originToSuperview(insets: UIEdgeInsets = .zero, relation: TNConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true, usingSafeArea: Bool = false) -> [NSLayoutConstraint] {
+    func originToSuperview(insets: UIEdgeInsets = .zero, relation: RJSLib.ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true, usingSafeArea: Bool = false) -> [NSLayoutConstraint] {
         let constrainable = safeConstrainable(for: superview, usingSafeArea: usingSafeArea)
         return origin(to: constrainable, insets: insets, relation: relation, priority: priority, isActive: isActive)
     }
     
     @discardableResult
-    func widthToSuperview( _ dimension: NSLayoutDimension? = nil, multiplier: CGFloat = 1, offset: CGFloat = 0, relation: TNConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true, usingSafeArea: Bool = false) -> NSLayoutConstraint {
+    func widthToSuperview( _ dimension: NSLayoutDimension? = nil, multiplier: CGFloat = 1, offset: CGFloat = 0, relation: RJSLib.ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true, usingSafeArea: Bool = false) -> NSLayoutConstraint {
         let constrainable = safeConstrainable(for: superview, usingSafeArea: usingSafeArea)
         return width(to: constrainable, dimension, multiplier: multiplier, offset: offset, relation: relation, priority: priority, isActive: isActive)
     }
     
     @discardableResult
-    func heightToSuperview( _ dimension: NSLayoutDimension? = nil, multiplier: CGFloat = 1, offset: CGFloat = 0, relation: TNConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true, usingSafeArea: Bool = false) -> NSLayoutConstraint {
+    func heightToSuperview( _ dimension: NSLayoutDimension? = nil, multiplier: CGFloat = 1, offset: CGFloat = 0, relation: RJSLib.ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true, usingSafeArea: Bool = false) -> NSLayoutConstraint {
         let constrainable = safeConstrainable(for: superview, usingSafeArea: usingSafeArea)
         return height(to: constrainable, dimension, multiplier: multiplier, offset: offset, relation: relation, priority: priority, isActive: isActive)
     }
     
     @discardableResult
-    func leftToSuperview( _ anchor: NSLayoutXAxisAnchor? = nil, offset: CGFloat = 0, relation: TNConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true, usingSafeArea: Bool = false) -> NSLayoutConstraint {
+    func leftToSuperview( _ anchor: NSLayoutXAxisAnchor? = nil, offset: CGFloat = 0, relation: RJSLib.ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true, usingSafeArea: Bool = false) -> NSLayoutConstraint {
         let constrainable = safeConstrainable(for: superview, usingSafeArea: usingSafeArea)
         return left(to: constrainable, anchor, offset: offset, relation: relation, priority: priority, isActive: isActive)
     }
     
     @discardableResult
-    func rightToSuperview( _ anchor: NSLayoutXAxisAnchor? = nil, offset: CGFloat = 0, relation: TNConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true, usingSafeArea: Bool = false) -> NSLayoutConstraint {
+    func rightToSuperview( _ anchor: NSLayoutXAxisAnchor? = nil, offset: CGFloat = 0, relation: RJSLib.ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true, usingSafeArea: Bool = false) -> NSLayoutConstraint {
         let constrainable = safeConstrainable(for: superview, usingSafeArea: usingSafeArea)
         return right(to: constrainable, anchor, offset: offset, relation: relation, priority: priority, isActive: isActive)
     }
     
     @discardableResult
-    func topToSuperview( _ anchor: NSLayoutYAxisAnchor? = nil, offset: CGFloat = 0, relation: TNConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true, usingSafeArea: Bool = false) -> NSLayoutConstraint {
+    func topToSuperview( _ anchor: NSLayoutYAxisAnchor? = nil, offset: CGFloat = 0, relation: RJSLib.ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true, usingSafeArea: Bool = false) -> NSLayoutConstraint {
         let constrainable = safeConstrainable(for: superview, usingSafeArea: usingSafeArea)
         return top(to: constrainable, anchor, offset: offset, relation: relation, priority: priority, isActive: isActive)
     }
     
     @discardableResult
-    func bottomToSuperview( _ anchor: NSLayoutYAxisAnchor? = nil, offset: CGFloat = 0, relation: TNConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true, usingSafeArea: Bool = false) -> NSLayoutConstraint {
+    func bottomToSuperview( _ anchor: NSLayoutYAxisAnchor? = nil, offset: CGFloat = 0, relation: RJSLib.ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true, usingSafeArea: Bool = false) -> NSLayoutConstraint {
         let constrainable = safeConstrainable(for: superview, usingSafeArea: usingSafeArea)
         return bottom(to: constrainable, anchor, offset: offset, relation: relation, priority: priority, isActive: isActive)
     }
