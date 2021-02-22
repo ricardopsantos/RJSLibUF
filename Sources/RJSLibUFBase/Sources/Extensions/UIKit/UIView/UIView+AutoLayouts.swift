@@ -115,18 +115,18 @@ public extension RJSLayouts {
     
     @discardableResult
     func stackVertical(_ views: [UIView],
-               spacing: CGFloat = 0,
-               fill: Bool = false,
-               margin: CGFloat? = nil) -> [NSLayoutConstraint] {
-        target.stack(views, axis: .vertical, spacing: spacing, fill: fill, margin: margin)
+                       spacing viewsInnerSpacing: CGFloat,
+                       fill lastViewShouldfill: Bool,
+                       margin marginToSuper: CGFloat) -> [NSLayoutConstraint] {
+        target.stack(views, axis: .vertical, spacing: viewsInnerSpacing, fill: lastViewShouldfill, margin: marginToSuper)
     }
     
     @discardableResult
     func stackHorizontal(_ views: [UIView],
-               spacing: CGFloat = 0,
-               fill: Bool = false,
-               margin: CGFloat? = nil) -> [NSLayoutConstraint] {
-        target.stack(views, axis: .horizontal, spacing: spacing, fill: fill, margin: margin)
+                         spacing viewsInnerSpacing: CGFloat,
+                         fill lastViewShouldfill: Bool,
+                         margin marginToSuper: CGFloat) -> [NSLayoutConstraint] {
+        target.stack(views, axis: .horizontal, spacing: viewsInnerSpacing, fill: lastViewShouldfill, margin: marginToSuper)
     }
     
     @discardableResult

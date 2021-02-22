@@ -36,11 +36,15 @@ class TestingSwiftUIAndUIKitVC: GenericViewController {
     private var cancelBag = CancelBag()
 
     private lazy var containerView1: UIView = {
-        UIView()
+        let some = UIView()
+        some.backgroundColor = .blue
+        return some
     }()
     
     private lazy var containerView2: UIView = {
-        UIView()
+        let some = UIView()
+        some.backgroundColor = .red
+        return some
     }()
     
     private lazy var button1: UIButton = {
@@ -92,15 +96,13 @@ class TestingSwiftUIAndUIKitVC: GenericViewController {
         containerView1.layouts.rightToSuperview(offset: -margin)
         containerView1.layouts.bottomToSuperview(offset: margin)
 
-        //containerView1.layouts.stackHorizontal([containerView2, button1, button2, button3])
-        containerView1.layouts.stackVertical([containerView2, button1, button2, button3], margin: 5)
-        //containerView2.layouts.widthToSuperview()
-        containerView2.layouts.height(200)
-        containerView2.backgroundColor = .red
+        containerView1.layouts.stackVertical([containerView2, button1, button2, button3], spacing: 5, fill: false, margin: 5)
         
-        containerView1.layouts.layoutConstraints.forEach { (some) in
-            print(some.identifier)
-        }
+        containerView2.layouts.widthToSuperview()
+        containerView2.layouts.height(200)
+        //containerView1.layouts.layoutConstraints.forEach { (some) in
+        //    print(some.identifier)
+        //}
         
         delegate.didChange.sink { (some) in
             print(some)

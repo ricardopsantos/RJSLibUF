@@ -51,7 +51,7 @@ extension UIView {
             
             switch axis {
             case .vertical:
-                constraints.append(view.top(to: previous ?? self, previous?.bottomAnchor ?? topAnchor, offset: 0))
+                constraints.append(view.top(to: previous ?? self, previous?.bottomAnchor ?? topAnchor, offset: offset))
                 if let margin = margin {
                     constraints.append(view.leftToSuperview(offset: margin))
                 }
@@ -62,16 +62,16 @@ extension UIView {
                     constraints.append(view.bottomToSuperview(offset: offset))
                 }
             case .horizontal:
-                constraints.append(view.left(to: previous ?? self, previous?.rightAnchor ?? leftAnchor, offset: 0))
+                constraints.append(view.left(to: previous ?? self, previous?.rightAnchor ?? leftAnchor, offset: offset))
                 if let margin = margin {
                     constraints.append(view.topToSuperview(offset: margin))
                 }
                 if let margin = margin {
                     constraints.append(view.bottomToSuperview(offset: -margin))
                 }
-            if fill, let lastView = views.last, view == lastView {
-                constraints.append(view.rightToSuperview(offset: offset))
-            }
+                if fill, let lastView = views.last, view == lastView {
+                    constraints.append(view.rightToSuperview(offset: offset))
+                }
             @unknown default:
                 fatalError()
             }
