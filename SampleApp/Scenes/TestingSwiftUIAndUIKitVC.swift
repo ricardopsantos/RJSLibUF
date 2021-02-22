@@ -98,6 +98,10 @@ class TestingSwiftUIAndUIKitVC: GenericViewController {
         containerView2.layouts.height(200)
         containerView2.backgroundColor = .red
         
+        containerView1.layouts.layoutConstraints.forEach { (some) in
+            print(some.identifier)
+        }
+        
         delegate.didChange.sink { (some) in
             print(some)
         }.store(in: cancelBag)

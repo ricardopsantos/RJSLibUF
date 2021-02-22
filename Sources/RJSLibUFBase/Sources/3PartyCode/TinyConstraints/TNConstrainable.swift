@@ -57,6 +57,21 @@ public protocol TNConstrainable {
 
     @discardableResult
     func prepareForLayout() -> Self
+    
+    var printableMemoryAddress: String { get }
 }
+
+public extension TNConstrainable {
+    
+    // https://stackoverflow.com/questions/24058906/printing-a-variable-memory-address-in-swift
+    var printableMemoryAddress: String {
+        if let view = self as? UIView {
+            return "\(Unmanaged.passUnretained(view).toOpaque())"
+        } else {
+            return "unknow_memory_address"
+        }
+    }
+}
+
 #endif
 

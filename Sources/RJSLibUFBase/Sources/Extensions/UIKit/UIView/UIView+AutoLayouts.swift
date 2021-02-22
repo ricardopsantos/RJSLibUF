@@ -8,9 +8,7 @@ import Foundation
 import UIKit
 
 public extension UIView {
-    var layouts: RJSLayouts {
-        return RJSLayouts(target: self)
-    }
+    var layouts: RJSLayouts { return RJSLayouts(target: self) }
 }
 
 public struct RJSLayouts {
@@ -20,6 +18,33 @@ public struct RJSLayouts {
 //
 // MARK: Utils
 //
+
+public extension RJSLibExtension where Target == NSLayoutConstraint {
+    
+    @discardableResult
+    func setActive(_ state: Bool, identifier: String) -> NSLayoutConstraint {
+        target.setActive(state, identifier: identifier)
+    }
+}
+
+public extension NSLayoutConstraint {
+    
+    @discardableResult
+    func setActive(_ state: Bool, identifier: String) -> NSLayoutConstraint {
+        if state == false {
+            isActive = false
+            return self
+        }
+        (firstItem as? UIView)?.layouts.removeLayoutConstraintWith(identifier: identifier)
+        (secondItem as? UIView)?.layouts.removeLayoutConstraintWith(identifier: identifier)
+        guard !identifier.trim.isEmpty else {
+            fatalError("Empty identifier")
+        }
+        self.identifier = identifier
+        NSLayoutConstraint.activate([self])
+        return self
+    }
+}
 
 public extension RJSLayouts {
 
@@ -46,6 +71,23 @@ public extension RJSLayouts {
             remove(constraint: constraint)
         }
         target.translatesAutoresizingMaskIntoConstraints = true
+    }
+    
+    func activate(constraint: NSLayoutConstraint,
+                  with identifier: String) -> NSLayoutConstraint? {
+        removeLayoutConstraintWith(identifier: identifier)
+        guard !identifier.trim.isEmpty else {
+            fatalError("Empty identifier")
+        }
+        constraint.identifier = identifier
+        NSLayoutConstraint.activate([constraint])
+        return constraint
+    }
+    
+    fileprivate func removeLayoutConstraintWith(identifier: String) {
+        if let old = layoutConstraints.filter({ $0.identifier == identifier }).first {
+            remove(constraint: old)
+        }
     }
     
     func remove(constraint: NSLayoutConstraint) {

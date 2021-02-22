@@ -35,8 +35,8 @@ extension UIView {
     func stack(_ views: [UIView],
                axis: NSLayoutConstraint.Axis = .vertical,
                spacing: CGFloat = 0, // Space between subviews
-               fill: Bool, // If true, last view try to hanchor on super view (bottom or rigth)
-               margin: CGFloat? // Space between subviews and super view margin
+               fill: Bool,           // If true, last view try to hanchor on super view (bottom or rigth)
+               margin: CGFloat?      // Space between subviews and super view margin
     ) -> [NSLayoutConstraint] {
         
         var offset: CGFloat = 0

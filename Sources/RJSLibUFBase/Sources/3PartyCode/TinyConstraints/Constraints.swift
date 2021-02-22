@@ -57,8 +57,9 @@ extension NSLayoutConstraint {
         return self
     }
         
-    func set(_ active: Bool) -> Self {
-        isActive = active
+    @discardableResult
+    func set(_ active: Bool, _ identifier: String) -> Self {
+        self.setActive(active, identifier: identifier)
         return self
     }
 }

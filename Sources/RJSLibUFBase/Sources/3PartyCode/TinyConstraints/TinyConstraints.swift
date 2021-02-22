@@ -91,20 +91,22 @@ extension TNConstrainable {
     @discardableResult
     func width(_ width: CGFloat, relation: RJSLib.ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
         prepareForLayout()
+        let constraintId = "id__\(#function)_\(relation)_\(self.printableMemoryAddress)_\(self.printableMemoryAddress)"
         switch relation {
-        case .equal: return widthAnchor.constraint(equalToConstant: width).with(priority).set(isActive)
-        case .equalOrLess: return widthAnchor.constraint(lessThanOrEqualToConstant: width).with(priority).set(isActive)
-        case .equalOrGreater: return widthAnchor.constraint(greaterThanOrEqualToConstant: width).with(priority).set(isActive)
+        case .equal: return widthAnchor.constraint(equalToConstant: width).with(priority).set(isActive, constraintId)
+        case .equalOrLess: return widthAnchor.constraint(lessThanOrEqualToConstant: width).with(priority).set(isActive, constraintId)
+        case .equalOrGreater: return widthAnchor.constraint(greaterThanOrEqualToConstant: width).with(priority).set(isActive, constraintId)
         }
     }
     
     @discardableResult
     func width(to view: TNConstrainable, _ dimension: NSLayoutDimension? = nil, multiplier: CGFloat = 1, offset: CGFloat = 0, relation: RJSLib.ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
         prepareForLayout()
+        let constraintId = "id__\(#function)_\(relation)_\(self.printableMemoryAddress)_\(view.printableMemoryAddress)"
         switch relation {
-        case .equal: return widthAnchor.constraint(equalTo: dimension ?? view.widthAnchor, multiplier: multiplier, constant: offset).with(priority).set(isActive)
-        case .equalOrLess: return widthAnchor.constraint(lessThanOrEqualTo: dimension ?? view.widthAnchor, multiplier: multiplier, constant: offset).with(priority).set(isActive)
-        case .equalOrGreater: return widthAnchor.constraint(greaterThanOrEqualTo: dimension ?? view.widthAnchor, multiplier: multiplier, constant: offset).with(priority).set(isActive)
+        case .equal: return widthAnchor.constraint(equalTo: dimension ?? view.widthAnchor, multiplier: multiplier, constant: offset).with(priority).set(isActive, constraintId)
+        case .equalOrLess: return widthAnchor.constraint(lessThanOrEqualTo: dimension ?? view.widthAnchor, multiplier: multiplier, constant: offset).with(priority).set(isActive, constraintId)
+        case .equalOrGreater: return widthAnchor.constraint(greaterThanOrEqualTo: dimension ?? view.widthAnchor, multiplier: multiplier, constant: offset).with(priority).set(isActive, constraintId)
         }
     }
 
@@ -117,14 +119,17 @@ extension TNConstrainable {
     func width(min: CGFloat? = nil, max: CGFloat? = nil, priority: UILayoutPriority = .required, isActive: Bool = true) -> [NSLayoutConstraint] {
         prepareForLayout()
         var constraints: [NSLayoutConstraint] = []
+        let constraintId = "id__\(#function)_\(self.printableMemoryAddress)"
         if let min = min {
             let constraint = widthAnchor.constraint(greaterThanOrEqualToConstant: min).with(priority)
-            constraint.isActive = isActive
+            //constraint.isActive = isActive
+            constraint.set(isActive, constraintId)
             constraints.append(constraint)
         }
         if let max = max {
             let constraint = widthAnchor.constraint(lessThanOrEqualToConstant: max).with(priority)
-            constraint.isActive = isActive
+            //constraint.isActive = isActive
+            constraint.set(isActive, constraintId)
             constraints.append(constraint)
         }
         return constraints
@@ -133,20 +138,22 @@ extension TNConstrainable {
     @discardableResult
     func height(_ height: CGFloat, relation: RJSLib.ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
         prepareForLayout()
+        let constraintId = "id__\(#function)_\(relation)_\(self.printableMemoryAddress)"
         switch relation {
-        case .equal: return heightAnchor.constraint(equalToConstant: height).with(priority).set(isActive)
-        case .equalOrLess: return heightAnchor.constraint(lessThanOrEqualToConstant: height).with(priority).set(isActive)
-        case .equalOrGreater: return heightAnchor.constraint(greaterThanOrEqualToConstant: height).with(priority).set(isActive)
+        case .equal: return heightAnchor.constraint(equalToConstant: height).with(priority).set(isActive, constraintId)
+        case .equalOrLess: return heightAnchor.constraint(lessThanOrEqualToConstant: height).with(priority).set(isActive, constraintId)
+        case .equalOrGreater: return heightAnchor.constraint(greaterThanOrEqualToConstant: height).with(priority).set(isActive, constraintId)
         }
     }
     
     @discardableResult
     func height(to view: TNConstrainable, _ dimension: NSLayoutDimension? = nil, multiplier: CGFloat = 1, offset: CGFloat = 0, relation: RJSLib.ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
         prepareForLayout()
+        let constraintId = "id__\(#function)_\(relation)_\(self.printableMemoryAddress)_\(view.printableMemoryAddress)"
         switch relation {
-        case .equal: return heightAnchor.constraint(equalTo: dimension ?? view.heightAnchor, multiplier: multiplier, constant: offset).with(priority).set(isActive)
-        case .equalOrLess: return heightAnchor.constraint(lessThanOrEqualTo: dimension ?? view.heightAnchor, multiplier: multiplier, constant: offset).with(priority).set(isActive)
-        case .equalOrGreater: return heightAnchor.constraint(greaterThanOrEqualTo: dimension ?? view.heightAnchor, multiplier: multiplier, constant: offset).with(priority).set(isActive)
+        case .equal: return heightAnchor.constraint(equalTo: dimension ?? view.heightAnchor, multiplier: multiplier, constant: offset).with(priority).set(isActive, constraintId)
+        case .equalOrLess: return heightAnchor.constraint(lessThanOrEqualTo: dimension ?? view.heightAnchor, multiplier: multiplier, constant: offset).with(priority).set(isActive, constraintId)
+        case .equalOrGreater: return heightAnchor.constraint(greaterThanOrEqualTo: dimension ?? view.heightAnchor, multiplier: multiplier, constant: offset).with(priority).set(isActive, constraintId)
         }
     }
 
@@ -159,14 +166,17 @@ extension TNConstrainable {
     func height(min: CGFloat? = nil, max: CGFloat? = nil, priority: UILayoutPriority = .required, isActive: Bool = true) -> [NSLayoutConstraint] {
         prepareForLayout()
         var constraints: [NSLayoutConstraint] = []
+        let constraintId = "id__\(#function)_\(self.printableMemoryAddress)"
         if let min = min {
             let constraint = heightAnchor.constraint(greaterThanOrEqualToConstant: min).with(priority)
-            constraint.isActive = isActive
+            //constraint.isActive = isActive
+            constraint.set(isActive, constraintId)
             constraints.append(constraint)
         }
         if let max = max {
             let constraint = heightAnchor.constraint(lessThanOrEqualToConstant: max).with(priority)
-            constraint.isActive = isActive
+            //constraint.isActive = isActive
+            constraint.set(isActive, constraintId)
             constraints.append(constraint)
         }
         return constraints
@@ -186,11 +196,11 @@ extension TNConstrainable {
     @discardableResult
     func leading(to view: TNConstrainable, _ anchor: NSLayoutXAxisAnchor? = nil, offset: CGFloat = 0, relation: RJSLib.ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
         prepareForLayout()
-        
+        let constraintId = "id__\(#function)_\(relation)_\(self.printableMemoryAddress)_\(view.printableMemoryAddress)"
         switch relation {
-        case .equal: return leadingAnchor.constraint(equalTo: anchor ?? view.leadingAnchor, constant: offset).with(priority).set(isActive)
-        case .equalOrLess: return leadingAnchor.constraint(lessThanOrEqualTo: anchor ?? view.leadingAnchor, constant: offset).with(priority).set(isActive)
-        case .equalOrGreater: return leadingAnchor.constraint(greaterThanOrEqualTo: anchor ?? view.leadingAnchor, constant: offset).with(priority).set(isActive)
+        case .equal: return leadingAnchor.constraint(equalTo: anchor ?? view.leadingAnchor, constant: offset).with(priority).set(isActive, constraintId)
+        case .equalOrLess: return leadingAnchor.constraint(lessThanOrEqualTo: anchor ?? view.leadingAnchor, constant: offset).with(priority).set(isActive, constraintId)
+        case .equalOrGreater: return leadingAnchor.constraint(greaterThanOrEqualTo: anchor ?? view.leadingAnchor, constant: offset).with(priority).set(isActive, constraintId)
         }
     }
     
@@ -203,10 +213,11 @@ extension TNConstrainable {
     @discardableResult
     func left(to view: TNConstrainable, _ anchor: NSLayoutXAxisAnchor? = nil, offset: CGFloat = 0, relation: RJSLib.ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
         prepareForLayout()
+        let constraintId = "id__\(#function)_\(relation)_\(self.printableMemoryAddress)_\(view.printableMemoryAddress)"
         switch relation {
-        case .equal: return leftAnchor.constraint(equalTo: anchor ?? view.leftAnchor, constant: offset).with(priority).set(isActive)
-        case .equalOrLess: return leftAnchor.constraint(lessThanOrEqualTo: anchor ?? view.leftAnchor, constant: offset).with(priority).set(isActive)
-        case .equalOrGreater: return leftAnchor.constraint(greaterThanOrEqualTo: anchor ?? view.leftAnchor, constant: offset).with(priority).set(isActive)
+        case .equal: return leftAnchor.constraint(equalTo: anchor ?? view.leftAnchor, constant: offset).with(priority).set(isActive, constraintId)
+        case .equalOrLess: return leftAnchor.constraint(lessThanOrEqualTo: anchor ?? view.leftAnchor, constant: offset).with(priority).set(isActive, constraintId)
+        case .equalOrGreater: return leftAnchor.constraint(greaterThanOrEqualTo: anchor ?? view.leftAnchor, constant: offset).with(priority).set(isActive, constraintId)
         }
     }
     
@@ -219,10 +230,11 @@ extension TNConstrainable {
     @discardableResult
     func trailing(to view: TNConstrainable, _ anchor: NSLayoutXAxisAnchor? = nil, offset: CGFloat = 0, relation: RJSLib.ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
         prepareForLayout()
+        let constraintId = "id__\(#function)_\(relation)_\(self.printableMemoryAddress)_\(view.printableMemoryAddress)"
         switch relation {
-        case .equal: return trailingAnchor.constraint(equalTo: anchor ?? view.trailingAnchor, constant: offset).with(priority).set(isActive)
-        case .equalOrLess: return trailingAnchor.constraint(lessThanOrEqualTo: anchor ?? view.trailingAnchor, constant: offset).with(priority).set(isActive)
-        case .equalOrGreater: return trailingAnchor.constraint(greaterThanOrEqualTo: anchor ?? view.trailingAnchor, constant: offset).with(priority).set(isActive)
+        case .equal: return trailingAnchor.constraint(equalTo: anchor ?? view.trailingAnchor, constant: offset).with(priority).set(isActive, constraintId)
+        case .equalOrLess: return trailingAnchor.constraint(lessThanOrEqualTo: anchor ?? view.trailingAnchor, constant: offset).with(priority).set(isActive, constraintId)
+        case .equalOrGreater: return trailingAnchor.constraint(greaterThanOrEqualTo: anchor ?? view.trailingAnchor, constant: offset).with(priority).set(isActive, constraintId)
         }
     }
     
@@ -235,10 +247,11 @@ extension TNConstrainable {
     @discardableResult
     func right(to view: TNConstrainable, _ anchor: NSLayoutXAxisAnchor? = nil, offset: CGFloat = 0, relation: RJSLib.ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
         prepareForLayout()
+        let constraintId = "id__\(#function)_\(relation)_\(self.printableMemoryAddress)_\(view.printableMemoryAddress)"
         switch relation {
-        case .equal: return rightAnchor.constraint(equalTo: anchor ?? view.rightAnchor, constant: offset).with(priority).set(isActive)
-        case .equalOrLess: return rightAnchor.constraint(lessThanOrEqualTo: anchor ?? view.rightAnchor, constant: offset).with(priority).set(isActive)
-        case .equalOrGreater: return rightAnchor.constraint(greaterThanOrEqualTo: anchor ?? view.rightAnchor, constant: offset).with(priority).set(isActive)
+        case .equal: return rightAnchor.constraint(equalTo: anchor ?? view.rightAnchor, constant: offset).with(priority).set(isActive, constraintId)
+        case .equalOrLess: return rightAnchor.constraint(lessThanOrEqualTo: anchor ?? view.rightAnchor, constant: offset).with(priority).set(isActive, constraintId)
+        case .equalOrGreater: return rightAnchor.constraint(greaterThanOrEqualTo: anchor ?? view.rightAnchor, constant: offset).with(priority).set(isActive, constraintId)
         }
     }
     
@@ -251,10 +264,11 @@ extension TNConstrainable {
     @discardableResult
     func top(to view: TNConstrainable, _ anchor: NSLayoutYAxisAnchor? = nil, offset: CGFloat = 0, relation: RJSLib.ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
         prepareForLayout()
+        let constraintId = "id__\(#function)_\(anchor)_\(relation)_\(self.printableMemoryAddress)_\(view.printableMemoryAddress)"
         switch relation {
-        case .equal: return topAnchor.constraint(equalTo: anchor ?? view.topAnchor, constant: offset).with(priority).set(isActive)
-        case .equalOrLess: return topAnchor.constraint(lessThanOrEqualTo: anchor ?? view.topAnchor, constant: offset).with(priority).set(isActive)
-        case .equalOrGreater: return topAnchor.constraint(greaterThanOrEqualTo: anchor ?? view.topAnchor, constant: offset).with(priority).set(isActive)
+        case .equal: return topAnchor.constraint(equalTo: anchor ?? view.topAnchor, constant: offset).with(priority).set(isActive, constraintId)
+        case .equalOrLess: return topAnchor.constraint(lessThanOrEqualTo: anchor ?? view.topAnchor, constant: offset).with(priority).set(isActive, constraintId)
+        case .equalOrGreater: return topAnchor.constraint(greaterThanOrEqualTo: anchor ?? view.topAnchor, constant: offset).with(priority).set(isActive, constraintId)
         }
     }
     
@@ -267,10 +281,11 @@ extension TNConstrainable {
     @discardableResult
     func bottom(to view: TNConstrainable, _ anchor: NSLayoutYAxisAnchor? = nil, offset: CGFloat = 0, relation: RJSLib.ConstraintRelation = .equal, priority: UILayoutPriority = .required, isActive: Bool = true) -> NSLayoutConstraint {
         prepareForLayout()
+        let constraintId = "id__\(#function)_\(anchor)_\(relation)_\(self.printableMemoryAddress)_\(view.printableMemoryAddress)"
         switch relation {
-        case .equal: return bottomAnchor.constraint(equalTo: anchor ?? view.bottomAnchor, constant: offset).with(priority).set(isActive)
-        case .equalOrLess: return bottomAnchor.constraint(lessThanOrEqualTo: anchor ?? view.bottomAnchor, constant: offset).with(priority).set(isActive)
-        case .equalOrGreater: return bottomAnchor.constraint(greaterThanOrEqualTo: anchor ?? view.bottomAnchor, constant: offset).with(priority).set(isActive)
+        case .equal: return bottomAnchor.constraint(equalTo: anchor ?? view.bottomAnchor, constant: offset).with(priority).set(isActive, constraintId)
+        case .equalOrLess: return bottomAnchor.constraint(lessThanOrEqualTo: anchor ?? view.bottomAnchor, constant: offset).with(priority).set(isActive, constraintId)
+        case .equalOrGreater: return bottomAnchor.constraint(greaterThanOrEqualTo: anchor ?? view.bottomAnchor, constant: offset).with(priority).set(isActive, constraintId)
         }
     }
     
@@ -284,7 +299,9 @@ extension TNConstrainable {
             constraint = NSLayoutConstraint(item: self, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: multiplier, constant: offset).with(priority)
         }
 
-        constraint.isActive = isActive
+        //constraint.isActive = isActive
+        let constraintIdentifier = "\(#function)_\(self)"
+        constraint.rjs.setActive(isActive, identifier: constraintIdentifier)
         return constraint
     }
     
@@ -297,7 +314,8 @@ extension TNConstrainable {
         } else {
             constraint = NSLayoutConstraint(item: self, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .centerY, multiplier: multiplier, constant: offset).with(priority)
         }
-        constraint.isActive = isActive
+        let constraintId = "id__\(#function)_\(anchor)_\(self.printableMemoryAddress)_\(view.printableMemoryAddress)"
+        constraint.rjs.setActive(isActive, identifier: constraintId)
         return constraint
     }
 }
