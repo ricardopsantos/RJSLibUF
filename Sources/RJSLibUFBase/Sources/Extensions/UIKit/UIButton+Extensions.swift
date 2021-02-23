@@ -24,7 +24,7 @@ public extension UIButton {
     
     /// Will simulate user touch
     func doTouchUpInside() {
-        self.sendActions(for: .touchUpInside)
+        sendActions(for: .touchUpInside)
     }
     
     func paintImage(with color: UIColor) {
@@ -46,7 +46,7 @@ public extension UIButton {
         setImage(tintedImage, for: .highlighted)
         setImage(tintedImage, for: .focused)
         if tintColor != nil {
-            changeImageColor(to: tintColor!)
+            self.tintColor = tintColor
         }
     }
     

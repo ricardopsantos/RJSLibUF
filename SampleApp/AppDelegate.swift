@@ -35,11 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             _ = RJS_StorableKeyValue.save(key: key, value: "0")
         }
         
-        #if USE_INCLUDE_TINYCONSTRAINTS
-        self.window?.rootViewController = DesignLanguageVC()
-        #else
         self.window?.rootViewController = TabBarController()
-        #endif
 
         return true
     }

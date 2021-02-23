@@ -8,12 +8,12 @@ import SwiftUI
 
 public extension Text {
     @inlinable func textColor(_ color: Color?) -> some View {
-        self.foregroundColor(color)
+        foregroundColor(color)
     }
 }
 
 public extension TextField {
     @inlinable func textColor(_ color: Color?) -> some View {
-        self.foregroundColor(color)
+        foregroundColor(color)
     }
 }

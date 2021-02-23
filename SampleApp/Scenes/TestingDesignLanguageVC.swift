@@ -10,18 +10,15 @@ import RJSLibUFStorage
 import RJSLibUFNetworking
 import RJSLibUFAppThemes
 
-#if USE_INCLUDE_TINYCONSTRAINTS
-import TinyConstraints
-
 class TestingDesignLanguageVC: GenericViewController {
 
-    private lazy var scrollView: UIScrollView = { UIKitFactory.scrollView() }()
-    private lazy var stackViewVLevel1: UIStackView = { UIKitFactory.stackView(axis: .vertical) }()
-    
+    private lazy var scrollView: UIScrollView = { RJS_UIFactory.scrollView() }()
+    private lazy var stackViewVLevel1: UIStackView = { RJS_UIFactory.stackView(axis: .vertical) }()
+
     override func loadView() {
         super.loadView()
         prepareLayout()
-        view.addAndSetup(scrollView: scrollView, stackViewV: stackViewVLevel1, hasTopBar: false)
+        view.layouts.addAndSetup(scrollView: scrollView, with: stackViewVLevel1, usingSafeArea: true)
         stackViewVLevel1.loadWithDesignLanguageReport()
     }
 
@@ -38,10 +35,3 @@ class TestingDesignLanguageVC: GenericViewController {
         view.backgroundColor = .white
     }
 }
-#else
-class TestingDesignLanguageVC: GenericViewController {
-    override func loadView() {
-        super.loadView()
-    }
-}
-#endif

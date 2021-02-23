@@ -9,7 +9,7 @@ import UIKit
 
 public extension RJSLib {
     
-    struct UIKitFactory {
+    struct UIFactory {
         private init() {}
         
         public static func label(title: String="",

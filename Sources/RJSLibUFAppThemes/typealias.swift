@@ -36,7 +36,7 @@ public typealias RJS_Fonts = UIFont.RJS_Fonts
 
 public typealias RJS_SizeNames = RJSLib.SizesNames
 
-public typealias RJS_UIKitFactory = RJSLib.UIKitFactory
+public typealias RJS_UIFactory    = RJSLib.UIFactory
 public typealias RJS_ButtontStyle = UIButton.RJSLibUFLayoutStyle
 public typealias RJS_LabelStyle   = UILabel.RJSLibUFLayoutStyle
 

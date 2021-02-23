@@ -100,9 +100,6 @@ class TestingSwiftUIAndUIKitVC: GenericViewController {
         
         containerView2.layouts.widthToSuperview()
         containerView2.layouts.height(200)
-        //containerView1.layouts.layoutConstraints.forEach { (some) in
-        //    print(some.identifier)
-        //}
         
         delegate.didChange.sink { (some) in
             print(some)

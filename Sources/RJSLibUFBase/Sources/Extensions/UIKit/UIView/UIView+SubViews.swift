@@ -32,7 +32,7 @@ public extension UIView {
         if recursive {
             return UIView.allSubviewsRecursive(from: self).filter { $0.tag == tag }
         } else {
-            return self.subviews.filter { $0.tag == tag }
+            return subviews.filter { $0.tag == tag }
         }
     }
 

@@ -22,7 +22,7 @@ public extension RJSLibExtension where Target == NSAttributedString {
 public extension NSMutableAttributedString {
      func setFontFace(font: UIFont, color: UIColor? = nil) {
         beginEditing()
-        self.enumerateAttribute(.font, in: NSRange(location: 0, length: self.length) ) { (value, range, _) in
+        enumerateAttribute(.font, in: NSRange(location: 0, length: self.length) ) { (value, range, _) in
             if let f = value as? UIFont,
                let newFontDescriptor = f.fontDescriptor .withFamily(font.familyName).withSymbolicTraits(f.fontDescriptor.symbolicTraits) {
                 let newFont = UIFont(descriptor: newFontDescriptor, size: font.pointSize )

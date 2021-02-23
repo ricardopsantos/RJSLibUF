@@ -11,15 +11,15 @@ import UIKit
 
 public extension Image {
     func contentMode(_ mode: ContentMode) -> some View {
-        self.resizable().aspectRatio(contentMode: mode)
+        resizable().aspectRatio(contentMode: mode)
     }
 
     func tint(color: Color) -> some View {
-        self.foregroundColor(color)
+        foregroundColor(color)
     }
 
     func resize(width: CGFloat, height: CGFloat, alignment: Alignment = .center) -> some View {
-        self.resizable().frame(width: width, height: height, alignment: alignment)
+        resizable().frame(width: width, height: height, alignment: alignment)
     }
 }
 

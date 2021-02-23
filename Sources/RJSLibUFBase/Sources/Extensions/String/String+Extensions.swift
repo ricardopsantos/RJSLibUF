@@ -76,15 +76,15 @@ private extension String {
 public extension String {
     
     var random: String { String.random(Int.random(in: 10...100)) }
-    var length: Int { return self.count }
+    var length: Int { return count }
     var first: String { return String(self.prefix(1)) }
-    var last: String { if self.count == 0 { return "" } else { return String(self.suffix(1))} }
+    var last: String { if count == 0 { return "" } else { return String(self.suffix(1))} }
     var trim: String { // Trim and single spaces
         return replacingOccurrences(of: "\\s+", with: " ", options: .regularExpression).trimmingCharacters(in: .whitespacesAndNewlines)
     }
-    var capitalised: String { self.count >= 1 ? prefix(1).uppercased() + self.lowercased().dropFirst() : "" }
-    var encodedUrl: String? { self.addingPercentEncoding( withAllowedCharacters: NSCharacterSet.urlQueryAllowed) }
-    var decodedUrl: String? { self.removingPercentEncoding }
+    var capitalised: String { count >= 1 ? prefix(1).uppercased() + self.lowercased().dropFirst() : "" }
+    var encodedUrl: String? { addingPercentEncoding( withAllowedCharacters: NSCharacterSet.urlQueryAllowed) }
+    var decodedUrl: String? { removingPercentEncoding }
     var reversed: String { var acc = ""; for char in self { acc = "\(char)\(acc)" }; return acc }
     var base64Encoded: String { RJS_Convert.Base64.toB64String(self as AnyObject) ?? ""}
     var base64Decoded: String? { RJS_Convert.Base64.toPlainString(self) }
@@ -211,9 +211,9 @@ public extension String {
     
     func contains(_ subString: String, ignoreCase: Bool=true) -> Bool {
         if ignoreCase {
-            return self.lowercased().range(of: subString.lowercased()) != nil
+            return lowercased().range(of: subString.lowercased()) != nil
         } else {
-            return self.range(of: subString) != nil
+            return range(of: subString) != nil
         }
     }
 }
@@ -240,7 +240,7 @@ public extension String {
     // let json = "{\"hello\": \"world\"}"
     // let dictFromJson = json.asDict
     var asDict: [String: Any]? {
-        guard let data = self.data(using: .utf8) else { return nil }
+        guard let data = data(using: .utf8) else { return nil }
         return try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any]
     }
     

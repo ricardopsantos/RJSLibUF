@@ -16,7 +16,8 @@ public extension RJSLibExtension where Target == UIStackView {
     func insertArrangedSubview(_ view: UIView, belowArrangedSubview subview: UIView) { target.insertArrangedSubview(view, belowArrangedSubview: subview) }
     func insertArrangedSubview(_ view: UIView, aboveArrangedSubview subview: UIView) { target.insertArrangedSubview(view, aboveArrangedSubview: subview) }
     func removeAllArrangedSubviews() { target.removeAllArrangedSubviews() }
-    func edgeStackViewToSuperView() -> [NSLayoutConstraint]? { target.edgeStackViewToSuperView() }
+    func edgeStackViewToSuperView(insets: UIEdgeInsets = .zero) { target.edgeStackViewToSuperView(insets: insets) }
+    func addSeparator(color: UIColor = UIColor.darkGray, size: CGFloat = 3) { target.addSeparator(color: color, size: size) }
 }
 
 public extension UIStackView {
@@ -25,11 +26,19 @@ public extension UIStackView {
 
 fileprivate extension UIStackView {
     
-    func edgeStackViewToSuperView() -> [NSLayoutConstraint]? {
-        var result: [NSLayoutConstraint] = []
-        result.append(contentsOf: view.layouts.edgesToSuperview())
-        result.append(view.layouts.widthToSuperview())
-        return result
+    func addSeparator(color: UIColor = UIColor.darkGray, size: CGFloat = 3) {
+        let separator = UIView()
+        separator.backgroundColor = color
+        rjs.add(separator)
+        separator.heightAnchor.constraint(equalToConstant: size).isActive = true
+    }
+    
+    func edgeStackViewToSuperView(insets: UIEdgeInsets = .zero) {
+        guard let superview = superview else {
+            return
+        }
+        layouts.edgesToSuperview(insets: insets) // Don't use RJPSLayouts. It will fail if scroll view is inside of stack view with lots of elements
+        layouts.width(to: superview) // NEEDS THIS!
     }
         
     func add(_ view: UIView) {

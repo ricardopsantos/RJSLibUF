@@ -19,7 +19,7 @@ class Country {
   }
 }
 
-class TestingVC: GenericViewController {
+class TestingMiscVC: GenericViewController {
 
     private var cancelBag = CancelBag()
     private lazy var button1: UIButton = {

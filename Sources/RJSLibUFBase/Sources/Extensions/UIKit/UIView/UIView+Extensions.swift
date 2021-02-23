@@ -28,16 +28,16 @@ public extension RJSLibExtension where Target == UIView {
         target.disableUserInteractionFor(seconds, disableAlpha: disableAlpha)
     }
     
-    func superview<T>(of type: T.Type) -> T? {
-        /**
-         ```
-         func textFieldDidBeginEditing(_ textField: UITextField) {
-             if let cell = textField.superview(of: TextFieldTableViewCell.self) {
-                 cell.toggle(isHighlighted: true)
-             }
+    /**
+     ```
+     func textFieldDidBeginEditing(_ textField: UITextField) {
+         if let cell = textField.superview(of: TextFieldTableViewCell.self) {
+             cell.toggle(isHighlighted: true)
          }
-         ```
-         */
+     }
+     ```
+     */
+    func superview<T>(of type: T.Type) -> T? {
         target.superview(of: type)
     }
 }

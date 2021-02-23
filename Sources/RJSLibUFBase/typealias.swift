@@ -29,7 +29,6 @@ public typealias RJS_Reachability  = RJSLib.NetworkUtils.Reachability
 // MARK: - Designables
 
 #if !os(macOS)
-public typealias RJS_Designables           = RJSLib.Designables
 public typealias RJS_Designables_UIKit     = RJSLib.Designables.UIKit
 public typealias RJS_Designables_SwiftUI   = RJSLib.Designables.SwiftUI
 #endif

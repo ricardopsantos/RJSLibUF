@@ -40,7 +40,7 @@ public extension UIView {
     
     func addSwiftUIView<Content>(_ swiftUIView: Content) where Content: View {
         if let view = swiftUIView.viewController.view {
-            self.addSubview(view)
+            addSubview(view)
             view.edgesToSuperview()
         }
     }

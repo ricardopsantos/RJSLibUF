@@ -24,17 +24,17 @@ public extension RJSLibExtension where Target == UIView {
 public extension UIView {
         
     func addBorder(width: CGFloat, color: UIColor) {
-        self.layer.borderWidth = width
-        self.layer.borderColor = color.cgColor
-        self.clipsToBounds     = true
-        self.layoutIfNeeded()
+        layer.borderWidth = width
+        layer.borderColor = color.cgColor
+        clipsToBounds     = true
+        layoutIfNeeded()
     }
     
     func addCornerCurve(method: CALayerCornerCurve = .circular, radius: CGFloat = 34) {
-        self.layer.cornerCurve = method // .continuous | .circular
-        self.layer.cornerRadius = radius
-        self.layer.masksToBounds = true
-        self.layoutIfNeeded()
+        layer.cornerCurve = method // .continuous | .circular
+        layer.cornerRadius = radius
+        layer.masksToBounds = true
+        layoutIfNeeded()
     }
     
     func addCorner(radius: CGFloat) {
@@ -46,13 +46,13 @@ public extension UIView {
         let blurEffectView: UIVisualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: style))
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         blurEffectView.alpha = 0.5
-        self.addSubview(blurEffectView)
+        addSubview(blurEffectView)
         return blurEffectView
     }
     
     func fadeTo(_ value: CGFloat, duration: Double=RJS_Constants.defaultAnimationsTime) {
         RJS_Utils.executeInMainTread { [weak self] in
-            UIView.animate(withDuration: duration) {
+            UIView.animate(withDuration: duration) { [weak self] in
                 self?.alpha = value
             }
         }
