@@ -10,7 +10,7 @@ import RJSLibUFBase
 public extension RJSLib.Storages {
     
     /// Uses NSCache
-    struct HotCache: RJPSLibHotCacheProtocol {
+    struct HotCache: RJSHotCacheProtocol {
         
         private init() {}
         public static let shared = RJS_HotCache()

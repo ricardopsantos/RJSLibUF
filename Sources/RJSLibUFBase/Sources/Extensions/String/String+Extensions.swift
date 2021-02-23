@@ -75,7 +75,7 @@ private extension String {
 }
 public extension String {
     
-    var random: String { String.random(Int.random(in: 1...100)) }
+    var random: String { String.random(Int.random(in: 10...100)) }
     var length: Int { return self.count }
     var first: String { return String(self.prefix(1)) }
     var last: String { if self.count == 0 { return "" } else { return String(self.suffix(1))} }
@@ -243,7 +243,7 @@ public extension String {
         guard let data = self.data(using: .utf8) else { return nil }
         return try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any]
     }
-
+    
     // let htmlString = "<p>Hello, <strong>world!</string></p>"
     // let attrString = htmlString.asAttributedString
     var asAttributedString: NSAttributedString? {

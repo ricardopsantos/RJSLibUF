@@ -13,7 +13,9 @@ public extension RJSLibExtension where Target == UIView {
     var allSubviews: [UIView] { target.allSubviews }
     func removeAllSubviewsRecursive() { target.removeAllSubviewsRecursive() }
     func allSubviewsRecursive<T: UIView>() -> [T] {  target.allSubviewsRecursive() }
-    func subViewsWith(tag: Int, recursive: Bool) -> [UIView] { target.subViewsWith(tag: tag, recursive: recursive) }
+    func subViewsWith(tag: Int, recursive: Bool) -> [UIView] {
+        target.subViewsWith(tag: tag, recursive: recursive)
+    }
 }
 
 public extension UIView {

@@ -51,3 +51,10 @@ public typealias RJS_Inject   = RJSLib.Inject    // Dependency Injection
 
 public typealias RJS_Delegated = RJSLib.Delegated_V2
 public typealias RJS_Defaults  = RJSLib.UserDefaults
+
+// MARK: - Value types
+
+public typealias RJS_ScreenDataState = RJSLib.ScreenDataState
+public typealias RJS_Result          = RJSLib.Result
+public typealias RJS_Response        = RJSLib.Response
+public typealias RJS_CacheStrategy   = RJSLib.CacheStrategy

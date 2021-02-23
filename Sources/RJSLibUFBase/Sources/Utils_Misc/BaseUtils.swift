@@ -4,7 +4,9 @@
 //
 
 import Foundation
+#if !os(watchOS)
 import SystemConfiguration
+#endif
 #if !os(macOS)
     import UIKit
 #endif

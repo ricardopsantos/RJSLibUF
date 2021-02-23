@@ -6,6 +6,8 @@
 //
 
 import Foundation
+//
+import RJSLibUFBase
 
 public protocol SimpleNetworkAgentRequestProtocol {
     var urlRequest: URLRequest { get }
@@ -16,7 +18,7 @@ public protocol SimpleNetworkAgentRequestProtocol {
 }
 
 public protocol SimpleNetworkClientProtocol {
-    func execute<T>(request: SimpleNetworkAgentRequestProtocol, completionHandler: @escaping (_ result: Result<RJS_SimpleNetworkAgentResponse<T>>) -> Void)
+    func execute<T>(request: SimpleNetworkAgentRequestProtocol, completionHandler: @escaping (_ result: RJS_Result<RJS_SimpleNetworkAgentResponse<T>>) -> Void)
 }
 
 public protocol SimpleNetworkClientURLSessionProtocol {

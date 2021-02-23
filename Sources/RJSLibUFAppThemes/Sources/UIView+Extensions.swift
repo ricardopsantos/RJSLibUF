@@ -14,6 +14,15 @@ public extension RJSLibExtension where Target == UIView {
                    shadowType: RJS_ShadowType = .superLight) {
         target.addShadow(color: color, offset: offset, radius: radius, shadowType: shadowType)
     }
+    
+    func addShadowSketch(color: UIColor = .black,
+                         alpha: Float = 0.5,
+                         x: CGFloat = 0,
+                         y: CGFloat = 2,
+                         blur: CGFloat = 4,
+                         spread: CGFloat = 0) {
+        target.layer.addShadowSketch(color: color, alpha: alpha, x: x, y: y, blur: blur, spread: spread)
+    }
 }
 
 public extension UIView {
@@ -35,6 +44,28 @@ public extension UIView {
         self.layer.shadowRadius  = radius
         self.layer.masksToBounds = false
     }
-
 }
+
+public extension CALayer {
+    // Extension from: https://stackoverflow.com/questions/34269399/how-to-control-shadow-spread-and-blur
+    func addShadowSketch(color: UIColor = UIView.defaultShadowColor,
+                                alpha: Float = 0.5,
+                                x: CGFloat = 0,
+                                y: CGFloat = 2,
+                                blur: CGFloat = 4,
+                                spread: CGFloat = 0) {
+        shadowColor = color.cgColor
+        shadowOpacity = alpha
+        shadowOffset = CGSize(width: x, height: y)
+        shadowRadius = blur / 2.0
+        if spread == 0 {
+            shadowPath = nil
+        } else {
+            let dx = -spread
+            let rect = bounds.insetBy(dx: dx, dy: dx)
+            shadowPath = UIBezierPath(rect: rect).cgPath
+        }
+    }
+}
+
 #endif

@@ -4,7 +4,9 @@
 
 import Foundation
 import Network
+#if !os(watchOS)
 import SystemConfiguration
+#endif
 
 public extension RJSLib {
     struct NetworkUtils {

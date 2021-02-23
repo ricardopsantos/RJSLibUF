@@ -9,6 +9,15 @@
 #if !os(macOS)
 import UIKit
 
+public extension RJSLibExtension where Target == UIApplication {
+    var topViewController: UIViewController? { target.topViewController }
+    var isInBackgroundOrInactive: Bool? { target.isInBackgroundOrInactive }
+    
+    static func topViewController(base: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
+        UIApplication.topViewController(base: base)
+    }
+}
+
 public extension UIApplication {
 
     var topViewController: UIViewController? {
@@ -24,6 +33,17 @@ public extension UIApplication {
             return topViewController(base: presented)
         }
         return base
+    }
+    
+    var isInBackgroundOrInactive: Bool {
+        switch applicationState {
+        case .inactive, .background:
+            return true
+        case .active:
+            return false
+        default:
+            return false
+        }
     }
 }
 #endif

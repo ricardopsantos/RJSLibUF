@@ -13,6 +13,12 @@ public extension RJSLibExtension where Target == NSMutableAttributedString {
     func setFontFace(font: UIFont, color: UIColor? = nil) { target.setFontFace(font: font, color: color) }
 }
 
+public extension RJSLibExtension where Target == NSAttributedString {
+    func setColor(_ color: UIColor, on substring: String) -> NSAttributedString {
+        target.setColor(color, on: substring)
+    }
+}
+
 public extension NSMutableAttributedString {
      func setFontFace(font: UIFont, color: UIColor? = nil) {
         beginEditing()
@@ -29,6 +35,14 @@ public extension NSMutableAttributedString {
             }
         }
         endEditing()
+    }
+}
+
+public extension NSAttributedString {
+    func setColor(_ color: UIColor, on substring: String) -> NSAttributedString {
+        let attributedString = NSMutableAttributedString(attributedString: self)
+        attributedString.addAttribute(.foregroundColor, value: color, range: (self.string as NSString).range(of: substring))
+        return attributedString
     }
 }
 #endif

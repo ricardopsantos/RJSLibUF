@@ -17,7 +17,6 @@
 		77430AC3388E7E07667973D0 /* RJSLibUFAppThemes in Frameworks */ = {isa = PBXBuildFile; productRef = 31826F13AD56498558E5A644 /* RJSLibUFAppThemes */; };
 		80E64973758DD3990100696A /* RJSLibUFStorage in Frameworks */ = {isa = PBXBuildFile; productRef = A831A6545DE57D4304CDCEDF /* RJSLibUFStorage */; };
 		834F491E24679DA510E3B9B6 /* RJSLibUFBaseVIP in Frameworks */ = {isa = PBXBuildFile; productRef = FA84E002D14A1FD4F201E6F9 /* RJSLibUFBaseVIP */; };
-		B3365167B0CFDD8FD45CF0FE /* TestingALayoutsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DFD5377FACF37DE11970C30 /* TestingALayoutsVC.swift */; };
 		CF1096D5FEB3FBDBF8D83ACF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61114974D64A09F7845CC853 /* Assets.xcassets */; };
 		D6152E607ABC2B2EE4DAF396 /* RJSLibUFNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = 3D1D0262D4472B54E7A7C375 /* RJSLibUFNetworking */; };
 		E462FB910E8FC81BBC1D4636 /* TestingDesignLanguageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B19DC6A87E83EA9EA8051C3 /* TestingDesignLanguageVC.swift */; };
@@ -28,7 +27,6 @@
 		1222A38CA1D980ABA250E196 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		3B19DC6A87E83EA9EA8051C3 /* TestingDesignLanguageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingDesignLanguageVC.swift; sourceTree = "<group>"; };
 		3B91CB910E050843DE439451 /* SampleApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SampleApp.entitlements; sourceTree = "<group>"; };
-		4DFD5377FACF37DE11970C30 /* TestingALayoutsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingALayoutsVC.swift; sourceTree = "<group>"; };
 		54B452CD4C754EEACDA5C304 /* Auxiliar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auxiliar.swift; sourceTree = "<group>"; };
 		61114974D64A09F7845CC853 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9C40D05BA73CFCB439296F18 /* TestingSwiftUIAndUIKitVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingSwiftUIAndUIKitVC.swift; sourceTree = "<group>"; };
@@ -80,7 +78,6 @@
 		74901F2E984F5BFD204B85AA /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				4DFD5377FACF37DE11970C30 /* TestingALayoutsVC.swift */,
 				3B19DC6A87E83EA9EA8051C3 /* TestingDesignLanguageVC.swift */,
 				9C40D05BA73CFCB439296F18 /* TestingSwiftUIAndUIKitVC.swift */,
 				07B9EBEFBBDE70CB394C5C30 /* TestingVC.swift */,
@@ -181,7 +178,6 @@
 				3EDE17B59810354D00498610 /* AppDelegate.swift in Sources */,
 				65EBF1F6D99A9EB1B2B44FB9 /* Auxiliar.swift in Sources */,
 				034D336C4C5F5C4A0EEFB8E3 /* TabBarController.swift in Sources */,
-				B3365167B0CFDD8FD45CF0FE /* TestingALayoutsVC.swift in Sources */,
 				E462FB910E8FC81BBC1D4636 /* TestingDesignLanguageVC.swift in Sources */,
 				539B6CE6BFECC51D5A2AEF8F /* TestingSwiftUIAndUIKitVC.swift in Sources */,
 				771ED744F10B9AFC87E4402C /* TestingVC.swift in Sources */,

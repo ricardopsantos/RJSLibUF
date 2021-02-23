@@ -272,7 +272,7 @@ class RJSLibUFTests: XCTestCase {
             typealias EmployeeList = [Employee]
             let apiRequest: RJS_SimpleNetworkAgentRequestProtocol = try APIRequest()
             let api: SimpleNetworkClientProtocol = RJS_SimpleNetworkAgent()
-            api.execute(request: apiRequest, completionHandler: { (result: Result<RJS_SimpleNetworkAgentResponse<EmployeeList>>) in
+            api.execute(request: apiRequest, completionHandler: { (result: RJS_Result<RJS_SimpleNetworkAgentResponse<EmployeeList>>) in
                 switch result {
                 case .success(let some):
                     let employeeList = some.entity

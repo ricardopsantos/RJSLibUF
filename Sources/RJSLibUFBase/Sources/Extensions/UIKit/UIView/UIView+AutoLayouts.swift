@@ -48,6 +48,10 @@ public extension NSLayoutConstraint {
 
 public extension RJSLayouts {
 
+    var saferAreaInsets: UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    }
+    
     var layoutConstraints: [NSLayoutConstraint] {
         var constraints: [NSLayoutConstraint] = []
         var _superview = target.superview

@@ -4,7 +4,9 @@
 //
 
 import Foundation
+#if !os(watchOS)
 import SystemConfiguration
+#endif
 
 // swiftlint:disable orphaned_doc_comment
 

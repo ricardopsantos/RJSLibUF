@@ -4,7 +4,9 @@
 //
 
 import Foundation
+#if !os(watchOS)
 import Photos
+#endif
 import UserNotifications
 
 /*

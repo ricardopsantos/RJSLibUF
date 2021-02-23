@@ -14,34 +14,6 @@ import UIKit
 //
 import RJSLibUFBase
 
-fileprivate extension Date {
-    func adding(minutes: Int) -> Date {
-        return Calendar.current.date(byAdding: .minute, value: minutes, to: self)!
-    }
-}
-
-// MARK: - RJSStorableKeyValueWithTTLProtocol
-
-public protocol RJSStorableKeyValueWithTTLProtocol {
-    static func save(key: String, value: String, expireDate: Date?) -> Bool
-    static func existsWith(key: String) -> Bool
-    static func with(key: String) -> RJS_DataModelEntity?         // Returns CoreData @objc(DataModelEntity)
-    static func with(keyPrefix: String) -> RJS_DataModelEntity?   // Returns CoreData @objc(DataModelEntity)
-    static func allKeys() -> [String]
-    static func allRecords() -> [RJS_DataModelEntity]             // Returns [CoreData @objc(DataModelEntity)]
-    static func clean() -> Bool
-    static func deleteWith(key: String) -> Bool
-    static var baseDate: Date { get }
-}
-
-//
-// MARK: - RJPSLibSimpleCacheProtocol
-//
-
-protocol CoreDataEntity_Protocol {
-    static var entityName: String { get }
-}
-
 //
 // MARK: - CoreData @objc(DataModelEntity) auxiliar values
 //
@@ -79,10 +51,10 @@ extension RJS_DataModelEntity {
         }
     }
     
-    public class RJPSLibColdCacheWithTTL: RJPSLibColdCacheWithTTLProtocol {
+    public class ColdCacheWithTTL: RJSColdCacheWithTTLProtocol {
 
         private init() {}
-        public static var shared = RJPSLibColdCacheWithTTL()
+        public static var shared = ColdCacheWithTTL()
 
         public func getObject<T>(_ some: T.Type, withKey key: String, keyParams: [String]) -> T? where T: Decodable, T: Encodable {
             let composedKey = buildKey(key, keyParams)
@@ -123,7 +95,7 @@ extension RJS_DataModelEntity {
                     object!.keyParams  = computedKeyParams
                     object!.value      = nil
                     object!.recordDate = baseDate
-                    object!.expireDate = baseDate.adding(minutes: lifeSpam)
+                    object!.expireDate = baseDate.add(minutes: lifeSpam)
                     object!.encoding   = RecordEncodingType.data.rawValue
                     object!.valueData  = data
                     object!.valueType  = String(describing: type(of: some))
@@ -171,7 +143,7 @@ extension RJS_DataModelEntity {
 
 // MARK: - RJSStorableKeyValueWithExpireDate_Protocol implementation
 
-extension RJS_DataModelEntity: CoreDataEntity_Protocol {
+extension RJS_DataModelEntity: RJSCoreDataEntityProtocol {
     
     public struct StorableKeyValue: RJSStorableKeyValueWithTTLProtocol {
         public static var baseDate: Date = RJS_DataModelEntity.baseDate
@@ -190,7 +162,7 @@ extension RJS_DataModelEntity: CoreDataEntity_Protocol {
                 object!.key        = key
                 object!.value      = value
                 object!.recordDate = baseDate
-                object!.expireDate = expireDate ?? baseDate.adding(minutes: 60 * 12 * 31)
+                object!.expireDate = expireDate ?? baseDate.add(minutes: 60 * 12 * 31)
                 object!.encoding   = RecordEncodingType.plain.rawValue
                 object!.keyBase    = nil
                 object!.valueData  = nil

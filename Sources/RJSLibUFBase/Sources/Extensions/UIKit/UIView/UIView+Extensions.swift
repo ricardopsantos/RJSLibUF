@@ -12,6 +12,8 @@ public extension RJSLibExtension where Target == UIView {
     var width: CGFloat { target.width }
     var height: CGFloat { target.height }
 
+    var asImage: UIImage { target.asImage }
+    
     var printableMemoryAddress: String {
         target.printableMemoryAddress
     }
@@ -25,6 +27,19 @@ public extension RJSLibExtension where Target == UIView {
     func disableUserInteractionFor(_ seconds: Double, disableAlpha: CGFloat = 0.6) {
         target.disableUserInteractionFor(seconds, disableAlpha: disableAlpha)
     }
+    
+    func superview<T>(of type: T.Type) -> T? {
+        /**
+         ```
+         func textFieldDidBeginEditing(_ textField: UITextField) {
+             if let cell = textField.superview(of: TextFieldTableViewCell.self) {
+                 cell.toggle(isHighlighted: true)
+             }
+         }
+         ```
+         */
+        target.superview(of: type)
+    }
 }
 
 //
@@ -33,6 +48,20 @@ public extension RJSLibExtension where Target == UIView {
 
 fileprivate extension UIView {
        
+    // Find super views of type
+    func superview<T>(of type: T.Type) -> T? {
+        return superview as? T ?? superview.flatMap { $0.superview(of: type) }
+    }
+    
+    var asImage: UIImage {
+        let renderer = UIGraphicsImageRenderer(size: self.bounds.size)
+        let image = renderer.image { _ in
+            self.drawHierarchy(in: self.bounds, afterScreenUpdates: true)
+        }
+
+        return image
+    }
+    
     var printableMemoryAddress: String {
         // https://stackoverflow.com/questions/24058906/printing-a-variable-memory-address-in-swift
         "\(Unmanaged.passUnretained(self).toOpaque())"
