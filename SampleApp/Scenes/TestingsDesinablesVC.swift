@@ -33,7 +33,7 @@ class TestingsDesinablesVC: GenericViewController {
                                                        font: font,
                                                        fontColor: fontColor,
                                                        buttonColor: primary)
-        some.publisher(for: .touchUpInside).sink { [weak self] _ in }.store(in: cancelBag)
+        some.publisher(for: .touchUpInside).sink { _ in }.store(in: cancelBag)
         return some
     }()
     
@@ -41,7 +41,7 @@ class TestingsDesinablesVC: GenericViewController {
         let some = RJS_Designables_UIKit.ButtonSecondary(text: "buttonSecondary1",
                                                          font: font,
                                                          color: primary)
-        some.publisher(for: .touchUpInside).sink { [weak self] _ in }.store(in: cancelBag)
+        some.publisher(for: .touchUpInside).sink { _ in }.store(in: cancelBag)
         return some
     }()
     
@@ -49,7 +49,7 @@ class TestingsDesinablesVC: GenericViewController {
         let some = RJS_Designables_UIKit.ButtonSecondary(text: "buttonSecondary2",
                                                          font: font,
                                                          color: RJS_ColorPack3.danger.color)
-        some.publisher(for: .touchUpInside).sink { [weak self] _ in }.store(in: cancelBag)
+        some.publisher(for: .touchUpInside).sink { _ in }.store(in: cancelBag)
         return some
     }()
     
@@ -57,13 +57,13 @@ class TestingsDesinablesVC: GenericViewController {
         let some = RJS_Designables_UIKit.ButtonText(text: "ButtonText",
                                                     font: font,
                                                     color: primary)
-        some.publisher(for: .touchUpInside).sink { [weak self] _ in }.store(in: cancelBag)
+        some.publisher(for: .touchUpInside).sink { _ in }.store(in: cancelBag)
         return some
     }()
     
     private lazy var buttonIcon: RJS_Designables_UIKit.ButtonIcon = {
         let some = RJS_Designables_UIKit.ButtonIcon(image: image!, color: RJS_ColorPack3.danger.color)
-        some.publisher(for: .touchUpInside).sink { [weak self] _ in }.store(in: cancelBag)
+        some.publisher(for: .touchUpInside).sink { _ in }.store(in: cancelBag)
         return some
     }()
     
