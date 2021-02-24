@@ -15,12 +15,15 @@ class TabBarController: UITabBarController {
         super.viewDidLoad()
 
         let v1 = createControllers(tabName: "SwiftUI", vc: TestingSwiftUIAndUIKitVC())
-        let v2 = createControllers(tabName: "VIP", vc: VC.___VARIABLE_sceneName___ViewController())
-        let v3 = createControllers(tabName: "Testing", vc: TestingMiscVC())
-        let v4 = createControllers(tabName: "Desinables", vc: TestingsDesinablesVC())
-        let v5 = createControllers(tabName: "DLanguage", vc: TestingDesignLanguageVC())
+        let v2 = createControllers(tabName: "Testing", vc: TestingMiscVC())
+        let v3 = createControllers(tabName: "Desinables", vc: TestingsDesinablesVC())
+        let v4 = createControllers(tabName: "DLanguage", vc: TestingDesignLanguageVC())
 
-        viewControllers = [v1, v2, v3, v4, v5]
+        var vcs = [v1, v2, v3, v4]
+        #if INCLUDE_VIP_TEMPLATE
+        vcs.append(createControllers(tabName: "VIP", vc: VC.___VARIABLE_sceneName___ViewController()))
+        #endif
+        viewControllers = vcs
     }
 
     private func createControllers(tabName: String, vc: UIViewController) -> UINavigationController {

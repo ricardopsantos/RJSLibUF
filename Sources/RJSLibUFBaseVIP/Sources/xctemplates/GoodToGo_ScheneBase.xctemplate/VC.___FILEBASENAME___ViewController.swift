@@ -61,8 +61,6 @@ extension VC {
             super.viewWillAppear(animated)
             if firstAppearance {
                 interactor?.requestScreenInitialState()
-                interactor?.requestSomething(request: VM.___VARIABLE_sceneName___.Something.Request(userId: ""))
-
             }
         }
 
@@ -135,7 +133,11 @@ extension VC {
 
         // This function is called automatically by super BaseGenericView
         public override func setupViewUIRx() {
-
+            genericView.rxBtnTap.sink { [interactor] (some) in
+                let request = VM.___VARIABLE_sceneName___.Something.Request(userId: "")
+                interactor?.requestSomething(request: request)
+            }.store(in: cancelBag)
+    
         }
 
         // This function is called automatically by super BaseGenericView

@@ -44,7 +44,9 @@ extension V {
         }()
 
         private lazy var stackViewVLevel1: UIStackView = {
-            return UIStackView()
+            let some = UIStackView()
+            some.axis = .vertical
+            return some
         }()
 
         private lazy var lblTitle: UILabel = {
@@ -52,7 +54,9 @@ extension V {
         }()
 
         private lazy var btnSample1: UIButton = {
-            return UIButton()
+            let some = UIButton(type: .custom)
+            some.rjs.setTitleForAllStates("UIButton")
+            return some
         }()
 
         private lazy var btnSample2: UIButton = {
@@ -69,7 +73,6 @@ extension V {
             scrollView.addSubview(stackViewVLevel1)
             stackViewVLevel1.rjs.addSub(view: lblTitle)
             stackViewVLevel1.rjs.addSub(view: btnSample1)
-            stackViewVLevel1.rjs.addSub(view: btnSample2)
         }
 
         // This function is called automatically by super BaseGenericViewVIP
@@ -77,7 +80,6 @@ extension V {
         // Function 2/3 : JUST to setup layout rules zone....
         public override func prepareLayoutBySettingAutoLayoutsRules() {
             self.layouts.addAndSetup(scrollView: scrollView, with: stackViewVLevel1, usingSafeArea: true)
-            //addSubview(scrollView: scrollView, with: stackViewVLevel1, hasTopBar: false)
             self.allSubviews.filter { $0 .isKind(of: UIButton.self) }.forEach { (some) in
                 some.layouts.height(40)
             }
@@ -141,5 +143,5 @@ extension V.___VARIABLE_sceneName___View: UITableViewDelegate {
 // MARK: - Events capture
 
 extension V.___VARIABLE_sceneName___View {
-
+    var rxBtnTap: RJSLib.UIControlPublisher<UIControl> { return btnSample1.publisher(for: .touchUpInside) }
 }

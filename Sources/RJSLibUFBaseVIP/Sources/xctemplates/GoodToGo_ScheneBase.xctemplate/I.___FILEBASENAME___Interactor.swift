@@ -41,8 +41,8 @@ extension I.___VARIABLE_sceneName___Interactor: BaseInteractorVIPMandatoryBusine
     /// till the user have all the data loaded on the view. This will improve user experience.
     func requestScreenInitialState() {
         var response: VM.___VARIABLE_sceneName___.ScreenInitialState.Response!
-        response = VM.___VARIABLE_sceneName___.ScreenInitialState.Response(title: "Template Scene 1",
-                                                                           subTitle: "Tap one of the buttons")
+        response = VM.___VARIABLE_sceneName___.ScreenInitialState.Response(title: "VIP",
+                                                                           subTitle: "Tap me...")
         presenter?.presentScreenInitialState(response: response)
 
         // Update DataStore // <<-- DS Sample : Take notice
@@ -72,19 +72,20 @@ extension I.___VARIABLE_sceneName___Interactor: ___VARIABLE_sceneName___Business
 
         presenter?.presentLoading(response: RJS_BaseDisplayLogicModels.Loading(isLoading: true))
         DispatchQueue.executeWithDelay(delay: 0.5) { [weak self] in
-            let mockA1 = TemplateModel(id: "some id 1", state: "state_a - \(Date())")
-            let mockA2 = TemplateModel(id: "some id 2", state: "state_a - \(Date())")
-            let response = VM.___VARIABLE_sceneName___.Something.Response(listA: [mockA1],
-                                                                          listB: [mockA2],
-                                                                          subTitle: "New subtitle \(Date())")
-            self?.presenter?.presentSomething(response: response)
-            self?.presenter?.presentLoading(response: RJS_BaseDisplayLogicModels.Loading(isLoading: false))
-            if true {
-                self?.presenter?.presentStatus(response: RJS_BaseDisplayLogicModels.Status(message: "Messages.success.localised"))
+            if Bool.random() {
+                let mockA1 = TemplateModel(id: "some id 1", state: "state_a - \(Date())")
+                let response = VM.___VARIABLE_sceneName___.Something.Response(list: [mockA1],
+                                                                              subTitle: "New subtitle \(Date())")
+                self?.presenter?.presentSomething(response: response)
+            } else {
+                let response = VM.___VARIABLE_sceneName___.Something.Response(list: [], subTitle: "")
+                self?.presenter?.presentSomething(response: response)
+                self?.presenter?.presentStatus(response: RJS_BaseDisplayLogicModels.Status(message: "Try again!"))
             }
+            self?.presenter?.presentLoading(response: RJS_BaseDisplayLogicModels.Loading(isLoading: false))
+
         }
     }
-
 }
 
 // MARK: Utils {

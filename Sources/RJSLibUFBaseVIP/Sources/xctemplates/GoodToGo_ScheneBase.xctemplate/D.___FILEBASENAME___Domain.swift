@@ -107,17 +107,14 @@ extension VM {
                 let userId: String
             }
             struct Response { /* Interactor -> Presenter */
-                let listA: [TemplateModel]
-                let listB: [TemplateModel]
+                let list: [TemplateModel]
                 let subTitle: String
             }
             struct ViewModel { /* Presenter -> ViewController */
                 let subTitle: String
                 let someValue: String
-                let someListSectionATitle: String
-                let someListSectionBTitle: String
-                let someListSectionAElements: [VM.___VARIABLE_sceneName___.TableItem]
-                let someListSectionBElements: [VM.___VARIABLE_sceneName___.TableItem]
+                let someListSectionTitle: String
+                let someListSectionElements: [VM.___VARIABLE_sceneName___.TableItem]
             }
         }
 

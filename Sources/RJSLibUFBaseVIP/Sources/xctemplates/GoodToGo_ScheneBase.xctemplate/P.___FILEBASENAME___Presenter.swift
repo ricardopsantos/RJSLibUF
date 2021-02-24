@@ -59,27 +59,17 @@ extension P.___VARIABLE_sceneName___Presenter: ___VARIABLE_sceneName___Presentat
         // Presenter will transform response object in something that the View can process/read
         let subTitle = response.subTitle.uppercased()
         let imageName = "ImagesNames.noInternet.rawValue"
-        let someListA = response.listA
+        let someList = response.list
             .map { VM.___VARIABLE_sceneName___.TableItem(enabled: true,
                                                   image: imageName,
                                                   title: $0.id,
                                                   subtitle: $0.state?.uppercased() ?? "N.A.",
                                                   cellType: .cellType1)
             }
-        let someListB = response.listB
-            .map { VM.___VARIABLE_sceneName___.TableItem(enabled: true,
-                                                         image: imageName,
-                                                  title: $0.id,
-                                                  subtitle: $0.state?.uppercased() ?? "N.A.",
-                                                  cellType: .cellType2)
-            }
-        let sum = someListA.count + someListB.count
         let viewModel = VM.___VARIABLE_sceneName___.Something.ViewModel(subTitle: subTitle,
-                                                                        someValue: "\(sum)",
-            someListSectionATitle: "\(someListA.count) A elements",
-            someListSectionBTitle: "\(someListB.count) B elements",
-            someListSectionAElements: someListA,
-            someListSectionBElements: someListB)
+                                                                        someValue: "\(someList.count)",
+                                                                        someListSectionTitle: "\(someList.count) elements",
+                                                                        someListSectionElements: someList)
         viewController?.displaySomething(viewModel: viewModel)
     }
 

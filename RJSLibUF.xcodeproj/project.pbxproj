@@ -1838,6 +1838,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_SWIFT_FLAGS = "-DINCLUDE_VIP_TEMPLATE";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rjps.libuf.SampleApp;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1856,6 +1857,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_SWIFT_FLAGS = "-DINCLUDE_VIP_TEMPLATE";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rjps.libuf.SampleApp;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
