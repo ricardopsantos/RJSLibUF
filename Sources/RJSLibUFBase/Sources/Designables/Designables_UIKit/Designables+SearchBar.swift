@@ -67,11 +67,10 @@ public extension RJSLib.Designables.UIKit {
         private var cancelBag = CancelBag()
         
         public var currentValue = CurrentValueSubject<String?, Never>(nil) // Will emit immediately, can hold and relay the latest value subscribers
-
         public var publisher: AnyPublisher<String?, Never> {
             let debounce = 500
             return self.textChangesPublisher
-                .map { ($0.object as? UISearchBar)?.text }
+                .map { ($0.object as? UISearchTextField)?.text }
                 .debounce(for: .milliseconds(debounce), scheduler: RunLoop.main).eraseToAnyPublisher()
         }
         
@@ -90,10 +89,9 @@ public extension RJSLib.Designables.UIKit {
         }
         
         func setupRX() {
-            publisher
-                .sink { [weak self] (some) in
-                    self?.currentValue.send(some)
-                }.store(in: cancelBag)
+            publisher.sink { [weak self] (some) in
+                self?.currentValue.send(some)
+            }.store(in: cancelBag)
         }
     }
 }

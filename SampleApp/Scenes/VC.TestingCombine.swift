@@ -23,8 +23,7 @@ extension VC {
         
         private lazy var label: UILabel = { UILabel() }()
         private lazy var switchPublisher: UISwitch = { UISwitch() }()
-        private lazy var searchBar1: UISearchTextField = { UISearchTextField() }()
-        private lazy var searchBar2: RJS_Designables_UIKit.SearchTextField = { RJS_Designables_UIKit.SearchTextField() }()
+        private lazy var searchBar: RJS_Designables_UIKit.SearchTextField = { RJS_Designables_UIKit.SearchTextField() }()
 
         private lazy var btn1: RJS_Designables_UIKit.ButtonPrimary = {
             RJS_Designables_UIKit.ButtonPrimary(text: "btn1", font: font, fontColor: fontColor, buttonColor: primary)
@@ -61,8 +60,7 @@ extension VC {
         override func prepareLayout() {
             view.backgroundColor = RJS_ColorPack3.background.color
             view.layouts.addAndSetup(scrollView: scrollView, with: stackViewVLevel1, usingSafeArea: true)
-            stackViewVLevel1.rjs.add(searchBar1)
-            stackViewVLevel1.rjs.add(searchBar2)
+            stackViewVLevel1.rjs.add(searchBar)
             stackViewVLevel1.rjs.add(label)
             stackViewVLevel1.rjs.add(switchPublisher)
             stackViewVLevel1.rjs.add(btn1)
@@ -234,31 +232,17 @@ extension VC {
             // Observing search bar changes and pass them to the ViewController via `searchState`
             //
 
-            let debounce = 500
-            
-            searchBar1.textChangesPublisher
-                .map ({ (uikitElement) -> String? in
-                    if let search = uikitElement.object as? UISearchTextField { return search.text }
-                    if let search = uikitElement.object as? UISearchBar { return search.text }
-                    return nil
-                })
-                .debounce(for: .milliseconds(debounce), scheduler: RunLoop.main)
+            searchBar
+                .currentValue
                 .sink(receiveValue: { [weak self] (value) in
-                    guard let value = value else { return }
-                    self?.display("searchBar1: \(value)", override: false)
+                    self?.display("searchBar2.currentValue: \(value)", override: false)
                 })
                 .store(in: cancelBag)
-         
-            searchBar2.textChangesPublisher
-                .map ({ (uikitElement) -> String? in
-                    if let search = uikitElement.object as? UISearchTextField { return search.text }
-                    if let search = uikitElement.object as? UISearchBar { return search.text }
-                    return nil
-                })
-                .debounce(for: .milliseconds(debounce), scheduler: RunLoop.main)
+            
+            searchBar
+                .publisher
                 .sink(receiveValue: { [weak self] (value) in
-                    guard let value = value else { return }
-                    self?.display("searchBar2: \(value)", override: false)
+                    self?.display("searchBar2.publisher: \(value)", override: false)
                 })
                 .store(in: cancelBag)
 
