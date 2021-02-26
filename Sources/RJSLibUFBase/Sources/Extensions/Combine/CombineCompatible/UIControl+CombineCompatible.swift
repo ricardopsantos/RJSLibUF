@@ -10,18 +10,39 @@ import UIKit
 // Based on https://www.avanderlee.com/swift/custom-combine-publisher/
 //
 
-/// Extending the `UIControl` types to be able to produce a `UIControl.Event` publisher.
-public protocol RJSCombineCompatibleProtocol { }
-
-extension UIControl: RJSCombineCompatibleProtocol { }
-
 public extension RJSCombineCompatibleProtocol where Self: UIControl {
+    
     func publisher(for events: UIControl.Event) -> RJSLib.UIControlPublisher<UIControl> {
+        rjsPublisher(for: events)
+    }
+    
+    func rjsPublisher(for events: UIControl.Event) -> RJSLib.UIControlPublisher<UIControl> {
         return RJSLib.UIControlPublisher(control: self, events: events)
     }
 }
 
 extension RJSLib {
+    
+    /// A custom `Publisher` to work with our custom `UIControlSubscription`.
+    public struct UIControlPublisher<Control: UIControl>: Publisher {
+
+        public typealias Output = Control
+        public typealias Failure = Never
+
+        let control: Control
+        let controlEvents: UIControl.Event
+
+        init(control: Control, events: UIControl.Event) {
+            self.control = control
+            self.controlEvents = events
+        }
+        
+        public func receive<S>(subscriber: S) where S: Subscriber, S.Failure == UIControlPublisher.Failure, S.Input == UIControlPublisher.Output {
+            let subscription = UIControlSubscription(subscriber: subscriber, control: control, event: controlEvents)
+            subscriber.receive(subscription: subscription)
+        }
+    }
+    
     public final class UIControlSubscription<SubscriberType: Subscriber, Control: UIControl>: Subscription where SubscriberType.Input == Control {
         private var subscriber: SubscriberType?
         private let control: Control
@@ -46,24 +67,5 @@ extension RJSLib {
         }
     }
 
-    /// A custom `Publisher` to work with our custom `UIControlSubscription`.
-    public struct UIControlPublisher<Control: UIControl>: Publisher {
-
-        public typealias Output = Control
-        public typealias Failure = Never
-
-        let control: Control
-        let controlEvents: UIControl.Event
-
-        init(control: Control, events: UIControl.Event) {
-            self.control = control
-            self.controlEvents = events
-        }
-        
-        public func receive<S>(subscriber: S) where S: Subscriber, S.Failure == UIControlPublisher.Failure, S.Input == UIControlPublisher.Output {
-            let subscription = UIControlSubscription(subscriber: subscriber, control: control, event: controlEvents)
-            subscriber.receive(subscription: subscription)
-        }
-    }
 }
 #endif

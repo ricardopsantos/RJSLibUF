@@ -19,6 +19,7 @@ public extension RJSLib {
             some.text = title
             some.numberOfLines = 0
             some.tag = tag
+            some.layoutStyle = style
             return some
         }
 
@@ -28,6 +29,7 @@ public extension RJSLib {
             let some = UIButton()
             some.tag = tag
             some.setTitleForAllStates(title)
+            some.layoutStyle = style
             return some
         }
 

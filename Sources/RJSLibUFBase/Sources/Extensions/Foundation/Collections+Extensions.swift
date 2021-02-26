@@ -10,6 +10,12 @@ import UIKit
 
 public extension Array {
     
+    mutating func shuffle() {
+        for _ in 0...self.count {
+            sort { (_,_) in arc4random() < arc4random() }
+        }
+    }
+    
     private func safeItem(at index: Int) -> Element? {
         Int(index) < count ? self[Int(index)] : nil
     }

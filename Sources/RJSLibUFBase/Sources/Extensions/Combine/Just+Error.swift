@@ -14,8 +14,8 @@ public extension Just where Output == Void {
 }
 
 public extension Just {
-    static func withErrorType<E>(_ value: Output, _ errorType: E.Type
-    ) -> AnyPublisher<Output, E> {
+    static func withErrorType<E>(_ value: Output,
+                                 _ errorType: E.Type) -> AnyPublisher<Output, E> {
         return Just(value)
             .setFailureType(to: E.self)
             .eraseToAnyPublisher()

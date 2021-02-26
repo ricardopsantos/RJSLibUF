@@ -6,6 +6,7 @@
 #if !os(macOS)
 import Foundation
 import UIKit
+import Combine
 
 public extension RJSLib.Designables.UIKit {
     
@@ -58,4 +59,44 @@ public extension RJSLib.Designables.UIKit {
         }
     }
 }
+
+public extension RJSLib.Designables.UIKit {
+    
+    class SearchTextField: UISearchTextField {
+                
+        private var cancelBag = CancelBag()
+        
+        public var currentValue = CurrentValueSubject<String?, Never>(nil) // Will emit immediately, can hold and relay the latest value subscribers
+
+        public var publisher: AnyPublisher<String?, Never> {
+            let debounce = 500
+            return self.textChangesPublisher
+                .map { ($0.object as? UISearchBar)?.text }
+                .debounce(for: .milliseconds(debounce), scheduler: RunLoop.main).eraseToAnyPublisher()
+        }
+        
+        override public func layoutSubviews() {
+            super.layoutSubviews()
+        }
+        
+        override init(frame: CGRect) {
+            super.init(frame: frame)
+            setupRX()
+        }
+        
+        required init(coder aDecoder: NSCoder) {
+            super.init(coder: aDecoder)!
+            setupRX()
+        }
+        
+        func setupRX() {
+            publisher
+                .sink { [weak self] (some) in
+                    self?.currentValue.send(some)
+                }.store(in: cancelBag)
+        }
+    }
+}
+
+
 #endif

@@ -133,7 +133,17 @@ extension VC {
 
         // This function is called automatically by super BaseGenericView
         public override func setupViewUIRx() {
+            
+            genericView.rxBtnTap
+                .delay(seconds: 5)
+                .sinkToResult { [interactor] (some) in
+                print(some)
+                let request = VM.___VARIABLE_sceneName___.Something.Request(userId: "")
+                interactor?.requestSomething(request: request)
+            }.store(in: cancelBag)
+            
             genericView.rxBtnTap.sink { [interactor] (some) in
+                print(some)
                 let request = VM.___VARIABLE_sceneName___.Something.Request(userId: "")
                 interactor?.requestSomething(request: request)
             }.store(in: cancelBag)
