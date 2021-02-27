@@ -18,16 +18,16 @@ extension VC {
 
         public class SomeObservableObject: ObservableObject {
             public init() { }
-            var willChangeRelay = PassthroughSubject<SomeObservableObject, Never>()
-            var didChangeRelay = PassthroughSubject<SomeObservableObject, Never>()
+            var willChangeRelaySubject = PassthroughSubject<SomeObservableObject, Never>()
+            var didChangeRelaySubject = PassthroughSubject<SomeObservableObject, Never>()
             public var someValue: String? {
                 willSet {
                     RJS_Logs.info("\(Self.self) willSet")
-                    willChangeRelay.send(self)
+                    willChangeRelaySubject.send(self)
                 }
                 didSet {
                     RJS_Logs.info("\(Self.self) didSet")
-                    didChangeRelay.send(self)
+                    didChangeRelaySubject.send(self)
                 }
             }
         }
@@ -83,9 +83,9 @@ extension VC {
         // Combine
         //
         
-        let relay1    = PassthroughSubject<String, Never>()
-        let relay2    = PassthroughSubject<String, CustomAppError>()
-        let variable1 = CurrentValueSubject<String, Never>("variable1 init") // Will emit immediately and can hold and relay the latest value subscribers
+        let relaySubject1    = PassthroughSubject<String, Never>()
+        let relaySubject2    = PassthroughSubject<String, CustomAppError>()
+        let variableSubject1 = CurrentValueSubject<String, Never>("variable1 init") // Will emit immediately and can hold and relay the latest value subscribers
         @ObservedObject var delegate: VC.TestingCombine.SomeObservableObject
 
         //
@@ -146,10 +146,10 @@ extension VC {
             //
             
             btn1_multipleSubscrivers.rjsCombine.onTouchUpInside.sinkToResult { [weak self] (some) in
-                self?.relay1.send(String.random(3))
+                self?.relaySubject1.send(String.random(3))
             }.store(in: cancelBag)
-            let subscription1 = relay1
-            let subscription2 = relay1
+            let subscription1 = relaySubject1
+            let subscription2 = relaySubject1
             
             subscription1.sink { [weak self] value in
                 self?.display("subscription1 value: \(value)", override: false)
@@ -167,7 +167,7 @@ extension VC {
             let publisher = ["1","2","3"].publisher
             btn2_subjectToPublisher.rjsCombine.onTouchUpInside.sinkToResult { [weak self] (some) in
                 guard let self = self else { return }
-                publisher.subscribe(self.relay1).store(in: self.cancelBag)
+                publisher.subscribe(self.relaySubject1).store(in: self.cancelBag)
             }.store(in: cancelBag)
             
             //
@@ -175,12 +175,12 @@ extension VC {
             // Using a `CurrentValueSubject` to hold and relay the latest value to new subscribers
             //
             
-            let subscription3 = variable1
+            let subscription3 = variableSubject1
             
             btn3_currentValueSubject.rjsCombine.onTouchUpInside.sinkToResult { [weak self] (some) in
-                self?.variable1.send(String.random(3))
+                self?.variableSubject1.send(String.random(3))
                 RJS_Utils.delay(1) { [weak self] in
-                    self?.display("variable1 value: \(String(describing: self?.variable1.value))", override: false)
+                    self?.display("variable1 value: \(String(describing: self?.variableSubject1.value))", override: false)
                 }
             }.store(in: cancelBag)
             
@@ -203,7 +203,7 @@ extension VC {
             // The handleEvents operator lets you intercept
             // All stages of a subscription lifecycle
             
-            let subscription4 = relay2.handleEvents(receiveSubscription: { [weak self] (subscription) in
+            let subscription4 = relaySubject2.handleEvents(receiveSubscription: { [weak self] (subscription) in
                 self?.display(("subscription4: New subscription!"), override: false) },
                                 receiveOutput: { [weak self] _ in self?.display("subscription4: Received new value!", override: false) },
                                 receiveCompletion: { [weak self] _ in self?.display("subscription4: A subscription completed", override: false) },
@@ -212,9 +212,9 @@ extension VC {
                 
             btn4_handleEvents.rjsCombine.onTouchUpInside.sinkToResult { [weak self] (some) in
                 if Bool.random() {
-                    self?.relay2.send(String.random(3))
+                    self?.relaySubject2.send(String.random(3))
                 } else {
-                    self?.relay2.send(completion: .failure(.somethingWentWrong))
+                    self?.relaySubject2.send(completion: .failure(.somethingWentWrong))
                 }
             }.store(in: cancelBag)
 

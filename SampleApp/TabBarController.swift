@@ -20,7 +20,7 @@ class TabBarController: UITabBarController {
         super.viewDidLoad()
         let cancelBag = CancelBag()
         
-        customDelegate.didChangeRelay.sink { (some) in
+        customDelegate.didChangeRelaySubject.sink { (some) in
             print("new value: \(some)")
         }.store(in: cancelBag)
         

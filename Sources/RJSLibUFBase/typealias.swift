@@ -53,7 +53,7 @@ public typealias RJS_Defaults  = RJSLib.UserDefaults
 
 // MARK: - Value types
 
-public typealias RJS_ScreenDataState = RJSLib.ScreenDataState
+public typealias RJS_ScreenState     = RJSLib.HashableDataState
 public typealias RJS_Result          = RJSLib.Result
 public typealias RJS_Response        = RJSLib.Response
 public typealias RJS_CacheStrategy   = RJSLib.CacheStrategy
