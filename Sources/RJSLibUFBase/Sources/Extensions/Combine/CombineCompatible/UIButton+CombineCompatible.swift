@@ -7,10 +7,10 @@ import Combine
 import UIKit
 
 public extension RJSCombineCompatible {
-    var touchUpInsidePublisher: AnyPublisher<UIButton, Never> { (target as? UIButton)!.touchUpInsidePublisher }
+    var onTouchUpInside: AnyPublisher<UIControl, Never> { target.touchUpInsidePublisher }
 }
 
-public extension RJSCombineCompatibleProtocol where Self: UIButton {
+public extension RJSCombineCompatibleProtocol where Self: UIControl {
     var touchUpInsidePublisher: AnyPublisher<Self, Never> {
         RJSLib.UIControlPublisher(control: self, events:  [.touchUpInside]).eraseToAnyPublisher()
     }
@@ -19,8 +19,8 @@ public extension RJSCombineCompatibleProtocol where Self: UIButton {
 fileprivate extension RJSLib {
     func sample() {
         let btn = UIButton()
-        _ = btn.rjsPublisher(for: .touchUpInside).sinkToResult { (_) in }
-        _ = btn.rjsCombine.touchUpInsidePublisher.sinkToResult { (_) in }
+        _ = btn.publisher(for: .touchUpInside).sinkToResult { (_) in }
+        _ = btn.rjsCombine.onTouchUpInside.sinkToResult { (_) in }
         _ = btn.touchUpInsidePublisher.sinkToResult { (_) in }
         
         btn.sendActions(for: .touchUpInside)

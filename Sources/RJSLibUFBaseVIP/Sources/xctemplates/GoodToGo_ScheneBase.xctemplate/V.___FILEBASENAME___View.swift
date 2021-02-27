@@ -143,5 +143,5 @@ extension V.___VARIABLE_sceneName___View: UITableViewDelegate {
 // MARK: - Events capture
 
 extension V.___VARIABLE_sceneName___View {
-    var rxBtnTap: RJSLib.UIControlPublisher<UIControl> { return btnSample1.rjsPublisher(for: .touchUpInside) }
+    var rxBtnTap: RJSLib.UIControlPublisher<UIControl> { return btnSample1.rjsCombine.publisher(for: .touchUpInside) }
 }

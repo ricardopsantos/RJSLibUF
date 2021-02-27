@@ -7,11 +7,9 @@ import Combine
 import UIKit
 
 public extension RJSCombineCompatible {
-    var valueChangedPublisher: AnyPublisher<String?, Never> { (target as? UISearchTextField)!.valueChangedPublisher }
-    var textDidChangePublisher: AnyPublisher<String?, Never> { (target as? UISearchTextField)!.textDidChangePublisher }
-    var textDidChangeNotification: NotificationCenter.Publisher { (target as? UISearchTextField)!.textDidChangeNotification }
+    var onValueChanged: AnyPublisher<String?, Never> { (target as? UISearchTextField)!.valueChangedPublisher }
+    var onTextDidChanged: AnyPublisher<String?, Never> { (target as? UISearchTextField)!.textDidChangePublisher }
 }
-
 
 public extension UISearchTextField {
 
@@ -46,10 +44,10 @@ fileprivate extension RJSLib {
         let search = UISearchTextField()
         
         _ = search.valueChangedPublisher.sinkToResult { (_) in }
-        _ = search.rjsCombine.valueChangedPublisher.sinkToResult { (_) in }
+        _ = search.rjsCombine.onValueChanged.sinkToResult { (_) in }
         
         _ = search.textDidChangePublisher.sinkToResult { (_) in }
-        _ = search.rjsCombine.textDidChangePublisher.sinkToResult { (_) in }
+        _ = search.rjsCombine.onTextDidChanged.sinkToResult { (_) in }
         
         search.sendActions(for: .editingChanged)
 

@@ -10,18 +10,17 @@ import UIKit
 // Based on https://www.avanderlee.com/swift/custom-combine-publisher/
 //
 
-public extension RJSCombineCompatibleProtocol where Self: UIControl {
-    
+public extension RJSCombineCompatible {
     func publisher(for events: UIControl.Event) -> RJSLib.UIControlPublisher<UIControl> {
-        rjsPublisher(for: events)
-    }
-    
-    func rjsPublisher(for events: UIControl.Event) -> RJSLib.UIControlPublisher<UIControl> {
-        return RJSLib.UIControlPublisher(control: self, events: events)
+        target.publisher(for: events)
     }
 }
 
-
+public extension RJSCombineCompatibleProtocol where Self: UIControl {
+    func publisher(for events: UIControl.Event) -> RJSLib.UIControlPublisher<UIControl> {
+        return RJSLib.UIControlPublisher(control: self, events: events)
+    }
+}
 
 extension RJSLib {
     

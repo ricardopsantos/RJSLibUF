@@ -96,14 +96,12 @@ extension VC {
             //
             
             switchPublisher.isOnPublisher.assign(to: \.someProp, on: self).store(in: cancelBag)
-            switchPublisher.rjsCombine.isOnPublisher.assign(to: \.property, on: someObject).store(in: cancelBag)
 
             //
             // Switch -> computed var
             //
             
             switchPublisher.isOnPublisher.assign(to: \.property, on: someObject).store(in: cancelBag)
-            switchPublisher.rjsCombine.isOnPublisher.assign(to: \.property, on: someObject).store(in: cancelBag)
             /*:
             # Subjects
             - A subject is a publisher ...
@@ -117,7 +115,7 @@ extension VC {
             // Using a subject to relay values to subscribers
             //
             
-            btn1.publisher(for: .touchUpInside).sinkToResult { [weak self] (some) in
+            btn1.rjsCombine.onTouchUpInside.sinkToResult { [weak self] (some) in
                 self?.relay1.send(String.random(3))
             }.store(in: cancelBag)
             let subscription1 = relay1
@@ -137,7 +135,7 @@ extension VC {
             //
             
             let publisher = ["1","2","3"].publisher
-            btn2.publisher(for: .touchUpInside).sinkToResult { [weak self] (some) in
+            btn2.rjsCombine.onTouchUpInside.sinkToResult { [weak self] (some) in
                 publisher.subscribe(self!.relay1)
             }.store(in: cancelBag)
             
@@ -148,7 +146,7 @@ extension VC {
             
             let subscription3 = variable1
             
-            btn3.publisher(for: .touchUpInside).sinkToResult { [weak self] (some) in
+            btn3.rjsCombine.onTouchUpInside.sinkToResult { [weak self] (some) in
                 self?.variable1.send(String.random(3))
                 RJS_Utils.delay(1) { [weak self] in
                     self?.display("variable1 value: \(self?.variable1.value)", override: false)
@@ -181,7 +179,7 @@ extension VC {
                                 receiveCancel: { [weak self] in self?.display("subscription4: A subscription cancelled", override: false) })
                 .replaceError(with: "ups... failure")
                 
-            btn4.publisher(for: .touchUpInside).sinkToResult { [weak self] (some) in
+            btn4.rjsCombine.onTouchUpInside.sinkToResult { [weak self] (some) in
                 if Bool.random() {
                     self?.relay2.send(String.random(3))
                 } else {
@@ -216,7 +214,7 @@ extension VC {
             let subscription5 = Publishers.CombineLatest(relayUserName, relayPassword)
             let subscription6 = Publishers.Merge(relayUserName, relayPassword)
 
-            btn5.publisher(for: .touchUpInside).sinkToResult { [weak self] (some) in
+            btn5.rjsCombine.onTouchUpInside.sinkToResult { [weak self] (some) in
                 if Bool.random() {
                     relayUserName.send(String.random(3))
                 } else {
@@ -260,7 +258,7 @@ extension VC {
                     self?.display("searchBar_B: \(value)", override: false)
                 }.store(in: cancelBag)
             
-            btn6.publisher(for: .touchUpInside).sinkToResult { [weak self] (some) in
+            btn6.rjsCombine.onTouchUpInside.sinkToResult { [weak self] (some) in
                 self?.delegate.someValue = String.random(5)
             }.store(in: cancelBag)
 

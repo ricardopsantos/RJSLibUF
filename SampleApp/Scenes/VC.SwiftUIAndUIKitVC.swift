@@ -67,23 +67,19 @@ extension VC {
                 print(some)
             }.store(in: cancelBag)
             
-            let btn1Tap_1 = button1.rjsPublisher(for: .touchUpInside)
-            let btn1Tap_2 = button1.rjsCombine.touchUpInsidePublisher
-            let btn1Tap_3 = button1.touchUpInsidePublisher
-            let btn1Tap = btn1Tap_3
-            btn1Tap.sink { [weak self] _ in
+            button1.rjsCombine.onTouchUpInside.sink { [weak self] _ in
                 guard let self = self else { return }
                 let swiftUIView = RJSLib.Designables.TestViews.SwiftUI(delegate: self.delegate)
                 swiftUIView.loadInside(view: self.containerView2)
             }.store(in: cancelBag)
             
-            button2.publisher(for: .touchUpInside).sink { [weak self] _ in
+            button2.rjsCombine.onTouchUpInside.sink { [weak self] _ in
                 guard let self = self else { return }
                 let swiftUIView = RJSLib.Designables.TestViews.SwiftUI(delegate: self.delegate)
                 swiftUIView.loadInside(viewController: self)
             }.store(in: cancelBag)
             
-            button3.publisher(for: .touchUpInside).sink { [weak self] _ in
+            button3.rjsCombine.onTouchUpInside.sink { [weak self] _ in
                 guard let self = self else { return }
                 self.presentSwiftUIView(RJSLib.Designables.TestViews.SwiftUI(delegate: self.delegate), animated: true)
             }.store(in: cancelBag)

@@ -26,7 +26,7 @@ extension VC {
         
         private lazy var btnDynamicMemberLookup: UIButton = {
             let some = RJS_UIFactory.button(title: "@dynamicMemberLookup", style: .primary)
-            some.rjsPublisher(for: .touchUpInside).sink { [weak self] button in
+            some.rjsCombine.onTouchUpInside.sink { [weak self] button in
                 let country = DynamicMemberLookupCountry()
                 self?.display(country.name, override: true)
                 self?.display(country.location, override: false)
