@@ -2,6 +2,7 @@
 //  Created by Ricardo Santos on 25/02/2021.
 //
 
+#if !os(macOS)
 import Foundation
 import UIKit
 
@@ -15,3 +16,4 @@ public extension UISwitch {
         sendActions(for: .valueChanged)
     }
 }
+#endif

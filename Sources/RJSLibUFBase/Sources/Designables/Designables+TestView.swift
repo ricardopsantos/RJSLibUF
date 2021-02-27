@@ -11,37 +11,23 @@ import Combine
 public extension RJSLib.Designables {
     struct TestViews {
         private init() {}
-                
-        public class ObservableObjectDelegate: ObservableObject {
-            public init() { }
-            public var willChange = PassthroughSubject<ObservableObjectDelegate, Never>()
-            public var didChange = PassthroughSubject<ObservableObjectDelegate, Never>()
-            public var someValue: String? {
-                willSet {
-                    willChange.send(self)
-                }
-                didSet {
-                    didChange.send(self)
-                }
-            }
-        }
         
         public struct SwiftUI: View {
-            public init(delegate: ObservableObjectDelegate) {
+            public init(delegate: RJS_GenericHashableObservableObjectV2<String>) {
                 self.delegate = delegate
             }
             
-            @ObservedObject var delegate: ObservableObjectDelegate
+            @ObservedObject var delegate: RJS_GenericHashableObservableObjectV2<String>
 
             public var body: some View {
                 List {
                     Text(String.random(100)).padding()
                     Button("Btn_1") {
-                        delegate.someValue = "Btn 1 tap"
+                        delegate.value = "Btn 1 tap"
                     }.padding()
                     Text(String.random(100)).padding()
                     Button("Btn_2") {
-                        delegate.someValue = "Btn 2 tap"
+                        delegate.value = "Btn 2 tap"
                     }.padding()
                     Text(String.random(100)).padding()
                 }
@@ -49,11 +35,11 @@ public extension RJSLib.Designables {
         }
         
         public static var uiViewController: UIViewController {
-            SwiftUI(delegate: ObservableObjectDelegate()).viewController
+            SwiftUI(delegate: RJS_GenericHashableObservableObjectV2<String>()).viewController
         }
         
         public static var uiView: UIView {
-            SwiftUI(delegate: ObservableObjectDelegate()).uiView
+            SwiftUI(delegate: RJS_GenericHashableObservableObjectV2<String>()).uiView
         }
     }
 }
@@ -74,7 +60,7 @@ private struct UIKitViewToSwiftUIView: UIViewRepresentable {
 struct Previews_TestViews {
     struct Preview1: PreviewProvider {
         public static var previews: some View {
-            RJSLib.Designables.TestViews.SwiftUI(delegate: RJSLib.Designables.TestViews.ObservableObjectDelegate())
+            RJSLib.Designables.TestViews.SwiftUI(delegate: RJS_GenericHashableObservableObjectV2<String>())
         }
     }
     

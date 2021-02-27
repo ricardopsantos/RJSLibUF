@@ -5,7 +5,7 @@
 import Foundation
 import Combine
 import SwiftUI
-import UIKit
+
 //
 // https://medium.com/eggs-design/building-a-state-driven-app-in-swiftui-using-state-machines-32379ca37283
 // Building a state-driven app in SwiftUI using state machines
@@ -141,14 +141,20 @@ fileprivate extension RJSLib {
     
 fileprivate extension RJSLib {
     
-    func sample1() {
+    func sample() {
         struct SomethingHashable: Hashable {
             public var currencyCode: String
             public func hash(into hasher: inout Hasher) {
                 hasher.combine(currencyCode)
             }
         }
-        var state: HashableDataState<SomethingHashable?> = .notLoaded
+
+        var state: RJS_ScreenState<SomethingHashable?> = .notLoaded
+        RJS_Logs.info(state)
+         
+        state = RJS_ScreenState.loaded(SomethingHashable(currencyCode: "EUR"))
+        RJS_Logs.info(state)
+
     }
 }
 

@@ -26,7 +26,7 @@ extension VC {
         
         private lazy var btnDynamicMemberLookup: UIButton = {
             let some = RJS_UIFactory.button(title: "@dynamicMemberLookup", style: .primary)
-            some.rjsCombine.onTouchUpInside.sink { [weak self] button in
+            some.rjsCombine.onTouchUpInside.sink { [weak self] _ in
                 let country = DynamicMemberLookupCountry()
                 self?.display(country.name, override: true)
                 self?.display(country.location, override: false)
@@ -35,7 +35,6 @@ extension VC {
             return some
         }()
         
-    
         override func loadView() {
             super.loadView()
             view.backgroundColor = RJS_ColorPack3.background.color
@@ -57,7 +56,6 @@ extension VC {
 
     }
 }
-
 
 fileprivate extension VC.TestingMiscVC {
     private func display(_ message: String, override: Bool) {

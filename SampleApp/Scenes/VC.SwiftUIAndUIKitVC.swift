@@ -34,7 +34,7 @@ struct SwiftUIAndUIKitTestingVC_Preview: PreviewProvider {
 extension VC {
     class SwiftUIAndUIKitVC: GenericViewController {
 
-        private var delegate = RJSLib.Designables.TestViews.ObservableObjectDelegate()
+        var delegate = RJS_GenericHashableObservableObjectV2<String>()
 
         private lazy var containerView1: UIView = { UIView() }()
         private lazy var containerView2: UIView = { UIView() }()

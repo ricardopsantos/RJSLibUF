@@ -145,7 +145,7 @@ extension VC {
             // Using a subject to relay values to subscribers
             //
             
-            btn1_multipleSubscrivers.rjsCombine.onTouchUpInside.sinkToResult { [weak self] (some) in
+            btn1_multipleSubscrivers.rjsCombine.onTouchUpInside.sinkToResult { [weak self] (_) in
                 self?.relaySubject1.send(String.random(3))
             }.store(in: cancelBag)
             let subscription1 = relaySubject1
@@ -164,8 +164,8 @@ extension VC {
             // Subscribing a subject to a publisher
             //
             
-            let publisher = ["1","2","3"].publisher
-            btn2_subjectToPublisher.rjsCombine.onTouchUpInside.sinkToResult { [weak self] (some) in
+            let publisher = ["1", "2", "3"].publisher
+            btn2_subjectToPublisher.rjsCombine.onTouchUpInside.sinkToResult { [weak self] (_) in
                 guard let self = self else { return }
                 publisher.subscribe(self.relaySubject1).store(in: self.cancelBag)
             }.store(in: cancelBag)
@@ -177,7 +177,7 @@ extension VC {
             
             let subscription3 = variableSubject1
             
-            btn3_currentValueSubject.rjsCombine.onTouchUpInside.sinkToResult { [weak self] (some) in
+            btn3_currentValueSubject.rjsCombine.onTouchUpInside.sinkToResult { [weak self] (_) in
                 self?.variableSubject1.send(String.random(3))
                 RJS_Utils.delay(1) { [weak self] in
                     self?.display("variable1 value: \(String(describing: self?.variableSubject1.value))", override: false)
@@ -203,14 +203,14 @@ extension VC {
             // The handleEvents operator lets you intercept
             // All stages of a subscription lifecycle
             
-            let subscription4 = relaySubject2.handleEvents(receiveSubscription: { [weak self] (subscription) in
+            let subscription4 = relaySubject2.handleEvents(receiveSubscription: { [weak self] (_) in
                 self?.display(("subscription4: New subscription!"), override: false) },
                                 receiveOutput: { [weak self] _ in self?.display("subscription4: Received new value!", override: false) },
                                 receiveCompletion: { [weak self] _ in self?.display("subscription4: A subscription completed", override: false) },
                                 receiveCancel: { [weak self] in self?.display("subscription4: A subscription cancelled", override: false) })
                 .replaceError(with: "ups... failure")
                 
-            btn4_handleEvents.rjsCombine.onTouchUpInside.sinkToResult { [weak self] (some) in
+            btn4_handleEvents.rjsCombine.onTouchUpInside.sinkToResult { [weak self] (_) in
                 if Bool.random() {
                     self?.relaySubject2.send(String.random(3))
                 } else {
@@ -245,7 +245,7 @@ extension VC {
             let subscription5 = Publishers.CombineLatest(relayUserName, relayPassword)
             let subscription6 = Publishers.Merge(relayUserName, relayPassword)
 
-            btn5_combineLatest.rjsCombine.onTouchUpInside.sinkToResult { [weak self] (some) in
+            btn5_combineLatest.rjsCombine.onTouchUpInside.sinkToResult { [weak self] (_) in
                 if Bool.random() {
                     relayUserName.send(String.random(3))
                 } else {
@@ -277,7 +277,7 @@ extension VC {
  
              */
             
-            btn6_observedObject.rjsCombine.onTouchUpInside.sinkToResult { [weak self] (some) in
+            btn6_observedObject.rjsCombine.onTouchUpInside.sinkToResult { [weak self] (_) in
                 self?.delegate.someValue = String.random(5)
             }.store(in: cancelBag)
 
@@ -290,8 +290,6 @@ extension VC {
         }
     }
 }
-
-
 
 fileprivate extension VC.TestingCombine {
     private func display(_ message: String, override: Bool) {

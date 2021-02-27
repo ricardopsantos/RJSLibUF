@@ -12,7 +12,7 @@ public extension RJSCombineCompatible {
 
 public extension RJSCombineCompatibleProtocol where Self: UISwitch {
     var isOnPublisher: AnyPublisher<Bool, Never> {
-        RJSLib.UIControlPublisher(control: self, events:  [.allEditingEvents, .valueChanged]).map { $0.isOn }.eraseToAnyPublisher()
+        RJSLib.UIControlPublisher(control: self, events: [.allEditingEvents, .valueChanged]).map { $0.isOn }.eraseToAnyPublisher()
     }
 }
 
@@ -28,7 +28,7 @@ fileprivate extension RJSLib {
         
         switcher.isOn = true
         switcher.sendActions(for: .valueChanged)
-        print(submitButton.isEnabled)
+        RJS_Logs.info(submitButton.isEnabled)
     }
 }
 

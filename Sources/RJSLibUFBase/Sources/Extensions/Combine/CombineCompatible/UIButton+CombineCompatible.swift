@@ -2,6 +2,7 @@
 //  Created by Ricardo Santos on 27/02/2021.
 //
 
+#if !os(macOS)
 import Foundation
 import Combine
 import UIKit
@@ -12,7 +13,7 @@ public extension RJSCombineCompatible {
 
 public extension RJSCombineCompatibleProtocol where Self: UIControl {
     var touchUpInsidePublisher: AnyPublisher<Self, Never> {
-        RJSLib.UIControlPublisher(control: self, events:  [.touchUpInside]).eraseToAnyPublisher()
+        RJSLib.UIControlPublisher(control: self, events: [.touchUpInside]).eraseToAnyPublisher()
     }
 }
 
@@ -27,3 +28,4 @@ fileprivate extension RJSLib {
 
     }
 }
+#endif

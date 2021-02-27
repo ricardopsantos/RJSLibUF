@@ -137,13 +137,13 @@ extension VC {
             genericView.rxBtnTap
                 .delay(seconds: 5)
                 .sinkToResult { [interactor] (some) in
-                print(some)
+                    RJS_Logs.info()(some)
                 let request = VM.___VARIABLE_sceneName___.Something.Request(userId: "")
                 interactor?.requestSomething(request: request)
             }.store(in: cancelBag)
             
             genericView.rxBtnTap.sink { [interactor] (some) in
-                print(some)
+                RJS_Logs.info(some)
                 let request = VM.___VARIABLE_sceneName___.Something.Request(userId: "")
                 interactor?.requestSomething(request: request)
             }.store(in: cancelBag)

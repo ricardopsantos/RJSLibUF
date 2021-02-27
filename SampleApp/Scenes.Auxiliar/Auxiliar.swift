@@ -62,5 +62,3 @@ extension VM {
         let value: String
     }
 }
-
-

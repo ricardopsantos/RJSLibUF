@@ -125,10 +125,20 @@ extension VM {
                 let title: String
                 let subTitle: String
             }
-            struct ViewModel {
+            struct ViewModel: Hashable {
                 let title: String
                 let subTitle: String
                 let screenLayout: V.___VARIABLE_sceneName___View.ScreenLayout
+                
+                public func hash(into hasher: inout Hasher) {
+                    hasher.combine(title)
+                    hasher.combine(subTitle)
+                    hasher.combine(screenLayout)
+                }
+                
+                var toScreenState: RJS_ScreenState<ViewModel> {
+                    RJS_ScreenState.loaded(self)
+                }
             }
         }
     }

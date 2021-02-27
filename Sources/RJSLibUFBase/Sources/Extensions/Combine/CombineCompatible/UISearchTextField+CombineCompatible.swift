@@ -2,6 +2,7 @@
 //  Created by Ricardo Santos on 27/02/2021.
 //
 
+#if !os(macOS)
 import Foundation
 import Combine
 import UIKit
@@ -13,7 +14,7 @@ public extension RJSCombineCompatible {
 
 public extension UISearchTextField {
 
-    var textDidChangeNotification:  NotificationCenter.Publisher {
+    var textDidChangeNotification: NotificationCenter.Publisher {
         NotificationCenter.default.publisher(for: UISearchTextField.textDidChangeNotification, object: self)
     }
     
@@ -28,7 +29,7 @@ public extension UISearchTextField {
 public extension RJSCombineCompatibleProtocol where Self: UISearchTextField {
 
     var valueChangedPublisher: AnyPublisher<String?, Never> {
-        RJSLib.UIControlPublisher(control: self, events:  [.editingChanged]).map { $0.text }
+        RJSLib.UIControlPublisher(control: self, events: [.editingChanged]).map { $0.text }
             .debounce(for: .milliseconds(Self.rjsDebounce), scheduler: RunLoop.main).eraseToAnyPublisher()
             .eraseToAnyPublisher()
     }
@@ -53,3 +54,4 @@ fileprivate extension RJSLib {
 
     }
 }
+#endif
