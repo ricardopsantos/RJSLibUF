@@ -12,27 +12,17 @@ import SwiftUI
 import RJSLibUFBase
 import RJSLibUFBaseVIP
 
-public class SomeObservableObject: ObservableObject {
-    public init() { }
-    var willChangeRelay = PassthroughSubject<SomeObservableObject, Never>()
-    var didChangeRelay = PassthroughSubject<SomeObservableObject, Never>()
-    public var someValue: String? {
-        willSet {
-            willChangeRelay.send(self)
-        }
-        didSet {
-            didChangeRelay.send(self)
-        }
-    }
-}
-
 class TabBarController: UITabBarController {
 
-    let customDelegate = SomeObservableObject()
+    let customDelegate = VC.TestingCombine.SomeObservableObject()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         let cancelBag = CancelBag()
+        
+        customDelegate.didChangeRelay.sink { (some) in
+            print("new value: \(some)")
+        }.store(in: cancelBag)
         
         let v1 = createControllers(tabName: "Combine", vc: VC.TestingCombine(delegate: customDelegate))
         let v2 = createControllers(tabName: "SwiftUI", vc: VC.SwiftUIAndUIKitVC())
@@ -43,10 +33,6 @@ class TabBarController: UITabBarController {
         #if INCLUDE_VIP_TEMPLATE
         vcs.append(createControllers(tabName: "VIP", vc: VC.___VARIABLE_sceneName___ViewController()))
         #endif
-        
-        customDelegate.didChangeRelay.sink { (some) in
-            print("new value: \(some)")
-        }.store(in: cancelBag)
         
         viewControllers = vcs
     }

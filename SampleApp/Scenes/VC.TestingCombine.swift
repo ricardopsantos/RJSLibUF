@@ -16,6 +16,22 @@ import RJSLibUFBaseVIP
 extension VC {
     class TestingCombine: GenericViewController {
 
+        public class SomeObservableObject: ObservableObject {
+            public init() { }
+            var willChangeRelay = PassthroughSubject<SomeObservableObject, Never>()
+            var didChangeRelay = PassthroughSubject<SomeObservableObject, Never>()
+            public var someValue: String? {
+                willSet {
+                    RJS_Logs.info("\(Self.self) willSet")
+                    willChangeRelay.send(self)
+                }
+                didSet {
+                    RJS_Logs.info("\(Self.self) didSet")
+                    didChangeRelay.send(self)
+                }
+            }
+        }
+        
         required init?(coder: NSCoder) {
             fatalError("init(coder:) is not supported")
         }
@@ -35,28 +51,32 @@ extension VC {
         private lazy var switchPublisher: UISwitch = { UISwitch() }()
         private lazy var searchBar: RJS_Designables_UIKit.SearchTextField = { RJS_Designables_UIKit.SearchTextField() }()
 
-        private lazy var btn1: RJS_Designables_UIKit.ButtonPrimary = {
-            RJS_Designables_UIKit.ButtonPrimary(text: "btn1", font: font, fontColor: fontColor, buttonColor: primary)
+        private func btnWith(text: String) -> RJS_Designables_UIKit.ButtonPrimary {
+            RJS_Designables_UIKit.ButtonPrimary(text: text, font: font, fontColor: fontColor, buttonColor: primary)
+        }
+        
+        private lazy var btn1_multipleSubscrivers: RJS_Designables_UIKit.ButtonPrimary = {
+            btnWith(text: "btn1_multipleSubscrivers")
         }()
         
-        private lazy var btn2: RJS_Designables_UIKit.ButtonPrimary = {
-            RJS_Designables_UIKit.ButtonPrimary(text: "btn2", font: font, fontColor: fontColor, buttonColor: primary)
+        private lazy var btn2_subjectToPublisher: RJS_Designables_UIKit.ButtonPrimary = {
+            btnWith(text: "btn2_subjectToPublisher")
         }()
         
-        private lazy var btn3: RJS_Designables_UIKit.ButtonPrimary = {
-            RJS_Designables_UIKit.ButtonPrimary(text: "btn3", font: font, fontColor: fontColor, buttonColor: primary)
+        private lazy var btn3_currentValueSubject: RJS_Designables_UIKit.ButtonPrimary = {
+            btnWith(text: "btn3_currentValueSubject")
         }()
         
-        private lazy var btn4: RJS_Designables_UIKit.ButtonPrimary = {
-            RJS_Designables_UIKit.ButtonPrimary(text: "btn4", font: font, fontColor: fontColor, buttonColor: primary)
+        private lazy var btn4_handleEvents: RJS_Designables_UIKit.ButtonPrimary = {
+            btnWith(text: "btn4_handleEvents")
         }()
         
-        private lazy var btn5: RJS_Designables_UIKit.ButtonPrimary = {
-            RJS_Designables_UIKit.ButtonPrimary(text: "btn5", font: font, fontColor: fontColor, buttonColor: primary)
+        private lazy var btn5_combineLatest: RJS_Designables_UIKit.ButtonPrimary = {
+            btnWith(text: "btn5_combineLatest")
         }()
         
-        private lazy var btn6: RJS_Designables_UIKit.ButtonPrimary = {
-            RJS_Designables_UIKit.ButtonPrimary(text: "btn6", font: font, fontColor: fontColor, buttonColor: primary)
+        private lazy var btn6_observedObject: RJS_Designables_UIKit.ButtonPrimary = {
+            btnWith(text: "btn6_observedObject")
         }()
         
         //
@@ -66,7 +86,7 @@ extension VC {
         let relay1    = PassthroughSubject<String, Never>()
         let relay2    = PassthroughSubject<String, CustomAppError>()
         let variable1 = CurrentValueSubject<String, Never>("variable1 init") // Will emit immediately and can hold and relay the latest value subscribers
-        @ObservedObject var delegate: SomeObservableObject
+        @ObservedObject var delegate: VC.TestingCombine.SomeObservableObject
 
         //
         // ViewController
@@ -77,12 +97,12 @@ extension VC {
             stackViewVLevel1.rjs.add(searchBar)
             stackViewVLevel1.rjs.add(label)
             stackViewVLevel1.rjs.add(switchPublisher)
-            stackViewVLevel1.rjs.add(btn1)
-            stackViewVLevel1.rjs.add(btn2)
-            stackViewVLevel1.rjs.add(btn3)
-            stackViewVLevel1.rjs.add(btn4)
-            stackViewVLevel1.rjs.add(btn5)
-            stackViewVLevel1.rjs.add(btn6)
+            stackViewVLevel1.rjs.add(btn1_multipleSubscrivers)
+            stackViewVLevel1.rjs.add(btn2_subjectToPublisher)
+            stackViewVLevel1.rjs.add(btn3_currentValueSubject)
+            stackViewVLevel1.rjs.add(btn4_handleEvents)
+            stackViewVLevel1.rjs.add(btn5_combineLatest)
+            stackViewVLevel1.rjs.add(btn6_observedObject)
             
             _ = view.rjs.allSubviews.filter { $0.isKind(of: UIButton.self) }.map { $0.layouts.height(44) }
             label.numberOfLines = 0
@@ -90,6 +110,16 @@ extension VC {
         
         override func setupFRP() {
             let someObject = MyClass()
+            
+            //
+            // Search Bar -> View Controller
+            //
+            
+            searchBar
+                .textDidChangePublisher
+                .sink { [weak self] (value) in
+                    self?.display("searchBar: \(value)", override: false)
+                }.store(in: cancelBag)
             
             //
             // Switch -> View Controller
@@ -111,11 +141,11 @@ extension VC {
             */
             
             //
-            // btn1
+            // btn1_multipleSubscrivers
             // Using a subject to relay values to subscribers
             //
             
-            btn1.rjsCombine.onTouchUpInside.sinkToResult { [weak self] (some) in
+            btn1_multipleSubscrivers.rjsCombine.onTouchUpInside.sinkToResult { [weak self] (some) in
                 self?.relay1.send(String.random(3))
             }.store(in: cancelBag)
             let subscription1 = relay1
@@ -130,26 +160,27 @@ extension VC {
             }.store(in: cancelBag)
               
             //
-            // btn2
+            // btn2_subjectToPublisher
             // Subscribing a subject to a publisher
             //
             
             let publisher = ["1","2","3"].publisher
-            btn2.rjsCombine.onTouchUpInside.sinkToResult { [weak self] (some) in
-                publisher.subscribe(self!.relay1)
+            btn2_subjectToPublisher.rjsCombine.onTouchUpInside.sinkToResult { [weak self] (some) in
+                guard let self = self else { return }
+                publisher.subscribe(self.relay1).store(in: self.cancelBag)
             }.store(in: cancelBag)
             
             //
-            // btn3
+            // btn3_currentValueSubject
             // Using a `CurrentValueSubject` to hold and relay the latest value to new subscribers
             //
             
             let subscription3 = variable1
             
-            btn3.rjsCombine.onTouchUpInside.sinkToResult { [weak self] (some) in
+            btn3_currentValueSubject.rjsCombine.onTouchUpInside.sinkToResult { [weak self] (some) in
                 self?.variable1.send(String.random(3))
                 RJS_Utils.delay(1) { [weak self] in
-                    self?.display("variable1 value: \(self?.variable1.value)", override: false)
+                    self?.display("variable1 value: \(String(describing: self?.variable1.value))", override: false)
                 }
             }.store(in: cancelBag)
             
@@ -158,7 +189,7 @@ extension VC {
             }.store(in: cancelBag)
             
             //
-            // btn4
+            // btn4_handleEvents
             //
             
             /*:
@@ -179,7 +210,7 @@ extension VC {
                                 receiveCancel: { [weak self] in self?.display("subscription4: A subscription cancelled", override: false) })
                 .replaceError(with: "ups... failure")
                 
-            btn4.rjsCombine.onTouchUpInside.sinkToResult { [weak self] (some) in
+            btn4_handleEvents.rjsCombine.onTouchUpInside.sinkToResult { [weak self] (some) in
                 if Bool.random() {
                     self?.relay2.send(String.random(3))
                 } else {
@@ -192,7 +223,7 @@ extension VC {
             }.store(in: cancelBag)
             
             //
-            // btn5
+            // btn5_combineLatest
             //
             
             /*:
@@ -214,7 +245,7 @@ extension VC {
             let subscription5 = Publishers.CombineLatest(relayUserName, relayPassword)
             let subscription6 = Publishers.Merge(relayUserName, relayPassword)
 
-            btn5.rjsCombine.onTouchUpInside.sinkToResult { [weak self] (some) in
+            btn5_combineLatest.rjsCombine.onTouchUpInside.sinkToResult { [weak self] (some) in
                 if Bool.random() {
                     relayUserName.send(String.random(3))
                 } else {
@@ -241,24 +272,12 @@ extension VC {
                     self?.display("subscription6 (Merge): \(value)", override: false)
                 }.store(in: cancelBag)
             
+            /*:
+            ## `ObservedObject`
+ 
+             */
             
-            //
-            // Observing search bar changes and pass them to the ViewController via `searchState`
-            //
-            
-            searchBar
-                .textDidChangePublisher
-                .sink { [weak self] (value) in
-                    self?.display("searchBar_A: \(value)", override: false)
-                }.store(in: cancelBag)
-            
-            searchBar
-                .valueChangedPublisher
-                .sink { [weak self] (value) in
-                    self?.display("searchBar_B: \(value)", override: false)
-                }.store(in: cancelBag)
-            
-            btn6.rjsCombine.onTouchUpInside.sinkToResult { [weak self] (some) in
+            btn6_observedObject.rjsCombine.onTouchUpInside.sinkToResult { [weak self] (some) in
                 self?.delegate.someValue = String.random(5)
             }.store(in: cancelBag)
 
