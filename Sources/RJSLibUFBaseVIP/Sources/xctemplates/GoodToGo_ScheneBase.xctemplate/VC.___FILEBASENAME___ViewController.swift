@@ -137,7 +137,7 @@ extension VC {
             genericView.rxBtnTap
                 .delay(seconds: 5)
                 .sinkToResult { [interactor] (some) in
-                    RJS_Logs.info()(some)
+                    RJS_Logs.info(some)
                 let request = VM.___VARIABLE_sceneName___.Something.Request(userId: "")
                 interactor?.requestSomething(request: request)
             }.store(in: cancelBag)

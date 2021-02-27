@@ -22,14 +22,13 @@ public typealias RJS_GenericHashableObservableObjectV2 = RJSLib.GenericObservabl
 
 extension RJSLib {
     
+    //
+    // MARK: With RJS_ScreenState<T: Hashable> associated
+    //
+    
     public class GenericObservableStateContainerV1<T: Hashable>: ObservableObject {
         public init() { }
         public var state = PassthroughSubject<RJS_ScreenState<T>, Never>()
-    }
-    
-    public class GenericObservableContainerV1<T: Hashable>: ObservableObject {
-        public init() { }
-        public var value = PassthroughSubject<T, Never>()
     }
     
     public class GenericObservableStateContainerV2<T: Hashable>: ObservableObject {
@@ -46,6 +45,15 @@ extension RJSLib {
         }
     }
     
+    //
+    // MARK: With <T: Hashable> associated
+    //
+    
+    public class GenericObservableContainerV1<T: Hashable>: ObservableObject {
+        public init() { }
+        public var value = PassthroughSubject<T, Never>()
+    }
+    
     public class GenericObservableContainerV2<T: Hashable>: ObservableObject {
         public init() { }
         public var willChange = PassthroughSubject<GenericObservableContainerV2<T>, Never>()
@@ -60,13 +68,13 @@ extension RJSLib {
         }
     }
     
-    class ObservableStateContainerV1: ObservableObject {
+    fileprivate class NonGenericSampleObservableStateContainerV1: ObservableObject {
         var state = PassthroughSubject<RJS_ScreenState<RJSLib.VM_SampleTableItem>, Never>()
     }
 
-    class ObservableStateContainerV2: ObservableObject {
-        var willChange = PassthroughSubject<ObservableStateContainerV2, Never>()
-        var didChange = PassthroughSubject<ObservableStateContainerV2, Never>()
+    fileprivate class NonGenericSampleObservableStateContainerV2: ObservableObject {
+        var willChange = PassthroughSubject<NonGenericSampleObservableStateContainerV2, Never>()
+        var didChange = PassthroughSubject<NonGenericSampleObservableStateContainerV2, Never>()
         var state: RJS_ScreenState<RJSLib.VM_SampleTableItem>? {
             willSet {
                 willChange.send(self)
@@ -105,10 +113,10 @@ fileprivate extension RJSLib {
     
     class SomeView: UIView {
         public let cancelBag = CancelBag()
-        var viewStateBinderA = ObservableStateContainerV1()
-        var viewStateBinderB = ObservableStateContainerV2()
-        var viewStateBinderC = GenericObservableStateContainerV1<RJSLib.VM_SampleTableItem>()
-        var viewStateBinderD = GenericObservableStateContainerV2<RJSLib.VM_SampleTableItem>()
+        var viewStateBinderA = NonGenericSampleObservableStateContainerV1()
+        var viewStateBinderB = NonGenericSampleObservableStateContainerV2()
+        var viewStateBinderC = RJS_GenericHashableObservableStateObjectV1<RJSLib.VM_SampleTableItem>()
+        var viewStateBinderD = RJS_GenericHashableObservableStateObjectV2<RJSLib.VM_SampleTableItem>()
         
         public func setupViewUIRx() {
 
@@ -153,15 +161,16 @@ fileprivate extension RJSLib {
     
     struct VM_SomeViewModel {
         
-        @ObservedObject var viewStateBinderA: ObservableStateContainerV1
-        @ObservedObject var viewStateBinderB: ObservableStateContainerV2
-        @ObservedObject var viewStateBinderC: GenericObservableStateContainerV1<VM_SampleTableItem>
-        @ObservedObject var viewStateBinderD: GenericObservableStateContainerV2<VM_SampleTableItem>
+        @ObservedObject var viewStateBinderA: NonGenericSampleObservableStateContainerV1
+        @ObservedObject var viewStateBinderB: NonGenericSampleObservableStateContainerV2
         
-        init(viewStateBinderA: ObservableStateContainerV1,
-             viewStateBinderB: ObservableStateContainerV2,
-             viewStateBinderC: GenericObservableStateContainerV1<VM_SampleTableItem>,
-             viewStateBinderD: GenericObservableStateContainerV2<VM_SampleTableItem>) {
+        @ObservedObject var viewStateBinderC: RJS_GenericHashableObservableStateObjectV1<VM_SampleTableItem>
+        @ObservedObject var viewStateBinderD: RJS_GenericHashableObservableStateObjectV2<VM_SampleTableItem>
+        
+        init(viewStateBinderA: NonGenericSampleObservableStateContainerV1,
+             viewStateBinderB: NonGenericSampleObservableStateContainerV2,
+             viewStateBinderC: RJS_GenericHashableObservableStateObjectV1<VM_SampleTableItem>,
+             viewStateBinderD: RJS_GenericHashableObservableStateObjectV2<VM_SampleTableItem>) {
             self.viewStateBinderA = viewStateBinderA
             self.viewStateBinderB = viewStateBinderB
             self.viewStateBinderC = viewStateBinderC
