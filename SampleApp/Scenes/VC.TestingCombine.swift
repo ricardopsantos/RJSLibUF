@@ -96,13 +96,14 @@ extension VC {
             //
             
             switchPublisher.isOnPublisher.assign(to: \.someProp, on: self).store(in: cancelBag)
-            
+            switchPublisher.rjsCombine.isOnPublisher.assign(to: \.property, on: someObject).store(in: cancelBag)
+
             //
             // Switch -> computed var
             //
             
             switchPublisher.isOnPublisher.assign(to: \.property, on: someObject).store(in: cancelBag)
-
+            switchPublisher.rjsCombine.isOnPublisher.assign(to: \.property, on: someObject).store(in: cancelBag)
             /*:
             # Subjects
             - A subject is a publisher ...

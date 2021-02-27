@@ -6,39 +6,29 @@ import Foundation
 import Combine
 import UIKit
 
-/*:
- ## Solving the UISwitch KVO problem
- #### As the `UISwitch.isOn` property does not support KVO this extension can become handy.
- */
+public extension RJSCombineCompatible {
+    var isOnPublisher: AnyPublisher<Bool, Never> { (target as? UISwitch)!.isOnPublisher }
+}
 
 public extension RJSCombineCompatibleProtocol where Self: UISwitch {
-    // As the `UISwitch.isOn` property does not support KVO this publisher can become handy.
-    // The only downside is that it does not work with programmatically changing `isOn`, but it only responds to UI changes.
     var isOnPublisher: AnyPublisher<Bool, Never> {
-        rjsIsOnPublisher
-    }
-    
-    var rjsIsOnPublisher: AnyPublisher<Bool, Never> {
         RJSLib.UIControlPublisher(control: self, events:  [.allEditingEvents, .valueChanged]).map { $0.isOn }.eraseToAnyPublisher()
     }
 }
 
-
-extension RJSLib {
-    private func switchRJSCombineCompatibleProtocolSample() {
+fileprivate extension RJSLib {
+    func sample() {
         let switcher = UISwitch()
         switcher.isOn = false
         let submitButton = UIButton()
         submitButton.isEnabled = false
 
-        switcher.isOnPublisher.assign(to: \.isEnabled, on: submitButton)
-
-        /// As the `isOn` property is not sending out `valueChanged` events itself, we need to do this manually here.
-        /// This is the same behavior as it would be if the user switches the `UISwitch` in-app.
+        _ = switcher.isOnPublisher.assign(to: \.isEnabled, on: submitButton)
+        _ = switcher.rjsCombine.isOnPublisher.assign(to: \.isEnabled, on: submitButton)
+        
         switcher.isOn = true
         switcher.sendActions(for: .valueChanged)
         print(submitButton.isEnabled)
-        //: [Next](@next)
     }
 }
 
