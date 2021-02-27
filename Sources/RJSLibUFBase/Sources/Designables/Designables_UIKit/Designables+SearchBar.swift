@@ -65,13 +65,10 @@ public extension RJSLib.Designables.UIKit {
     class SearchTextField: UISearchTextField {
                 
         private var cancelBag = CancelBag()
-        
-        public var currentValue = CurrentValueSubject<String?, Never>(nil) // Will emit immediately, can hold and relay the latest value subscribers
-        public var publisher: AnyPublisher<String?, Never> {
-            let debounce = 500
-            return self.textChangesPublisher
-                .map { ($0.object as? UISearchTextField)?.text }
-                .debounce(for: .milliseconds(debounce), scheduler: RunLoop.main).eraseToAnyPublisher()
+        private var currentValue = CurrentValueSubject<String?, Never>(nil) // Will emit immediately, can hold and relay the latest value subscribers
+
+        public var textValue: String {
+            currentValue.value ?? ""
         }
         
         override public func layoutSubviews() {
@@ -89,7 +86,7 @@ public extension RJSLib.Designables.UIKit {
         }
         
         func setupRX() {
-            publisher.sink { [weak self] (some) in
+            textDidChangePublisher.sink { [weak self] (some) in
                 self?.currentValue.send(some)
             }.store(in: cancelBag)
         }

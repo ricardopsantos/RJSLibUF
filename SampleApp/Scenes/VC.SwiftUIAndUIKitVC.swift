@@ -67,7 +67,10 @@ extension VC {
                 print(some)
             }.store(in: cancelBag)
             
-            button1.rjsPublisher(for: .touchUpInside).sink { [weak self] _ in
+            //let btn1Tap = button1.rjsPublisher(for: .touchUpInside)
+            let btn1Tap = button1.rjsTouchUpInsidePublisher
+            
+            btn1Tap.sink { [weak self] _ in
                 guard let self = self else { return }
                 let swiftUIView = RJSLib.Designables.TestViews.SwiftUI(delegate: self.delegate)
                 swiftUIView.loadInside(view: self.containerView2)

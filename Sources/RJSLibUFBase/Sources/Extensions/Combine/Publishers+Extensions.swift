@@ -4,9 +4,6 @@
 
 import Foundation
 import UIKit
+import Combine
 
-public extension UISearchTextField {
-    var textChangesPublisher:  NotificationCenter.Publisher {
-        NotificationCenter.default.publisher(for: UISearchTextField.textDidChangeNotification, object: self)
-    }
-}
+

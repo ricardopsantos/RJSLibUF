@@ -7,45 +7,6 @@ import SwiftUI
 import Combine
 import Foundation
 
-/**
- # Publishers and Subscribers
- - A Publisher _publishes_ values ...
- - A Subscriber _subscribes_ to receive publisher's values
- 
- __Specifics__:
- - Publishers are _typed_ to the data and error types they can emit
- - A publisher can emit, zero, one or more values and terminate gracefully or with an error of the type it declared.
-
-************
- 
- # Subjects
- - A subject is a publisher ...
- - ... relays values it receives from other publishers ...
- - ... can be manually fed with new values
- - ... subjects as also subscribers, and can be used with `subscribe(_:)`
-
- ************
- 
- # Subscription details
- - A subscriber will receive a _single_ subscription
- - _Zero_ or _more_ values can be published
- - At most _one_ {completion, error} will be called
- - After completion, nothing more is received
- 
- # Cancellation
- A subscription returns a `Cancellable` object
-
- Correct memory management using `Cancellable` makes sure you're not retaining any references.
- 
- ************
- 
- # Simple operators
- - Operators are functions defined on publisher instances...
- - ... each operator returns a new publisher ...
- - ... operators can be chained to add processing steps
- 
- */
-
 public extension Publisher {
         
     func sampleOperator<T>(source: T) -> AnyPublisher<Self.Output, Self.Failure> where T: Publisher, T.Output: Equatable, T.Failure == Self.Failure {

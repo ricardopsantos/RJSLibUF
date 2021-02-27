@@ -144,7 +144,7 @@
 		B1F263487168CCC3213ADD9B /* E.LayoutStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1EDF90B45DA3B23004CA48 /* E.LayoutStyle.swift */; };
 		B349EF98A2FEF785E1214CB1 /* UIStackView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57404FBC26831AC8106F08B /* UIStackView+Extensions.swift */; };
 		B436E771E4EDB6E401627C1D /* E.FRPSimpleNetworkClientAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79CF468425454C8C2408976 /* E.FRPSimpleNetworkClientAPIError.swift */; };
-		B54D6330CEFA68746C19DC65 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D057578DB8657607A3ED018 /* File.swift */; };
+		B54D6330CEFA68746C19DC65 /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D057578DB8657607A3ED018 /* URL+Extensions.swift */; };
 		B558F1590B0D2F7C8FE15651 /* typealias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22385C3AFA90258220F4C4F8 /* typealias.swift */; };
 		B90721BE5F28E1AC7CE1B8F0 /* SimpleNetworkAgentErrorsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DFA7A5A5850C1AF6AF7078 /* SimpleNetworkAgentErrorsManager.swift */; };
 		B975DEC57BE2EAB53DEE4DCB /* R.___FILEBASENAME___Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15094CE9BE7784DB874FF98B /* R.___FILEBASENAME___Router.swift */; };
@@ -176,6 +176,8 @@
 		D7B31CB625E7AE470079E1B8 /* UISwitch+CombineCompatible.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B31CB525E7AE470079E1B8 /* UISwitch+CombineCompatible.swift */; };
 		D7B31CC425E7AF1D0079E1B8 /* UISwitch+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B31CC325E7AF1D0079E1B8 /* UISwitch+Extensions.swift */; };
 		D7B31CCD25E7AFF30079E1B8 /* RJSCombineCompatibleProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B31CCC25E7AFF30079E1B8 /* RJSCombineCompatibleProtocol.swift */; };
+		D7EE6EAB25EA3A1600C6AD21 /* UISearchTextField+CombineCompatible.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7EE6EAA25EA3A1600C6AD21 /* UISearchTextField+CombineCompatible.swift */; };
+		D7EE6EB925EA3B0D00C6AD21 /* UIButton+CombineCompatible.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7EE6EB825EA3B0D00C6AD21 /* UIButton+CombineCompatible.swift */; };
 		DC5CA006A65CC6F7EFFE9A96 /* RJSHotCacheProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379BEE2114539820905E6CE1 /* RJSHotCacheProtocol.swift */; };
 		DE2648DFACC178E68B036107 /* RJSLibUFStorage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5663A792FA44ED758B33CEE3 /* RJSLibUFStorage.framework */; };
 		E195B820DC7F91355526AA57 /* RJSLibUFNetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DD4DEAB85D959C8F029F2E0F /* RJSLibUFNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -385,7 +387,7 @@
 		5AF9CA9A183095AFB7D7C80D /* RJSLib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RJSLib.swift; sourceTree = "<group>"; };
 		5AFE5DFB5E40866AA7639D7F /* Designables+TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Designables+TestView.swift"; sourceTree = "<group>"; };
 		5C590AAF87F55A02D1A128AB /* TinyConstraints+superview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TinyConstraints+superview.swift"; sourceTree = "<group>"; };
-		5D057578DB8657607A3ED018 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		5D057578DB8657607A3ED018 /* URL+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extensions.swift"; sourceTree = "<group>"; };
 		5F38550A8CC6C3DADF0D438E /* Combine+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Combine+Extensions.swift"; sourceTree = "<group>"; };
 		5F69D66B99E99E3023D1D1FF /* FRPSampleAPI+RequestDto+Employee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FRPSampleAPI+RequestDto+Employee.swift"; sourceTree = "<group>"; };
 		5F9409F9A6DB102CB333BDBF /* Result+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Result+Extensions.swift"; sourceTree = "<group>"; };
@@ -470,6 +472,8 @@
 		D7B31CB525E7AE470079E1B8 /* UISwitch+CombineCompatible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UISwitch+CombineCompatible.swift"; sourceTree = "<group>"; };
 		D7B31CC325E7AF1D0079E1B8 /* UISwitch+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISwitch+Extensions.swift"; sourceTree = "<group>"; };
 		D7B31CCC25E7AFF30079E1B8 /* RJSCombineCompatibleProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RJSCombineCompatibleProtocol.swift; sourceTree = "<group>"; };
+		D7EE6EAA25EA3A1600C6AD21 /* UISearchTextField+CombineCompatible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISearchTextField+CombineCompatible.swift"; sourceTree = "<group>"; };
+		D7EE6EB825EA3B0D00C6AD21 /* UIButton+CombineCompatible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+CombineCompatible.swift"; sourceTree = "<group>"; };
 		D8BF094350F466DD8E3BFC72 /* TNConstrainable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNConstrainable.swift; sourceTree = "<group>"; };
 		DAF56FDF37196BB07FF9066A /* UIImageView+Transform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Transform.swift"; sourceTree = "<group>"; };
 		DB00DDE07F7231BF8C1CDA4C /* BasicHttpGetAgent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicHttpGetAgent.swift; sourceTree = "<group>"; };
@@ -1044,6 +1048,8 @@
 				D7B31CCC25E7AFF30079E1B8 /* RJSCombineCompatibleProtocol.swift */,
 				B8286D8F4149C4782D1763EB /* UIControl+CombineCompatible.swift */,
 				D7B31CB525E7AE470079E1B8 /* UISwitch+CombineCompatible.swift */,
+				D7EE6EAA25EA3A1600C6AD21 /* UISearchTextField+CombineCompatible.swift */,
+				D7EE6EB825EA3B0D00C6AD21 /* UIButton+CombineCompatible.swift */,
 			);
 			path = CombineCompatible;
 			sourceTree = "<group>";
@@ -1091,7 +1097,7 @@
 				EA03B21D2E7F416460C2170E /* Date+Extensions.swift */,
 				E03D76A7604E0D1362351551 /* DispatchQueue+Extensions.swift */,
 				D1A7A6507EFCA66A85499A48 /* Error+Extensions.swift */,
-				5D057578DB8657607A3ED018 /* File.swift */,
+				5D057578DB8657607A3ED018 /* URL+Extensions.swift */,
 				222E5DD937B67E0D0802FDB5 /* JSONDecoder+Extensions.swift */,
 				D66CA57671DE0186C90E5FA4 /* NSObject+Extensions.swift */,
 				E7A5369BA3DE7D6C07AE1914 /* UIDevice+Extensions.swift */,
@@ -1370,12 +1376,13 @@
 				CF0E1B44BC74AA9328659F93 /* E.Result<T>.swift in Sources */,
 				AAAF24DE90D181B7810C1FD3 /* E.ScreenDataState.swift in Sources */,
 				34FB6EA8F1FF32B3C5962A82 /* Error+Extensions.swift in Sources */,
-				B54D6330CEFA68746C19DC65 /* File.swift in Sources */,
+				B54D6330CEFA68746C19DC65 /* URL+Extensions.swift in Sources */,
 				9B1FC0343519A9101B0BF721 /* Image+Extensions.swift in Sources */,
 				5E8C73B34BC2C1C54D17EFC2 /* JSONDecoder+Extensions.swift in Sources */,
 				D7513F3FE5CFB3E521F65790 /* Just+Error.swift in Sources */,
 				C38C67A53A51E50FA642C98F /* Logger.swift in Sources */,
 				255E44CC4504A430EDF7484B /* NSAttributedString+Extensions.swift in Sources */,
+				D7EE6EAB25EA3A1600C6AD21 /* UISearchTextField+CombineCompatible.swift in Sources */,
 				EE87BC1B92B10EB835EBDBA4 /* NSObject+Extensions.swift in Sources */,
 				06963A1CD341BBBC5C0F08EF /* NetworkUtils.swift in Sources */,
 				9CF64414EDEDDE7DCB1AD3A6 /* OperationQueues.swift in Sources */,
@@ -1394,6 +1401,7 @@
 				A1B3E772E718C7E564198819 /* SwiftUI+UIKit.swift in Sources */,
 				0E1B3392272524F7ACF032F1 /* SynchronizedArray.swift in Sources */,
 				CC5BDB2760A6002390BE1EA5 /* TNConstrainable.swift in Sources */,
+				D7EE6EB925EA3B0D00C6AD21 /* UIButton+CombineCompatible.swift in Sources */,
 				0878620A0D8FA983345D5396 /* Text+Extentions.swift in Sources */,
 				25808F17B55E5FCBB9A15946 /* TinyConstraints+superview.swift in Sources */,
 				392DF32A84BF956D3D1D45B4 /* TinyConstraints.swift in Sources */,

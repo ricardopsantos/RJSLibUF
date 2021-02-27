@@ -6,15 +6,35 @@
 //
 import UIKit
 import Foundation
+import Combine
+import SwiftUI
+//
 import RJSLibUFBase
 import RJSLibUFBaseVIP
 
+public class SomeObservableObject: ObservableObject {
+    public init() { }
+    var willChangeRelay = PassthroughSubject<SomeObservableObject, Never>()
+    var didChangeRelay = PassthroughSubject<SomeObservableObject, Never>()
+    public var someValue: String? {
+        willSet {
+            willChangeRelay.send(self)
+        }
+        didSet {
+            didChangeRelay.send(self)
+        }
+    }
+}
+
 class TabBarController: UITabBarController {
+
+    let customDelegate = SomeObservableObject()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let v1 = createControllers(tabName: "Combine", vc: VC.TestingCombine())
+        let cancelBag = CancelBag()
+        
+        let v1 = createControllers(tabName: "Combine", vc: VC.TestingCombine(delegate: customDelegate))
         let v2 = createControllers(tabName: "SwiftUI", vc: VC.SwiftUIAndUIKitVC())
         let v3 = createControllers(tabName: "Desinables", vc: VC.DesinablesVC())
         let v4 = createControllers(tabName: "DLanguage", vc: VC.DesignLanguageVC())
@@ -23,6 +43,11 @@ class TabBarController: UITabBarController {
         #if INCLUDE_VIP_TEMPLATE
         vcs.append(createControllers(tabName: "VIP", vc: VC.___VARIABLE_sceneName___ViewController()))
         #endif
+        
+        customDelegate.didChangeRelay.sink { (some) in
+            print("new value: \(some)")
+        }.store(in: cancelBag)
+        
         viewControllers = vcs
     }
 

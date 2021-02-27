@@ -5,6 +5,7 @@
 
 import UIKit
 import Combine
+import SwiftUI
 //
 import RJSLibUFBase
 import RJSLibUFStorage
@@ -15,6 +16,15 @@ import RJSLibUFBaseVIP
 extension VC {
     class TestingCombine: GenericViewController {
 
+        required init?(coder: NSCoder) {
+            fatalError("init(coder:) is not supported")
+        }
+        
+        init(delegate: SomeObservableObject) {
+            self.delegate = delegate
+            super.init(nibName: nil, bundle: nil)
+        }
+        
         //
         // UI Vars
         //
@@ -45,14 +55,18 @@ extension VC {
             RJS_Designables_UIKit.ButtonPrimary(text: "btn5", font: font, fontColor: fontColor, buttonColor: primary)
         }()
         
+        private lazy var btn6: RJS_Designables_UIKit.ButtonPrimary = {
+            RJS_Designables_UIKit.ButtonPrimary(text: "btn6", font: font, fontColor: fontColor, buttonColor: primary)
+        }()
+        
         //
         // Combine
         //
         
         let relay1    = PassthroughSubject<String, Never>()
         let relay2    = PassthroughSubject<String, CustomAppError>()
-        let variable1 = CurrentValueSubject<String, Never>("variable1 init") // Will emit immediately, can hold and relay the latest value subscribers
-        var searchState = PassthroughSubject<VM.SearchState, Never>()
+        let variable1 = CurrentValueSubject<String, Never>("variable1 init") // Will emit immediately and can hold and relay the latest value subscribers
+        @ObservedObject var delegate: SomeObservableObject
 
         //
         // ViewController
@@ -68,7 +82,8 @@ extension VC {
             stackViewVLevel1.rjs.add(btn3)
             stackViewVLevel1.rjs.add(btn4)
             stackViewVLevel1.rjs.add(btn5)
-
+            stackViewVLevel1.rjs.add(btn6)
+            
             _ = view.rjs.allSubviews.filter { $0.isKind(of: UIButton.self) }.map { $0.layouts.height(44) }
             label.numberOfLines = 0
         }
@@ -209,11 +224,11 @@ extension VC {
             }.store(in: cancelBag)
             
             relayUserName.sink { [weak self] value in
-                self?.display("relay3UserName: \(value)", override: false)
+                self?.display("relayUserName: \(value)", override: false)
             }.store(in: cancelBag)
             
             relayPassword.sink { [weak self] value in
-                self?.display("relay3Password: \(value)", override: false)
+                self?.display("relayPassword: \(value)", override: false)
             }.store(in: cancelBag)
             
             subscription5.map { (value1, value2) -> Bool in
@@ -231,20 +246,22 @@ extension VC {
             //
             // Observing search bar changes and pass them to the ViewController via `searchState`
             //
-
-            searchBar
-                .currentValue
-                .sink(receiveValue: { [weak self] (value) in
-                    self?.display("searchBar2.currentValue: \(value)", override: false)
-                })
-                .store(in: cancelBag)
             
             searchBar
-                .publisher
-                .sink(receiveValue: { [weak self] (value) in
-                    self?.display("searchBar2.publisher: \(value)", override: false)
-                })
-                .store(in: cancelBag)
+                .textDidChangePublisher
+                .sink { [weak self] (value) in
+                    self?.display("searchBar_A: \(value)", override: false)
+                }.store(in: cancelBag)
+            
+            searchBar
+                .valueChangedPublisher
+                .sink { [weak self] (value) in
+                    self?.display("searchBar_B: \(value)", override: false)
+                }.store(in: cancelBag)
+            
+            btn6.publisher(for: .touchUpInside).sinkToResult { [weak self] (some) in
+                self?.delegate.someValue = String.random(5)
+            }.store(in: cancelBag)
 
         }
         
