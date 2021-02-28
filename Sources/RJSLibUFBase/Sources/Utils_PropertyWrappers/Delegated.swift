@@ -48,10 +48,7 @@ public extension RJSLib {
             return self
         }
         
-        func delegate<Target: AnyObject>(
-            to target: Target,
-            with callback: @escaping (Target, Input) -> Void
-        ) {
+        func delegate<Target: AnyObject>(to target: Target, with callback: @escaping (Target, Input) -> Void ) {
             self.callback = { [weak target] input in
                 guard let target = target else {
                     return

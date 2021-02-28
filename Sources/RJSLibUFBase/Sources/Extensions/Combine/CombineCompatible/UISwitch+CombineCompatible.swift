@@ -7,11 +7,13 @@ import Combine
 import UIKit
 
 public extension RJSCombineCompatible {
-    var onTurnedOn: AnyPublisher<Bool, Never> { (target as? UISwitch)!.isOnPublisher }
+    var onTurnedOnPublisher: AnyPublisher<Bool, Never>? {
+        (target as? UISwitch)?.onTurnedOnPublisher
+    }
 }
 
 public extension RJSCombineCompatibleProtocol where Self: UISwitch {
-    var isOnPublisher: AnyPublisher<Bool, Never> {
+    var onTurnedOnPublisher: AnyPublisher<Bool, Never> {
         RJSLib.UIControlPublisher(control: self, events: [.allEditingEvents, .valueChanged]).map { $0.isOn }.eraseToAnyPublisher()
     }
 }
@@ -23,8 +25,8 @@ fileprivate extension RJSLib {
         let submitButton = UIButton()
         submitButton.isEnabled = false
 
-        _ = switcher.isOnPublisher.assign(to: \.isEnabled, on: submitButton)
-        _ = switcher.rjsCombine.onTurnedOn.assign(to: \.isEnabled, on: submitButton)
+        _ = switcher.onTurnedOnPublisher.assign(to: \.isEnabled, on: submitButton)
+        _ = switcher.rjsCombine.onTurnedOnPublisher?.assign(to: \.isEnabled, on: submitButton)
         
         switcher.isOn = true
         switcher.sendActions(for: .valueChanged)

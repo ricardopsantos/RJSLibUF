@@ -8,7 +8,7 @@ import Combine
 import UIKit
 
 public extension RJSCombineCompatible {
-    var onTouchUpInside: AnyPublisher<UIControl, Never> { target.touchUpInsidePublisher }
+    var touchUpInsidePublisher: AnyPublisher<UIControl, Never> { target.touchUpInsidePublisher }
 }
 
 public extension RJSCombineCompatibleProtocol where Self: UIControl {
@@ -19,10 +19,14 @@ public extension RJSCombineCompatibleProtocol where Self: UIControl {
 
 fileprivate extension RJSLib {
     func sample() {
+        let search = UISearchTextField()
         let btn = UIButton()
         _ = btn.publisher(for: .touchUpInside).sinkToResult { (_) in }
-        _ = btn.rjsCombine.onTouchUpInside.sinkToResult { (_) in }
+        _ = btn.rjsCombine.touchUpInsidePublisher.sinkToResult { (_) in }
         _ = btn.touchUpInsidePublisher.sinkToResult { (_) in }
+
+        btn.rjs.onTouchUpInside { }
+        btn.onTouchUpInside { }
         
         btn.sendActions(for: .touchUpInside)
 

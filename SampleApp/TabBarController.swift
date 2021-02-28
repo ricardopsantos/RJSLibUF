@@ -13,18 +13,14 @@ import RJSLibUFBase
 import RJSLibUFBaseVIP
 
 class TabBarController: UITabBarController {
-
-    let customDelegate = VC.TestingCombine.SomeObservableObject()
+    var viewStateBinder1 = RJS_GenericObservableObjectForHashable<String>()
+    var viewStateBinder2 = RJS_GenericObservableObjectForHashableWithObservers<String>()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         let cancelBag = CancelBag()
-        
-        customDelegate.didChangeRelaySubject.sink { (some) in
-            print("new value: \(some)")
-        }.store(in: cancelBag)
-        
-        let v1 = createControllers(tabName: "Combine", vc: VC.TestingCombine(delegate: customDelegate))
+                
+        let v1 = createControllers(tabName: "Combine", vc: VC.TestingCombine(viewStateBinder1: viewStateBinder1, viewStateBinder2: viewStateBinder2))
         let v2 = createControllers(tabName: "SwiftUI", vc: VC.SwiftUIAndUIKitVC())
         let v3 = createControllers(tabName: "Desinables", vc: VC.DesinablesVC())
         let v4 = createControllers(tabName: "DLanguage", vc: VC.DesignLanguageVC())
@@ -33,8 +29,16 @@ class TabBarController: UITabBarController {
         #if INCLUDE_VIP_TEMPLATE
         vcs.append(createControllers(tabName: "VIP", vc: VC.___VARIABLE_sceneName___ViewController()))
         #endif
-        
+                
         viewControllers = vcs
+        
+        viewStateBinder1.value.sink { (some) in
+            RJS_Logs.info("new value: \(some)")
+        }.store(in: cancelBag)
+        
+        viewStateBinder2.didChange.sink { (some) in
+            RJS_Logs.info("new value: \(some.value)")
+        }.store(in: cancelBag)
     }
 
     private func createControllers(tabName: String, vc: UIViewController) -> UINavigationController {

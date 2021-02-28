@@ -10,6 +10,9 @@ import UIKit
 public extension RJSLibExtension where Target == UIButton {
     func disable() { target.disable() }
     func doTouchUpInside() { target.doTouchUpInside() }
+    func onTouchUpInside(autoDisableUserInteractionFor: Double=RJS_Constants.defaultDisableTimeAfterTap, block: @escaping () -> Void) {
+        target.onTouchUpInside(autoDisableUserInteractionFor: autoDisableUserInteractionFor, block: block)
+    }
     func enable() { target.enable() }
     
     func paintImage(with color: UIColor) { target.paintImage(with: color) }

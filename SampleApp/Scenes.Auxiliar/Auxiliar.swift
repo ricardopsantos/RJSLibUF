@@ -48,7 +48,7 @@ class DynamicMemberLookupCountry {
 class MyClass {
     var property: Bool = false {
         didSet {
-            print("Did set property to \(property)")
+            RJS_Logs.info("Did set property to \(property)")
         }
     }
 }

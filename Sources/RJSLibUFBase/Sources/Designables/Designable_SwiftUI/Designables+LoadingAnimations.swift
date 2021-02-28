@@ -215,7 +215,7 @@ struct Previews_LoadingAnimations {
     struct Preview1: PreviewProvider {
         public static var previews: some View {
             ZStack {
-                RJSLib.Designables.TestViews.SwiftUI(delegate: RJS_GenericHashableObservableObjectV2<String>())
+                RJSLib.Designables.TestViews.SwiftUI()
                     .disabled(true).blur(radius: true ? 3 : 0)
                 RJS_Designables_SwiftUI.LoadingAnimations.Pack1.SlidingCircles()
             }
@@ -225,7 +225,7 @@ struct Previews_LoadingAnimations {
     struct Preview2: PreviewProvider {
         public static var previews: some View {
             ZStack {
-                RJSLib.Designables.TestViews.SwiftUI(delegate: RJS_GenericHashableObservableObjectV2<String>())
+                RJSLib.Designables.TestViews.SwiftUI()
                     .disabled(true).blur(radius: true ? 3 : 0)
                 animationPack1.CicleWithWaves()
             }
@@ -235,7 +235,7 @@ struct Previews_LoadingAnimations {
     struct Preview3: PreviewProvider {
         public static var previews: some View {
             ZStack {
-                RJSLib.Designables.TestViews.SwiftUI(delegate: RJS_GenericHashableObservableObjectV2<String>())
+                RJSLib.Designables.TestViews.SwiftUI()
                     .disabled(true).blur(radius: true ? 3 : 0)
                 animationPack1.HorizontalSlidingBar()
             }
@@ -245,7 +245,7 @@ struct Previews_LoadingAnimations {
     struct Preview4: PreviewProvider {
         public static var previews: some View {
             ZStack {
-                RJSLib.Designables.TestViews.SwiftUI(delegate: RJS_GenericHashableObservableObjectV2<String>())
+                RJSLib.Designables.TestViews.SwiftUI()
                     .disabled(true).blur(radius: true ? 3 : 0)
                 animationPack1.VerticalBar()
             }
@@ -255,7 +255,7 @@ struct Previews_LoadingAnimations {
     struct Preview5: PreviewProvider {
         public static var previews: some View {
             ZStack {
-                RJSLib.Designables.TestViews.SwiftUI(delegate: RJS_GenericHashableObservableObjectV2<String>())
+                RJSLib.Designables.TestViews.SwiftUI()
                     .disabled(true).blur(radius: true ? 3 : 0)
                 animationPack2.ActivityIndicator_V1(isAnimating: true)
             }
@@ -265,7 +265,7 @@ struct Previews_LoadingAnimations {
     struct Preview6: PreviewProvider {
         public static var previews: some View {
             ZStack {
-                RJSLib.Designables.TestViews.SwiftUI(delegate: RJS_GenericHashableObservableObjectV2<String>())
+                RJSLib.Designables.TestViews.SwiftUI()
                     .disabled(true).blur(radius: true ? 3 : 0)
                 animationPack2.ActivityIndicator_V2(isAnimating: .constant(true)).frame(width: 75, height: 75)
             }
@@ -277,7 +277,7 @@ struct Previews_LoadingAnimations {
             animationPack2.ActivityIndicator_V3(isAnimating: .constant(true),
                                                 message: .constant("Loading"),
                                                 content: {
-                                                    RJSLib.Designables.TestViews.SwiftUI(delegate: RJS_GenericHashableObservableObjectV2<String>())
+                                                    RJSLib.Designables.TestViews.SwiftUI()
             })
         }
     }

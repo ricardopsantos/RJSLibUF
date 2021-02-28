@@ -136,8 +136,8 @@ extension VM {
                     hasher.combine(screenLayout)
                 }
                 
-                var toScreenState: RJS_ScreenState<ViewModel> {
-                    RJS_ScreenState.loaded(self)
+                var toScreenState: RJS_ViewState<ViewModel> {
+                    RJS_ViewState.loaded(self)
                 }
             }
         }

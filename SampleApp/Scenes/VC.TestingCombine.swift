@@ -16,28 +16,16 @@ import RJSLibUFBaseVIP
 extension VC {
     class TestingCombine: GenericViewController {
 
-        public class SomeObservableObject: ObservableObject {
-            public init() { }
-            var willChangeRelaySubject = PassthroughSubject<SomeObservableObject, Never>()
-            var didChangeRelaySubject = PassthroughSubject<SomeObservableObject, Never>()
-            public var someValue: String? {
-                willSet {
-                    RJS_Logs.info("\(Self.self) willSet")
-                    willChangeRelaySubject.send(self)
-                }
-                didSet {
-                    RJS_Logs.info("\(Self.self) didSet")
-                    didChangeRelaySubject.send(self)
-                }
-            }
-        }
-        
         required init?(coder: NSCoder) {
             fatalError("init(coder:) is not supported")
         }
         
-        init(delegate: SomeObservableObject) {
-            self.delegate = delegate
+        @ObservedObject var viewStateBinder1: RJS_GenericObservableObjectForHashable<String>
+        @ObservedObject var viewStateBinder2: RJS_GenericObservableObjectForHashableWithObservers<String>
+        init(viewStateBinder1: RJS_GenericObservableObjectForHashable<String>,
+             viewStateBinder2: RJS_GenericObservableObjectForHashableWithObservers<String>) {
+            self.viewStateBinder1 = viewStateBinder1
+            self.viewStateBinder2 = viewStateBinder2
             super.init(nibName: nil, bundle: nil)
         }
         
@@ -86,7 +74,6 @@ extension VC {
         let relaySubject1    = PassthroughSubject<String, Never>()
         let relaySubject2    = PassthroughSubject<String, CustomAppError>()
         let variableSubject1 = CurrentValueSubject<String, Never>("variable1 init") // Will emit immediately and can hold and relay the latest value subscribers
-        @ObservedObject var delegate: VC.TestingCombine.SomeObservableObject
 
         //
         // ViewController
@@ -125,13 +112,13 @@ extension VC {
             // Switch -> View Controller
             //
             
-            switchPublisher.isOnPublisher.assign(to: \.someProp, on: self).store(in: cancelBag)
+            switchPublisher.onTurnedOnPublisher.assign(to: \.someProp, on: self).store(in: cancelBag)
 
             //
             // Switch -> computed var
             //
             
-            switchPublisher.isOnPublisher.assign(to: \.property, on: someObject).store(in: cancelBag)
+            switchPublisher.onTurnedOnPublisher.assign(to: \.property, on: someObject).store(in: cancelBag)
             /*:
             # Subjects
             - A subject is a publisher ...
@@ -145,7 +132,7 @@ extension VC {
             // Using a subject to relay values to subscribers
             //
             
-            btn1_multipleSubscrivers.rjsCombine.onTouchUpInside.sinkToResult { [weak self] (_) in
+            btn1_multipleSubscrivers.rjsCombine.touchUpInsidePublisher.sinkToResult { [weak self] (_) in
                 self?.relaySubject1.send(String.random(3))
             }.store(in: cancelBag)
             let subscription1 = relaySubject1
@@ -165,7 +152,7 @@ extension VC {
             //
             
             let publisher = ["1", "2", "3"].publisher
-            btn2_subjectToPublisher.rjsCombine.onTouchUpInside.sinkToResult { [weak self] (_) in
+            btn2_subjectToPublisher.rjsCombine.touchUpInsidePublisher.sinkToResult { [weak self] (_) in
                 guard let self = self else { return }
                 publisher.subscribe(self.relaySubject1).store(in: self.cancelBag)
             }.store(in: cancelBag)
@@ -177,7 +164,7 @@ extension VC {
             
             let subscription3 = variableSubject1
             
-            btn3_currentValueSubject.rjsCombine.onTouchUpInside.sinkToResult { [weak self] (_) in
+            btn3_currentValueSubject.rjsCombine.touchUpInsidePublisher.sinkToResult { [weak self] (_) in
                 self?.variableSubject1.send(String.random(3))
                 RJS_Utils.delay(1) { [weak self] in
                     self?.display("variable1 value: \(String(describing: self?.variableSubject1.value))", override: false)
@@ -210,7 +197,7 @@ extension VC {
                                 receiveCancel: { [weak self] in self?.display("subscription4: A subscription cancelled", override: false) })
                 .replaceError(with: "ups... failure")
                 
-            btn4_handleEvents.rjsCombine.onTouchUpInside.sinkToResult { [weak self] (_) in
+            btn4_handleEvents.rjsCombine.touchUpInsidePublisher.sinkToResult { [weak self] (_) in
                 if Bool.random() {
                     self?.relaySubject2.send(String.random(3))
                 } else {
@@ -245,7 +232,7 @@ extension VC {
             let subscription5 = Publishers.CombineLatest(relayUserName, relayPassword)
             let subscription6 = Publishers.Merge(relayUserName, relayPassword)
 
-            btn5_combineLatest.rjsCombine.onTouchUpInside.sinkToResult { [weak self] (_) in
+            btn5_combineLatest.touchUpInsidePublisher.sinkToResult { [weak self] (_) in
                 if Bool.random() {
                     relayUserName.send(String.random(3))
                 } else {
@@ -277,8 +264,10 @@ extension VC {
  
              */
             
-            btn6_observedObject.rjsCombine.onTouchUpInside.sinkToResult { [weak self] (_) in
-                self?.delegate.someValue = String.random(5)
+            btn6_observedObject.touchUpInsidePublisher.sinkToResult { [weak self] (_) in
+                guard let self = self else { return }
+                self.viewStateBinder1.value.send(String.random(5))
+                self.viewStateBinder2.value = String.random(5)
             }.store(in: cancelBag)
 
         }

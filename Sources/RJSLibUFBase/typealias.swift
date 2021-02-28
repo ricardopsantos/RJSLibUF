@@ -52,7 +52,9 @@ public typealias RJS_Delegated = RJSLib.Delegated_V2
 public typealias RJS_Defaults  = RJSLib.UserDefaults
 
 // MARK: - Value types
-public typealias RJS_ScreenState     = RJSLib.HashableDataState
-public typealias RJS_Result          = RJSLib.Result
-public typealias RJS_Response        = RJSLib.Response
-public typealias RJS_CacheStrategy   = RJSLib.CacheStrategy
+
+public typealias RJS_ViewState     = RJSLib.HashableModelState
+public typealias RJS_ModelState    = RJSLib.HashableModelState
+public typealias RJS_Result        = RJSLib.Result
+public typealias RJS_Response      = RJSLib.Response
+public typealias RJS_CacheStrategy = RJSLib.CacheStrategy

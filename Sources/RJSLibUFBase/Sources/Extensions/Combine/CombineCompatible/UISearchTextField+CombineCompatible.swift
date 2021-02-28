@@ -8,27 +8,29 @@ import Combine
 import UIKit
 
 public extension RJSCombineCompatible {
-    var onValueChanged: AnyPublisher<String?, Never> { (target as? UISearchTextField)!.valueChangedPublisher }
-    var onTextDidChanged: AnyPublisher<String?, Never> { (target as? UISearchTextField)!.textDidChangePublisher }
+    var editingChangedPublisher: AnyPublisher<String?, Never>? { (target as? UISearchTextField)?.editingChangedPublisher }
+    var textDidChangePublisher: AnyPublisher<String?, Never>? { (target as? UISearchTextField)?.textDidChangePublisher }
 }
 
 public extension UISearchTextField {
 
-    var textDidChangeNotification: NotificationCenter.Publisher {
+    var textDidChangeNotificationPublisher: NotificationCenter.Publisher {
         NotificationCenter.default.publisher(for: UISearchTextField.textDidChangeNotification, object: self)
     }
     
     var textDidChangePublisher: AnyPublisher<String?, Never> {
-        return self.textDidChangeNotification
+        return textDidChangeNotificationPublisher
             .map { ($0.object as? UISearchTextField)?.text }
             .debounce(for: .milliseconds(Self.rjsDebounce), scheduler: RunLoop.main).eraseToAnyPublisher()
     }
-    
+        
 }
 
 public extension RJSCombineCompatibleProtocol where Self: UISearchTextField {
 
-    var valueChangedPublisher: AnyPublisher<String?, Never> {
+    var valueChangedPublisher: AnyPublisher<String?, Never> { editingChangedPublisher }
+
+    var editingChangedPublisher: AnyPublisher<String?, Never> {
         RJSLib.UIControlPublisher(control: self, events: [.editingChanged]).map { $0.text }
             .debounce(for: .milliseconds(Self.rjsDebounce), scheduler: RunLoop.main).eraseToAnyPublisher()
             .eraseToAnyPublisher()
@@ -44,11 +46,11 @@ fileprivate extension RJSLib {
         
         let search = UISearchTextField()
         
-        _ = search.valueChangedPublisher.sinkToResult { (_) in }
-        _ = search.rjsCombine.onValueChanged.sinkToResult { (_) in }
+        _ = search.editingChangedPublisher.sinkToResult { (_) in }
+        _ = search.rjsCombine.editingChangedPublisher?.sinkToResult { (_) in }
         
         _ = search.textDidChangePublisher.sinkToResult { (_) in }
-        _ = search.rjsCombine.onTextDidChanged.sinkToResult { (_) in }
+        _ = search.rjsCombine.textDidChangePublisher?.sinkToResult { (_) in }
         
         search.sendActions(for: .editingChanged)
 

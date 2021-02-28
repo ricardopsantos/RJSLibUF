@@ -34,7 +34,8 @@ struct SwiftUIAndUIKitTestingVC_Preview: PreviewProvider {
 extension VC {
     class SwiftUIAndUIKitVC: GenericViewController {
 
-        var delegate = RJS_GenericHashableObservableObjectV2<String>()
+        var delegate1 = RJS_GenericObservableObjectForHashable<String>()
+        var delegate2 = RJS_GenericObservableObjectForHashableWithObservers<String>()
 
         private lazy var containerView1: UIView = { UIView() }()
         private lazy var containerView2: UIView = { UIView() }()
@@ -63,25 +64,30 @@ extension VC {
         }
         
         override func setupFRP() {
-            delegate.didChange.sink { (some) in
-                print(some)
+            delegate1.value.sink { (value) in
+                RJS_Logs.info(value)
             }.store(in: cancelBag)
             
-            button1.rjsCombine.onTouchUpInside.sink { [weak self] _ in
+            delegate2.didChange.sink { (some) in
+                RJS_Logs.info(some.value)
+            }.store(in: cancelBag)
+            
+            button1.touchUpInsidePublisher.sink { [weak self] _ in
                 guard let self = self else { return }
-                let swiftUIView = RJSLib.Designables.TestViews.SwiftUI(delegate: self.delegate)
+                let swiftUIView = RJSLib.Designables.TestViews.SwiftUI(delegate1: self.delegate1, delegate2: self.delegate2)
                 swiftUIView.loadInside(view: self.containerView2)
             }.store(in: cancelBag)
             
-            button2.rjsCombine.onTouchUpInside.sink { [weak self] _ in
+            button2.touchUpInsidePublisher.sink { [weak self] _ in
                 guard let self = self else { return }
-                let swiftUIView = RJSLib.Designables.TestViews.SwiftUI(delegate: self.delegate)
+                let swiftUIView = RJSLib.Designables.TestViews.SwiftUI(delegate1: self.delegate1, delegate2: self.delegate2)
                 swiftUIView.loadInside(viewController: self)
             }.store(in: cancelBag)
             
-            button3.rjsCombine.onTouchUpInside.sink { [weak self] _ in
+            button3.touchUpInsidePublisher.sink { [weak self] _ in
                 guard let self = self else { return }
-                self.presentSwiftUIView(RJSLib.Designables.TestViews.SwiftUI(delegate: self.delegate), animated: true)
+                let swiftUIView = RJSLib.Designables.TestViews.SwiftUI(delegate1: self.delegate1, delegate2: self.delegate2)
+                self.presentSwiftUIView(swiftUIView, animated: true)
             }.store(in: cancelBag)
         }
     }
