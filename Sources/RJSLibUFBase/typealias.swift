@@ -48,8 +48,10 @@ public typealias RJS_Cronometer        = RJSLib.Cronometer         // Utilities 
 public typealias RJS_Resolver = RJSLib.Container // Dependency Injection
 public typealias RJS_Inject   = RJSLib.Inject    // Dependency Injection
 
-public typealias RJS_Delegated = RJSLib.Delegated_V2
-public typealias RJS_Defaults  = RJSLib.UserDefaults
+public typealias RJS_Delegated      = RJSLib.Delegated_V2
+public typealias RJS_Defaults       = RJSLib.UserDefaults
+public typealias RJS_Expirable      = RJSLib.Expirable
+public typealias RJS_CachedFunction = RJSLib.CachedFunction
 
 // MARK: - Value types
 

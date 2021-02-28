@@ -13,6 +13,7 @@ import Foundation
 //
 // http://basememara.com/creating-thread-safe-arrays-in-swift/
 // https://gist.github.com/basememara/afaae5310a6a6b97bdcdbe4c2fdcd0c6
+// https://sachithrasiriwardhane.medium.com/thread-safe-singletons-and-their-usage-in-swift-c992d34d85dd
 //
 
 /*

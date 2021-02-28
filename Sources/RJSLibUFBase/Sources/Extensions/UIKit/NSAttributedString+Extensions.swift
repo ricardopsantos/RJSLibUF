@@ -9,6 +9,10 @@
 #if !os(macOS)
 import UIKit
 
+//
+// NSAttributedString Unveiled
+// https://medium.com/swlh/nsattributedstring-unveiled-6c8fb5dce86a
+//
 public extension RJSLibExtension where Target == NSMutableAttributedString {
     func setFontFace(font: UIFont, color: UIColor? = nil) { target.setFontFace(font: font, color: color) }
 }

@@ -29,4 +29,11 @@ public extension RJSLib {
         }
     }
 }
+
+fileprivate extension RJSLib {
+    final class MyViewController {
+        @RJSLib.UsesAutoLayout
+        var label = UILabel()
+    }
+}
 #endif
