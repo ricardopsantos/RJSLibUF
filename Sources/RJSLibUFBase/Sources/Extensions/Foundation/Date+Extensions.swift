@@ -54,14 +54,14 @@ public extension Date {
     var month: Int { return ((Calendar.current as NSCalendar).components([.month], from: self).month)! }
     var year: Int { return ((Calendar.current as NSCalendar).components([.year], from: self).year)! }
     
-    func add(days: Int) -> Date { return self.add(hours: days * 24) }
-    func add(hours: Int) -> Date { return self.add(minutes: hours * 60) }
-    func add(minutes: Int) -> Date { return self.add(seconds: minutes * 60) }
-    func add(seconds: Int) -> Date { return self.addingTimeInterval(Double(seconds)) }
-    func add(month: Int) -> Date { return NSCalendar.current.date(byAdding: .month, value: month, to: self)! }
+    func add(days: Int) -> Date { add(hours: days * 24) }
+    func add(hours: Int) -> Date { add(minutes: hours * 60) }
+    func add(minutes: Int) -> Date { add(seconds: minutes * 60) }
+    func add(seconds: Int) -> Date { addingTimeInterval(Double(seconds)) }
+    func add(month: Int) -> Date { NSCalendar.current.date(byAdding: .month, value: month, to: self)! }
     
     func isBiggerThan(_ dateToCompare: Date) -> Bool {
-        return self.compare(dateToCompare) == ComparisonResult.orderedDescending
+        compare(dateToCompare) == ComparisonResult.orderedDescending
     }
     
     func timeAgoString(resources: [String]=["sec ago", "min ago", "hrs ago", "days ago", "weeks ago"]) -> String {

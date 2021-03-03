@@ -54,9 +54,9 @@ fileprivate extension UIView {
     }
     
     var asImage: UIImage {
-        let renderer = UIGraphicsImageRenderer(size: self.bounds.size)
+        let renderer = UIGraphicsImageRenderer(size: bounds.size)
         let image = renderer.image { _ in
-            self.drawHierarchy(in: self.bounds, afterScreenUpdates: true)
+            drawHierarchy(in: bounds, afterScreenUpdates: true)
         }
 
         return image
@@ -87,8 +87,8 @@ fileprivate extension UIView {
     func disableUserInteractionFor(_ seconds: Double, disableAlpha: CGFloat=1) {
         guard self.isUserInteractionEnabled else { return }
         guard seconds > 0 else { return }
-        self.isUserInteractionEnabled = false
-        self.alpha = disableAlpha
+        isUserInteractionEnabled = false
+        alpha = disableAlpha
         DispatchQueue.main.asyncAfter(deadline: .now() + TimeInterval(seconds)) { [weak self] in
             self?.isUserInteractionEnabled = true
             self?.alpha = 1

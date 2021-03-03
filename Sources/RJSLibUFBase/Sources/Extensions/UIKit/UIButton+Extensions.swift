@@ -36,7 +36,7 @@ public extension UIButton {
 
     /// Turn image into template image, and apply color
     func changeImageColor(to color: UIColor) {
-        guard let origImage = self.image(for: state) else { return }
+        guard let origImage = image(for: state) else { return }
         let tintedImage = origImage.withRenderingMode(.alwaysTemplate)
         setImageForAllStates(tintedImage, tintColor: color)
         tintColor = color
@@ -80,7 +80,9 @@ public extension UIButton {
         
         class ClosureSleeve {
             let block: () -> Void
-            init (_ block: @escaping () -> Void) { self.block = block }
+            init (_ block: @escaping () -> Void) {
+                self.block = block
+            }
             @objc func invoke () { block() }
         }
         

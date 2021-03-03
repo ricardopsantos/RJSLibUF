@@ -79,43 +79,43 @@ public extension ImageNames {
     }
 
     var image: Image {
-        Image(systemName: "\(self.rawValue)")
+        Image(systemName: "\(rawValue)")
     }
 
     var imageFill: Image {
-        Image(systemName: "\(self.rawValue).fill")
+        Image(systemName: "\(rawValue).fill")
     }
 
     var imageBadge: Image {
-        Image(systemName: "\(self.rawValue).badge")
+        Image(systemName: "\(rawValue).badge")
     }
 
     var imageSquarePath: Image {
-        Image(systemName: "\(self.rawValue).squarepath")
+        Image(systemName: "\(rawValue).squarepath")
     }
 
     var imageSquare: Image {
-        Image(systemName: "\(self.rawValue).square")
+        Image(systemName: "\(rawValue).square")
     }
 
     var imageCircle: Image {
-        Image(systemName: "\(self.rawValue).circle")
+        Image(systemName: "\(rawValue).circle")
     }
 
     var imageRight: Image {
-        Image(systemName: "\(self.rawValue).right")
+        Image(systemName: "\(rawValue).right")
     }
 
     var imageLeft: Image {
-        Image(systemName: "\(self.rawValue).left")
+        Image(systemName: "\(rawValue).left")
     }
 
     var imageUp: Image {
-        Image(systemName: "\(self.rawValue).up")
+        Image(systemName: "\(rawValue).up")
     }
 
     var imageDown: Image {
-        Image(systemName: "\(self.rawValue).down")
+        Image(systemName: "\(rawValue).down")
     }
 }
 

@@ -35,18 +35,18 @@ public extension UIView {
     }
 
     var voiceOver: String {
-        set { if !newValue.isEmpty { self.accessibilityLabel = newValue } }
-        get { self.accessibilityLabel ?? "" }
+        set { if !newValue.isEmpty { accessibilityLabel = newValue } }
+        get { accessibilityLabel ?? "" }
     }
 
     var voiceOverHint: String {
-        set { self.accessibilityHint = newValue }
-        get { self.accessibilityHint ?? "" }
+        set { accessibilityHint = newValue }
+        get { accessibilityHint ?? "" }
     }
 
     var voiceOverIsEnabled: Bool {
-        set { self.isAccessibilityElement = newValue }
-        get { self.isAccessibilityElement }
+        set { isAccessibilityElement = newValue }
+        get { isAccessibilityElement }
     }
 
     func setupAccessibilityWith(voiceOver: String, voiceOverHint: String = "") {
@@ -60,17 +60,17 @@ public extension UIView {
 public extension UIBarButtonItem {
     var voiceOver: String {
         set { if !newValue.isEmpty { self.accessibilityLabel = newValue } }
-        get { self.accessibilityLabel ?? "" }
+        get { accessibilityLabel ?? "" }
     }
 
     var voiceOverHint: String {
-        set { self.accessibilityHint = newValue }
-        get { self.accessibilityHint ?? "" }
+        set { accessibilityHint = newValue }
+        get { accessibilityHint ?? "" }
     }
 
     var voiceOverIsEnabled: Bool {
-        set { self.isAccessibilityElement = newValue }
-        get { self.isAccessibilityElement }
+        set { isAccessibilityElement = newValue }
+        get { isAccessibilityElement }
     }
 }
 #endif

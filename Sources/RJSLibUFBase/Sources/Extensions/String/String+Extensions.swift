@@ -76,13 +76,13 @@ private extension String {
 public extension String {
     
     var random: String { String.random(Int.random(in: 10...100)) }
-    var length: Int { return count }
-    var first: String { return String(self.prefix(1)) }
-    var last: String { if count == 0 { return "" } else { return String(self.suffix(1))} }
+    var length: Int { count }
+    var first: String { String(prefix(1)) }
+    var last: String { if count == 0 { return "" } else { return String(suffix(1))} }
     var trim: String { // Trim and single spaces
         return replacingOccurrences(of: "\\s+", with: " ", options: .regularExpression).trimmingCharacters(in: .whitespacesAndNewlines)
     }
-    var capitalised: String { count >= 1 ? prefix(1).uppercased() + self.lowercased().dropFirst() : "" }
+    var capitalised: String { count >= 1 ? prefix(1).uppercased() + lowercased().dropFirst() : "" }
     var encodedUrl: String? { addingPercentEncoding( withAllowedCharacters: NSCharacterSet.urlQueryAllowed) }
     var decodedUrl: String? { removingPercentEncoding }
     var reversed: String { var acc = ""; for char in self { acc = "\(char)\(acc)" }; return acc }
@@ -95,34 +95,34 @@ public extension String {
         return try? NSDataDetector(types: NSTextCheckingResult.CheckingType.date.rawValue).matches(in: self, range: nsRange).compactMap { $0.date }
     }
     
-    var numberValue: NSNumber? { NumberFormatter().number(from: self.cleanBeforeConversion.replace(",", with: ".")) }
-    var utf8Data: Data? { self.data(using: .utf8) }
+    var numberValue: NSNumber? { NumberFormatter().number(from: cleanBeforeConversion.replace(",", with: ".")) }
+    var utf8Data: Data? { data(using: .utf8) }
     var boolValue: Bool? {
-        if let some = self.cleanBeforeConversion.numberValue {
+        if let some = cleanBeforeConversion.numberValue {
             return Bool(truncating: some)
         }
         return Bool((self as NSString).boolValue)
     }
     var intValue: Int? {
-        if let some = self.cleanBeforeConversion.numberValue {
+        if let some = cleanBeforeConversion.numberValue {
             return Int(truncating: some)
         }
         return Int((self as NSString).intValue)
     }
     var doubleValue: Double? {
-        if let some = self.cleanBeforeConversion.numberValue {
+        if let some = cleanBeforeConversion.numberValue {
             return Double(truncating: some)
         }
         return Double((self as NSString).doubleValue)
     }
     var cgFloatValue: CGFloat? {
-        if let some = self.cleanBeforeConversion.numberValue {
+        if let some = cleanBeforeConversion.numberValue {
             return CGFloat(truncating: some)
         }
         return CGFloat((self as NSString).floatValue)
     }
     var floatValue: Float? {
-        if let some = self.cleanBeforeConversion.numberValue {
+        if let some = cleanBeforeConversion.numberValue {
             return Float(truncating: some)
         }
         return Float((self as NSString).floatValue)
@@ -141,7 +141,7 @@ public extension String {
         }
         let regexedString = regex.stringByReplacingMatches(in: self,
                                                            options: NSRegularExpression.MatchingOptions(rawValue: 0),
-                                                           range: NSRange(location: 0, length: self.count),
+                                                           range: NSRange(location: 0, length: count),
                                                            withTemplate: "")
 
         return formatter.number(from: regexedString)?.decimalValue
@@ -247,7 +247,7 @@ public extension String {
     // let htmlString = "<p>Hello, <strong>world!</string></p>"
     // let attrString = htmlString.asAttributedString
     var asAttributedString: NSAttributedString? {
-        guard let data = self.data(using: .utf8) else { return nil }
+        guard let data = data(using: .utf8) else { return nil }
         return try? NSAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
     }
     
@@ -266,7 +266,7 @@ public extension String {
     
     func split(by: String) -> [String] {
         guard !by.isEmpty else { return [] }
-        return self.components(separatedBy: by.first)
+        return components(separatedBy: by.first)
     }
 
     static func random(_ length: Int) -> String {
@@ -283,7 +283,7 @@ public extension String {
     
     func replace(_ some: String, with: String) -> String {
         guard !some.isEmpty else { return self }
-        return self.replacingOccurrences(of: some, with: with)
+        return replacingOccurrences(of: some, with: with)
     }
     
     #if !os(macOS)

@@ -106,7 +106,7 @@ public extension RJSLib.Designables.SwiftUI {
 struct Previews_PassCodeView {
     struct Preview1: PreviewProvider {
         public static var previews: some View {
-            RJS_Designables_SwiftUI.PassCodeView(secret: "1234")
+            RJS_Designables_SwiftUI.PassCodeView(secret: "1234").buildPreviews()
         }
     }
 }

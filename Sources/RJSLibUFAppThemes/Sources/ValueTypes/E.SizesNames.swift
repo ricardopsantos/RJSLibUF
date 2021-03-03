@@ -36,7 +36,7 @@ extension RJSLib {
         
         #if !os(macOS)
         public var cgFloat: CGFloat {
-            return CGFloat(self.rawValue)
+            return CGFloat(rawValue)
         }
         #endif
     }

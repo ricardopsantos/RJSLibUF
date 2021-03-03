@@ -36,35 +36,35 @@ public extension SynchronizedArray {
     /// The first element of the collection.
     var first: Element? {
         var result: Element?
-        queue.sync { result = self.array.first }
+        queue.sync { [weak self] in result = self?.array.first }
         return result
     }
     
     /// The last element of the collection.
     var last: Element? {
         var result: Element?
-        queue.sync { result = self.array.last }
+        queue.sync { [weak self] in result = self?.array.last }
         return result
     }
     
     /// The number of elements in the array.
     var count: Int {
         var result = 0
-        queue.sync { result = self.array.count }
+        queue.sync { [weak self] in result = self?.array.count ?? 0 }
         return result
     }
     
     /// A Boolean value indicating whether the collection is empty.
     var isEmpty: Bool {
         var result = false
-        queue.sync { result = self.array.isEmpty }
+        queue.sync { [weak self] in result = self?.array.isEmpty ?? true }
         return result
     }
     
     /// A textual representation of the array and its elements.
     var description: String {
         var result = ""
-        queue.sync { result = self.array.description }
+        queue.sync { [weak self] in result = self?.array.description ?? "" }
         return result
     }
 }
@@ -86,7 +86,7 @@ public extension SynchronizedArray {
     /// - Returns: The first match or nil if there was no match.
     func first(where predicate: (Element) -> Bool) -> Element? {
         var result: Element?
-        queue.sync { result = self.array.first(where: predicate) }
+        queue.sync { [weak self] in result = self?.array.first(where: predicate) }
         return result
     }
     
@@ -96,14 +96,14 @@ public extension SynchronizedArray {
     /// - Returns: An array of the elements that includeElement allowed.
     func filter(_ isIncluded: (Element) -> Bool) -> [Element] {
         var result = [Element]()
-        queue.sync { result = self.array.filter(isIncluded) }
+        queue.sync { [weak self] in result = self?.array.filter(isIncluded) ?? [] }
         return result
     }
     
     func filter2(_ isIncluded: (Element) -> Bool) {
-        queue.sync {
-            self.array.removeAll()
-            self.array = self.array.filter(isIncluded)
+        queue.sync { [weak self] in
+            self?.array.removeAll()
+            self?.array = self?.array.filter(isIncluded) ?? []
         }
     }
     
@@ -113,7 +113,7 @@ public extension SynchronizedArray {
     /// - Returns: The index of the first element for which predicate returns true. If no elements in the collection satisfy the given predicate, returns nil.
     func index(where predicate: (Element) -> Bool) -> Int? {
         var result: Int?
-        queue.sync { result = self.array.firstIndex(where: predicate) }
+        queue.sync { [weak self] in result = self?.array.firstIndex(where: predicate) }
         return result
     }
     
@@ -123,7 +123,7 @@ public extension SynchronizedArray {
     /// - Returns: A sorted array of the collection’s elements.
     func sorted(by areInIncreasingOrder: (Element, Element) -> Bool) -> [Element] {
         var result = [Element]()
-        queue.sync { result = self.array.sorted(by: areInIncreasingOrder) }
+        queue.sync { [weak self] in result = self?.array.sorted(by: areInIncreasingOrder) ?? [] }
         return result
     }
     
@@ -133,7 +133,7 @@ public extension SynchronizedArray {
     /// - Returns: An array of the non-nil results of calling transform with each element of the sequence.
     func flatMap<ElementOfResult>(_ transform: (Element) -> ElementOfResult?) -> [ElementOfResult] {
         var result = [ElementOfResult]()
-        queue.sync { result = self.array.compactMap(transform) }
+        queue.sync { [weak self] in result = self?.array.compactMap(transform) ?? [] }
         return result
     }
     
@@ -141,7 +141,7 @@ public extension SynchronizedArray {
     ///
     /// - Parameter body: A closure that takes an element of the sequence as a parameter.
     func forEach(_ body: (Element) -> Void) {
-        queue.sync { self.array.forEach(body) }
+        queue.sync { [weak self] in self?.array.forEach(body) }
     }
     
     /// Returns a Boolean value indicating whether the sequence contains an element that satisfies the given predicate.
@@ -150,7 +150,7 @@ public extension SynchronizedArray {
     /// - Returns: true if the sequence contains an element that satisfies predicate; otherwise, false.
     func contains(where predicate: (Element) -> Bool) -> Bool {
         var result = false
-        queue.sync { result = self.array.contains(where: predicate) }
+        queue.sync { [weak self] in result = self?.array.contains(where: predicate) ?? false }
         return result
     }
 }
@@ -162,8 +162,8 @@ public extension SynchronizedArray {
     ///
     /// - Parameter element: The element to append to the array.
     func append( _ element: Element) {
-        queue.async(flags: .barrier) {
-            self.array.append(element)
+        queue.async(flags: .barrier) { [weak self] in
+            self?.array.append(element)
         }
     }
     
@@ -171,8 +171,8 @@ public extension SynchronizedArray {
     ///
     /// - Parameter element: The element to append to the array.
     func append( _ elements: [Element]) {
-        queue.async(flags: .barrier) {
-            self.array += elements
+        queue.async(flags: .barrier) { [weak self] in
+            self?.array += elements
         }
     }
     
@@ -182,8 +182,8 @@ public extension SynchronizedArray {
     ///   - element: The new element to insert into the array.
     ///   - index: The position at which to insert the new element.
     func insert( _ element: Element, at index: Int) {
-        queue.async(flags: .barrier) {
-            self.array.insert(element, at: index)
+        queue.async(flags: .barrier) { [weak self] in
+            self?.array.insert(element, at: index)
         }
     }
     
@@ -193,11 +193,11 @@ public extension SynchronizedArray {
     ///   - index: The position of the element to remove.
     ///   - completion: The handler with the removed element.
     func remove(at index: Int, completion: ((Element) -> Void)? = nil) {
-        queue.async(flags: .barrier) {
-            let element = self.array.remove(at: index)
-            
+        queue.async(flags: .barrier) { [weak self] in
+            let element = self?.array.remove(at: index)
+            guard element != nil else { return }
             DispatchQueue.main.async {
-                completion?(element)
+                completion?(element!)
             }
         }
     }
@@ -208,12 +208,12 @@ public extension SynchronizedArray {
     ///   - predicate: A closure that takes an element of the sequence as its argument and returns a Boolean value indicating whether the element is a match.
     ///   - completion: The handler with the removed element.
     func remove(where predicate: @escaping (Element) -> Bool, completion: ((Element) -> Void)? = nil) {
-        queue.async(flags: .barrier) {
-            guard let index = self.array.firstIndex(where: predicate) else { return }
-            let element = self.array.remove(at: index)
-            
+        queue.async(flags: .barrier) { [weak self] in
+            guard let index = self?.array.firstIndex(where: predicate) else { return }
+            let element = self?.array.remove(at: index)
+            guard element != nil else { return }
             DispatchQueue.main.async {
-                completion?(element)
+                completion?(element!)
             }
         }
     }
@@ -222,9 +222,9 @@ public extension SynchronizedArray {
     ///
     /// - Parameter completion: The handler with the removed elements.
     func removeAll(completion: (([Element]) -> Void)? = nil) {
-        queue.async(flags: .barrier) {
-            let elements = self.array
-            self.array.removeAll()
+        queue.async(flags: .barrier) { [weak self] in
+            let elements = self?.array ?? []
+            self?.array.removeAll()
             
             DispatchQueue.main.async {
                 completion?(elements)
@@ -243,7 +243,8 @@ public extension SynchronizedArray {
         get {
             var result: Element?
             
-            queue.sync {
+            queue.sync { [weak self] in
+                guard let self = self else { return }
                 guard self.array.startIndex..<self.array.endIndex ~= index else { return }
                 result = self.array[index]
             }
@@ -252,9 +253,8 @@ public extension SynchronizedArray {
         }
         set {
             guard let newValue = newValue else { return }
-            
-            queue.async(flags: .barrier) {
-                self.array[index] = newValue
+            queue.async(flags: .barrier) { [weak self] in
+                self?.array[index] = newValue
             }
         }
     }
@@ -269,7 +269,7 @@ public extension SynchronizedArray where Element: Equatable {
     /// - Returns: true if the element was found in the sequence; otherwise, false.
     func contains(_ element: Element) -> Bool {
         var result = false
-        queue.sync { result = self.array.contains(element) }
+        queue.sync { [weak self] in result = self?.array.contains(element) ?? false }
         return result
     }
 }

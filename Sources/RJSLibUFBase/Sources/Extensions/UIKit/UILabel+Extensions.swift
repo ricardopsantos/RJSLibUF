@@ -16,8 +16,8 @@ public extension RJSLibExtension where Target == UILabel {
 
 public extension UILabel {
     var textAnimated: String? {
-        set { fadeTransition(); self.text = newValue ?? "" }
-        get { return self.text }
+        set { fadeTransition(); text = newValue ?? "" }
+        get { return text }
     }
 }
 

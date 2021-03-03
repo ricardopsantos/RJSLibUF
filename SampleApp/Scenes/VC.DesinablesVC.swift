@@ -12,6 +12,13 @@ import RJSLibUFNetworking
 import RJSLibUFAppThemes
 import RJSLibUFBaseVIP
 
+#if canImport(SwiftUI) && DEBUG
+import SwiftUI
+struct DesinablesVC_ViewControllerPreviews: PreviewProvider {
+    static var previews: some View { RJS_ViewControllerRepresentable { VC.DesinablesVC() }.buildPreviews() }
+}
+#endif
+
 extension VC {
     class DesinablesVC: GenericViewController {
         

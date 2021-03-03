@@ -22,10 +22,10 @@ public extension SwiftUI.View {
 
     func buildPreviews() -> some SwiftUI.View {
         Group {
-            self.previewDisplayName("Default")
-            self.environment(\.colorScheme, .dark).previewDisplayName("Dark")
-            self.previewDevice("iPhone 8").previewDisplayName("Default - iPhone8")
-            self.previewDevice("iPhone 11 Pro").previewDisplayName("Default - iPhone11")
+            previewDisplayName("Default")
+            environment(\.colorScheme, .dark).previewDisplayName("Dark")
+            previewDevice("iPhone 8").previewDisplayName("Default - iPhone8")
+            previewDevice("iPhone 11 Pro").previewDisplayName("Default - iPhone11")
         }
     }
 
@@ -117,24 +117,24 @@ public extension SwiftUI.View {
         if condition {
             return transform(self).eraseToAnyView()
         } else {
-            return self.eraseToAnyView()
+            return eraseToAnyView()
         }
     }
 
     func userInteractionEnabled(_ value: Bool) -> some View {
-        self.disabled(value)
+        disabled(value)
     }
 
     func rotate(degrees: Double) -> some View {
-        self.rotationEffect(.degrees(degrees))
+        rotationEffect(.degrees(degrees))
     }
 
     func alpha(_ some: Double) -> some View {
-        self.opacity(some)
+        opacity(some)
     }
 
     func textColor(_ color: Color) -> some View {
-        self.foregroundColor(color)
+        foregroundColor(color)
     }
 
     func addCorner(color: Color, lineWidth: CGFloat, padding: Bool) -> some View {

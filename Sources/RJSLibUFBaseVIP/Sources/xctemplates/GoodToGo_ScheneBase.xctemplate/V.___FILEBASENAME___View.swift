@@ -8,13 +8,22 @@
 
 import UIKit
 import Foundation
-import SwiftUI
 //
 import RJSLibUFBase
-import RJSLibUFAppThemes
 
+//
 // MARK: - Preview
+//
 
+#if canImport(SwiftUI) && DEBUG
+import SwiftUI
+struct ___VARIABLE_sceneName___ViewPreviews: PreviewProvider {
+    static var previews: some View {
+        RJS_ViewRepresentable { V.___VARIABLE_sceneName___View() }.buildPreviews()
+    }
+}
+
+@available(*, deprecated)
 struct ___VARIABLE_sceneName___UIViewRepresentable: UIViewRepresentable {
     func updateUIView(_ uiView: V.___VARIABLE_sceneName___View, context: Context) { }
     func makeUIView(context: Context) -> V.___VARIABLE_sceneName___View {
@@ -22,13 +31,18 @@ struct ___VARIABLE_sceneName___UIViewRepresentable: UIViewRepresentable {
     }
 }
 
+@available(*, deprecated)
 struct ___VARIABLE_sceneName___Previews: PreviewProvider {
     static var previews: some SwiftUI.View {
-        ___VARIABLE_sceneName___UIViewRepresentable()
+        ___VARIABLE_sceneName___UIViewRepresentable().buildPreviews()
     }
 }
+ 
+#endif
 
+//
 // MARK: - View
+//
 
 extension V {
     public class ___VARIABLE_sceneName___View: RJS_BaseGenericViewVIP {

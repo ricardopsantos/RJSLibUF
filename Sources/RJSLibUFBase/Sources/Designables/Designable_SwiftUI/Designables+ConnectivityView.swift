@@ -21,9 +21,9 @@ public extension RJSLib.Designables.SwiftUI {
                     RJS_NetworMonitor.shared.monitor.pathUpdateHandler = { path in
                         DispatchQueue.main.async {
                             if path.status == .satisfied {
-                                self.connectivity = ""
+                                connectivity = ""
                             } else {
-                                self.connectivity = "No internet connection\n(\(self.subTitle))"
+                                connectivity = "No internet connection\n(\(self.subTitle))"
                             }
                         }
                     }
@@ -39,7 +39,7 @@ public extension RJSLib.Designables.SwiftUI {
 struct Previews_ConnectivityView {
     struct Preview1: PreviewProvider {
         public static var previews: some View {
-            RJS_Designables_SwiftUI.ConnectivityView(subTitle: "subtitle")
+            RJS_Designables_SwiftUI.ConnectivityView(subTitle: "subtitle").buildPreviews()
         }
     }
 }

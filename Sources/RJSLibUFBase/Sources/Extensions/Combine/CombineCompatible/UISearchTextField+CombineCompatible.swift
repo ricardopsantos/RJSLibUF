@@ -8,8 +8,20 @@ import Combine
 import UIKit
 
 public extension RJSCombineCompatible {
-    var editingChangedPublisher: AnyPublisher<String?, Never>? { (target as? UISearchTextField)?.editingChangedPublisher }
-    var textDidChangePublisher: AnyPublisher<String?, Never>? { (target as? UISearchTextField)?.textDidChangePublisher }
+    var editingChangedPublisher: AnyPublisher<String?, Never> {
+        if let target = target as? UISearchTextField {
+            return target.editingChangedPublisher
+        } else {
+            return AnyPublisher.never()
+        }
+    }
+    var textDidChangePublisher: AnyPublisher<String?, Never> {
+        if let target = target as? UISearchTextField {
+            return target.textDidChangePublisher
+        } else {
+            return AnyPublisher.never()
+        }
+    }
 }
 
 public extension UISearchTextField {
@@ -47,10 +59,10 @@ fileprivate extension RJSLib {
         let search = UISearchTextField()
         
         _ = search.editingChangedPublisher.sinkToResult { (_) in }
-        _ = search.rjsCombine.editingChangedPublisher?.sinkToResult { (_) in }
+        _ = search.rjsCombine.editingChangedPublisher.sinkToResult { (_) in }
         
         _ = search.textDidChangePublisher.sinkToResult { (_) in }
-        _ = search.rjsCombine.textDidChangePublisher?.sinkToResult { (_) in }
+        _ = search.rjsCombine.textDidChangePublisher.sinkToResult { (_) in }
         
         search.sendActions(for: .editingChanged)
 

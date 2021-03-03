@@ -21,6 +21,11 @@ public typealias RJS_Logs             = RJSLib.Logger             // Simple logg
 public typealias RJS_Utils            = RJSLib.Utils              // Utilities like `onDebug`, `onRelease`, `executeOnce`, etc
 public typealias RJS_Convert          = RJSLib.Convert            // Types conversion utilities. Things like `isBase64`, `toB64String`, `toBinary`, etc
 
+// MARK: - Utils SwiftUI
+
+public typealias RJS_ViewControllerRepresentable = RJSLib.ViewControllerRepresentable
+public typealias RJS_ViewRepresentable            = RJSLib.ViewRepresentable
+
 // MARK: - Networking
 
 public typealias RJS_NetworMonitor = RJSLib.NetworkUtils.NetworMonitor

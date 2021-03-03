@@ -8,12 +8,26 @@
 
 import Foundation
 import UIKit
-import SwiftUI
 //
 import RJSLibUFBase
 
-// MARK: - Preview
+import UIKit
 
+//
+// MARK: - Preview
+//
+
+#if canImport(SwiftUI) && DEBUG
+import SwiftUI
+struct ___VARIABLE_sceneName___ViewControllerPreviews: PreviewProvider {
+    static var previews: some View {
+        RJS_ViewControllerRepresentable {
+            VC.___VARIABLE_sceneName___ViewController()
+        }.buildPreviews()
+    }
+}
+
+@available(*, deprecated)
 struct ___VARIABLE_sceneName___ViewController_UIViewControllerRepresentable: UIViewControllerRepresentable {
     func updateUIViewController(_ uiViewController: VC.___VARIABLE_sceneName___ViewController, context: Context) { }
     func makeUIViewController(context: Context) -> VC.___VARIABLE_sceneName___ViewController {
@@ -23,13 +37,17 @@ struct ___VARIABLE_sceneName___ViewController_UIViewControllerRepresentable: UIV
     }
 }
 
+@available(*, deprecated)
 struct ___VARIABLE_sceneName___ViewController_Preview: PreviewProvider {
     static var previews: some SwiftUI.View {
-        return ___VARIABLE_sceneName___ViewController_UIViewControllerRepresentable()
+        return ___VARIABLE_sceneName___ViewController_UIViewControllerRepresentable().buildPreviews()
     }
 }
+#endif
 
+//
 // MARK: - ViewController
+//
 
 extension VC {
 

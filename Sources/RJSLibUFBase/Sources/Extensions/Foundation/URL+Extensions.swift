@@ -26,14 +26,14 @@ public extension URL {
     }
 
     var fragmentItems: [String: [String]] {
-        guard let fragment = self.fragment else {
+        guard let fragment = fragment else {
             return [:]
         }
         return splitQuery(fragment)
     }
 
     var queryItems: [String: [String]] {
-        guard let query = self.query else {
+        guard let query = query else {
             return [:]
         }
         return splitQuery(query)

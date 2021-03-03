@@ -14,20 +14,8 @@ import RJSLibUFBaseVIP
 
 #if canImport(SwiftUI) && DEBUG
 import SwiftUI
-struct SwiftUIAndUIKitVC_ViewRepresentable: UIViewRepresentable {
-    func makeUIView(context: Context) -> UIView {
-        return VC.SwiftUIAndUIKitVC().view
-    }
-    
-    func updateUIView(_ view: UIView, context: Context) {
-        
-    }
-}
-
-struct SwiftUIAndUIKitTestingVC_Preview: PreviewProvider {
-    static var previews: some View {
-        SwiftUIAndUIKitVC_ViewRepresentable()
-    }
+struct SwiftUIAndUIKitVC_ViewControllerPreviews: PreviewProvider {
+    static var previews: some View { RJS_ViewControllerRepresentable { VC.SwiftUIAndUIKitVC() }.buildPreviews() }
 }
 #endif
 
@@ -74,19 +62,19 @@ extension VC {
             
             button1.touchUpInsidePublisher.sink { [weak self] _ in
                 guard let self = self else { return }
-                let swiftUIView = RJSLib.Designables.TestViews.SwiftUI(delegate1: self.delegate1, delegate2: self.delegate2)
+                let swiftUIView = RJSLib.Designables.TestView1.SwiftUI(delegate1: self.delegate1, delegate2: self.delegate2)
                 swiftUIView.loadInside(view: self.containerView2)
             }.store(in: cancelBag)
             
             button2.touchUpInsidePublisher.sink { [weak self] _ in
                 guard let self = self else { return }
-                let swiftUIView = RJSLib.Designables.TestViews.SwiftUI(delegate1: self.delegate1, delegate2: self.delegate2)
+                let swiftUIView = RJSLib.Designables.TestView1.SwiftUI(delegate1: self.delegate1, delegate2: self.delegate2)
                 swiftUIView.loadInside(viewController: self)
             }.store(in: cancelBag)
             
             button3.touchUpInsidePublisher.sink { [weak self] _ in
                 guard let self = self else { return }
-                let swiftUIView = RJSLib.Designables.TestViews.SwiftUI(delegate1: self.delegate1, delegate2: self.delegate2)
+                let swiftUIView = RJSLib.Designables.TestView1.SwiftUI(delegate1: self.delegate1, delegate2: self.delegate2)
                 self.presentSwiftUIView(swiftUIView, animated: true)
             }.store(in: cancelBag)
         }

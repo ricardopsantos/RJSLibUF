@@ -70,6 +70,13 @@ public extension UIStackView {
             reportView.heightAnchor.constraint(equalToConstant: 40).isActive = true
         }
         
+        addSectionForDevScreen(title: "RJS_ColorAppleDefault: \(RJS_ColorAppleDefault.allCases.count) values")
+        RJS_ColorAppleDefault.allCases.forEach { (some) in
+            let reportView = some.reportView
+            rjs.add(some.reportView)
+            reportView.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        }
+        
         addSectionForDevScreen(title: "RJS_Color.Pack1: \(RJS_ColorPack1.allCases.count) values")
         RJS_ColorPack1.allCases.forEach { (some) in
             let reportView = some.reportView

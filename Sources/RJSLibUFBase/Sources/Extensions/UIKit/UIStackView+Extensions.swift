@@ -43,14 +43,14 @@ fileprivate extension UIStackView {
         
     func add(_ view: UIView) {
         if view.superview == nil {
-            self.addArrangedSubview(view)
+            addArrangedSubview(view)
             view.setNeedsLayout()
             view.layoutIfNeeded()
         }
     }
     
     func addSub(view: UIView) {
-        self.add(view)
+        add(view)
     }
     
     func insertArrangedSubview(_ view: UIView, belowArrangedSubview subview: UIView) {
@@ -71,7 +71,7 @@ fileprivate extension UIStackView {
 
     func removeAllArrangedSubviews() {
         let removedSubviews = arrangedSubviews.reduce([]) { (allSubviewsRecursive, subview) -> [UIView] in
-            self.removeArrangedSubview(subview)
+            removeArrangedSubview(subview)
             return allSubviewsRecursive + [subview]
         }
         // Deactivate all constraints

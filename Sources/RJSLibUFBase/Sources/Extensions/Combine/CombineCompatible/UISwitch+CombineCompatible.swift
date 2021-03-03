@@ -7,8 +7,12 @@ import Combine
 import UIKit
 
 public extension RJSCombineCompatible {
-    var onTurnedOnPublisher: AnyPublisher<Bool, Never>? {
-        (target as? UISwitch)?.onTurnedOnPublisher
+    var onTurnedOnPublisher: AnyPublisher<Bool, Never> {
+        if let target = target as? UISwitch {
+            return target.onTurnedOnPublisher
+        } else {
+            return AnyPublisher.never()
+        }
     }
 }
 
@@ -26,7 +30,7 @@ fileprivate extension RJSLib {
         submitButton.isEnabled = false
 
         _ = switcher.onTurnedOnPublisher.assign(to: \.isEnabled, on: submitButton)
-        _ = switcher.rjsCombine.onTurnedOnPublisher?.assign(to: \.isEnabled, on: submitButton)
+        _ = switcher.rjsCombine.onTurnedOnPublisher.assign(to: \.isEnabled, on: submitButton)
         
         switcher.isOn = true
         switcher.sendActions(for: .valueChanged)

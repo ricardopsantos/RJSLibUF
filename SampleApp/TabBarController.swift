@@ -12,6 +12,16 @@ import SwiftUI
 import RJSLibUFBase
 import RJSLibUFBaseVIP
 
+#if canImport(SwiftUI) && DEBUG
+struct TabBarController_ViewRepresentable: UIViewRepresentable {
+    func makeUIView(context: Context) -> UIView { return TabBarController().view }
+    func updateUIView(_ view: UIView, context: Context) { }
+}
+struct TabBarControllerPreview: PreviewProvider {
+    static var previews: some View { TabBarController_ViewRepresentable().buildPreviews() }
+}
+#endif
+
 class TabBarController: UITabBarController {
     var viewStateBinder1 = RJS_GenericObservableObjectForHashable<String>()
     var viewStateBinder2 = RJS_GenericObservableObjectForHashableWithObservers<String>()

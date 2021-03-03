@@ -11,7 +11,7 @@ import UIKit
 public extension Array {
     
     mutating func shuffle() {
-        for _ in 0...self.count {
+        for _ in 0...count {
             sort { (_, _) in arc4random() < arc4random() }
         }
     }
@@ -46,12 +46,17 @@ public extension Array {
     
     var randomItem: Element? {
         if isEmpty { return nil }
-        let index = Int(arc4random_uniform(UInt32(self.count)))
+        let index = Int(arc4random_uniform(UInt32(count)))
         return self[index]
     }
 }
 
 public extension Array where Element: Hashable {
+    
+    var set: Set<Element> {
+        return Set(self)
+    }
+    
     /// Taken from here: https://stackoverflow.com/a/46354989/491239
     static func removeDuplicates(_ elements: [Element]) -> [Element] {
         var seen = Set<Element>()
@@ -62,6 +67,6 @@ public extension Array where Element: Hashable {
 public extension RangeReplaceableCollection where Iterator.Element: Equatable {
     // Remove first collection element that is equal to the given `object`:
     mutating func removeObject(_ object: Iterator.Element) {
-        self = self.filter { return $0 != object }
+        self = filter { return $0 != object }
     }
 }

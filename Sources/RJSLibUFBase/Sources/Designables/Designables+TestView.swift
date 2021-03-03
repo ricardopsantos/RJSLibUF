@@ -9,8 +9,12 @@ import Combine
 import UIKit
 
 public extension RJSLib.Designables {
-    struct TestViews {
+    struct TestView1 {
         private init() {}
+        
+        
+        public static var uiViewController: UIViewController { SwiftUI().viewController }
+        public static var uiView: UIView { SwiftUI().uiView }
         
         public struct SwiftUI: View {
             
@@ -38,15 +42,54 @@ public extension RJSLib.Designables {
                 }
             }
         }
-        
-        public static var uiViewController: UIViewController {
-            SwiftUI().viewController
-        }
-        
-        public static var uiView: UIView {
-            SwiftUI().uiView
-        }
+
     }
+    
+    struct TestView2 {
+        private init() {}
+        
+        public static var uiViewController: UIViewController { SwiftUI().viewController }
+        public static var uiView: UIView { SwiftUI().uiView }
+        
+        struct SwiftUI: View {
+            public init() { }
+            @State private var valuesFloatingTextField = ""
+
+            public var body: some View {
+                VStack {
+                    VStack {
+                        Text("Button 1").font(.caption)
+                        RJS_Designables_SwiftUI.CustomButton(title: "Title", action: { print("!action!") })
+                        Divider()
+                    }
+                    VStack {
+                        Text("FloatingTextField").font(.caption)
+                        RJS_Designables_SwiftUI.FloatingTextField(title: "First Name", text: $valuesFloatingTextField)
+                        Text(valuesFloatingTextField)
+                        Divider()
+                    }
+                    VStack {
+                        Text("TitleAndValue").font(.caption)
+                        RJS_Designables_SwiftUI.TitleAndValue(title: "Name", value: "Joe")
+                        Divider()
+                    }
+                    VStack {
+                        Text("Error view").font(.caption)
+                        RJS_Designables_SwiftUI.ErrorView(message: "Some error")
+                        Divider()
+                    }
+                    Text("ListItem (3 types)").font(.caption)
+                    List {
+                        RJS_Designables_SwiftUI.ListItem(title: "Option1 title", value: "Option1 value")
+                        RJS_Designables_SwiftUI.ListItem(title: "Option2 title", value: "Option2 value", imageName: "paperplane.fill", imageColor1: Color.red, imageColor2: Color.blue)
+                        RJS_Designables_SwiftUI.ListItem(title: "Option3 title", value: "Option3 value", imageName: "paperplane.fill")
+                    }
+                }.padding()
+            }
+        }
+        
+    }
+
 }
 
 //
@@ -55,7 +98,7 @@ public extension RJSLib.Designables {
 
 private struct UIKitViewToSwiftUIView: UIViewRepresentable {
     func makeUIView(context: Context) -> UIView {
-        return RJSLib.Designables.TestViews.uiView
+        return RJSLib.Designables.TestView1.uiView
     }
     func updateUIView(_ view: UIView, context: Context) {
         //do your logic here
@@ -63,15 +106,16 @@ private struct UIKitViewToSwiftUIView: UIViewRepresentable {
 }
 
 struct Previews_TestViews {
+    
     struct Preview1: PreviewProvider {
-        public static var previews: some View {
-            RJSLib.Designables.TestViews.SwiftUI()
+        static var previews: some View {
+            UIKitViewToSwiftUIView()
         }
     }
     
-    struct Preview2: PreviewProvider {
+    struct Preview3: PreviewProvider {
         static var previews: some View {
-            UIKitViewToSwiftUIView()
+            RJSLib.Designables.TestView2.SwiftUI().buildPreviews()
         }
     }
 }

@@ -116,7 +116,7 @@ extension TNConstrainable {
                priority: UILayoutPriority = defaultUILayoutPriority,
                isActive: Bool = true) -> NSLayoutConstraint {
         prepareForLayout()
-        let constraintId = "id__\(#function)_[\(relation)]_[\(self.printableMemoryAddress)]"
+        let constraintId = "id__\(#function)_[\(relation)]_[\(printableMemoryAddress)]"
         switch relation {
         case .equal:
             return widthAnchor.constraint(equalToConstant: width)
@@ -143,7 +143,7 @@ extension TNConstrainable {
                priority: UILayoutPriority = defaultUILayoutPriority,
                isActive: Bool = true) -> NSLayoutConstraint {
         prepareForLayout()
-        let constraintId = "id__\(#function)_[\(relation)]_[\(dimension.hashValue)]_[\(self.printableMemoryAddress)]->[\(view.printableMemoryAddress)]"
+        let constraintId = "id__\(#function)_[\(relation)]_[\(dimension.hashValue)]_[\(printableMemoryAddress)]->[\(view.printableMemoryAddress)]"
         switch relation {
         case .equal:
             return widthAnchor.constraint(equalTo: dimension ?? view.widthAnchor, multiplier: multiplier, constant: offset)
@@ -178,7 +178,7 @@ extension TNConstrainable {
                isActive: Bool = true) -> [NSLayoutConstraint] {
         prepareForLayout()
         var constraints: [NSLayoutConstraint] = []
-        let constraintId = "id__\(#function)_\(self.printableMemoryAddress)"
+        let constraintId = "id__\(#function)_\(printableMemoryAddress)"
         if let min = min {
             let constraint = widthAnchor.constraint(greaterThanOrEqualToConstant: min).with(priority)
             constraint.set(isActive, constraintId)
@@ -198,7 +198,7 @@ extension TNConstrainable {
                 priority: UILayoutPriority = defaultUILayoutPriority,
                 isActive: Bool = true) -> NSLayoutConstraint {
         prepareForLayout()
-        let constraintId = "id__\(#function)_\(relation)_\(self.printableMemoryAddress)"
+        let constraintId = "id__\(#function)_\(relation)_\(printableMemoryAddress)"
         switch relation {
         case .equal:
             return heightAnchor.constraint(equalToConstant: height)
@@ -224,7 +224,7 @@ extension TNConstrainable {
                 priority: UILayoutPriority = defaultUILayoutPriority,
                 isActive: Bool = true) -> NSLayoutConstraint {
         prepareForLayout()
-        let constraintId = "id__\(#function)_[\(relation)]_[\(dimension.hashValue)]_[\(self.printableMemoryAddress)]->[\(view.printableMemoryAddress)]"
+        let constraintId = "id__\(#function)_[\(relation)]_[\(dimension.hashValue)]_[\(printableMemoryAddress)]->[\(view.printableMemoryAddress)]"
         switch relation {
         case .equal:
             return heightAnchor.constraint(equalTo: dimension ?? view.heightAnchor, multiplier: multiplier, constant: offset)
@@ -258,7 +258,7 @@ extension TNConstrainable {
                 isActive: Bool = true) -> [NSLayoutConstraint] {
         prepareForLayout()
         var constraints: [NSLayoutConstraint] = []
-        let constraintId = "id__\(#function)_\(self.printableMemoryAddress)"
+        let constraintId = "id__\(#function)_\(printableMemoryAddress)"
         if let min = min {
             let constraint = heightAnchor.constraint(greaterThanOrEqualToConstant: min).with(priority)
             constraint.set(isActive, constraintId)
@@ -298,7 +298,7 @@ extension TNConstrainable {
                  priority: UILayoutPriority = defaultUILayoutPriority,
                  isActive: Bool = true) -> NSLayoutConstraint {
         prepareForLayout()
-        let constraintId = "id__\(#function)_[\(relation)]_[\(anchor.hashValue)]_[\(self.printableMemoryAddress)]->[\(view.printableMemoryAddress)]"
+        let constraintId = "id__\(#function)_[\(relation)]_[\(anchor.hashValue)]_[\(printableMemoryAddress)]->[\(view.printableMemoryAddress)]"
         switch relation {
         case .equal:
             return leadingAnchor.constraint(equalTo: anchor ?? view.leadingAnchor, constant: offset)
@@ -333,7 +333,7 @@ extension TNConstrainable {
               priority: UILayoutPriority = defaultUILayoutPriority,
               isActive: Bool = true) -> NSLayoutConstraint {
         prepareForLayout()
-        let constraintId = "id__\(#function)_[\(relation)]_[\(anchor.hashValue)]_[\(self.printableMemoryAddress)]_[\(view.printableMemoryAddress)]"
+        let constraintId = "id__\(#function)_[\(relation)]_[\(anchor.hashValue)]_[\(printableMemoryAddress)]_[\(view.printableMemoryAddress)]"
         switch relation {
         case .equal:
             return leftAnchor.constraint(equalTo: anchor ?? view.leftAnchor, constant: offset)
@@ -369,7 +369,7 @@ extension TNConstrainable {
                   priority: UILayoutPriority = defaultUILayoutPriority,
                   isActive: Bool = true) -> NSLayoutConstraint {
         prepareForLayout()
-        let constraintId = "id__\(#function)_[\(relation)]_[\(anchor.hashValue)]_[\(self.printableMemoryAddress)]->[\(view.printableMemoryAddress)]"
+        let constraintId = "id__\(#function)_[\(relation)]_[\(anchor.hashValue)]_[\(printableMemoryAddress)]->[\(view.printableMemoryAddress)]"
         switch relation {
         case .equal:
             return trailingAnchor.constraint(equalTo: anchor ?? view.trailingAnchor, constant: offset)
@@ -404,7 +404,7 @@ extension TNConstrainable {
                priority: UILayoutPriority = defaultUILayoutPriority,
                isActive: Bool = true) -> NSLayoutConstraint {
         prepareForLayout()
-        let constraintId = "id__\(#function)_[\(relation)]_[\(anchor.hashValue)]_[\(self.printableMemoryAddress)]->[\(view.printableMemoryAddress)]"
+        let constraintId = "id__\(#function)_[\(relation)]_[\(anchor.hashValue)]_[\(printableMemoryAddress)]->[\(view.printableMemoryAddress)]"
         switch relation {
         case .equal:
             return rightAnchor.constraint(equalTo: anchor ?? view.rightAnchor, constant: offset)
@@ -439,7 +439,7 @@ extension TNConstrainable {
              priority: UILayoutPriority = defaultUILayoutPriority,
              isActive: Bool = true) -> NSLayoutConstraint {
         prepareForLayout()
-        let constraintId = "id__\(#function)_[\(relation)]_[\(anchor.hashValue)]_[\(self.printableMemoryAddress)]->[\(view.printableMemoryAddress)]"
+        let constraintId = "id__\(#function)_[\(relation)]_[\(anchor.hashValue)]_[\(printableMemoryAddress)]->[\(view.printableMemoryAddress)]"
         switch relation {
         case .equal:
             return topAnchor.constraint(equalTo: anchor ?? view.topAnchor, constant: offset)
@@ -474,7 +474,7 @@ extension TNConstrainable {
                 priority: UILayoutPriority = defaultUILayoutPriority,
                 isActive: Bool = true) -> NSLayoutConstraint {
         prepareForLayout()
-        let constraintId = "id__\(#function)_[\(relation)]_[\(anchor.hashValue)]_[\(self.printableMemoryAddress)]->[\(view.printableMemoryAddress)]"
+        let constraintId = "id__\(#function)_[\(relation)]_[\(anchor.hashValue)]_[\(printableMemoryAddress)]->[\(view.printableMemoryAddress)]"
         switch relation {
         case .equal:
             return bottomAnchor.constraint(equalTo: anchor ?? view.bottomAnchor, constant: offset)
@@ -505,7 +505,7 @@ extension TNConstrainable {
         } else {
             constraint = NSLayoutConstraint(item: self, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: multiplier, constant: offset).with(priority)
         }
-        let constraintId = "id__\(#function)_[\(anchor.hashValue)]_[\(self.printableMemoryAddress)]->[\(view.printableMemoryAddress)]"
+        let constraintId = "id__\(#function)_[\(anchor.hashValue)]_[\(printableMemoryAddress)]->[\(view.printableMemoryAddress)]"
         constraint.set(isActive, constraintId)
         return constraint
     }
@@ -524,7 +524,7 @@ extension TNConstrainable {
         } else {
             constraint = NSLayoutConstraint(item: self, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .centerY, multiplier: multiplier, constant: offset).with(priority)
         }
-        let constraintId = "id__\(#function)_[\(anchor.hashValue)]_[\(self.printableMemoryAddress)]->[\(view.printableMemoryAddress)]"
+        let constraintId = "id__\(#function)_[\(anchor.hashValue)]_[\(printableMemoryAddress)]->[\(view.printableMemoryAddress)]"
         constraint.set(isActive, constraintId)
         return constraint
     }

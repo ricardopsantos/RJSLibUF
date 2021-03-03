@@ -38,11 +38,11 @@ public extension UIView {
                    offset: CGSize = defaultShadowOffset,
                    radius: CGFloat = defaultShadowOffset.height,
                    shadowType: RJS_ShadowType = .superLight) {
-        self.layer.shadowColor   = color.cgColor
-        self.layer.shadowOpacity = Float(1 - shadowType.rawValue)
-        self.layer.shadowOffset  = offset
-        self.layer.shadowRadius  = radius
-        self.layer.masksToBounds = false
+        layer.shadowColor   = color.cgColor
+        layer.shadowOpacity = Float(1 - shadowType.rawValue)
+        layer.shadowOffset  = offset
+        layer.shadowRadius  = radius
+        layer.masksToBounds = false
     }
 }
 

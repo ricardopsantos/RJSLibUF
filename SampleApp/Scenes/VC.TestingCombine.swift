@@ -13,6 +13,19 @@ import RJSLibUFNetworking
 import RJSLibUFAppThemes
 import RJSLibUFBaseVIP
 
+#if canImport(SwiftUI) && DEBUG
+import SwiftUI
+struct TestingCombine_ViewControllerPreviews: PreviewProvider {
+    static var previews: some View {
+        RJS_ViewControllerRepresentable {
+            var viewStateBinder1 = RJS_GenericObservableObjectForHashable<String>()
+            var viewStateBinder2 = RJS_GenericObservableObjectForHashableWithObservers<String>()
+            return VC.TestingCombine(viewStateBinder1: viewStateBinder1, viewStateBinder2: viewStateBinder2)
+        }.buildPreviews()
+    }
+}
+#endif
+
 extension VC {
     class TestingCombine: GenericViewController {
 
