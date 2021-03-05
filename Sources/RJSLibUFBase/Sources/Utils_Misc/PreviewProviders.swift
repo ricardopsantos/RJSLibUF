@@ -2,6 +2,7 @@
 //  Created by Ricardo Santos on 03/03/2021.
 //
 
+#if !os(macOS)
 import Foundation
 import SwiftUI
 
@@ -56,7 +57,7 @@ fileprivate extension RJSLib {
                 imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
                 imageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
                 imageView.widthAnchor.constraint(equalTo: view.widthAnchor),
-                imageView.heightAnchor.constraint(equalTo: view.widthAnchor),
+                imageView.heightAnchor.constraint(equalTo: view.widthAnchor)
             ])
         }
     }
@@ -78,4 +79,4 @@ struct Previews_ViewControllerRepresentable {
         }
     }
 }
-
+#endif

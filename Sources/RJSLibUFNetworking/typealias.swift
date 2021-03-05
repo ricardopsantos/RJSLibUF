@@ -17,26 +17,7 @@ import RJSLibUFBase
 //
 // MARK: - Regular NetWork Clients (works with completionHandlers)
 //
-/*
-public typealias RJS_Result = RJSLib.Result
-public typealias RJS_Response = RJSLib.Response
 
-extension RJSLib {
-    public enum Result<T> {
-        case success(T)
-        case failure(Error)
-    }
-
-    public struct Response<T: Decodable> {
-        public let value: T
-        public let response: Any
-        public init(value: T, response: Any) {
-            self.value = value
-            self.response = response
-        }
-    }
-}
-*/
 public typealias RJS_BasicHttpGetAgent = RJSLib.BasicHttpGetAgent // Handles simple GETs (`func getDataFrom:`, `func getJSONFrom:`) and images download with caching
 
 public typealias RJS_SimpleNetworkAgent = RJSLib.SimpleNetworkAgent // Handles "GET", POST, PUT, DELETE, Response decode and errors
@@ -49,10 +30,10 @@ public typealias RJS_SimpleNetworkAgentResponse        = RJSLib.SimpleNetworkAge
 // MARK: - FRP NetWork Clients (works with Functional Reactive Programing)
 //
 
-public typealias RJS_FRPSimpleNetworkClient = FRPSimpleNetworkAgent
+public typealias RJS_FRPSimpleNetworkClient = RJSLib.FRPSimpleNetworkAgent
 
 public typealias RJS_FRPNetworkAgentProtocol     = FRPSimpleNetworkAgentProtocol
-public typealias RJS_FRPNetworkAgentRequestModel = FRPSimpleNetworkAgentRequestModel
+public typealias RJS_FRPNetworkAgentRequestModel = RJSLib.FRPSimpleNetworkAgentRequestModel
 public typealias RJS_FRPNetworkAgentAPIError     = RJSLib.FRPSimpleNetworkClientAPIError
 
 //

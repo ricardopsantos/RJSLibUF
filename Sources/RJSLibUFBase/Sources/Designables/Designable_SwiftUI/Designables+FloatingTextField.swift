@@ -2,9 +2,10 @@
 //  Created by Ricardo Santos on 02/03/2021.
 //
 
-import UIKit
+#if !os(macOS)
 import Foundation
 import SwiftUI
+import UIKit
 
 public extension RJSLib.Designables.SwiftUI {
     // https://medium.com/swlh/simpler-better-floating-label-textfields-in-swiftui-24f7d06da8b8
@@ -24,4 +25,4 @@ public extension RJSLib.Designables.SwiftUI {
         }
     }
 }
-
+#endif

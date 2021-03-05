@@ -12,12 +12,12 @@ import CryptoKit
 //
 extension FRPSampleAPI {
     func sampleRequestJSON(_ resquestDto: SampleRequest1Dto) -> AnyPublisher<SampleResponse1Dto, RJS_FRPNetworkAgentAPIError> {
-        let request = FRPSampleAPI.RequestsBuilder.sampleRequestJSON(resquestDto)
-        return agent.run(request.urlRequest!, JSONDecoder(), false, request.responseFormat).map(\.value).eraseToAnyPublisher() // Not using extension
+        let request = Self.sampleRequestJSON(resquestDto)
+        return client.run(request.urlRequest!, JSONDecoder(), false, request.responseFormat).map(\.value).eraseToAnyPublisher() // Not using extension
     }
     
     func sampleRequestCVS(_ resquestDto: SampleRequest2Dto) -> AnyPublisher<[SampleResponse2Dto], RJS_FRPNetworkAgentAPIError> {
-        let request = FRPSampleAPI.RequestsBuilder.sampleRequestCSV(resquestDto)
+        let request = Self.sampleRequestCSV(resquestDto)
         return run(request: request.urlRequest!, dumpResponse: false, reponseType: request.responseFormat) // Using extension
     }
 }
@@ -26,8 +26,7 @@ extension FRPSampleAPI {
 // MARK: - RequestsBuilder
 //
 
-extension FRPSampleAPI.RequestsBuilder {
-    
+fileprivate extension FRPSampleAPI {
     static func sampleRequestJSON(_ resquestDto: SampleRequest1Dto) -> RJS_FRPNetworkAgentRequestModel {
         let /*httpBody*/ _ = [
             "publicKey": resquestDto.someParam
@@ -51,5 +50,4 @@ extension FRPSampleAPI.RequestsBuilder {
                             serverURL: "https://raw.githubusercontent.com/centraldedados/codigos_postais/master/data",
                             responseType: .csv)
     }
-    
 }

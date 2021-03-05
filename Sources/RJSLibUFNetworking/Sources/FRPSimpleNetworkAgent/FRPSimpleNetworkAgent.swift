@@ -6,6 +6,7 @@ import RJSLibUFBase
 //
 // FRPSimpleNetworkAgent was inspired on
 // https://www.vadimbulavin.com/modern-networking-in-swift-5-with-urlsession-combine-framework-and-codable/
+// https://medium.com/swlh/better-api-management-in-swift-c2c1ad6354be
 //
 
 /*
@@ -22,21 +23,24 @@ import RJSLibUFBase
  7 - Erase publisher’s type and return an instance of AnyPublisher.
  */
 
-public class FRPSimpleNetworkAgent {
-    private var session: URLSession
-    public init() {
-        if false {
-            self.session = .shared
-        } else {
-            self.session = URLSession.defaultForConnectivity
+extension RJSLib {
+    public class FRPSimpleNetworkAgent {
+        private var session: URLSession
+        public init() {
+            if false {
+                self.session = .shared
+            } else {
+                self.session = URLSession.defaultForConnectivity
+            }
+        }
+        public init(session: URLSession) {
+            self.session = session
         }
     }
-    public init(session: URLSession) {
-        self.session = session
-    }
+
 }
 
-public extension FRPSimpleNetworkAgent {
+public extension RJSLib.FRPSimpleNetworkAgent {
 
     // 2
     func run<T>(_ request: URLRequest,

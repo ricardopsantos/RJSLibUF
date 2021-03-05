@@ -12,7 +12,6 @@ public extension RJSLib.Designables {
     struct TestView1 {
         private init() {}
         
-        
         public static var uiViewController: UIViewController { SwiftUI().viewController }
         public static var uiView: UIView { SwiftUI().uiView }
         

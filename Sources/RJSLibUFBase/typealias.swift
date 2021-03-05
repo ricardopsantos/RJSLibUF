@@ -23,8 +23,10 @@ public typealias RJS_Convert          = RJSLib.Convert            // Types conve
 
 // MARK: - Utils SwiftUI
 
+#if !os(macOS)
 public typealias RJS_ViewControllerRepresentable = RJSLib.ViewControllerRepresentable
-public typealias RJS_ViewRepresentable            = RJSLib.ViewRepresentable
+public typealias RJS_ViewRepresentable           = RJSLib.ViewRepresentable
+#endif
 
 // MARK: - Networking
 
@@ -65,3 +67,4 @@ public typealias RJS_ModelState    = RJSLib.HashableModelState
 public typealias RJS_Result        = RJSLib.Result
 public typealias RJS_Response      = RJSLib.Response
 public typealias RJS_CacheStrategy = RJSLib.CacheStrategy
+public typealias RJS_ColorScheme   = RJSLib.ColorScheme

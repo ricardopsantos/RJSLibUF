@@ -16,7 +16,7 @@ import RJSLibUFBase
 //
 
 public protocol FRPSimpleNetworkAgentProtocol {
-    var agent: FRPSimpleNetworkAgent { get set }
+    var client: RJS_FRPSimpleNetworkClient { get set }
 }
 
 public extension FRPSimpleNetworkAgentProtocol {
@@ -24,6 +24,6 @@ public extension FRPSimpleNetworkAgentProtocol {
                            decoder: JSONDecoder = JSONDecoder(),
                            dumpResponse: Bool,
                            reponseType: RJS_NetworkClientResponseFormat) -> AnyPublisher<T, RJS_FRPNetworkAgentAPIError> {
-        return agent.run(request, decoder, dumpResponse, reponseType).map(\.value).eraseToAnyPublisher()
+        return client.run(request, decoder, dumpResponse, reponseType).map(\.value).eraseToAnyPublisher()
     }
 }

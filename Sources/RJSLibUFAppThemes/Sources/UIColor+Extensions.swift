@@ -7,6 +7,7 @@
 import Foundation
 import UIKit
 import SwiftUI
+import RJSLibUFBase
 
 // MARK: - Color Set 1
 
@@ -211,17 +212,23 @@ public extension UIColor {
             return "\(self)"
         }
         
-        static var onLigthMode: Bool = true
+        static var colorScheme: RJS_ColorScheme = .light
         
         public var rawValue: RawValue {
+            return rawValue(on: Self.colorScheme)
+        }
+        
+        // swiftlint:disable cyclomatic_complexity
+        public func rawValue(on: RJS_ColorScheme) -> RawValue {
+            let onLigthMode = on == .light
             switch self {
-            case .background: return Self.onLigthMode ? RJS_ColorPack2.dirtyWhite.color : RJS_ColorPack2.obsidian.color
-            case .onBackground: return Self.onLigthMode ? RJS_ColorPack2.darkBlue.color : RJS_ColorPack2.white.color
-            case .surface: return Self.onLigthMode ? RJS_ColorPack2.white.color  : RJS_ColorPack2.charcoal.color
-            case .onSurface: return Self.onLigthMode ? RJS_ColorPack2.darkBlue.color : RJS_ColorPack2.white.color
-            case .detail: return Self.onLigthMode ? RJS_ColorPack2.silver.color : RJS_ColorPack2.darkSilver.color
-            case .onDetail: return Self.onLigthMode ? RJS_ColorPack2.white.color : RJS_ColorPack2.silver.color
-            case .divider: return Self.onLigthMode ? RJS_ColorPack2.lightGray.color : RJS_ColorPack2.darkGray.color
+            case .background: return onLigthMode ? RJS_ColorPack2.dirtyWhite.color : RJS_ColorPack2.obsidian.color
+            case .onBackground: return onLigthMode ? RJS_ColorPack2.darkBlue.color : RJS_ColorPack2.white.color
+            case .surface: return onLigthMode ? RJS_ColorPack2.white.color  : RJS_ColorPack2.charcoal.color
+            case .onSurface: return onLigthMode ? RJS_ColorPack2.darkBlue.color : RJS_ColorPack2.white.color
+            case .detail: return onLigthMode ? RJS_ColorPack2.silver.color : RJS_ColorPack2.darkSilver.color
+            case .onDetail: return onLigthMode ? RJS_ColorPack2.white.color : RJS_ColorPack2.silver.color
+            case .divider: return onLigthMode ? RJS_ColorPack2.lightGray.color : RJS_ColorPack2.darkGray.color
             case .overlayBackground: return RJS_ColorPack2.dirtyWhite.color.withAlphaComponent(0.5)
             case .void: return RJS_ColorPack2.black.color
             case .onVoid: return RJS_ColorPack2.white.color
@@ -239,6 +246,7 @@ public extension UIColor {
             case .onWarning: return RJS_ColorPack2.white.color
             }
         }
+        // swiftlint:enable cyclomatic_complexity
     }
 }
 
@@ -405,7 +413,6 @@ public extension UIColor {
 
     }
 }
-
 
 /** Utils protocol to build screens showing all color Packs
 Sample Usage

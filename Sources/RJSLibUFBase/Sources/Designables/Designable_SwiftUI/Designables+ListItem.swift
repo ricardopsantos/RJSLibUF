@@ -1,8 +1,7 @@
 //
 //  Created by Ricardo Santos on 02/03/2021.
 //
-
-import UIKit
+#if !os(macOS)
 import Foundation
 import SwiftUI
 
@@ -51,4 +50,4 @@ public extension RJSLib.Designables.SwiftUI {
         }
     }
 }
-
+#endif

@@ -47,7 +47,7 @@ class TabBarController: UITabBarController {
         }.store(in: cancelBag)
         
         viewStateBinder2.didChange.sink { (some) in
-            RJS_Logs.info("new value: \(some.value)")
+            RJS_Logs.info("new value: \(String(describing: some.value))")
         }.store(in: cancelBag)
     }
 

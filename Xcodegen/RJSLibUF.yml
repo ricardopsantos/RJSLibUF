@@ -83,6 +83,8 @@ targets:
         link: true
       - target: RJSLibUFBaseVIP
         link: true
+      - target: RJSLibUFDesignables
+        link: true
         
 #    postCompileScripts:
 #      - script: |
@@ -101,6 +103,17 @@ targets:
     sources: 
       - path: ../Sources/RJSLibUFBase
     
+  RJSLibUFDesignables:
+    templates:
+      - Framework
+    sources:
+      - path: ../Sources/RJSLibUFDesignables
+    dependencies:
+      - target: RJSLibUFBase
+        link: false
+      - target: RJSLibUFAppThemes
+        link: false
+        
   RJSLibUFBaseVIP:
     templates:
       - Framework

@@ -25,7 +25,6 @@ public extension AnyPublisher {
     }
 }
 
-
 public extension Publisher {
     
     func sampleOperator<T>(source: T) -> AnyPublisher<Self.Output, Self.Failure> where T: Publisher, T.Output: Equatable, T.Failure == Self.Failure {

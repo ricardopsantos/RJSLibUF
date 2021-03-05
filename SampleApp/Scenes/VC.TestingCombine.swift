@@ -18,8 +18,8 @@ import SwiftUI
 struct TestingCombine_ViewControllerPreviews: PreviewProvider {
     static var previews: some View {
         RJS_ViewControllerRepresentable {
-            var viewStateBinder1 = RJS_GenericObservableObjectForHashable<String>()
-            var viewStateBinder2 = RJS_GenericObservableObjectForHashableWithObservers<String>()
+            let viewStateBinder1 = RJS_GenericObservableObjectForHashable<String>()
+            let viewStateBinder2 = RJS_GenericObservableObjectForHashableWithObservers<String>()
             return VC.TestingCombine(viewStateBinder1: viewStateBinder1, viewStateBinder2: viewStateBinder2)
         }.buildPreviews()
     }
@@ -118,7 +118,7 @@ extension VC {
             searchBar
                 .textDidChangePublisher
                 .sink { [weak self] (value) in
-                    self?.display("searchBar: \(value)", override: false)
+                    self?.display("searchBar: \(String(describing: value))", override: false)
                 }.store(in: cancelBag)
             
             //
@@ -245,7 +245,7 @@ extension VC {
             let subscription5 = Publishers.CombineLatest(relayUserName, relayPassword)
             let subscription6 = Publishers.Merge(relayUserName, relayPassword)
 
-            btn5_combineLatest.touchUpInsidePublisher.sinkToResult { [weak self] (_) in
+            btn5_combineLatest.touchUpInsidePublisher.sinkToResult { _ in
                 if Bool.random() {
                     relayUserName.send(String.random(3))
                 } else {

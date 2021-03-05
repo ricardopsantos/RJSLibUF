@@ -12,10 +12,10 @@ private var cancelBag = CancelBag()
 
 // swiftlint:disable multiple_closures_with_trailing_closure no_space_in_method_call
 
-public extension FRPSampleAPI {
+public extension RJSLib {
 
-    static func doTest() {
-        let api: FRPSampleAPI = FRPSampleAPI()
+    static func frpSampleAPIUseCase() {
+        let api: FRPSampleAPIRequestProtocol = FRPSampleAPI()
         
         let request1Dto = SampleRequest1Dto(someParam: "aaa")
         let request2Dto = SampleRequest2Dto(someParam: "aaa")
