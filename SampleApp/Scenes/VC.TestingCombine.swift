@@ -16,7 +16,7 @@ import RJSLibUFDesignables
 
 #if canImport(SwiftUI) && DEBUG
 import SwiftUI
-struct TestingCombine_ViewControllerPreviews: PreviewProvider {
+struct TestingCombine_PreviewProvider: PreviewProvider {
     static var previews: some View {
         RJS_ViewControllerRepresentable {
             let viewStateBinder1 = RJS_GenericObservableObjectForHashable<String>()

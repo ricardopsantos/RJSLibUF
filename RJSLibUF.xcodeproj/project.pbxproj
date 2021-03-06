@@ -21,7 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		005FBE553EC71336E21E7321 /* VC.DesignLanguageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D96F4EC0F590A72CE445C8B /* VC.DesignLanguageVC.swift */; };
+		005FBE553EC71336E21E7321 /* VC.RJSLibUFAppThemesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D96F4EC0F590A72CE445C8B /* VC.RJSLibUFAppThemesVC.swift */; };
 		03740C2CABD375E9CF8E35B6 /* UIView+Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB1C8E00818628E2EB6281F /* UIView+Animations.swift */; };
 		0470E415EEBEFB9A2971E709 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156E6ADF51D441D714C90080 /* UserDefaults.swift */; };
 		055B68EC5A98F0EA89E6AE40 /* BaseViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905BC0621255B60BDF550CDC /* BaseViewProtocol.swift */; };
@@ -185,6 +185,8 @@
 		CF0E1B44BC74AA9328659F93 /* E.Result<T>.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B013BDF41E070C57D5C8A1 /* E.Result<T>.swift */; };
 		D721F15CD0A2521AD72E0860 /* RJSLibUFBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B0D02882E22945B619357BF /* RJSLibUFBase.framework */; };
 		D73B913F3B0BFBE0931FE4D0 /* UIImageView+Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF56FDF37196BB07FF9066A /* UIImageView+Transform.swift */; };
+		D7F9C6B725F3DC82000B67CC /* Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F9C6B625F3DC82000B67CC /* Preview.swift */; };
+		D7F9C6EB25F3DE53000B67CC /* Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F9C6D425F3DDEB000B67CC /* Preview.swift */; };
 		DA10202FF539BFC0B9C775F7 /* Designables+ConnectivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766A0CF5527D1396FE56CF2E /* Designables+ConnectivityView.swift */; };
 		DA76897C36942C026A9B45B3 /* E.ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D1E7644ECF22BAEF83029E /* E.ColorScheme.swift */; };
 		DC5CA006A65CC6F7EFFE9A96 /* RJSHotCacheProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379BEE2114539820905E6CE1 /* RJSHotCacheProtocol.swift */; };
@@ -200,7 +202,7 @@
 		ECD582685DF07981A9D99F79 /* PreviewProviders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5253C6260F42A150840DC1DD /* PreviewProviders.swift */; };
 		EE845E226FD1CB7914B30EE7 /* RJSLib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF9CA9A183095AFB7D7C80D /* RJSLib.swift */; };
 		EE87BC1B92B10EB835EBDBA4 /* NSObject+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66CA57671DE0186C90E5FA4 /* NSObject+Extensions.swift */; };
-		EEB591DEC6BBB7775593D1A2 /* VC.DesinablesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59C73640E1F377C9249A338 /* VC.DesinablesVC.swift */; };
+		EEB591DEC6BBB7775593D1A2 /* VC.RJSLibUFDesignablesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59C73640E1F377C9249A338 /* VC.RJSLibUFDesignablesVC.swift */; };
 		EF263E53E9EEB5E931BA7FFB /* UIView+AutoLayouts.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFA01B7800ADA382E49E3E8 /* UIView+AutoLayouts.swift */; };
 		EF8AA16622C0F968D2A88156 /* E.HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7E05C7930B444D24D945DE /* E.HttpMethod.swift */; };
 		F115AF970D13A4974A5F5AB3 /* UIButton+Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA6A6F7B5DE80761690EBD4 /* UIButton+Styles.swift */; };
@@ -424,7 +426,7 @@
 		4A59F82849708141FED5AADF /* RJSStorableKeyValueWithTTLProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RJSStorableKeyValueWithTTLProtocol.swift; sourceTree = "<group>"; };
 		4AB01F66AE2EC612F93D5283 /* FRPSampleAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FRPSampleAPI.swift; sourceTree = "<group>"; };
 		4CACE777019AC12589FB6470 /* Image+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Extensions.swift"; sourceTree = "<group>"; };
-		4D96F4EC0F590A72CE445C8B /* VC.DesignLanguageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC.DesignLanguageVC.swift; sourceTree = "<group>"; };
+		4D96F4EC0F590A72CE445C8B /* VC.RJSLibUFAppThemesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC.RJSLibUFAppThemesVC.swift; sourceTree = "<group>"; };
 		52018A09E67CBCD5D0E67633 /* DependencyInjection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyInjection.swift; sourceTree = "<group>"; };
 		5241817276DA44963E66F0EF /* P.BaseInteractorVIP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = P.BaseInteractorVIP.swift; sourceTree = "<group>"; };
 		5253C6260F42A150840DC1DD /* PreviewProviders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewProviders.swift; sourceTree = "<group>"; };
@@ -520,6 +522,8 @@
 		D5C8A3C35FA31D5E659375A6 /* FRPSampleAPI+ResponseDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FRPSampleAPI+ResponseDto.swift"; sourceTree = "<group>"; };
 		D5FCBCFD8D709AF7820D020A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		D66CA57671DE0186C90E5FA4 /* NSObject+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extensions.swift"; sourceTree = "<group>"; };
+		D7F9C6B625F3DC82000B67CC /* Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preview.swift; sourceTree = "<group>"; };
+		D7F9C6D425F3DDEB000B67CC /* Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preview.swift; sourceTree = "<group>"; };
 		D87AAE9D0474665C4AB3A49B /* Designables+Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Designables+Button.swift"; sourceTree = "<group>"; };
 		D8BF094350F466DD8E3BFC72 /* TNConstrainable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNConstrainable.swift; sourceTree = "<group>"; };
 		D9BE1BE60D893AF4394F15CA /* FRPSampleAP+Requests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FRPSampleAP+Requests.swift"; sourceTree = "<group>"; };
@@ -549,7 +553,7 @@
 		F20CF5BF19068E6B3A1440D1 /* RJSLibUFAppThemes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RJSLibUFAppThemes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F399D57CEC1D5CBB6C58358B /* SynchronizedArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynchronizedArray.swift; sourceTree = "<group>"; };
 		F41603EE15ECB31E196F82C5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		F59C73640E1F377C9249A338 /* VC.DesinablesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC.DesinablesVC.swift; sourceTree = "<group>"; };
+		F59C73640E1F377C9249A338 /* VC.RJSLibUFDesignablesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC.RJSLibUFDesignablesVC.swift; sourceTree = "<group>"; };
 		F6DBA4BF9C93261B48EF50AD /* CGSize+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize+Extensions.swift"; sourceTree = "<group>"; };
 		F8A9E3428131246AB08C31AC /* NetworkAgentUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAgentUtils.swift; sourceTree = "<group>"; };
 		F9A77F09CF8631AB5E54E991 /* TinyConstraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinyConstraints.swift; sourceTree = "<group>"; };
@@ -579,6 +583,7 @@
 			children = (
 				F695B9B649EFB263E832BCE9 /* Sources */,
 				3705B8C7B7BBDDF81BE8DBEF /* Info.plist */,
+				D7F9C6B625F3DC82000B67CC /* Preview.swift */,
 				0EC8F6B796D0F413F0685949 /* typealias.swift */,
 			);
 			name = RJSLibUFAppThemes;
@@ -733,6 +738,7 @@
 				1599FBC526F73CF6012F64A7 /* Sources */,
 				0FCFB6D1498120352E95D5D6 /* Info.plist */,
 				C87C65CDA8AF2EF036FF6076 /* typealias.swift */,
+				D7F9C6D425F3DDEB000B67CC /* Preview.swift */,
 			);
 			name = RJSLibUFDesignables;
 			path = Sources/RJSLibUFDesignables;
@@ -947,8 +953,8 @@
 		9963AB3F709570841481C4CA /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				4D96F4EC0F590A72CE445C8B /* VC.DesignLanguageVC.swift */,
-				F59C73640E1F377C9249A338 /* VC.DesinablesVC.swift */,
+				4D96F4EC0F590A72CE445C8B /* VC.RJSLibUFAppThemesVC.swift */,
+				F59C73640E1F377C9249A338 /* VC.RJSLibUFDesignablesVC.swift */,
 				8A37E4D9F0180CF735ED7780 /* VC.SwiftUIAndUIKitVC.swift */,
 				094D17C4980B2F35E2DF53FE /* VC.TestingCombine.swift */,
 				8C2287E4A9E969D9F1AFADD7 /* VC.TestingMiscVC.swift */,
@@ -1376,8 +1382,6 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 1201;
-				TargetAttributes = {
-				};
 			};
 			buildConfigurationList = 478BD369166F0567C3785035 /* Build configuration list for PBXProject "RJSLibUF" */;
 			compatibilityVersion = "Xcode 10.0";
@@ -1571,8 +1575,8 @@
 				9030C046542AA72A462F1BE8 /* AppDelegate.swift in Sources */,
 				BDA7F783E5929B93E78DDDD8 /* Auxiliar.swift in Sources */,
 				6D0CEA041252856727A8420D /* TabBarController.swift in Sources */,
-				005FBE553EC71336E21E7321 /* VC.DesignLanguageVC.swift in Sources */,
-				EEB591DEC6BBB7775593D1A2 /* VC.DesinablesVC.swift in Sources */,
+				005FBE553EC71336E21E7321 /* VC.RJSLibUFAppThemesVC.swift in Sources */,
+				EEB591DEC6BBB7775593D1A2 /* VC.RJSLibUFDesignablesVC.swift in Sources */,
 				B92139545A3B6C21D757E9DD /* VC.SwiftUIAndUIKitVC.swift in Sources */,
 				C8E1FA2775F79B5BC5734402 /* VC.TestingCombine.swift in Sources */,
 				36F44136BE714707187C2D4A /* VC.TestingMiscVC.swift in Sources */,
@@ -1584,6 +1588,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				83B7EF1FBC843B1E86FBE2AF /* E.FadeType.swift in Sources */,
+				D7F9C6B725F3DC82000B67CC /* Preview.swift in Sources */,
 				B1F263487168CCC3213ADD9B /* E.LayoutStyle.swift in Sources */,
 				4535B7D69B5A9362ABC64BFB /* E.SizesNames.swift in Sources */,
 				F115AF970D13A4974A5F5AB3 /* UIButton+Styles.swift in Sources */,
@@ -1635,6 +1640,7 @@
 				8B028296BBF52A51583C4DA0 /* Designables+LoadingAnimations.swift in Sources */,
 				257511B06C01E57FBC46D435 /* Designables+PassCodeView.swift in Sources */,
 				BB0DE30D1D901B384F8CD1AF /* Designables+SearchBar.swift in Sources */,
+				D7F9C6EB25F3DE53000B67CC /* Preview.swift in Sources */,
 				2A9A4967D56435138E6FC384 /* Designables+TestView.swift in Sources */,
 				1C0D5A462FFD19838841F48B /* Designables+TitleAndValue.swift in Sources */,
 				EA215EBFEF2AA373811B3E64 /* Designables.swift in Sources */,

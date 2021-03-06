@@ -16,6 +16,9 @@ import RJSLibUFBase
 // the external apps using the alias wont need to change anything because the alias stays the same
 //
 
+public struct RJSLibUFDesignables {
+    private init() { }
+}
 // MARK: - Designables
 
 public typealias RJS_Designables           = RJSLib.Designables
