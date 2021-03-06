@@ -21,18 +21,17 @@ public typealias RJS_Logs             = RJSLib.Logger             // Simple logg
 public typealias RJS_Utils            = RJSLib.Utils              // Utilities like `onDebug`, `onRelease`, `executeOnce`, etc
 public typealias RJS_Convert          = RJSLib.Convert            // Types conversion utilities. Things like `isBase64`, `toB64String`, `toBinary`, etc
 
+// MARK: - Utils SwiftUI
+
+#if !os(macOS)
+public typealias RJS_ViewControllerRepresentable = RJSLib.ViewControllerRepresentable
+public typealias RJS_ViewRepresentable           = RJSLib.ViewRepresentable
+#endif
+
 // MARK: - Networking
 
 public typealias RJS_NetworMonitor = RJSLib.NetworkUtils.NetworMonitor
 public typealias RJS_Reachability  = RJSLib.NetworkUtils.Reachability
-
-// MARK: - Designables
-
-#if !os(macOS)
-public typealias RJS_Designables           = RJSLib.Designables
-public typealias RJS_Designables_UIKit     = RJSLib.Designables.UIKit
-public typealias RJS_Designables_SwiftUI   = RJSLib.Designables.SwiftUI
-#endif
 
 // MARK: - Cool Stuff
 
@@ -49,5 +48,16 @@ public typealias RJS_Cronometer        = RJSLib.Cronometer         // Utilities 
 public typealias RJS_Resolver = RJSLib.Container // Dependency Injection
 public typealias RJS_Inject   = RJSLib.Inject    // Dependency Injection
 
-public typealias RJS_Delegated = RJSLib.Delegated_V2
-public typealias RJS_Defaults  = RJSLib.UserDefaults
+public typealias RJS_Delegated      = RJSLib.Delegated_V2
+public typealias RJS_Defaults       = RJSLib.UserDefaults
+public typealias RJS_Expirable      = RJSLib.Expirable
+public typealias RJS_CachedFunction = RJSLib.CachedFunction
+
+// MARK: - Value types
+
+public typealias RJS_ViewState     = RJSLib.HashableModelState
+public typealias RJS_ModelState    = RJSLib.HashableModelState
+public typealias RJS_Result        = RJSLib.Result
+public typealias RJS_Response      = RJSLib.Response
+public typealias RJS_CacheStrategy = RJSLib.CacheStrategy
+public typealias RJS_ColorScheme   = RJSLib.ColorScheme

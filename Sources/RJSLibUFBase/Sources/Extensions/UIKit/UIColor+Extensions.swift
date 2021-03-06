@@ -13,8 +13,8 @@ import UIKit
 
 public extension RJSLibExtension where Target == UIColor {
     static var random: UIColor { UIColor.random }
-    var inverse: UIColor { self.target.inverse }
-    var uiColorStatic: UIColor { self.target.uiColorStatic  }
+    var inverse: UIColor { target.inverse }
+    var staticColor: UIColor { target.staticColor  }
     static func colorFromHexString(_ hexString: String, alpha: Float=1.0) -> UIColor {
         UIColor.colorFromHexString(hexString, alpha: alpha)
     }
@@ -30,7 +30,7 @@ public extension UIColor {
         var g: CGFloat = 0.0
         var b: CGFloat = 0.0
         var a: CGFloat = 0.0
-        if self.getRed(&r, green: &g, blue: &b, alpha: &a) {
+        if getRed(&r, green: &g, blue: &b, alpha: &a) {
             return UIColor(red: 1.0-r, green: 1.0 - g, blue: 1.0 - b, alpha: a)
         }
         return .black // Return a default colour
@@ -43,7 +43,7 @@ public extension UIColor {
         return UIColor(red: random(), green: random(), blue: random(), alpha: 1.0)
     }
 
-    var uiColorStatic: UIColor {
+    var staticColor: UIColor {
         if #available(iOS 13.0, *) {
             return self.resolvedColor(with: .current)
         } else {

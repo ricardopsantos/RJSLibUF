@@ -7,33 +7,38 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1005FC65B558C0BDF0C16016 /* LayoutSampleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A11E4594C0FA0041971632B /* LayoutSampleVC.swift */; };
+		034D336C4C5F5C4A0EEFB8E3 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93030C52174E8510BF8FCCA /* TabBarController.swift */; };
 		3EDE17B59810354D00498610 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C850013A6A17CB2B156A7F5F /* AppDelegate.swift */; };
 		453FF2FF75CFAB7033773F8A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8607B8BF1EA049CFF6B04D2A /* LaunchScreen.storyboard */; };
+		4EDC941E2408A6DA0DB1EA8D /* VC.TestingCombine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF1ABCA47BB3ADF4E3C48BA /* VC.TestingCombine.swift */; };
 		65EBF1F6D99A9EB1B2B44FB9 /* Auxiliar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B452CD4C754EEACDA5C304 /* Auxiliar.swift */; };
 		6A14183C573A6BE1F11824A2 /* RJSLibUFBase in Frameworks */ = {isa = PBXBuildFile; productRef = 08C80521D330CC553007CADB /* RJSLibUFBase */; };
 		77430AC3388E7E07667973D0 /* RJSLibUFAppThemes in Frameworks */ = {isa = PBXBuildFile; productRef = 31826F13AD56498558E5A644 /* RJSLibUFAppThemes */; };
+		776ED8E4A574B3EFE8623406 /* VC.TestingMiscVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D10762AA6B4D65CE11B7D3 /* VC.TestingMiscVC.swift */; };
 		80E64973758DD3990100696A /* RJSLibUFStorage in Frameworks */ = {isa = PBXBuildFile; productRef = A831A6545DE57D4304CDCEDF /* RJSLibUFStorage */; };
-		834F491E24679DA510E3B9B6 /* RJSLibUFALayouts in Frameworks */ = {isa = PBXBuildFile; productRef = EE55F0988F83451FDB4AAE56 /* RJSLibUFALayouts */; };
-		A9F2067711B2910E32F9CFA3 /* DesignLanguageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD552CC59E7A56B45872F3 /* DesignLanguageVC.swift */; };
+		834F491E24679DA510E3B9B6 /* RJSLibUFBaseVIP in Frameworks */ = {isa = PBXBuildFile; productRef = FA84E002D14A1FD4F201E6F9 /* RJSLibUFBaseVIP */; };
+		A5E96E4677F567A292A72133 /* VC.SwiftUIAndUIKitVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D36EBAA2936244A4A8BAE0 /* VC.SwiftUIAndUIKitVC.swift */; };
 		CF1096D5FEB3FBDBF8D83ACF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61114974D64A09F7845CC853 /* Assets.xcassets */; };
 		D6152E607ABC2B2EE4DAF396 /* RJSLibUFNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = 3D1D0262D4472B54E7A7C375 /* RJSLibUFNetworking */; };
-		E825CDDB022946DF36F5FC23 /* DesignablesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F27D3AB3ED038B213E3762B /* DesignablesVC.swift */; };
-		F3F4F86848C497966435443D /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45F6054FC568D635892D9E5 /* TabBarController.swift */; };
+		D8CDCDE732A116B5A4DD02BA /* RJSLibUFDesignables in Frameworks */ = {isa = PBXBuildFile; productRef = 225AE44B3249C0BC46625971 /* RJSLibUFDesignables */; };
+		D926C7DA86D4C257CD1D79E1 /* VC.DesinablesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E70222962DE23BF3672934 /* VC.DesinablesVC.swift */; };
+		E85C0AFB306AAA3805F083A3 /* VC.DesignLanguageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CEF2C4D8B74900545E66FEB /* VC.DesignLanguageVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1222A38CA1D980ABA250E196 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		2CDD552CC59E7A56B45872F3 /* DesignLanguageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignLanguageVC.swift; sourceTree = "<group>"; };
-		2F27D3AB3ED038B213E3762B /* DesignablesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignablesVC.swift; sourceTree = "<group>"; };
 		3B91CB910E050843DE439451 /* SampleApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SampleApp.entitlements; sourceTree = "<group>"; };
-		4A11E4594C0FA0041971632B /* LayoutSampleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutSampleVC.swift; sourceTree = "<group>"; };
+		4FF1ABCA47BB3ADF4E3C48BA /* VC.TestingCombine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC.TestingCombine.swift; sourceTree = "<group>"; };
 		54B452CD4C754EEACDA5C304 /* Auxiliar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auxiliar.swift; sourceTree = "<group>"; };
 		61114974D64A09F7845CC853 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		C45F6054FC568D635892D9E5 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		8CEF2C4D8B74900545E66FEB /* VC.DesignLanguageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC.DesignLanguageVC.swift; sourceTree = "<group>"; };
+		A4E70222962DE23BF3672934 /* VC.DesinablesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC.DesinablesVC.swift; sourceTree = "<group>"; };
+		C0D10762AA6B4D65CE11B7D3 /* VC.TestingMiscVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC.TestingMiscVC.swift; sourceTree = "<group>"; };
 		C850013A6A17CB2B156A7F5F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2EC2B87F18CEF52A4E5B936 /* SampleApp.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = SampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9A33FF968EDCAB50893D9C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E3D36EBAA2936244A4A8BAE0 /* VC.SwiftUIAndUIKitVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC.SwiftUIAndUIKitVC.swift; sourceTree = "<group>"; };
+		E93030C52174E8510BF8FCCA /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,8 +49,9 @@
 				6A14183C573A6BE1F11824A2 /* RJSLibUFBase in Frameworks */,
 				D6152E607ABC2B2EE4DAF396 /* RJSLibUFNetworking in Frameworks */,
 				77430AC3388E7E07667973D0 /* RJSLibUFAppThemes in Frameworks */,
-				834F491E24679DA510E3B9B6 /* RJSLibUFALayouts in Frameworks */,
+				834F491E24679DA510E3B9B6 /* RJSLibUFBaseVIP in Frameworks */,
 				80E64973758DD3990100696A /* RJSLibUFStorage in Frameworks */,
+				D8CDCDE732A116B5A4DD02BA /* RJSLibUFDesignables in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,6 +76,7 @@
 				1222A38CA1D980ABA250E196 /* Info.plist */,
 				8607B8BF1EA049CFF6B04D2A /* LaunchScreen.storyboard */,
 				3B91CB910E050843DE439451 /* SampleApp.entitlements */,
+				E93030C52174E8510BF8FCCA /* TabBarController.swift */,
 			);
 			path = SampleApp;
 			sourceTree = "<group>";
@@ -77,10 +84,11 @@
 		74901F2E984F5BFD204B85AA /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				2F27D3AB3ED038B213E3762B /* DesignablesVC.swift */,
-				2CDD552CC59E7A56B45872F3 /* DesignLanguageVC.swift */,
-				4A11E4594C0FA0041971632B /* LayoutSampleVC.swift */,
-				C45F6054FC568D635892D9E5 /* TabBarController.swift */,
+				8CEF2C4D8B74900545E66FEB /* VC.DesignLanguageVC.swift */,
+				A4E70222962DE23BF3672934 /* VC.DesinablesVC.swift */,
+				E3D36EBAA2936244A4A8BAE0 /* VC.SwiftUIAndUIKitVC.swift */,
+				4FF1ABCA47BB3ADF4E3C48BA /* VC.TestingCombine.swift */,
+				C0D10762AA6B4D65CE11B7D3 /* VC.TestingMiscVC.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -121,8 +129,9 @@
 				08C80521D330CC553007CADB /* RJSLibUFBase */,
 				3D1D0262D4472B54E7A7C375 /* RJSLibUFNetworking */,
 				31826F13AD56498558E5A644 /* RJSLibUFAppThemes */,
-				EE55F0988F83451FDB4AAE56 /* RJSLibUFALayouts */,
+				FA84E002D14A1FD4F201E6F9 /* RJSLibUFBaseVIP */,
 				A831A6545DE57D4304CDCEDF /* RJSLibUFStorage */,
+				225AE44B3249C0BC46625971 /* RJSLibUFDesignables */,
 			);
 			productName = SampleApp;
 			productReference = D2EC2B87F18CEF52A4E5B936 /* SampleApp.app */;
@@ -177,10 +186,12 @@
 			files = (
 				3EDE17B59810354D00498610 /* AppDelegate.swift in Sources */,
 				65EBF1F6D99A9EB1B2B44FB9 /* Auxiliar.swift in Sources */,
-				A9F2067711B2910E32F9CFA3 /* DesignLanguageVC.swift in Sources */,
-				E825CDDB022946DF36F5FC23 /* DesignablesVC.swift in Sources */,
-				1005FC65B558C0BDF0C16016 /* LayoutSampleVC.swift in Sources */,
-				F3F4F86848C497966435443D /* TabBarController.swift in Sources */,
+				034D336C4C5F5C4A0EEFB8E3 /* TabBarController.swift in Sources */,
+				E85C0AFB306AAA3805F083A3 /* VC.DesignLanguageVC.swift in Sources */,
+				D926C7DA86D4C257CD1D79E1 /* VC.DesinablesVC.swift in Sources */,
+				A5E96E4677F567A292A72133 /* VC.SwiftUIAndUIKitVC.swift in Sources */,
+				4EDC941E2408A6DA0DB1EA8D /* VC.TestingCombine.swift in Sources */,
+				776ED8E4A574B3EFE8623406 /* VC.TestingMiscVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,8 +394,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ricardopsantos/RJSLibUF";
 			requirement = {
-				kind = revision;
-				revision = 11aeb1417d0f32d74bb9576a98149699c9871617;
+				branch = develop;
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -394,6 +405,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B82E728FCE96035145B29FD9 /* XCRemoteSwiftPackageReference "RJSLibUF" */;
 			productName = RJSLibUFBase;
+		};
+		225AE44B3249C0BC46625971 /* RJSLibUFDesignables */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B82E728FCE96035145B29FD9 /* XCRemoteSwiftPackageReference "RJSLibUF" */;
+			productName = RJSLibUFDesignables;
 		};
 		31826F13AD56498558E5A644 /* RJSLibUFAppThemes */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -410,10 +426,10 @@
 			package = B82E728FCE96035145B29FD9 /* XCRemoteSwiftPackageReference "RJSLibUF" */;
 			productName = RJSLibUFStorage;
 		};
-		EE55F0988F83451FDB4AAE56 /* RJSLibUFALayouts */ = {
+		FA84E002D14A1FD4F201E6F9 /* RJSLibUFBaseVIP */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B82E728FCE96035145B29FD9 /* XCRemoteSwiftPackageReference "RJSLibUF" */;
-			productName = RJSLibUFALayouts;
+			productName = RJSLibUFBaseVIP;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

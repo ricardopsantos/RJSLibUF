@@ -10,26 +10,35 @@ import UIKit
 ///////////// UTILS DEV /////////////
 
 public extension RJSLibExtension where Target == UIView {
-    func addCorner(radius: CGFloat) {
-        self.target.addCorner(radius: radius)
-    }
+    func addCorner(radius: CGFloat) { target.addCorner(radius: radius) }
     
-    func addBlur(style: UIBlurEffect.Style = .dark) -> UIVisualEffectView {
-        self.target.addBlur(style: style)
-    }
+    func addCornerCurve(method: CALayerCornerCurve, radius: CGFloat) { target.addCornerCurve(method: method, radius: radius) }
     
-    func fadeTo(_ value: CGFloat, duration: Double=RJS_Constants.defaultAnimationsTime) {
-        self.target.fadeTo(value, duration: duration)
-    }
+    func addBorder(width: CGFloat, color: UIColor) { target.addBorder(width: width, color: color) }
+    
+    func addBlur(style: UIBlurEffect.Style = .dark) -> UIVisualEffectView { target.addBlur(style: style) }
+
+    func fadeTo(_ value: CGFloat, duration: Double=RJS_Constants.defaultAnimationsTime) { target.fadeTo(value, duration: duration) }
 }
 
 public extension UIView {
         
-    // this functions is duplicated
+    func addBorder(width: CGFloat, color: UIColor) {
+        layer.borderWidth = width
+        layer.borderColor = color.cgColor
+        clipsToBounds     = true
+        layoutIfNeeded()
+    }
+    
+    func addCornerCurve(method: CALayerCornerCurve = .circular, radius: CGFloat = 34) {
+        layer.cornerCurve = method // .continuous | .circular
+        layer.cornerRadius = radius
+        layer.masksToBounds = true
+        layoutIfNeeded()
+    }
+    
     func addCorner(radius: CGFloat) {
-        self.layoutIfNeeded()
-        self.layer.cornerRadius = radius
-        self.layer.masksToBounds = true
+        addCornerCurve(method: .circular, radius: radius)
     }
     
     // this functions is duplicated
@@ -37,13 +46,13 @@ public extension UIView {
         let blurEffectView: UIVisualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: style))
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         blurEffectView.alpha = 0.5
-        self.addSubview(blurEffectView)
+        addSubview(blurEffectView)
         return blurEffectView
     }
     
     func fadeTo(_ value: CGFloat, duration: Double=RJS_Constants.defaultAnimationsTime) {
         RJS_Utils.executeInMainTread { [weak self] in
-            UIView.animate(withDuration: duration) {
+            UIView.animate(withDuration: duration) { [weak self] in
                 self?.alpha = value
             }
         }

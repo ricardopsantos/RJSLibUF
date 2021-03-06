@@ -9,7 +9,7 @@ public extension URLRequest {
     
     static func with(urlString: String,
                      httpMethod: String,
-                     httpBody: [String: String]?,
+                     httpBody: [String: Any]?,
                      headerValues: [String: String]?) -> URLRequest? {
         guard let theURL = URL(string: "\(urlString)") else {
             RJS_Logs.warning("Invalid url [\(urlString)]", tag: .rjsLib)

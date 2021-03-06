@@ -7,13 +7,13 @@
 import Foundation
 import UIKit
 
-public typealias RJSPresentedController = (UIViewController?, NSError?) -> Void
-public typealias RJSLoadedController    = (UIViewController?, NSError?) -> Void
+public typealias RJS_PresentedController = (UIViewController?, NSError?) -> Void
+public typealias RJS_LoadedController    = (UIViewController?, NSError?) -> Void
 
 public extension RJSLibExtension where Target == UIViewController {
-    func showAlert(title: String="Alert", message: String) { self.target.showAlert(title: title, message: message) }
-    func dismissMe() { self.target.dismissMe() }
-    func dismissAll() { self.target.dismissAll() }
+    func showAlert(title: String="Alert", message: String) { target.showAlert(title: title, message: message) }
+    func dismissMe() { target.dismissMe() }
+    func dismissAll() { target.dismissAll() }
 }
 
 public extension UIViewController {
@@ -43,7 +43,7 @@ public extension UIViewController {
         } else {
             let navigationController = self.navigationController != nil
             if !navigationController {
-                self.dismiss(animated: animated, completion: nil)
+                dismiss(animated: animated, completion: nil)
             } else {
                 self.navigationController?.popViewController(animated: animated)
             }
@@ -62,8 +62,8 @@ public extension UIViewController {
     static func present(controller: UIViewController,
                         sender: UIViewController,
                         modalTransitionStyle: UIModalTransitionStyle = .coverVertical,
-                        loadedController:@escaping RJSLoadedController = { _, _ in },
-                        completion:@escaping RJSPresentedController = { _, _ in }) {
+                        loadedController:@escaping RJS_LoadedController = { _, _ in },
+                        completion:@escaping RJS_PresentedController = { _, _ in }) {
         controller.modalTransitionStyle = modalTransitionStyle
         loadedController(controller, nil)
         sender.present(controller, animated: true, completion: {
@@ -75,7 +75,7 @@ public extension UIViewController {
     static func loadViewControllerInContainedView(sender: UIViewController,
                                                   senderContainedView: UIView,
                                                   controller: UIViewController,
-                                                  completion: RJSPresentedController) {
+                                                  completion: RJS_PresentedController) {
         senderContainedView.removeAllSubviewsRecursive()
         controller.willMove(toParent: sender)
         senderContainedView.addSubview(controller.view)

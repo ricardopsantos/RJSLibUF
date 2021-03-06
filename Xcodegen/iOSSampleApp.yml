@@ -20,8 +20,9 @@ options:
 packages:
   RJSLibUF:
     url: https://github.com/ricardopsantos/RJSLibUF
-    revision: 11aeb1417d0f32d74bb9576a98149699c9871617
-    
+    #revision: 11aeb1417d0f32d74bb9576a98149699c9871617
+    branch: develop
+
 ####################### SETTINGS #######################   
     
 settings:
@@ -52,8 +53,13 @@ targets:
         product: RJSLibUFAppThemes
         link: true
       - package: RJSLibUF
-        product: RJSLibUFALayouts
+        product: RJSLibUFBaseVIP
         link: true
       - package: RJSLibUF
         product: RJSLibUFStorage
         link: true
+      - package: RJSLibUF
+        product: RJSLibUFDesignables
+        link: true
+        
+            

@@ -57,7 +57,7 @@ settings:
 ####################### TARGETS #######################
 ####################### TARGETS #######################  
 ####################### TARGETS #######################
-       
+      
 targets:
         
 ## Base App
@@ -69,6 +69,7 @@ targets:
     settings:
       base:
         MARKETING_VERSION: 1.0
+        OTHER_SWIFT_FLAGS: "-DINCLUDE_VIP_TEMPLATE"
     sources:
        - path: ../SampleApp
     dependencies:
@@ -78,10 +79,13 @@ targets:
         link: true
       - target: RJSLibUFNetworking
         link: true
-      - target: RJSLibUFALayouts
-        link: true
       - target: RJSLibUFStorage
         link: true
+      - target: RJSLibUFBaseVIP
+        link: true
+      - target: RJSLibUFDesignables
+        link: true
+        
 #    postCompileScripts:
 #      - script: |
 #                if which swiftlint >/dev/null; then
@@ -98,7 +102,29 @@ targets:
       - Framework
     sources: 
       - path: ../Sources/RJSLibUFBase
+    
+  RJSLibUFDesignables:
+    templates:
+      - Framework
+    sources:
+      - path: ../Sources/RJSLibUFDesignables
+    dependencies:
+      - target: RJSLibUFBase
+        link: false
+      - target: RJSLibUFAppThemes
+        link: false
         
+  RJSLibUFBaseVIP:
+    templates:
+      - Framework
+    sources:
+      - path: ../Sources/RJSLibUFBaseVIP
+    dependencies:
+      - target: RJSLibUFBase
+        link: false
+      - target: RJSLibUFDesignables
+        link: false
+
   RJSLibUFAppThemes:
     templates: 
       - Framework
@@ -113,15 +139,6 @@ targets:
       - Framework
     sources: 
       - path: ../Sources/RJSLibUFNetworking
-    dependencies:
-      - target: RJSLibUFBase
-        link: false
-
-  RJSLibUFALayouts:
-    templates: 
-      - Framework
-    sources: 
-      - path: ../Sources/RJSLibUFALayouts
     dependencies:
       - target: RJSLibUFBase
         link: false
@@ -151,8 +168,6 @@ targets:
       - target: RJSLibUFBase
         link: false
       - target: RJSLibUFNetworking
-        link: false
-      - target: RJSLibUFALayouts
         link: false
       - target: RJSLibUFStorage
         link: false

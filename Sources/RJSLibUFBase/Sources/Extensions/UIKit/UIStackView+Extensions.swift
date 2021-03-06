@@ -11,25 +11,46 @@ import Foundation
 import UIKit
 
 public extension RJSLibExtension where Target == UIStackView {
-    func add(_ view: UIView) { self.target.add(view) }
-    func addSub(view: UIView) { self.target.addSub(view: view) }
-    func insertArrangedSubview(_ view: UIView, belowArrangedSubview subview: UIView) { self.target.insertArrangedSubview(view, belowArrangedSubview: subview) }
-    func insertArrangedSubview(_ view: UIView, aboveArrangedSubview subview: UIView) { self.target.insertArrangedSubview(view, aboveArrangedSubview: subview) }
-    func removeAllArrangedSubviews() { self.target.removeAllArrangedSubviews() }
+    func add(_ view: UIView) { target.add(view) }
+    func addSub(view: UIView) { target.addSub(view: view) }
+    func insertArrangedSubview(_ view: UIView, belowArrangedSubview subview: UIView) { target.insertArrangedSubview(view, belowArrangedSubview: subview) }
+    func insertArrangedSubview(_ view: UIView, aboveArrangedSubview subview: UIView) { target.insertArrangedSubview(view, aboveArrangedSubview: subview) }
+    func removeAllArrangedSubviews() { target.removeAllArrangedSubviews() }
+    func edgeStackViewToSuperView(insets: UIEdgeInsets = .zero) { target.edgeStackViewToSuperView(insets: insets) }
+    func addSeparator(color: UIColor = UIColor.darkGray, size: CGFloat = 3) { target.addSeparator(color: color, size: size) }
 }
 
 public extension UIStackView {
+    var view: UIView { (self as UIView) }
+}
 
+fileprivate extension UIStackView {
+    
+    func addSeparator(color: UIColor = UIColor.darkGray, size: CGFloat = 3) {
+        let separator = UIView()
+        separator.backgroundColor = color
+        rjs.add(separator)
+        separator.heightAnchor.constraint(equalToConstant: size).isActive = true
+    }
+    
+    func edgeStackViewToSuperView(insets: UIEdgeInsets = .zero) {
+        guard let superview = superview else {
+            return
+        }
+        layouts.edgesToSuperview(insets: insets) // Don't use RJPSLayouts. It will fail if scroll view is inside of stack view with lots of elements
+        layouts.width(to: superview) // NEEDS THIS!
+    }
+        
     func add(_ view: UIView) {
         if view.superview == nil {
-            self.addArrangedSubview(view)
+            addArrangedSubview(view)
             view.setNeedsLayout()
             view.layoutIfNeeded()
         }
     }
     
     func addSub(view: UIView) {
-        self.add(view)
+        add(view)
     }
     
     func insertArrangedSubview(_ view: UIView, belowArrangedSubview subview: UIView) {
@@ -50,7 +71,7 @@ public extension UIStackView {
 
     func removeAllArrangedSubviews() {
         let removedSubviews = arrangedSubviews.reduce([]) { (allSubviewsRecursive, subview) -> [UIView] in
-            self.removeArrangedSubview(subview)
+            removeArrangedSubview(subview)
             return allSubviewsRecursive + [subview]
         }
         // Deactivate all constraints

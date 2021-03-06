@@ -1,4 +1,3 @@
-
 //
 //  Created by Ricardo P Santos on 2019.
 //  Copyright © 2019 Ricardo P Santos. All rights reserved.
@@ -9,9 +8,9 @@ import Foundation
 import UIKit
 
 public extension RJSLibExtension where Target == UIImageView {
-    func toGreyScale() { self.target.toGreyScale() }
-    func paintImageWith(color: UIColor) { self.target.paintImageWith(color: color) }
-    func changeImageColor(to color: UIColor) { self.target.changeImageColor(to: color) }
+    func toGreyScale() { target.toGreyScale() }
+    func paintImageWith(color: UIColor) { target.paintImageWith(color: color) }
+    func changeImageColor(to color: UIColor) { target.changeImageColor(to: color) }
 }
 
 public extension UIImageView {
@@ -23,19 +22,19 @@ public extension UIImageView {
 
     /// Turn image into template image, and apply color
     func changeImageColor(to color: UIColor) {
-        self.image = self.image?.withRenderingMode(.alwaysTemplate)
-        self.tintColor = color
+        image = self.image?.withRenderingMode(.alwaysTemplate)
+        tintColor = color
     }
 
     func toGreyScale() {
-        guard self.image != nil else { return }
+        guard image != nil else { return }
         let filter  = CIFilter(name: "CIPhotoEffectMono")
         let ciInput = CIImage(image: self.image!)
         filter?.setValue(ciInput, forKey: "inputImage")
         let ciOutput   = filter?.outputImage
         let ciContext  = CIContext()
         if let cgImage = ciContext.createCGImage(ciOutput!, from: (ciOutput?.extent)!) {
-            self.image = UIImage(cgImage: cgImage)
+            image = UIImage(cgImage: cgImage)
         }
     }
 }

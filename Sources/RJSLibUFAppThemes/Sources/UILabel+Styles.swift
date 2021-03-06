@@ -15,25 +15,25 @@ public extension UILabel {
     }
 
     func apply(style: RJS_LabelStyle) {
-        let navigationBarTitle = {
-            self.textColor       = RJS_AppBrand1.TopBar.titleColor
-            self.font            = RJS_Fonts.Styles.headingMedium.rawValue
+        let navigationBarTitle = { [weak self] in
+            self?.textColor       = RJS_AppBrand1.TopBar.titleColor
+            self?.font            = RJS_Fonts.Styles.headingMedium.rawValue
         }
-        let title = {
-            self.textColor       = RJS_AppBrand1.UILabel.lblTextColor
-            self.font            = RJS_Fonts.Styles.paragraphBold.rawValue
+        let title = { [weak self] in
+            self?.textColor       = RJS_AppBrand1.UILabel.lblTextColor
+            self?.font            = RJS_Fonts.Styles.paragraphBold.rawValue
         }
-        let value = {
-            self.textColor       = RJS_AppBrand1.UILabel.lblTextColor.withAlphaComponent(FadeType.superLight.rawValue)
-            self.font            = RJS_Fonts.Styles.paragraphSmall.rawValue
+        let value = { [weak self] in
+            self?.textColor       = RJS_AppBrand1.UILabel.lblTextColor.withAlphaComponent(RJS_FadeType.superLight.rawValue)
+            self?.font            = RJS_Fonts.Styles.paragraphSmall.rawValue
         }
-        let text = {
-            self.textColor       = RJS_AppBrand1.UILabel.lblTextColor
-            self.font            = RJS_Fonts.Styles.caption.rawValue
+        let text = { [weak self] in
+            self?.textColor       = RJS_AppBrand1.UILabel.lblTextColor
+            self?.font            = RJS_Fonts.Styles.caption.rawValue
         }
-        let error = {
-            self.textColor       = RJS_AppBrand1.error
-            self.font            = RJS_Fonts.Styles.captionSmall.rawValue
+        let error = { [weak self] in
+            self?.textColor       = RJS_AppBrand1.error
+            self?.font            = RJS_Fonts.Styles.captionSmall.rawValue
         }
 
         switch style {
@@ -54,16 +54,16 @@ public extension UILabel {
         let subLabel = UILabel()
         subLabel.layoutStyle = subStyle
 
-        let baseStyleAttributes = [NSAttributedString.Key.font: self.font, NSAttributedString.Key.foregroundColor: self.textColor]
+        let baseStyleAttributes = [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: textColor]
         let subStyleAttributes  = [NSAttributedString.Key.font: subLabel.font, NSAttributedString.Key.foregroundColor: subLabel.textColor]
 
         // Get original text
         var originalText = ""
-        if self.text != nil {
-            originalText = self.text!
+        if text != nil {
+            originalText = text!
         }
-        if self.attributedText?.string != nil {
-            originalText = self.attributedText!.string
+        if attributedText?.string != nil {
+            originalText = attributedText!.string
         }
 
         // Prepare sub-string. Should is be upperced or lowercased?
@@ -92,8 +92,8 @@ public extension UILabel {
         let nsRange = NSRange(range, in: mainStyleAttributedString.string)
         mainStyleAttributedString.replaceCharacters(in: nsRange, with: subStyleAttributedString)
 
-        self.text = nil
-        self.attributedText = mainStyleAttributedString
+        text = nil
+        attributedText = mainStyleAttributedString
     }
     
 }

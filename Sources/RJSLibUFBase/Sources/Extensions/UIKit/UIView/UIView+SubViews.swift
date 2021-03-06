@@ -10,13 +10,17 @@ import UIKit
 ///////////// UTILS DEV /////////////
 
 public extension RJSLibExtension where Target == UIView {
-    func removeAllSubviewsRecursive() { self.target.removeAllSubviewsRecursive() }
-    func allSubviewsRecursive<T: UIView>() -> [T] { return self.target.allSubviewsRecursive() }
-    func subViewsWith(tag: Int, recursive: Bool) -> [UIView] { self.target.subViewsWith(tag: tag, recursive: recursive) }
+    var allSubviews: [UIView] { target.allSubviews }
+    func removeAllSubviewsRecursive() { target.removeAllSubviewsRecursive() }
+    func allSubviewsRecursive<T: UIView>() -> [T] {  target.allSubviewsRecursive() }
+    func subViewsWith(tag: Int, recursive: Bool) -> [UIView] {
+        target.subViewsWith(tag: tag, recursive: recursive)
+    }
 }
 
 public extension UIView {
     
+    var allSubviews: [UIView] { allSubviewsRecursive() }
     func removeAllSubviewsRecursive() {
         let allViews = UIView.allSubviewsRecursive(from: self) as [UIView]
         _ = allViews.map { (some) -> Void in
@@ -28,7 +32,7 @@ public extension UIView {
         if recursive {
             return UIView.allSubviewsRecursive(from: self).filter { $0.tag == tag }
         } else {
-            return self.subviews.filter { $0.tag == tag }
+            return subviews.filter { $0.tag == tag }
         }
     }
 

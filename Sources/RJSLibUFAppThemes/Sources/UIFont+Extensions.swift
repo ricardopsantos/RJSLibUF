@@ -80,7 +80,7 @@ public extension UIFont {
             public var reportView: UIView {
                 let label = UILabel()
                 label.text = "\(self)"
-                label.font = self.rawValue
+                label.font = rawValue
                 return label
             }
         }

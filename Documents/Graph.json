@@ -1,138 +1,32 @@
 {
-  "configs" : {
-    "Debug" : "debug",
-    "Release" : "release"
-  },
-  "options" : {
-    "minimumXcodeGenVersion" : "2.18.0",
-    "generateEmptyDirectories" : true,
-    "bundleIdPrefix" : "com.rjps.libuf",
-    "xcodeVersion" : "12.0.1",
-    "groupSortPosition" : "top",
-    "deploymentTarget" : "11.0",
-    "findCarthageFrameworks" : false
-  },
-  "include" : [
-    "_FrameworkTemplate.yml",
-    "_SwiftLint.yml"
-  ],
-  "aggregateTargets" : {
-    "SwiftLint" : {
-      "buildScripts" : [
-        {
-          "name" : "SwiftLint",
-          "shell" : "\/bin\/bash",
-          "script" : "${SRCROOT}\/Scripts\/swiftlint.sh\n"
-        }
-      ]
-    }
-  },
-  "targetTemplates" : {
-    "Framework" : {
-      "deploymentTarget" : "13.0",
-      "platform" : "iOS",
-      "type" : "framework"
-    }
-  },
-  "settings" : {
-    "base" : {
-      "SWIFT_VERSION" : 5.2999999999999998,
-      "IPHONEOS_DEPLOYMENT_TARGET" : 13,
-      "ENABLE_BITCODE" : false
-    },
-    "configs" : {
-      "Release" : {
-        "ENABLE_BITCODE" : true
-      }
-    }
-  },
   "targets" : {
-    "RJSLibUFALayouts" : {
-      "sources" : [
-        {
-          "path" : "..\/Sources\/RJSLibUFALayouts"
-        }
-      ],
-      "templates" : [
-        "Framework"
-      ],
-      "dependencies" : [
-        {
-          "target" : "RJSLibUFBase",
-          "link" : false
-        }
-      ]
-    },
-    "RJSLibUFAppThemes" : {
-      "dependencies" : [
-        {
-          "target" : "RJSLibUFBase",
-          "link" : false
-        }
-      ],
-      "templates" : [
-        "Framework"
-      ],
-      "sources" : [
-        {
-          "path" : "..\/Sources\/RJSLibUFAppThemes"
-        }
-      ]
-    },
     "RJSLibUFBase" : {
+      "templates" : [
+        "Framework"
+      ],
       "sources" : [
         {
           "path" : "..\/Sources\/RJSLibUFBase"
         }
-      ],
-      "templates" : [
-        "Framework"
       ]
     },
-    "SampleApp" : {
-      "settings" : {
-        "base" : {
-          "MARKETING_VERSION" : 1
-        }
-      },
-      "type" : "application",
-      "deploymentTarget" : 13,
-      "sources" : [
-        {
-          "path" : "..\/SampleApp"
-        }
-      ],
-      "platform" : "iOS",
-      "dependencies" : [
-        {
-          "target" : "RJSLibUFBase",
-          "link" : true
-        },
-        {
-          "target" : "RJSLibUFAppThemes",
-          "link" : true
-        },
-        {
-          "link" : true,
-          "target" : "RJSLibUFNetworking"
-        },
-        {
-          "link" : true,
-          "target" : "RJSLibUFALayouts"
-        },
-        {
-          "link" : true,
-          "target" : "RJSLibUFStorage"
-        }
-      ]
-    },
-    "RJSLibUFNetworking" : {
+    "RJSLibUFStorage" : {
       "dependencies" : [
         {
           "link" : false,
           "target" : "RJSLibUFBase"
         }
       ],
+      "templates" : [
+        "Framework"
+      ],
+      "sources" : [
+        {
+          "path" : "..\/Sources\/RJSLibUFStorage"
+        }
+      ]
+    },
+    "RJSLibUFNetworking" : {
       "templates" : [
         "Framework"
       ],
@@ -140,35 +34,115 @@
         {
           "path" : "..\/Sources\/RJSLibUFNetworking"
         }
+      ],
+      "dependencies" : [
+        {
+          "link" : false,
+          "target" : "RJSLibUFBase"
+        }
+      ]
+    },
+    "RJSLibUFAppThemes" : {
+      "sources" : [
+        {
+          "path" : "..\/Sources\/RJSLibUFAppThemes"
+        }
+      ],
+      "templates" : [
+        "Framework"
+      ],
+      "dependencies" : [
+        {
+          "target" : "RJSLibUFBase",
+          "link" : false
+        }
+      ]
+    },
+    "SampleApp" : {
+      "settings" : {
+        "base" : {
+          "MARKETING_VERSION" : 1,
+          "OTHER_SWIFT_FLAGS" : "-DINCLUDE_VIP_TEMPLATE"
+        }
+      },
+      "platform" : "iOS",
+      "deploymentTarget" : 13,
+      "dependencies" : [
+        {
+          "link" : true,
+          "target" : "RJSLibUFBase"
+        },
+        {
+          "link" : true,
+          "target" : "RJSLibUFAppThemes"
+        },
+        {
+          "target" : "RJSLibUFNetworking",
+          "link" : true
+        },
+        {
+          "target" : "RJSLibUFStorage",
+          "link" : true
+        },
+        {
+          "link" : true,
+          "target" : "RJSLibUFBaseVIP"
+        },
+        {
+          "link" : true,
+          "target" : "RJSLibUFDesignables"
+        }
+      ],
+      "type" : "application",
+      "sources" : [
+        {
+          "path" : "..\/SampleApp"
+        }
+      ]
+    },
+    "RJSLibUFDesignables" : {
+      "dependencies" : [
+        {
+          "target" : "RJSLibUFBase",
+          "link" : false
+        },
+        {
+          "link" : false,
+          "target" : "RJSLibUFAppThemes"
+        }
+      ],
+      "templates" : [
+        "Framework"
+      ],
+      "sources" : [
+        {
+          "path" : "..\/Sources\/RJSLibUFDesignables"
+        }
       ]
     },
     "MyLibraryTests" : {
-      "type" : "bundle.unit-test",
       "scheme" : {
 
       },
+      "platform" : "iOS",
+      "type" : "bundle.unit-test",
       "sources" : [
         {
           "path" : "..\/Tests\/RJSLibUFTests"
         }
       ],
-      "platform" : "iOS",
       "dependencies" : [
         {
           "link" : false,
           "target" : "SampleApp"
         },
         {
-          "link" : false,
-          "target" : "RJSLibUFBase"
+          "target" : "RJSLibUFBase",
+          "link" : false
         },
         {
-          "link" : false,
-          "target" : "RJSLibUFNetworking"
-        },
-        {
-          "link" : false,
-          "target" : "RJSLibUFALayouts"
+          "target" : "RJSLibUFNetworking",
+          "link" : false
         },
         {
           "link" : false,
@@ -176,16 +150,20 @@
         }
       ]
     },
-    "RJSLibUFStorage" : {
+    "RJSLibUFBaseVIP" : {
       "dependencies" : [
         {
           "target" : "RJSLibUFBase",
           "link" : false
+        },
+        {
+          "link" : false,
+          "target" : "RJSLibUFDesignables"
         }
       ],
       "sources" : [
         {
-          "path" : "..\/Sources\/RJSLibUFStorage"
+          "path" : "..\/Sources\/RJSLibUFBaseVIP"
         }
       ],
       "templates" : [
@@ -193,5 +171,52 @@
       ]
     }
   },
-  "name" : "RJSLibUF"
+  "name" : "RJSLibUF",
+  "aggregateTargets" : {
+    "SwiftLint" : {
+      "buildScripts" : [
+        {
+          "shell" : "\/bin\/bash",
+          "script" : "${SRCROOT}\/Scripts\/swiftlint.sh\n",
+          "name" : "SwiftLint"
+        }
+      ]
+    }
+  },
+  "configs" : {
+    "Debug" : "debug",
+    "Release" : "release"
+  },
+  "targetTemplates" : {
+    "Framework" : {
+      "type" : "framework",
+      "platform" : "iOS",
+      "deploymentTarget" : "13.0"
+    }
+  },
+  "options" : {
+    "generateEmptyDirectories" : true,
+    "bundleIdPrefix" : "com.rjps.libuf",
+    "groupSortPosition" : "top",
+    "findCarthageFrameworks" : false,
+    "minimumXcodeGenVersion" : "2.18.0",
+    "xcodeVersion" : "12.0.1",
+    "deploymentTarget" : "11.0"
+  },
+  "include" : [
+    "_FrameworkTemplate.yml",
+    "_SwiftLint.yml"
+  ],
+  "settings" : {
+    "base" : {
+      "ENABLE_BITCODE" : false,
+      "SWIFT_VERSION" : 5.2999999999999998,
+      "IPHONEOS_DEPLOYMENT_TARGET" : 13
+    },
+    "configs" : {
+      "Release" : {
+        "ENABLE_BITCODE" : true
+      }
+    }
+  }
 }

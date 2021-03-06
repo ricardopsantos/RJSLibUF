@@ -9,51 +9,49 @@ import UIKit
 
 public extension RJSLib {
     
-    struct UIKitFactory {
+    struct UIFactory {
         private init() {}
         
-        public static func label(baseView: UIView? = nil,
-                                 title: String="",
+        public static func label(title: String="",
                                  style: UILabel.RJSLibUFLayoutStyle,
                                  tag: Int=0) -> UILabel {
             let some = UILabel()
             some.text = title
             some.numberOfLines = 0
             some.tag = tag
-            baseView?.addSubview(some)
+            some.layoutStyle = style
             return some
         }
 
-        public static func button(baseView: UIView? = nil,
-                                  title: String="",
+        public static func button(title: String="",
                                   style: UIButton.RJSLibUFLayoutStyle,
                                   tag: Int=0) -> UIButton {
             let some = UIButton()
             some.tag = tag
             some.setTitleForAllStates(title)
-            baseView?.addSubview(some)
+            some.layoutStyle = style
             return some
         }
 
-        public static func imageView(baseView: UIView? = nil,
-                                     image: UIImage?=nil,
-                                     tag: Int=0) -> UIImageView {
+        public static func imageView(image: UIImage? = nil,
+                                     urlString: String? = nil,
+                                     tag: Int = 0) -> UIImageView {
             let some = UIImageView()
             some.tag = tag
             if image != nil {
                 some.image = image
             }
-            baseView?.addSubview(some)
+            if urlString != nil, let url = URL(string: urlString!) {
+                some.load(url: url)
+            }
             return some
         }
 
-        public static func tableView(baseView: UIView? = nil,
-                                     tag: Int=0,
+        public static func tableView(tag: Int=0,
                                      cellIdentifier: String = RJS_Constants.cellIdentifier) -> UITableView {
             let some = UITableView()
             some.tag = tag
             some.register(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
-            baseView?.addSubview(some)
             return some
         }
         

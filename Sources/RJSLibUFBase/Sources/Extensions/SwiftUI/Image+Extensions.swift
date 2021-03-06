@@ -11,15 +11,15 @@ import UIKit
 
 public extension Image {
     func contentMode(_ mode: ContentMode) -> some View {
-        self.resizable().aspectRatio(contentMode: mode)
+        resizable().aspectRatio(contentMode: mode)
     }
 
     func tint(color: Color) -> some View {
-        self.foregroundColor(color)
+        foregroundColor(color)
     }
 
     func resize(width: CGFloat, height: CGFloat, alignment: Alignment = .center) -> some View {
-        self.resizable().frame(width: width, height: height, alignment: alignment)
+        resizable().frame(width: width, height: height, alignment: alignment)
     }
 }
 
@@ -79,48 +79,48 @@ public extension ImageNames {
     }
 
     var image: Image {
-        Image(systemName: "\(self.rawValue)")
+        Image(systemName: "\(rawValue)")
     }
 
     var imageFill: Image {
-        Image(systemName: "\(self.rawValue).fill")
+        Image(systemName: "\(rawValue).fill")
     }
 
     var imageBadge: Image {
-        Image(systemName: "\(self.rawValue).badge")
+        Image(systemName: "\(rawValue).badge")
     }
 
     var imageSquarePath: Image {
-        Image(systemName: "\(self.rawValue).squarepath")
+        Image(systemName: "\(rawValue).squarepath")
     }
 
     var imageSquare: Image {
-        Image(systemName: "\(self.rawValue).square")
+        Image(systemName: "\(rawValue).square")
     }
 
     var imageCircle: Image {
-        Image(systemName: "\(self.rawValue).circle")
+        Image(systemName: "\(rawValue).circle")
     }
 
     var imageRight: Image {
-        Image(systemName: "\(self.rawValue).right")
+        Image(systemName: "\(rawValue).right")
     }
 
     var imageLeft: Image {
-        Image(systemName: "\(self.rawValue).left")
+        Image(systemName: "\(rawValue).left")
     }
 
     var imageUp: Image {
-        Image(systemName: "\(self.rawValue).up")
+        Image(systemName: "\(rawValue).up")
     }
 
     var imageDown: Image {
-        Image(systemName: "\(self.rawValue).down")
+        Image(systemName: "\(rawValue).down")
     }
 }
 
 /*
-public extension RJSLib.Designables.SwiftUI {
+public extension RJS_Designables_SwiftUI {
     struct ImageNamesView: View {
         public init() { }
         @State var imageNames = ImageNames.allCases

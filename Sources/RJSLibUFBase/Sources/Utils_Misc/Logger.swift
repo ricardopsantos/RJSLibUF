@@ -36,7 +36,7 @@ extension RJSLib {
         }
 
         public static func debug(_ message: Any?,
-                                 tag: Logger.Tag = .client,
+                                 tag: Logger.Tag,
                                  function: String = #function, file: String = #file, line: Int = #line) {
             guard message != nil else { return }
             let prefix = "# Type : Debug @ \(tag.prettyName)"

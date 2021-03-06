@@ -7,8 +7,9 @@
 //
 
 import Foundation
+import Combine
 
-public extension Result {
+public extension Swift.Result {
     var isSuccess: Bool {
         switch self {
         case .success: return true

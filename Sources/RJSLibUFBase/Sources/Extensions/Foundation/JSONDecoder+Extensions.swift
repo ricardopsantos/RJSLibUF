@@ -8,25 +8,42 @@
 
 import Foundation
 
-public enum JSONDecoderErrors: Error {
-    case decodeFail
-}
-
-public func perfectMapperThrows<A: Encodable, B: Decodable>(inValue: A, outValue: B.Type) throws -> B {
-    do {
-        let encoded = try JSONEncoder().encode(inValue)
-        let decoded = try JSONDecoder().decodeFriendly(((B).self), from: encoded)
-        return decoded
-    } catch {
-        throw error
+public extension RJSLib {
+    
+    struct WrapEncodable<T: Encodable>: Encodable {
+        public let t: T
+        public init(t: T) {
+            self.t = t
+        }
     }
-}
 
-public func perfectMapper<A: Encodable, B: Decodable>(inValue: A, outValue: B.Type) -> B? {
-    do {
-        return try perfectMapperThrows(inValue: inValue, outValue: outValue)
-    } catch {
-        return nil
+    struct WrapDecodable<T: Decodable>: Decodable {
+        public let t: T
+        public init(t: T) {
+            self.t = t
+        }
+    }
+    
+    enum JSONDecoderErrors: Error {
+        case decodeFail
+    }
+    
+    func perfectMapperThrows<A: Encodable, B: Decodable>(inValue: A, outValue: B.Type) throws -> B {
+        do {
+            let encoded = try JSONEncoder().encode(inValue)
+            let decoded = try JSONDecoder().decodeFriendly(((B).self), from: encoded)
+            return decoded
+        } catch {
+            throw error
+        }
+    }
+
+    func perfectMapper<A: Encodable, B: Decodable>(inValue: A, outValue: B.Type) -> B? {
+        do {
+            return try perfectMapperThrows(inValue: inValue, outValue: outValue)
+        } catch {
+            return nil
+        }
     }
 }
 
@@ -105,24 +122,10 @@ public extension JSONDecoder {
             if let value = try? JSONDecoder().decodeFriendly(type, from: data) {
                 return value
             }
-            if let value = try? JSONDecoder().decodeFriendly(WrapDecodable<T>.self, from: data) {
+            if let value = try? JSONDecoder().decodeFriendly(RJSLib.WrapDecodable<T>.self, from: data) {
                 return value.t
             }
-            throw JSONDecoderErrors.decodeFail
+            throw RJSLib.JSONDecoderErrors.decodeFail
         }
-    }
-}
-
-public struct WrapEncodable<T: Encodable>: Encodable {
-    public let t: T
-    public init(t: T) {
-        self.t = t
-    }
-}
-
-public struct WrapDecodable<T: Decodable>: Decodable {
-    public let t: T
-    public init(t: T) {
-        self.t = t
     }
 }

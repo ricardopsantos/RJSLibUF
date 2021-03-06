@@ -5,38 +5,47 @@
 
 import Foundation
 
-public extension String {
-    var nsString: NSString { return self as NSString }
-    var nsRange: NSRange { return NSRange(location: 0, length: length) }
-    var detectDates: [Date]? { return try? NSDataDetector(types: NSTextCheckingResult.CheckingType.date.rawValue).matches(in: self, range: nsRange).compactMap { $0.date } }
-}
-
 public extension RJSLibExtension where Target == Date {
-    var seconds: Int { self.target.seconds }
-    var minutes: Int { self.target.minutes }
-    var hours: Int { self.target.hours }
-    var day: Int { self.target.day}
-    var month: Int { self.target.month}
-    var year: Int { self.target.year }
-    func add(seconds: Int) -> Date { self.target.add(seconds: seconds) }
-    func add(minutes: Int) -> Date { self.target.add(minutes: minutes) }
-    func add(hours: Int) -> Date { self.target.add(hours: hours) }
-    func add(days: Int) -> Date { self.target.add(days: days) }
-    func add(month: Int) -> Date { self.target.add(month: month) }
+    var seconds: Int { target.seconds }
+    var minutes: Int { target.minutes }
+    var hours: Int { target.hours }
+    var day: Int { target.day}
+    var month: Int { target.month}
+    var year: Int { target.year }
+    func add(seconds: Int) -> Date { target.add(seconds: seconds) }
+    func add(minutes: Int) -> Date { target.add(minutes: minutes) }
+    func add(hours: Int) -> Date { target.add(hours: hours) }
+    func add(days: Int) -> Date { target.add(days: days) }
+    func add(month: Int) -> Date { target.add(month: month) }
     static func with(_ dateToParse: String, dateFormat: String="yyyy-MM-dd'T'HH:mm:ssXXX") -> Date? {
         Date.with(dateToParse, dateFormat: dateFormat)
     }
     func isBiggerThan(_ dateToCompare: Date) -> Bool {
-        self.target.isBiggerThan(dateToCompare)
+        target.isBiggerThan(dateToCompare)
     }
     func timeAgoString(resources: [String]=["sec ago", "min ago", "hrs ago", "days ago", "weeks ago"]) -> String {
-        self.target.timeAgoString(resources: resources)
+        target.timeAgoString(resources: resources)
     }
 }
 
 public extension Date {
 
     static var utcNow: Date { return Date() }
+    
+    init(string: String) {
+        self = Date.with(string) ?? Date.utcNow
+    }
+    
+    static func with(_ dateToParse: String, dateFormat: String="yyyy-MM-dd'T'HH:mm:ssXXX") -> Date? {
+        guard dateToParse != "null" else { return nil }
+        guard dateToParse != "nil" else { return nil }
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
+        dateFormatter.dateFormat = dateFormat // http://userguide.icu-project.org/formatparse/datetime
+        if let result = dateFormatter.date(from: dateToParse) { return result }
+        if let date = dateToParse.dates?.first { return date }
+        return nil
+    }
     
     var seconds: Int { return ((Calendar.current as NSCalendar).components([.second], from: self).second)! }
     var minutes: Int { return ((Calendar.current as NSCalendar).components([.minute], from: self).minute)! }
@@ -45,25 +54,14 @@ public extension Date {
     var month: Int { return ((Calendar.current as NSCalendar).components([.month], from: self).month)! }
     var year: Int { return ((Calendar.current as NSCalendar).components([.year], from: self).year)! }
     
-    func add(days: Int) -> Date { return self.add(hours: days * 24) }
-    func add(hours: Int) -> Date { return self.add(minutes: hours * 60) }
-    func add(minutes: Int) -> Date { return self.add(seconds: minutes * 60) }
-    func add(seconds: Int) -> Date { return self.addingTimeInterval(Double(seconds)) }
-    func add(month: Int) -> Date { return NSCalendar.current.date(byAdding: .month, value: month, to: self)! }
-    
-    static func with(_ dateToParse: String, dateFormat: String="yyyy-MM-dd'T'HH:mm:ssXXX") -> Date? {
-        guard !dateToParse.contains(subString: "null") else { return nil }
-        guard !dateToParse.contains(subString: "nil") else { return nil }
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
-        dateFormatter.dateFormat = dateFormat // http://userguide.icu-project.org/formatparse/datetime
-        if let result = dateFormatter.date(from: dateToParse) { return result }
-        if let date = dateToParse.detectDates?.first { return date }
-        return Date.utcNow
-    }
+    func add(days: Int) -> Date { add(hours: days * 24) }
+    func add(hours: Int) -> Date { add(minutes: hours * 60) }
+    func add(minutes: Int) -> Date { add(seconds: minutes * 60) }
+    func add(seconds: Int) -> Date { addingTimeInterval(Double(seconds)) }
+    func add(month: Int) -> Date { NSCalendar.current.date(byAdding: .month, value: month, to: self)! }
     
     func isBiggerThan(_ dateToCompare: Date) -> Bool {
-        return self.compare(dateToCompare) == ComparisonResult.orderedDescending
+        compare(dateToCompare) == ComparisonResult.orderedDescending
     }
     
     func timeAgoString(resources: [String]=["sec ago", "min ago", "hrs ago", "days ago", "weeks ago"]) -> String {

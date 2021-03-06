@@ -22,8 +22,8 @@ func libraryWith(name: String) -> PackageDescription.Product {
 let spmBaseTargetName = "RJSLibUFBase"
 let spmBaseDependency = dependencyWith(name: spmBaseTargetName)
 
-let spmALayoutsTargetName = "RJSLibUFALayouts"
-let spmALayoutsDependency = dependencyWith(name: spmALayoutsTargetName)
+let spmBaseVIPTargetName = "RJSLibUFBaseVIP"
+let spmBaseVIPDependency = dependencyWith(name: spmBaseTargetName)
 
 let spmThemesTargetName = "RJSLibUFAppThemes"
 let spmThemesDependency = dependencyWith(name: spmThemesTargetName)
@@ -34,7 +34,10 @@ let spmNetworkingDependency = dependencyWith(name: spmNetworkingTargetName)
 let spmStorageTargetName = "RJSLibUFStorage"
 let spmStorageDependency = dependencyWith(name: spmStorageTargetName)
 
-let testTargetDependencies = [spmALayoutsDependency, spmThemesDependency, spmNetworkingDependency, spmStorageDependency]
+let spmDesignablesTargetName = "RJSLibUFDesignables"
+let spmDesignablesDependency = dependencyWith(name: spmDesignablesTargetName)
+
+let testTargetDependencies = [spmThemesDependency, spmNetworkingDependency, spmStorageDependency, spmBaseVIPDependency, spmDesignablesDependency]
 let plistFile = "Info.plist"
 
 let swiftSettings:[SwiftSetting] = [
@@ -49,16 +52,18 @@ let package = Package(
     platforms: [.iOS(.v13), .macOS(.v10_15)],
     products: [
         libraryWith(name: spmBaseTargetName),
-        libraryWith(name: spmALayoutsTargetName),
+        libraryWith(name: spmBaseVIPTargetName),
         libraryWith(name: spmNetworkingTargetName),
         libraryWith(name: spmThemesTargetName),
-        libraryWith(name: spmStorageTargetName)
+        libraryWith(name: spmStorageTargetName),
+        libraryWith(name: spmDesignablesTargetName)
     ],
     targets: [
         .target(name: spmBaseTargetName, exclude: [plistFile]),
-        .target(name: spmALayoutsTargetName, dependencies: [spmBaseDependency], exclude: [plistFile]),
         .target(name: spmThemesTargetName, dependencies: [spmBaseDependency], exclude: [plistFile]),
         .target(name: spmNetworkingTargetName, dependencies: [spmBaseDependency], exclude: [plistFile]),
+        .target(name: spmBaseVIPTargetName, dependencies: [spmBaseDependency, spmDesignablesDependency], exclude: [plistFile]),
+        .target(name: spmDesignablesTargetName, dependencies: [spmBaseDependency, spmThemesDependency], exclude: [plistFile]),
         .target(name: spmStorageTargetName, dependencies: [spmBaseDependency], exclude: [plistFile], resources: [.process("RJPSLibDataModel.xcdatamodel")]),
         .testTarget(name: "RJSLibUFTests", dependencies: testTargetDependencies),
     ]
