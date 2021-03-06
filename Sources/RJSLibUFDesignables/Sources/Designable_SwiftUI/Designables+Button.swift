@@ -2,6 +2,7 @@
 //  Created by Ricardo Santos on 02/03/2021.
 //
 
+#if !os(macOS)
 import Foundation
 import SwiftUI
 import UIKit
@@ -46,3 +47,4 @@ struct Previews_CustomButton {
         }
     }
 }
+#endif

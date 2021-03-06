@@ -4,7 +4,6 @@ import class Foundation.Bundle
 // swiftlint:disable all
 
 @testable import RJSLibUFBase
-@testable import RJSLibUFBaseVIP
 @testable import RJSLibUFStorage
 @testable import RJSLibUFAppThemes
 @testable import RJSLibUFNetworking

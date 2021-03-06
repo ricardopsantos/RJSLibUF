@@ -2,6 +2,7 @@
 //  Created by Ricardo Santos on 02/03/2021.
 //
 
+#if !os(macOS)
 import Foundation
 import SwiftUI
 //
@@ -31,3 +32,4 @@ struct Previews_ErrorView1 {
         }
     }
 }
+#endif
