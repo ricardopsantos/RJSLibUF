@@ -26,10 +26,12 @@ public extension RJS_Designables_SwiftUI {
 //
 
 struct Previews_ErrorView1 {
+    #if canImport(SwiftUI) && DEBUG
     struct Preview1: PreviewProvider {
         public static var previews: some View {
             RJS_Designables_SwiftUI.ErrorView1(message: "message").buildPreviews()
         }
     }
+    #endif
 }
 #endif

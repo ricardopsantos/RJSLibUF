@@ -58,6 +58,7 @@ public extension RJS_Designables_SwiftUI {
 //
 
 struct Previews_ListItem {
+    #if canImport(SwiftUI) && DEBUG
     struct Preview1: PreviewProvider {
         public static var previews: some View {
             List {
@@ -67,6 +68,7 @@ struct Previews_ListItem {
             }.buildPreviews()
         }
     }
+    #endif
 }
 
 #endif

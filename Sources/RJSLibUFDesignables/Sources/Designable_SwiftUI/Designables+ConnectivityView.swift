@@ -42,10 +42,12 @@ public extension RJS_Designables_SwiftUI {
 //
 
 struct Previews_ConnectivityView {
+    #if canImport(SwiftUI) && DEBUG
     struct Preview1: PreviewProvider {
         public static var previews: some View {
             RJS_Designables_SwiftUI.ConnectivityView(subTitle: "subtitle").buildPreviews()
         }
     }
+    #endif
 }
 #endif

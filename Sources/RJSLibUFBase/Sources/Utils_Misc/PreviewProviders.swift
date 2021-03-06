@@ -64,7 +64,7 @@ fileprivate extension RJSLib {
 }
 
 struct Previews_ViewControllerRepresentable {
-    
+    #if canImport(SwiftUI) && DEBUG
     // ViewController Preview
     struct PreviewProvider_1: PreviewProvider {
         static var previews: some View {
@@ -78,5 +78,6 @@ struct Previews_ViewControllerRepresentable {
             RJS_ViewRepresentable { RJSLib.SampleViewController().view }
         }
     }
+    #endif
 }
 #endif

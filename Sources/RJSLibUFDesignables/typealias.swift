@@ -21,3 +21,7 @@ import RJSLibUFBase
 public typealias RJS_Designables           = RJSLib.Designables
 public typealias RJS_Designables_UIKit     = RJSLib.Designables.UIKit
 public typealias RJS_Designables_SwiftUI   = RJSLib.Designables.SwiftUI
+
+#if !os(macOS)
+public typealias RJS_UIFactory             = RJSLib.Designables.UIFactory
+#endif

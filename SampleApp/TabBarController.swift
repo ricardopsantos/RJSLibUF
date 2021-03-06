@@ -32,8 +32,8 @@ class TabBarController: UITabBarController {
                 
         let v1 = createControllers(tabName: "Combine", vc: VC.TestingCombine(viewStateBinder1: viewStateBinder1, viewStateBinder2: viewStateBinder2))
         let v2 = createControllers(tabName: "SwiftUI", vc: VC.SwiftUIAndUIKitVC())
-        let v3 = createControllers(tabName: "Desinables", vc: VC.DesinablesVC())
-        let v4 = createControllers(tabName: "DLanguage", vc: VC.DesignLanguageVC())
+        let v3 = createControllers(tabName: "Desinables", vc: VC.RJSLibUFDesignablesVC())
+        let v4 = createControllers(tabName: "DLanguage", vc: VC.RJSLibUFAppThemesVC())
         let v5 = createControllers(tabName: "Testing", vc: VC.TestingMiscVC())
         var vcs = [v1, v2, v3, v4, v5]
         #if INCLUDE_VIP_TEMPLATE

@@ -104,10 +104,12 @@ public extension RJS_Designables_SwiftUI {
 //
 
 struct Previews_PassCodeView {
+    #if canImport(SwiftUI) && DEBUG
     struct Preview1: PreviewProvider {
         public static var previews: some View {
             RJS_Designables_SwiftUI.PassCodeView(secret: "1234").buildPreviews()
         }
     }
+    #endif
 }
 #endif

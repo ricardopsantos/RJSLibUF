@@ -211,6 +211,7 @@ public extension RJS_Designables_SwiftUI {
 // MARK: - Previews
 //
 
+#if canImport(SwiftUI) && DEBUG
 struct Previews_LoadingAnimations {
     struct Preview1: PreviewProvider {
         public static var previews: some View {
@@ -281,6 +282,6 @@ struct Previews_LoadingAnimations {
             })
         }
     }
-
 }
+#endif
 #endif

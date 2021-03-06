@@ -11,10 +11,11 @@ import RJSLibUFStorage
 import RJSLibUFNetworking
 import RJSLibUFAppThemes
 import RJSLibUFBaseVIP
+import RJSLibUFDesignables
 
 #if canImport(SwiftUI) && DEBUG
 import SwiftUI
-struct TestingMiscVC_ViewControllerPreviews: PreviewProvider {
+struct TestingMiscVC_PreviewProvider: PreviewProvider {
     static var previews: some View { RJS_ViewControllerRepresentable { VC.TestingMiscVC() }.buildPreviews() }
 }
 #endif

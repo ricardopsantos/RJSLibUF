@@ -24,6 +24,18 @@ public extension UIStackView {
     var view: UIView { (self as UIView) }
 }
 
+public extension UIStackView {
+    static func verticalStackView() -> UIStackView {
+        let some = UIStackView()
+        some.isLayoutMarginsRelativeArrangement = true
+        some.axis         = .vertical
+        some.distribution = .fill
+        some.spacing      = 4
+        some.alignment    = .fill
+        return some
+    }
+}
+
 fileprivate extension UIStackView {
     
     func addSeparator(color: UIColor = UIColor.darkGray, size: CGFloat = 3) {

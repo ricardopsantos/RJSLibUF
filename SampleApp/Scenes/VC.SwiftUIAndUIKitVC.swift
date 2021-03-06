@@ -15,7 +15,7 @@ import RJSLibUFDesignables
 
 #if canImport(SwiftUI) && DEBUG
 import SwiftUI
-struct SwiftUIAndUIKitVC_ViewControllerPreviews: PreviewProvider {
+struct SwiftUIAndUIKitVC_PreviewProvider: PreviewProvider {
     static var previews: some View { RJS_ViewControllerRepresentable { VC.SwiftUIAndUIKitVC() }.buildPreviews() }
 }
 #endif
