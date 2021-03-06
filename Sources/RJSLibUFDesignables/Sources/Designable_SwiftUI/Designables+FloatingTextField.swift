@@ -31,12 +31,14 @@ public extension RJS_Designables_SwiftUI {
 //
 
 struct Previews_FloatingTextField {
+    #if canImport(SwiftUI) && DEBUG
     struct Preview1: PreviewProvider {
         @State static var valuesFloatingTextField = ""
         public static var previews: some View {
             RJS_Designables_SwiftUI.FloatingTextField(title: "First Name", text: $valuesFloatingTextField).buildPreviews()
         }
     }
+    #endif
 }
 
 #endif

@@ -109,7 +109,7 @@ private struct UIKitViewToSwiftUIView: UIViewRepresentable {
 }
 
 struct Previews_TestViews {
-    
+    #if canImport(SwiftUI) && DEBUG
     struct Preview1: PreviewProvider {
         static var previews: some View {
             UIKitViewToSwiftUIView()
@@ -121,5 +121,6 @@ struct Previews_TestViews {
             RJS_Designables.TestView2.SwiftUI().buildPreviews()
         }
     }
+    #endif
 }
 #endif

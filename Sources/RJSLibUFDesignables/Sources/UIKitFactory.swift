@@ -4,10 +4,12 @@
 
 #if !os(macOS)
 import Foundation
-import RJSLibUFBase
 import UIKit
+//
+import RJSLibUFBase
+import RJSLibUFAppThemes
 
-public extension RJSLib {
+public extension RJSLib.Designables {
     
     struct UIFactory {
         private init() {}
@@ -58,9 +60,9 @@ public extension RJSLib {
         public static var stackViewDefaultLayoutMargins: UIEdgeInsets {
             let topAndBottomSpacing: CGFloat = 0 // Is [ZERO] because [stackViewDefaultSpacing] will do the vertical space (if vertical stackview)
             return UIEdgeInsets(top: topAndBottomSpacing,
-                                left: SizesNames.size_4.cgFloat,
+                                left: RJS_SizeNames.size_4.cgFloat,
                                 bottom: topAndBottomSpacing,
-                                right: SizesNames.size_4.cgFloat)
+                                right: RJS_SizeNames.size_4.cgFloat)
         }
         
         public static func scrollView() -> UIScrollView {
@@ -73,7 +75,7 @@ public extension RJSLib {
         }
         
         public static func stackView(arrangedSubviews: [UIView] = [],
-                                     spacing: CGFloat = SizesNames.size_2.cgFloat, // Space between subviews
+                                     spacing: CGFloat = RJS_SizeNames.size_2.cgFloat, // Space between subviews
                                      axis: NSLayoutConstraint.Axis,
                                      distribution: UIStackView.Distribution = .fill,
                                      alignment: UIStackView.Alignment = .fill,
