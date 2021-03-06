@@ -122,7 +122,9 @@ targets:
     dependencies:
       - target: RJSLibUFBase
         link: false
-        
+      - target: RJSLibUFDesignables
+        link: false
+
   RJSLibUFAppThemes:
     templates: 
       - Framework

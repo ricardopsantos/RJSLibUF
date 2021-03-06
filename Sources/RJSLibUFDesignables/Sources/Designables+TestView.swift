@@ -7,8 +7,10 @@ import Foundation
 import SwiftUI
 import Combine
 import UIKit
+//
+import RJSLibUFBase
 
-public extension RJSLib.Designables {
+public extension RJS_Designables {
     struct TestView1 {
         private init() {}
         
@@ -58,7 +60,9 @@ public extension RJSLib.Designables {
                 VStack {
                     VStack {
                         Text("Button 1").font(.caption)
-                        RJS_Designables_SwiftUI.CustomButton(title: "Title", action: { print("!action!") })
+                        RJS_Designables_SwiftUI.CustomButton(title: "Title", action: {
+                                                                RJS_Logs.info("!action!", tag: .rjsLib)
+                                                                })
                         Divider()
                     }
                     VStack {
@@ -74,7 +78,7 @@ public extension RJSLib.Designables {
                     }
                     VStack {
                         Text("Error view").font(.caption)
-                        RJS_Designables_SwiftUI.ErrorView(message: "Some error")
+                        RJS_Designables_SwiftUI.ErrorView1(message: "Some error")
                         Divider()
                     }
                     Text("ListItem (3 types)").font(.caption)
@@ -97,7 +101,7 @@ public extension RJSLib.Designables {
 
 private struct UIKitViewToSwiftUIView: UIViewRepresentable {
     func makeUIView(context: Context) -> UIView {
-        return RJSLib.Designables.TestView1.uiView
+        return RJS_Designables.TestView1.uiView
     }
     func updateUIView(_ view: UIView, context: Context) {
         //do your logic here
@@ -114,7 +118,7 @@ struct Previews_TestViews {
     
     struct Preview3: PreviewProvider {
         static var previews: some View {
-            RJSLib.Designables.TestView2.SwiftUI().buildPreviews()
+            RJS_Designables.TestView2.SwiftUI().buildPreviews()
         }
     }
 }

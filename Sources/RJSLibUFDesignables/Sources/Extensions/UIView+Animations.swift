@@ -6,6 +6,8 @@
 #if !os(macOS)
 import Foundation
 import UIKit
+//
+import RJSLibUFBase
 
 public extension RJSLibExtension where Target == UIView {
     func startLoading(style: RJS_Designables_UIKit.ActivityIndicator.Style) { target.startLoading(style: style) }

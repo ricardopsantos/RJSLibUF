@@ -11,8 +11,6 @@ import UIKit
 //
 import RJSLibUFBase
 
-import UIKit
-
 //
 // MARK: - Preview
 //

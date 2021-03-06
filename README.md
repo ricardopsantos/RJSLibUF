@@ -65,19 +65,25 @@ RJSLibUFStorage includes storage helpers for:
 
 ### RJSLibUFBaseVIP
 
-_To do..._
+VIP utils
 
 ---
 
 ### RJSLibUFAppThemes
 
-_To do..._
+Multiple design languages and color schemes.
+
+---
+
+### RJSLibUFDesignables
+
+Util UI components/designables.
 
 ---
 
 ### RJSLibUFNetworking
 
-_To do..._
+WEB API clients.
 
 ---
 

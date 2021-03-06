@@ -5,8 +5,10 @@
 #if !os(macOS)
 import Foundation
 import SwiftUI
+//
+import RJSLibUFBase
 
-public extension RJSLib.Designables.SwiftUI {
+public extension RJS_Designables_SwiftUI {
     struct TitleAndValue: View {
         private let title: String
         private let value: String
@@ -23,4 +25,13 @@ public extension RJSLib.Designables.SwiftUI {
         }
     }
 }
+
+struct Previews_TitleAndValue {
+    struct TitleAndValue: PreviewProvider {
+        public static var previews: some View {
+            RJS_Designables_SwiftUI.TitleAndValue(title: "title", value: "value").buildPreviews()
+        }
+    }
+}
+
 #endif

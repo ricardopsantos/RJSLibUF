@@ -20,6 +20,7 @@
 		A5E96E4677F567A292A72133 /* VC.SwiftUIAndUIKitVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D36EBAA2936244A4A8BAE0 /* VC.SwiftUIAndUIKitVC.swift */; };
 		CF1096D5FEB3FBDBF8D83ACF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61114974D64A09F7845CC853 /* Assets.xcassets */; };
 		D6152E607ABC2B2EE4DAF396 /* RJSLibUFNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = 3D1D0262D4472B54E7A7C375 /* RJSLibUFNetworking */; };
+		D8CDCDE732A116B5A4DD02BA /* RJSLibUFDesignables in Frameworks */ = {isa = PBXBuildFile; productRef = 225AE44B3249C0BC46625971 /* RJSLibUFDesignables */; };
 		D926C7DA86D4C257CD1D79E1 /* VC.DesinablesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E70222962DE23BF3672934 /* VC.DesinablesVC.swift */; };
 		E85C0AFB306AAA3805F083A3 /* VC.DesignLanguageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CEF2C4D8B74900545E66FEB /* VC.DesignLanguageVC.swift */; };
 /* End PBXBuildFile section */
@@ -50,6 +51,7 @@
 				77430AC3388E7E07667973D0 /* RJSLibUFAppThemes in Frameworks */,
 				834F491E24679DA510E3B9B6 /* RJSLibUFBaseVIP in Frameworks */,
 				80E64973758DD3990100696A /* RJSLibUFStorage in Frameworks */,
+				D8CDCDE732A116B5A4DD02BA /* RJSLibUFDesignables in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,6 +131,7 @@
 				31826F13AD56498558E5A644 /* RJSLibUFAppThemes */,
 				FA84E002D14A1FD4F201E6F9 /* RJSLibUFBaseVIP */,
 				A831A6545DE57D4304CDCEDF /* RJSLibUFStorage */,
+				225AE44B3249C0BC46625971 /* RJSLibUFDesignables */,
 			);
 			productName = SampleApp;
 			productReference = D2EC2B87F18CEF52A4E5B936 /* SampleApp.app */;
@@ -402,6 +405,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B82E728FCE96035145B29FD9 /* XCRemoteSwiftPackageReference "RJSLibUF" */;
 			productName = RJSLibUFBase;
+		};
+		225AE44B3249C0BC46625971 /* RJSLibUFDesignables */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B82E728FCE96035145B29FD9 /* XCRemoteSwiftPackageReference "RJSLibUF" */;
+			productName = RJSLibUFDesignables;
 		};
 		31826F13AD56498558E5A644 /* RJSLibUFAppThemes */ = {
 			isa = XCSwiftPackageProductDependency;

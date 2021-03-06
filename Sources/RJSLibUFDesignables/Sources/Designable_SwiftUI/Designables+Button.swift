@@ -4,13 +4,16 @@
 
 import Foundation
 import SwiftUI
+import UIKit
+//
+import RJSLibUFAppThemes
 
-public extension RJSLib.Designables.SwiftUI {
+public extension RJS_Designables_SwiftUI {
     struct CustomButton: View {
         private let title: String
         private var subTitle: String = ""
         private var action = { }
-        public init(title: String, subTitle: String = "", action: @escaping () -> Void = { } ) {
+        public init(title: String, subTitle: String = "", action: @escaping () -> Void = { }) {
             self.title = title
             self.subTitle = subTitle
             self.action = action
@@ -24,10 +27,22 @@ public extension RJSLib.Designables.SwiftUI {
                     Text(subTitle)
                 }
             })
-                //.foregroundColor(UIColor.Button.Default.foregroundColor)
-                .padding()
-                //.background(UIColor.Button.Default.background)
-                .cornerRadius(5)
+            .foregroundColor(Color(UIColor.Pack3.onPrimary.color))
+            .padding()
+            .background(Color(UIColor.Pack3.primary.color))
+            .cornerRadius(5)
+        }
+    }
+}
+
+//
+// MARK: - Previews
+//
+
+struct Previews_CustomButton {
+    struct Preview1: PreviewProvider {
+        public static var previews: some View {
+            RJS_Designables_SwiftUI.CustomButton(title: "title").buildPreviews()
         }
     }
 }

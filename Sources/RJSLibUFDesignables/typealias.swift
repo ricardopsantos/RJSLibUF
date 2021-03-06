@@ -3,7 +3,6 @@
 //  Copyright © 2020 Ricardo P Santos. All rights reserved.
 //
 
-#if !os(macOS)
 import Foundation
 import UIKit
 import RJSLibUFBase
@@ -17,5 +16,8 @@ import RJSLibUFBase
 // the external apps using the alias wont need to change anything because the alias stays the same
 //
 
+// MARK: - Designables
 
-#endif
+public typealias RJS_Designables           = RJSLib.Designables
+public typealias RJS_Designables_UIKit     = RJSLib.Designables.UIKit
+public typealias RJS_Designables_SwiftUI   = RJSLib.Designables.SwiftUI

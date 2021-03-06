@@ -7,8 +7,10 @@
 import Foundation
 import UIKit
 import Combine
+//
+import RJSLibUFBase
 
-public extension RJSLib.Designables.UIKit {
+public extension RJS_Designables_UIKit {
     
     class SearchBar: UISearchBar, UISearchBarDelegate {
         
@@ -60,7 +62,7 @@ public extension RJSLib.Designables.UIKit {
     }
 }
 
-public extension RJSLib.Designables.UIKit {
+public extension RJS_Designables_UIKit {
     
     class SearchTextField: UISearchTextField {
                 

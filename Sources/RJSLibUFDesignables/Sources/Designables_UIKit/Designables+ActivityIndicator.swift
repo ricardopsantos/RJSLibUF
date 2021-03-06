@@ -6,8 +6,10 @@
 #if !os(macOS)
 import UIKit
 import SwiftUI
+//
+import RJSLibUFBase
 
-public extension RJSLib.Designables.UIKit {
+public extension RJS_Designables_UIKit {
         
     class ActivityIndicator {
         

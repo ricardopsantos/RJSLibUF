@@ -33,13 +33,6 @@ public typealias RJS_ViewRepresentable           = RJSLib.ViewRepresentable
 public typealias RJS_NetworMonitor = RJSLib.NetworkUtils.NetworMonitor
 public typealias RJS_Reachability  = RJSLib.NetworkUtils.Reachability
 
-// MARK: - Designables
-
-#if !os(macOS)
-public typealias RJS_Designables_UIKit     = RJSLib.Designables.UIKit
-public typealias RJS_Designables_SwiftUI   = RJSLib.Designables.SwiftUI
-#endif
-
 // MARK: - Cool Stuff
 
 public typealias RJS_OperationQueueManager = RJSLib.OperationQueues.OperationQueueManager

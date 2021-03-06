@@ -11,6 +11,7 @@ import RJSLibUFStorage
 import RJSLibUFNetworking
 import RJSLibUFAppThemes
 import RJSLibUFBaseVIP
+import RJSLibUFDesignables
 
 #if canImport(SwiftUI) && DEBUG
 import SwiftUI
@@ -30,22 +31,15 @@ extension VC {
         }()
         
         private lazy var buttonPrimary: RJS_Designables_UIKit.ButtonPrimary = {
-            RJS_Designables_UIKit.ButtonPrimary(text: "ButtonPrimary",
-                                                           font: font,
-                                                           fontColor: fontColor,
-                                                           buttonColor: primary)
+            RJS_Designables_UIKit.ButtonPrimary(title: "ButtonPrimary")
         }()
         
-        private lazy var buttonSecondary1: RJS_Designables_UIKit.ButtonSecondary = {
-            RJS_Designables_UIKit.ButtonSecondary(text: "buttonSecondary1",
-                                                             font: font,
-                                                             color: primary)
+        private lazy var buttonSecondary: RJS_Designables_UIKit.ButtonSecondary = {
+            RJS_Designables_UIKit.ButtonSecondary(title: "buttonSecondary")
         }()
         
-        private lazy var buttonSecondary2: RJS_Designables_UIKit.ButtonSecondary = {
-            RJS_Designables_UIKit.ButtonSecondary(text: "buttonSecondary2",
-                                                             font: font,
-                                                             color: RJS_ColorPack3.danger.color)
+        private lazy var buttonSecondaryDestructive: RJS_Designables_UIKit.ButtonSecondaryDestructive = {
+            RJS_Designables_UIKit.ButtonSecondaryDestructive(title: "ButtonSecondaryDestructive")
         }()
         
         private lazy var buttonText: RJS_Designables_UIKit.ButtonText = {
@@ -72,8 +66,8 @@ extension VC {
             
             let views = [searchBar,
                          buttonPrimary,
-                         buttonSecondary1,
-                         buttonSecondary2,
+                         buttonSecondary,
+                         buttonSecondaryDestructive,
                          buttonIcon,
                          buttonActiontText,
                          buttonText]

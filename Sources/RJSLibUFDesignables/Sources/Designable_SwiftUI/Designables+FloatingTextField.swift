@@ -7,7 +7,7 @@ import Foundation
 import SwiftUI
 import UIKit
 
-public extension RJSLib.Designables.SwiftUI {
+public extension RJS_Designables_SwiftUI {
     // https://medium.com/swlh/simpler-better-floating-label-textfields-in-swiftui-24f7d06da8b8
     struct FloatingTextField: View {
         let title: String
@@ -25,4 +25,18 @@ public extension RJSLib.Designables.SwiftUI {
         }
     }
 }
+
+//
+// MARK: - Previews
+//
+
+struct Previews_FloatingTextField {
+    struct Preview1: PreviewProvider {
+        @State static var valuesFloatingTextField = ""
+        public static var previews: some View {
+            RJS_Designables_SwiftUI.FloatingTextField(title: "First Name", text: $valuesFloatingTextField).buildPreviews()
+        }
+    }
+}
+
 #endif

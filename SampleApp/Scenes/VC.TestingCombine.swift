@@ -12,6 +12,7 @@ import RJSLibUFStorage
 import RJSLibUFNetworking
 import RJSLibUFAppThemes
 import RJSLibUFBaseVIP
+import RJSLibUFDesignables
 
 #if canImport(SwiftUI) && DEBUG
 import SwiftUI
@@ -53,7 +54,7 @@ extension VC {
         private lazy var searchBar: RJS_Designables_UIKit.SearchTextField = { RJS_Designables_UIKit.SearchTextField() }()
 
         private func btnWith(text: String) -> RJS_Designables_UIKit.ButtonPrimary {
-            RJS_Designables_UIKit.ButtonPrimary(text: text, font: font, fontColor: fontColor, buttonColor: primary)
+            RJS_Designables_UIKit.ButtonPrimary(title: text)
         }
         
         private lazy var btn1_multipleSubscrivers: RJS_Designables_UIKit.ButtonPrimary = {

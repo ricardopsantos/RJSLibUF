@@ -6,6 +6,8 @@ import Foundation
 import UIKit
 //
 import RJSLibUFBase
+import RJSLibUFDesignables
+
 extension RJSLib {
     open class BasePresenterVIP: BasePresenterVIPProtocol {
         public init () {}

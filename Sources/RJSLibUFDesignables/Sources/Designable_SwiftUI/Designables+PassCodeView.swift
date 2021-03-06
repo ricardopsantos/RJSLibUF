@@ -11,7 +11,7 @@ import Combine
 
 //swiftlint:disable multiple_closures_with_trailing_closure
 
-public extension RJSLib.Designables.SwiftUI {
+public extension RJS_Designables_SwiftUI {
     struct PassCodeView: View {
         private let size: CGFloat = 70
         let secret: String

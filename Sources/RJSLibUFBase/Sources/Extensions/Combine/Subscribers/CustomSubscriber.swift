@@ -25,12 +25,12 @@ extension RJSLib {
         }
         
         func receive(_ input: T) -> Subscribers.Demand {
-            print("Received: \(input)", T.self)
+            RJS_Logs.info("Received: \(input), \( T.self)", tag: .rjsLib)
             return .none
         }
         
         func receive(completion: Subscribers.Completion<Never>) {
-            print("Completion event:", completion)
+            RJS_Logs.info("Completion event: \(completion)", tag: .rjsLib)
         }
     }
 }
@@ -48,12 +48,12 @@ extension RJSLib {
         
         // Because we’ve already specified the .unlimited number of values, we return .none so the max limit remains the same.
         func receive(_ input: String) -> Subscribers.Demand {
-            print("Received: \(input), Transformed into: \(input.uppercased())")
+            RJS_Logs.info("Received: \(input) Transformed into: \(input.uppercased())", tag: .rjsLib)
             return .none
         }
         
         func receive(completion: Subscribers.Completion<Never>) {
-            print("Completion event:", completion)
+            RJS_Logs.info("Completion event: \(completion)", tag: .rjsLib)
         }
     }
 }

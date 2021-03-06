@@ -58,3 +58,8 @@ targets:
       - package: RJSLibUF
         product: RJSLibUFStorage
         link: true
+      - package: RJSLibUF
+        product: RJSLibUFDesignables
+        link: true
+        
+            

@@ -11,6 +11,7 @@ import RJSLibUFStorage
 import RJSLibUFNetworking
 import RJSLibUFAppThemes
 import RJSLibUFBaseVIP
+import RJSLibUFDesignables
 
 #if canImport(SwiftUI) && DEBUG
 import SwiftUI
@@ -62,19 +63,19 @@ extension VC {
             
             button1.touchUpInsidePublisher.sink { [weak self] _ in
                 guard let self = self else { return }
-                let swiftUIView = RJSLib.Designables.TestView1.SwiftUI(delegate1: self.delegate1, delegate2: self.delegate2)
+                let swiftUIView = RJS_Designables.TestView1.SwiftUI(delegate1: self.delegate1, delegate2: self.delegate2)
                 swiftUIView.loadInside(view: self.containerView2)
             }.store(in: cancelBag)
             
             button2.touchUpInsidePublisher.sink { [weak self] _ in
                 guard let self = self else { return }
-                let swiftUIView = RJSLib.Designables.TestView1.SwiftUI(delegate1: self.delegate1, delegate2: self.delegate2)
+                let swiftUIView = RJS_Designables.TestView1.SwiftUI(delegate1: self.delegate1, delegate2: self.delegate2)
                 swiftUIView.loadInside(viewController: self)
             }.store(in: cancelBag)
             
             button3.touchUpInsidePublisher.sink { [weak self] _ in
                 guard let self = self else { return }
-                let swiftUIView = RJSLib.Designables.TestView1.SwiftUI(delegate1: self.delegate1, delegate2: self.delegate2)
+                let swiftUIView = RJS_Designables.TestView1.SwiftUI(delegate1: self.delegate1, delegate2: self.delegate2)
                 self.presentSwiftUIView(swiftUIView, animated: true)
             }.store(in: cancelBag)
         }

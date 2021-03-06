@@ -4,18 +4,23 @@
 #if !os(macOS)
 import Foundation
 import SwiftUI
+//
+import RJSLibUFBase
+import RJSLibUFAppThemes
 
-public extension RJSLib.Designables.SwiftUI {
+public extension RJS_Designables_SwiftUI {
     struct ConnectivityView: View {
         @State var connectivity = ""
+        let title: String
         let subTitle: String
-        public init(subTitle: String) {
+        public init(title: String = "No internet connection", subTitle: String) {
+            self.title = title
             self.subTitle = subTitle
         }
         public var body: some View {
             Text(connectivity)
                 .font(.caption)
-                .foregroundColor(Color.red)
+                .foregroundColor(Color(UIColor.Pack3.danger.color))
                 .multilineTextAlignment(.center)
                 .onAppear {
                     RJS_NetworMonitor.shared.monitor.pathUpdateHandler = { path in
@@ -23,7 +28,7 @@ public extension RJSLib.Designables.SwiftUI {
                             if path.status == .satisfied {
                                 connectivity = ""
                             } else {
-                                connectivity = "No internet connection\n(\(self.subTitle))"
+                                connectivity = "\(subTitle)\n\n\(subTitle)"
                             }
                         }
                     }

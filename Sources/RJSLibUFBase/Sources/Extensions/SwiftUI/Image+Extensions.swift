@@ -120,7 +120,7 @@ public extension ImageNames {
 }
 
 /*
-public extension RJSLib.Designables.SwiftUI {
+public extension RJS_Designables_SwiftUI {
     struct ImageNamesView: View {
         public init() { }
         @State var imageNames = ImageNames.allCases
