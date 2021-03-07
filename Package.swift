@@ -37,7 +37,7 @@ let spmStorageDependency = dependencyWith(name: spmStorageTargetName)
 let spmDesignablesTargetName = "RJSLibUFDesignables"
 let spmDesignablesDependency = dependencyWith(name: spmDesignablesTargetName)
 
-let testTargetDependencies = [spmThemesDependency, spmNetworkingDependency, spmStorageDependency, spmBaseVIPDependency, spmDesignablesDependency]
+let testTargetDependencies = [spmBaseDependency, spmThemesDependency, spmNetworkingDependency, spmStorageDependency, spmBaseVIPDependency, spmDesignablesDependency]
 let plistFile = "Info.plist"
 
 let swiftSettings:[SwiftSetting] = [

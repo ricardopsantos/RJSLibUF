@@ -48,8 +48,8 @@ extension VC {
             view.backgroundColor = RJS_ColorPack3.background.color
             view.layouts.addAndSetup(scrollView: scrollView, with: stackViewVLevel1, usingSafeArea: true)
     
-            stackViewVLevel1.rjs.add(label)
-            stackViewVLevel1.rjs.add(btnDynamicMemberLookup)
+            stackViewVLevel1.rjs.add(uiview: label)
+            stackViewVLevel1.rjs.add(uiview: btnDynamicMemberLookup)
 
             _ = view.rjs.allSubviews.filter { $0.isKind(of: UIButton.self) }.map { $0.layouts.height(44) }
         }

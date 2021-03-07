@@ -35,7 +35,9 @@ struct Previews_FloatingTextField {
     struct Preview1: PreviewProvider {
         @State static var valuesFloatingTextField = ""
         public static var previews: some View {
-            RJS_Designables_SwiftUI.FloatingTextField(title: "First Name", text: $valuesFloatingTextField).buildPreviews()
+            RJS_Designables_SwiftUI.ViewWithAnyViews(
+                RJSLibUFDesignables_Preview.allCasesSwiftUI("\(RJS_Designables_SwiftUI.FloatingTextField.self)")
+            ).buildPreviews()
         }
     }
     #endif

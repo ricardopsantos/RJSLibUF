@@ -7,6 +7,7 @@ import Foundation
 import SwiftUI
 //
 import RJSLibUFBase
+import RJSLibUFAppThemes
 
 public extension RJS_Designables_SwiftUI {
     struct ErrorView1: View {
@@ -15,7 +16,7 @@ public extension RJS_Designables_SwiftUI {
             self.message = message
         }
         public var body: some View {
-            Text(message).font(.caption).foregroundColor(Color(UIColor.Pack3.danger.color)).multilineTextAlignment(.center)
+            Text(message).font(.caption).foregroundColor(Color(RJS_ColorPack3.danger.color)).multilineTextAlignment(.center)
             //Text(message).font(.body).bold().foregroundColor(Color(UIColor.label))
         }
     }
@@ -29,7 +30,9 @@ struct Previews_ErrorView1 {
     #if canImport(SwiftUI) && DEBUG
     struct Preview1: PreviewProvider {
         public static var previews: some View {
-            RJS_Designables_SwiftUI.ErrorView1(message: "message").buildPreviews()
+            RJS_Designables_SwiftUI.ViewWithAnyViews(
+                RJSLibUFDesignables_Preview.allCasesSwiftUI("\(RJS_Designables_SwiftUI.ErrorView1.self)")
+            ).buildPreviews()
         }
     }
     #endif

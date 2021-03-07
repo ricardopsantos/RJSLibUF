@@ -28,9 +28,11 @@ public extension RJS_Designables_SwiftUI {
 
 struct Previews_TitleAndValue {
     #if canImport(SwiftUI) && DEBUG
-    struct TitleAndValue: PreviewProvider {
+    struct Preview1: PreviewProvider {
         public static var previews: some View {
-            RJS_Designables_SwiftUI.TitleAndValue(title: "title", value: "value").buildPreviews()
+            RJS_Designables_SwiftUI.ViewWithAnyViews(
+                RJSLibUFDesignables_Preview.allCasesSwiftUI("\(RJS_Designables_SwiftUI.TitleAndValue.self)")
+            ).buildPreviews()
         }
     }
     #endif

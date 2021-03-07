@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		034D336C4C5F5C4A0EEFB8E3 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93030C52174E8510BF8FCCA /* TabBarController.swift */; };
+		20C983979F0E2B2E18E21DAE /* VC.SwiftUITestingMiscVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABA0CAAA708677A48C764E0 /* VC.SwiftUITestingMiscVC.swift */; };
 		23256E12DC96481BE777A7C3 /* VC.RJSLibUFDesignablesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E600E1C639C903F1B6EA0D2E /* VC.RJSLibUFDesignablesVC.swift */; };
 		3EDE17B59810354D00498610 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C850013A6A17CB2B156A7F5F /* AppDelegate.swift */; };
 		453FF2FF75CFAB7033773F8A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8607B8BF1EA049CFF6B04D2A /* LaunchScreen.storyboard */; };
@@ -27,6 +28,7 @@
 
 /* Begin PBXFileReference section */
 		1222A38CA1D980ABA250E196 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		3ABA0CAAA708677A48C764E0 /* VC.SwiftUITestingMiscVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC.SwiftUITestingMiscVC.swift; sourceTree = "<group>"; };
 		3B91CB910E050843DE439451 /* SampleApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SampleApp.entitlements; sourceTree = "<group>"; };
 		4FF1ABCA47BB3ADF4E3C48BA /* VC.TestingCombine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC.TestingCombine.swift; sourceTree = "<group>"; };
 		54B452CD4C754EEACDA5C304 /* Auxiliar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auxiliar.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 				88FFC81A98495F86495716C5 /* VC.RJSLibUFAppThemesVC.swift */,
 				E600E1C639C903F1B6EA0D2E /* VC.RJSLibUFDesignablesVC.swift */,
 				E3D36EBAA2936244A4A8BAE0 /* VC.SwiftUIAndUIKitVC.swift */,
+				3ABA0CAAA708677A48C764E0 /* VC.SwiftUITestingMiscVC.swift */,
 				4FF1ABCA47BB3ADF4E3C48BA /* VC.TestingCombine.swift */,
 				C0D10762AA6B4D65CE11B7D3 /* VC.TestingMiscVC.swift */,
 			);
@@ -190,6 +193,7 @@
 				E14CF5D7EEE6515B7D129628 /* VC.RJSLibUFAppThemesVC.swift in Sources */,
 				23256E12DC96481BE777A7C3 /* VC.RJSLibUFDesignablesVC.swift in Sources */,
 				A5E96E4677F567A292A72133 /* VC.SwiftUIAndUIKitVC.swift in Sources */,
+				20C983979F0E2B2E18E21DAE /* VC.SwiftUITestingMiscVC.swift in Sources */,
 				4EDC941E2408A6DA0DB1EA8D /* VC.TestingCombine.swift in Sources */,
 				776ED8E4A574B3EFE8623406 /* VC.TestingMiscVC.swift in Sources */,
 			);

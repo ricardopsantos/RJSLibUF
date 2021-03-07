@@ -85,8 +85,8 @@ extension V {
         public override func prepareLayoutCreateHierarchy() {
             addSubview(scrollView)
             scrollView.addSubview(stackViewVLevel1)
-            stackViewVLevel1.rjs.addSub(view: lblTitle)
-            stackViewVLevel1.rjs.addSub(view: btnSample1)
+            stackViewVLevel1.rjs.add(uiview: lblTitle)
+            stackViewVLevel1.rjs.add(uiview: btnSample1)
         }
 
         // This function is called automatically by super BaseGenericViewVIP

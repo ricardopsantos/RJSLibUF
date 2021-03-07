@@ -8,6 +8,7 @@ import SwiftUI
 import RJSLibUFBase
 
 public extension RJS_Designables_SwiftUI {
+    
     struct ListItem: View {
         private let imageName: String
         private let imageColor1: Color?
@@ -50,22 +51,16 @@ public extension RJS_Designables_SwiftUI {
                 }
             }
         }
-    }
+    }    
 }
-
-//
-// MARK: - Previews
-//
 
 struct Previews_ListItem {
     #if canImport(SwiftUI) && DEBUG
     struct Preview1: PreviewProvider {
         public static var previews: some View {
-            List {
-                RJS_Designables_SwiftUI.ListItem(title: "Option1 title", value: "Option1 value")
-                RJS_Designables_SwiftUI.ListItem(title: "Option2 title", value: "Option2 value", imageName: "paperplane.fill", imageColor1: Color.red, imageColor2: Color.blue)
-                RJS_Designables_SwiftUI.ListItem(title: "Option3 title", value: "Option3 value", imageName: "paperplane.fill")
-            }.buildPreviews()
+            RJS_Designables_SwiftUI.ViewWithAnyViews(
+                RJSLibUFDesignables_Preview.allCasesSwiftUI("\(RJS_Designables_SwiftUI.ListItem.self)")
+            ).buildPreviews()
         }
     }
     #endif

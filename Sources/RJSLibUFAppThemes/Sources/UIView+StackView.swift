@@ -20,10 +20,10 @@ public extension UIStackView {
         separator1.backgroundColor = RJS_ColorPack3.primary.rawValue
         separator2.backgroundColor = UIColor.clear
         separator2.backgroundColor = UIColor.clear
-        rjs.add(separator3)
-        rjs.add(separator1)
-        rjs.add(label)
-        rjs.add(separator2)
+        rjs.add(uiview: separator3)
+        rjs.add(uiview: separator1)
+        rjs.add(uiview: label)
+        rjs.add(uiview: separator2)
         separator1.heightAnchor.constraint(equalToConstant: 3).isActive = true
         separator2.heightAnchor.constraint(equalToConstant: 10).isActive = true
         separator3.heightAnchor.constraint(equalToConstant: 10).isActive = true
@@ -38,7 +38,7 @@ public extension UIStackView {
             let reportView = UIButton()
             reportView.layoutStyle = some
             reportView.setTitleForAllStates("\(some)")
-            rjs.add(reportView)
+            rjs.add(uiview: reportView)
             reportView.heightAnchor.constraint(equalToConstant: UIButton.buttonDefaultSize.height).isActive = true
         }
         
@@ -48,46 +48,46 @@ public extension UIStackView {
             let reportView = UILabel()
             reportView.text = " \(some)"
             reportView.layoutStyle = some
-            rjs.add(reportView)
+            rjs.add(uiview: reportView)
             reportView.heightAnchor.constraint(equalToConstant: UIButton.buttonDefaultSize.height).isActive = true
             let reportView2 = UILabel()
             reportView2.text = "\(some)"
             reportView2.layoutStyle = some
             reportView2.backgroundColor = UIColor.black.withAlphaComponent(0.1)
-            rjs.add(reportView2)
+            rjs.add(uiview: reportView2)
             reportView2.heightAnchor.constraint(equalToConstant: UIButton.buttonDefaultSize.height*0.66).isActive = true
         }
         
         addSectionForDevScreen(title: "RJS_Fonts: \(RJS_Fonts.Styles.allCases.count) values")
         RJS_Fonts.Styles.allCases.forEach { (some) in
-            rjs.add(some.reportView)
+            rjs.add(uiview: some.reportView)
         }
         
         addSectionForDevScreen(title: "RJS_Color.Pack3: \(RJS_ColorPack3.allCases.count) values")
         RJS_ColorPack3.allCases.forEach { (some) in
             let reportView = some.reportView
-            rjs.add(some.reportView)
+            rjs.add(uiview: some.reportView)
             reportView.heightAnchor.constraint(equalToConstant: 40).isActive = true
         }
         
         addSectionForDevScreen(title: "RJS_ColorAppleDefault: \(RJS_ColorAppleDefault.allCases.count) values")
         RJS_ColorAppleDefault.allCases.forEach { (some) in
             let reportView = some.reportView
-            rjs.add(some.reportView)
+            rjs.add(uiview: some.reportView)
             reportView.heightAnchor.constraint(equalToConstant: 40).isActive = true
         }
         
         addSectionForDevScreen(title: "RJS_Color.Pack1: \(RJS_ColorPack1.allCases.count) values")
         RJS_ColorPack1.allCases.forEach { (some) in
             let reportView = some.reportView
-            rjs.add(some.reportView)
+            rjs.add(uiview: some.reportView)
             reportView.heightAnchor.constraint(equalToConstant: 40).isActive = true
         }
         
         addSectionForDevScreen(title: "RJS_Color.Pack2: \(RJS_ColorPack2.allCases.count) values")
         RJS_ColorPack2.allCases.forEach { (some) in
             let reportView = some.reportView
-            rjs.add(some.reportView)
+            rjs.add(uiview: some.reportView)
             reportView.heightAnchor.constraint(equalToConstant: 40).isActive = true
         }
         
@@ -96,7 +96,7 @@ public extension UIStackView {
             let reportView = UILabel()
             reportView.text = "\(some) | \(some.rawValue)"
             reportView.font = RJS_Fonts.Styles.paragraphSmall.rawValue
-            rjs.add(reportView)
+            rjs.add(uiview: reportView)
         }
     }
 }

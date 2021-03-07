@@ -35,7 +35,6 @@ public extension UILabel {
             self?.textColor       = RJS_AppBrand1.error
             self?.font            = RJS_Fonts.Styles.captionSmall.rawValue
         }
-
         switch style {
         case .notApplied         : _ = 1
         case .navigationBarTitle : navigationBarTitle()

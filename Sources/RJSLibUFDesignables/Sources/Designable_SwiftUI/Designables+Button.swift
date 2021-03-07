@@ -28,9 +28,9 @@ public extension RJS_Designables_SwiftUI {
                     Text(subTitle)
                 }
             })
-            .foregroundColor(Color(UIColor.Pack3.onPrimary.color))
+            .foregroundColor(Color(RJS_ColorPack3.onPrimary.color))
             .padding()
-            .background(Color(UIColor.Pack3.primary.color))
+            .background(Color(RJS_ColorPack3.primary.color))
             .cornerRadius(5)
         }
     }
@@ -44,7 +44,9 @@ struct Previews_CustomButton {
     #if canImport(SwiftUI) && DEBUG
     struct Preview1: PreviewProvider {
         public static var previews: some View {
-            RJS_Designables_SwiftUI.CustomButton(title: "title").buildPreviews()
+            RJS_Designables_SwiftUI.ViewWithAnyViews(
+                RJSLibUFDesignables_Preview.allCasesSwiftUI("\(RJS_Designables_SwiftUI.CustomButton.self)")
+            ).buildPreviews()
         }
     }
     #endif

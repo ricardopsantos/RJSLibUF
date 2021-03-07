@@ -414,15 +414,6 @@ public extension UIColor {
 
     }
 }
-
-/** Utils protocol to build screens showing all color Packs
-Sample Usage
- ```
- UIColor.Pack1.allCases.forEach { (some) in
-     stackView.add(reportView)
- }
- ```
- */
  
 public protocol ReportableColorProtocol {
     var name: String { get }

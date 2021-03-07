@@ -45,8 +45,9 @@ public extension RJSLib {
     }
 }
 
-fileprivate extension RJSLib {
-    class SampleViewController: UIViewController {
+struct Previews_ViewControllerRepresentable {
+    
+    fileprivate class SampleVC: UIViewController {
         override func viewDidLoad() {
             super.viewDidLoad()
             let image = UIImage(systemName: "play.circle.fill")
@@ -61,21 +62,19 @@ fileprivate extension RJSLib {
             ])
         }
     }
-}
-
-struct Previews_ViewControllerRepresentable {
+    
     #if canImport(SwiftUI) && DEBUG
     // ViewController Preview
     struct PreviewProvider_1: PreviewProvider {
         static var previews: some View {
-            RJS_ViewControllerRepresentable { RJSLib.SampleViewController() }.buildPreviews()
+            RJS_ViewControllerRepresentable { SampleVC() }
         }
     }
     
     // View Preview
     struct PreviewProvider_2: PreviewProvider {
         static var previews: some View {
-            RJS_ViewRepresentable { RJSLib.SampleViewController().view }
+            RJS_ViewRepresentable { SampleVC().view }
         }
     }
     #endif

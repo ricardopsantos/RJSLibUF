@@ -70,7 +70,6 @@ public extension Array where Element: Hashable {
     }
 }
 
-
 public extension RangeReplaceableCollection where Iterator.Element: Equatable {
     // Remove first collection element that is equal to the given `object`:
     mutating func removeObject(_ object: Iterator.Element) {
