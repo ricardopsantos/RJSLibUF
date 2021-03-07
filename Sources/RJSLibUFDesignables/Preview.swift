@@ -9,7 +9,7 @@ import SwiftUI
 import RJSLibUFBase
 import RJSLibUFAppThemes
 
-public extension RJSLibUFDesignables {
+public extension RJSLibUFDesignables_Preview {
     static var allCasesUIKit: [UIView] {
         let image = UIImage(color: RJS_ColorPack3.primary.color, size: CGSize(width: 30, height: 30))!
         return [
@@ -33,7 +33,7 @@ public extension RJSLibUFDesignables {
      }
 }
 
-public struct RJSLibUFDesignables {
+public struct RJSLibUFDesignables_Preview {
     open class PreviewVC: UIViewController {
         public init() { super.init(nibName:nil, bundle:nil) }
         public required init?(coder: NSCoder) { super.init(coder: coder) }
@@ -43,7 +43,7 @@ public struct RJSLibUFDesignables {
             super.loadView()
             view.backgroundColor = UIColor.Pack3.background.color
             view.layouts.addAndSetup(scrollView: scrollView, with: stackViewVLevel1, usingSafeArea: true)
-            RJSLibUFDesignables.allCasesUIKit.forEach { (some) in
+            RJSLibUFDesignables_Preview.allCasesUIKit.forEach { (some) in
                 stackViewVLevel1.rjs.add(some)
                 stackViewVLevel1.rjs.addSeparator(color: UIColor.Pack3.primary.color)
             }

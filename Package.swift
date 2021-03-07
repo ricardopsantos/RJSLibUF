@@ -62,8 +62,8 @@ let package = Package(
         .target(name: spmBaseTargetName, exclude: [plistFile]),
         .target(name: spmThemesTargetName, dependencies: [spmBaseDependency], exclude: [plistFile]),
         .target(name: spmNetworkingTargetName, dependencies: [spmBaseDependency], exclude: [plistFile]),
-        .target(name: spmBaseVIPTargetName, dependencies: [spmBaseDependency, spmDesignablesDependency], exclude: [plistFile]),
-        .target(name: spmDesignablesTargetName, dependencies: [spmBaseDependency, spmThemesDependency], exclude: [plistFile]),
+        .target(name: spmBaseVIPTargetName, dependencies: [spmDesignablesDependency, spmBaseDependency], exclude: [plistFile]),
+        .target(name: spmDesignablesTargetName, dependencies: [spmThemesDependency, spmBaseDependency], exclude: [plistFile]),
         .target(name: spmStorageTargetName, dependencies: [spmBaseDependency], exclude: [plistFile], resources: [.process("RJPSLibDataModel.xcdatamodel")]),
         .testTarget(name: "RJSLibUFTests", dependencies: testTargetDependencies),
     ]

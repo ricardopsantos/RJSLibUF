@@ -9,7 +9,7 @@ import SwiftUI
 //
 import RJSLibUFBase
 
-public struct RJSLibUFAppThemes {
+public struct RJSLibUFAppThemes_Preview {
     open class PreviewVC: UIViewController {
         public init() { super.init(nibName:nil, bundle:nil) }
         public required init?(coder: NSCoder) { super.init(coder: coder) }

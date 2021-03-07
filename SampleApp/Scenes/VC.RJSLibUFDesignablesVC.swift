@@ -23,7 +23,7 @@ struct RJSLibUFDesignablesVC_PreviewProvider: PreviewProvider {
 #endif
 
 extension VC {
-    class RJSLibUFDesignablesVC: RJSLibUFDesignables.PreviewVC {
+    class RJSLibUFDesignablesVC: RJSLibUFDesignables_Preview.PreviewVC {
 
     }
 }
