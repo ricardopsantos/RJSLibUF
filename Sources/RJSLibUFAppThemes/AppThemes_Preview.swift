@@ -9,15 +9,15 @@ import SwiftUI
 //
 import RJSLibUFBase
 
-public struct RJSLibUFAppThemes {
+public struct RJSLibUFAppThemes_Preview {
     open class PreviewVC: UIViewController {
-        public init() { super.init(nibName:nil, bundle:nil) }
+        public init() { super.init(nibName: nil, bundle: nil) }
         public required init?(coder: NSCoder) { super.init(coder: coder) }
         private lazy var scrollView: UIScrollView = { UIScrollView() }()
-        private lazy var stackViewVLevel1: UIStackView = { UIStackView.verticalStackView() }()
+        private lazy var stackViewVLevel1: UIStackView = { UIStackView.defaultVerticalStackView() }()
         public override func loadView() {
             super.loadView()
-            view.backgroundColor = UIColor.Pack3.background.color
+            view.backgroundColor = RJS_ColorPack3.background.color
             view.layouts.addAndSetup(scrollView: scrollView, with: stackViewVLevel1, usingSafeArea: true)
             stackViewVLevel1.loadWithDesignLanguageReport()
         }
@@ -31,4 +31,3 @@ public struct RJSLibUFAppThemes {
     #endif
 }
 #endif
-

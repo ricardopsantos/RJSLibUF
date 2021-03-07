@@ -95,15 +95,15 @@ extension VC {
         override func prepareLayout() {
             view.backgroundColor = RJS_ColorPack3.background.color
             view.layouts.addAndSetup(scrollView: scrollView, with: stackViewVLevel1, usingSafeArea: true)
-            stackViewVLevel1.rjs.add(searchBar)
-            stackViewVLevel1.rjs.add(label)
-            stackViewVLevel1.rjs.add(switchPublisher)
-            stackViewVLevel1.rjs.add(btn1_multipleSubscrivers)
-            stackViewVLevel1.rjs.add(btn2_subjectToPublisher)
-            stackViewVLevel1.rjs.add(btn3_currentValueSubject)
-            stackViewVLevel1.rjs.add(btn4_handleEvents)
-            stackViewVLevel1.rjs.add(btn5_combineLatest)
-            stackViewVLevel1.rjs.add(btn6_observedObject)
+            stackViewVLevel1.rjs.add(uiview: searchBar)
+            stackViewVLevel1.rjs.add(uiview: label)
+            stackViewVLevel1.rjs.add(uiview: switchPublisher)
+            stackViewVLevel1.rjs.add(uiview: btn1_multipleSubscrivers)
+            stackViewVLevel1.rjs.add(uiview: btn2_subjectToPublisher)
+            stackViewVLevel1.rjs.add(uiview: btn3_currentValueSubject)
+            stackViewVLevel1.rjs.add(uiview: btn4_handleEvents)
+            stackViewVLevel1.rjs.add(uiview: btn5_combineLatest)
+            stackViewVLevel1.rjs.add(uiview: btn6_observedObject)
             
             _ = view.rjs.allSubviews.filter { $0.isKind(of: UIButton.self) }.map { $0.layouts.height(44) }
             label.numberOfLines = 0

@@ -8,38 +8,15 @@ import Foundation
 import UIKit
 
 public extension RJSLibExtension where Target == UIView {
-    
     var width: CGFloat { target.width }
     var height: CGFloat { target.height }
-
     var asImage: UIImage { target.asImage }
-    
-    var printableMemoryAddress: String {
-        target.printableMemoryAddress
-    }
-    
+    var printableMemoryAddress: String { target.printableMemoryAddress }
     var viewController: UIViewController? { target.viewController }
-
     func bringToFront() { target.bringToFront() }
-
     func sendToBack() { target.sendToBack() }
-    
-    func disableUserInteractionFor(_ seconds: Double, disableAlpha: CGFloat = 0.6) {
-        target.disableUserInteractionFor(seconds, disableAlpha: disableAlpha)
-    }
-    
-    /**
-     ```
-     func textFieldDidBeginEditing(_ textField: UITextField) {
-         if let cell = textField.superview(of: TextFieldTableViewCell.self) {
-             cell.toggle(isHighlighted: true)
-         }
-     }
-     ```
-     */
-    func superview<T>(of type: T.Type) -> T? {
-        target.superview(of: type)
-    }
+    func disableUserInteractionFor(_ seconds: Double, disableAlpha: CGFloat = 0.6) { target.disableUserInteractionFor(seconds, disableAlpha: disableAlpha) }
+    func superview<T>(of type: T.Type) -> T? { target.superview(of: type) }
 }
 
 //

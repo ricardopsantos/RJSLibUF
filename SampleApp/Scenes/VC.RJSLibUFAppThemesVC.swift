@@ -20,5 +20,5 @@ struct RJSLibUFAppThemesVC_PreviewProvider: PreviewProvider {
 #endif
 
 extension VC {
-    class RJSLibUFAppThemesVC: RJSLibUFAppThemes.PreviewVC { }
+    class RJSLibUFAppThemesVC: RJSLibUFAppThemes_Preview.PreviewVC { }
 }

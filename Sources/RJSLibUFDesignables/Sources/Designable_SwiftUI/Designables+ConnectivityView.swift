@@ -20,7 +20,7 @@ public extension RJS_Designables_SwiftUI {
         public var body: some View {
             Text(connectivity)
                 .font(.caption)
-                .foregroundColor(Color(UIColor.Pack3.danger.color))
+                .foregroundColor(Color(RJS_ColorPack3.danger.color))
                 .multilineTextAlignment(.center)
                 .onAppear {
                     RJS_NetworMonitor.shared.monitor.pathUpdateHandler = { path in

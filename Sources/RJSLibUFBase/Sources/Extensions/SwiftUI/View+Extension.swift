@@ -33,7 +33,8 @@ public extension SwiftUI.View {
     func SwiftUIDebugPrint(_ vars: Any..., function: String=#function) -> some View {
         let wereWasIt = function
         for some in vars { RJS_Logs.debug("\(wereWasIt) : \(some)", tag: .rjsLib) }
-        return EmptyView()
+        //return EmptyView()
+        return self
     }
 
     func SwiftUIDebugPrintOnReload(function: String=#function) -> some View {
@@ -73,6 +74,10 @@ public extension SwiftUI.View {
         NavigationView { self }
     }
 
+    func erase() -> AnyView {
+        eraseToAnyView()
+    }
+    
     func eraseToAnyView() -> AnyView {
         AnyView(self)
     }

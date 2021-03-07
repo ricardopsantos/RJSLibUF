@@ -11,13 +11,9 @@ import UIKit
 
 public extension RJSLibExtension where Target == UIView {
     func addCorner(radius: CGFloat) { target.addCorner(radius: radius) }
-    
     func addCornerCurve(method: CALayerCornerCurve, radius: CGFloat) { target.addCornerCurve(method: method, radius: radius) }
-    
     func addBorder(width: CGFloat, color: UIColor) { target.addBorder(width: width, color: color) }
-    
     func addBlur(style: UIBlurEffect.Style = .dark) -> UIVisualEffectView { target.addBlur(style: style) }
-
     func fadeTo(_ value: CGFloat, duration: Double=RJS_Constants.defaultAnimationsTime) { target.fadeTo(value, duration: duration) }
 }
 

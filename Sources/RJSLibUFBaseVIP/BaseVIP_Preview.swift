@@ -8,7 +8,7 @@ import SwiftUI
 //
 import RJSLibUFBase
 
-public struct RJSLibUFBaseVIP {
+public struct RJSLibUFBaseVIP_Preview {
     #if canImport(SwiftUI) && DEBUG
     struct Preview: PreviewProvider {
         static var previews: some View { RJS_ViewControllerRepresentable {

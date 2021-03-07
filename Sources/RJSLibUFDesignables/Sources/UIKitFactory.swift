@@ -9,13 +9,13 @@ import UIKit
 import RJSLibUFBase
 import RJSLibUFAppThemes
 
-public extension RJSLib.Designables {
+public extension RJS_Designables {
     
     struct UIFactory {
         private init() {}
         
         public static func label(title: String="",
-                                 style: UILabel.RJSLibUFLayoutStyle,
+                                 style: RJS_LabelStyle,
                                  tag: Int=0) -> UILabel {
             let some = UILabel()
             some.text = title
@@ -26,7 +26,7 @@ public extension RJSLib.Designables {
         }
 
         public static func button(title: String="",
-                                  style: UIButton.RJSLibUFLayoutStyle,
+                                  style: RJS_ButtontStyle,
                                   tag: Int=0) -> UIButton {
             let some = UIButton()
             some.tag = tag
