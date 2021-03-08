@@ -10,6 +10,8 @@ import UIKit
 import CommonCrypto
 
 public extension RJSLibExtension where Target == String {
+    
+    var localized: String { target.localized }
     var length: Int { target.length }
     var first: String { target.first  }
     var last: String { target.last }
@@ -73,8 +75,10 @@ private extension String {
         return replacingOccurrences(of: "\n", with: "").replacingOccurrences(of: " ", with: "")
     }
 }
+
 public extension String {
     
+    var localized: String { NSLocalizedString(self, comment: "") }
     var random: String { String.random(Int.random(in: 10...100)) }
     var length: Int { count }
     var first: String { String(prefix(1)) }

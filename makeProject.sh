@@ -87,6 +87,13 @@ xcodegen dump --spec ./XcodeGen/RJSLibUF.yml --type graphviz --file ./Documents/
 xcodegen dump --spec ./XcodeGen/RJSLibUF.yml --type json     --file ./Documents/Graph.json
 echo 'done!'
 
-#cat ../Documents/Graph.json
+################################################################################
 
+echo 'periphery...'
+periphery scan
 
+################################################################################
+
+echo " ╔═══════════════════════╗"
+echo " ║ Done! You're all set! ║"
+echo " ╚═══════════════════════╝"

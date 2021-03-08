@@ -190,6 +190,8 @@
 		CF0E1B44BC74AA9328659F93 /* E.Result<T>.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B013BDF41E070C57D5C8A1 /* E.Result<T>.swift */; };
 		D721F15CD0A2521AD72E0860 /* RJSLibUFBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B0D02882E22945B619357BF /* RJSLibUFBase.framework */; };
 		D73B913F3B0BFBE0931FE4D0 /* UIImageView+Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF56FDF37196BB07FF9066A /* UIImageView+Transform.swift */; };
+		D78A40AE25F5622900C4EBE4 /* UIView+Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78A40AD25F5622900C4EBE4 /* UIView+Animations.swift */; };
+		D78A40BE25F56FA500C4EBE4 /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78A40BD25F56FA500C4EBE4 /* Double+Extensions.swift */; };
 		D7E0121525F52FF8007AA0BE /* Designables+ViewWithItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E011F025F52F84007AA0BE /* Designables+ViewWithItems.swift */; };
 		DA10202FF539BFC0B9C775F7 /* Designables+ConnectivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766A0CF5527D1396FE56CF2E /* Designables+ConnectivityView.swift */; };
 		DA76897C36942C026A9B45B3 /* E.ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D1E7644ECF22BAEF83029E /* E.ColorScheme.swift */; };
@@ -528,6 +530,8 @@
 		D5C8A3C35FA31D5E659375A6 /* FRPSampleAPI+ResponseDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FRPSampleAPI+ResponseDto.swift"; sourceTree = "<group>"; };
 		D5FCBCFD8D709AF7820D020A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		D66CA57671DE0186C90E5FA4 /* NSObject+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extensions.swift"; sourceTree = "<group>"; };
+		D78A40AD25F5622900C4EBE4 /* UIView+Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Animations.swift"; sourceTree = "<group>"; };
+		D78A40BD25F56FA500C4EBE4 /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
 		D7E011F025F52F84007AA0BE /* Designables+ViewWithItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Designables+ViewWithItems.swift"; sourceTree = "<group>"; };
 		D87AAE9D0474665C4AB3A49B /* Designables+Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Designables+Button.swift"; sourceTree = "<group>"; };
 		D8BF094350F466DD8E3BFC72 /* TNConstrainable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNConstrainable.swift; sourceTree = "<group>"; };
@@ -636,6 +640,7 @@
 				609D69AB09369C6BDDE5D2ED /* UIView+Extensions.swift */,
 				61953EEBE6CA0B857F0C9912 /* UIView+SubViews.swift */,
 				7BB20EC14DD1A532B6876338 /* UIView+Transform.swift */,
+				D78A40AD25F5622900C4EBE4 /* UIView+Animations.swift */,
 			);
 			path = UIView;
 			sourceTree = "<group>";
@@ -1216,6 +1221,7 @@
 				87D5F9DB8EDAAF692B5CF596 /* URL+Extensions.swift */,
 				A2EC6E6655C7C619F73C08BB /* URLRequest+Extensions.swift */,
 				159EC8B34FE50F5183D5EED4 /* URLSession+Extensions.swift */,
+				D78A40BD25F56FA500C4EBE4 /* Double+Extensions.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -1527,6 +1533,7 @@
 				0C8CA6A4331FB699EC8D385E /* RJSCombineCompatibleProtocol.swift in Sources */,
 				EE845E226FD1CB7914B30EE7 /* RJSLib.swift in Sources */,
 				BFC7C9FA577722B45B2D0A01 /* RJSLibraryExtension.swift in Sources */,
+				D78A40BE25F56FA500C4EBE4 /* Double+Extensions.swift in Sources */,
 				454F3A9282365B52799549CF /* Result+Extensions.swift in Sources */,
 				6C771759FB3B299843944C21 /* Stack.swift in Sources */,
 				1EA4D1820F42512974966F6A /* String+Extensions.swift in Sources */,
@@ -1535,6 +1542,7 @@
 				5A8EC940DCEE2890F6F1C0E2 /* Subscriver+Extensions.swift in Sources */,
 				A1B3E772E718C7E564198819 /* SwiftUI+UIKit.swift in Sources */,
 				0E1B3392272524F7ACF032F1 /* SynchronizedArray.swift in Sources */,
+				D78A40AE25F5622900C4EBE4 /* UIView+Animations.swift in Sources */,
 				CC5BDB2760A6002390BE1EA5 /* TNConstrainable.swift in Sources */,
 				0878620A0D8FA983345D5396 /* Text+Extentions.swift in Sources */,
 				25808F17B55E5FCBB9A15946 /* TinyConstraints+superview.swift in Sources */,

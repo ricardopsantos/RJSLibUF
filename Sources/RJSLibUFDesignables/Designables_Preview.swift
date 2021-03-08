@@ -38,7 +38,10 @@ public extension RJSLibUFDesignables_Preview {
     static func allCasesSwiftUI(_ type: String) -> [AnyView] {
         func allCasesFilter(allCases: [Any], type: String) -> [Any] {
             // Im not proud of this...
-            return allCases.filter { "\($0)".contains("\(type)") }
+            return allCases.filter {
+                print(type(of: $0))
+                return "\($0)".contains("\(type)")
+            }
         }
         return allCasesFilter(allCases: allCasesSwiftUI, type: type).map { ($0 as! AnyView) }
     }
