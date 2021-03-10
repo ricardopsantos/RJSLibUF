@@ -17,7 +17,7 @@ struct SwiftUIView_Previews: PreviewProvider {
 }
 
 struct SwiftUIView: View {
-    let items = RJSLibUFDesignables_Preview.allCasesSwiftUI
+    let items = RJSLibUFDesignables_Preview.shared.allCasesSwiftUI(for: RJS_Designables_SwiftUI.CustomButton.self)
     var body: some View {
         VStack {
             ForEach((0...items.count-1), id: \.self) {

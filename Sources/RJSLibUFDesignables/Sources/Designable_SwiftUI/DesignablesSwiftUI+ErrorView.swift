@@ -31,7 +31,8 @@ struct Previews_ErrorView1 {
     struct Preview1: PreviewProvider {
         public static var previews: some View {
             RJS_Designables_SwiftUI.ViewWithAnyViews(
-                RJSLibUFDesignables_Preview.allCasesSwiftUI("\(RJS_Designables_SwiftUI.ErrorView1.self)")
+                //RJSLibUFDesignables_Preview.shared.allCasesSwiftUI("\(RJS_Designables_SwiftUI.ErrorView1.self)")
+                RJSLibUFDesignables_Preview.shared.allCasesSwiftUI(for: RJS_Designables_SwiftUI.ErrorView1.self)
             ).buildPreviews()
         }
     }

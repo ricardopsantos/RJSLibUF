@@ -11,11 +11,11 @@ import UIKit
 
 public extension RJSLibExtension where Target == UIView {
     var allSubviews: [UIView] { target.allSubviews }
+    func allSubviewsWith(tag: Int, recursive: Bool) -> [UIView] { target.allSubviewsWith(tag: tag, recursive: recursive) }
+    func allSubviewsWith(type: AnyClass) -> [UIView] { target.allSubviewsWith(type: type) }
+    
     func removeAllSubviewsRecursive() { target.removeAllSubviewsRecursive() }
     func allSubviewsRecursive<T: UIView>() -> [T] {  target.allSubviewsRecursive() }
-    func subViewsWith(tag: Int, recursive: Bool) -> [UIView] {
-        target.subViewsWith(tag: tag, recursive: recursive)
-    }
 }
 
 public extension UIView {
@@ -28,7 +28,11 @@ public extension UIView {
         }
     }
     
-    func subViewsWith(tag: Int, recursive: Bool) -> [UIView] {
+    func allSubviewsWith(type: AnyClass) -> [UIView] {
+        allSubviews.filter({ $0.isKind(of: type) })
+    }
+    
+    func allSubviewsWith(tag: Int, recursive: Bool) -> [UIView] {
         if recursive {
             return UIView.allSubviewsRecursive(from: self).filter { $0.tag == tag }
         } else {

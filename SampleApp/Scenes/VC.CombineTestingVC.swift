@@ -21,14 +21,14 @@ struct TestingCombine_PreviewProvider: PreviewProvider {
         RJS_ViewControllerRepresentable {
             let viewStateBinder1 = RJS_GenericObservableObjectForHashable<String>()
             let viewStateBinder2 = RJS_GenericObservableObjectForHashableWithObservers<String>()
-            return VC.TestingCombine(viewStateBinder1: viewStateBinder1, viewStateBinder2: viewStateBinder2)
+            return VC.CombineTestingVC(viewStateBinder1: viewStateBinder1, viewStateBinder2: viewStateBinder2)
         }.buildPreviews()
     }
 }
 #endif
 
 extension VC {
-    class TestingCombine: GenericViewController {
+    class CombineTestingVC: GenericViewController {
 
         required init?(coder: NSCoder) {
             fatalError("init(coder:) is not supported")
@@ -294,7 +294,7 @@ extension VC {
     }
 }
 
-fileprivate extension VC.TestingCombine {
+fileprivate extension VC.CombineTestingVC {
     private func display(_ message: String, override: Bool) {
         if override {
             label.textAnimated = "\(message)\n"

@@ -18,16 +18,39 @@ public extension RoundedRectangle {
     }
 }
 
+//
+// MARK: - Previews
+//
+
 public extension SwiftUI.View {
 
-    func buildPreviews() -> some SwiftUI.View {
+    var buildPreviewPhone11: some SwiftUI.View {
+        previewDevice("iPhone 8").previewDisplayName("Default - iPhone11")
+    }
+    
+    var buildPreviewPhone8: some SwiftUI.View {
+        previewDevice("iPhone 8").previewDisplayName("Default - iPhone8")
+    }
+    
+    var buildPreviewDark: some SwiftUI.View {
+        environment(\.colorScheme, .dark).previewDisplayName("Dark")
+    }
+    
+    func buildPreviews(full: Bool = false) -> some SwiftUI.View {
         Group {
-            previewDisplayName("Default")
-            environment(\.colorScheme, .dark).previewDisplayName("Dark")
-            previewDevice("iPhone 8").previewDisplayName("Default - iPhone8")
-            previewDevice("iPhone 11 Pro").previewDisplayName("Default - iPhone11")
+            if full {
+                previewDisplayName("Default")
+                environment(\.colorScheme, .dark).previewDisplayName("Dark")
+                previewDevice("iPhone 8").previewDisplayName("Default - iPhone8")
+                previewDevice("iPhone 11 Pro").previewDisplayName("Default - iPhone11")
+            } else {
+                previewDisplayName("Default")
+            }
         }
     }
+}
+
+public extension SwiftUI.View {
 
     // https://stackoverflow.com/questions/56517813/how-to-print-to-xcode-console-in-swiftui
     func SwiftUIDebugPrint(_ vars: Any..., function: String=#function) -> some View {

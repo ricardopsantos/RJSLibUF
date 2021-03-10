@@ -51,6 +51,16 @@ public extension RJSLayouts {
     var saferAreaInsets: UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
+        
+    func layoutConstraintsRelatedWith(_ view: UIView) -> [NSLayoutConstraint] {
+        let printableMemoryAddress = view.printableMemoryAddress
+        return layoutConstraints.filter { ($0.identifier?.contains(printableMemoryAddress) ?? false) }
+    }
+    
+    var layoutConstraintsRelatedWithSuperView: [NSLayoutConstraint] {
+        guard let printableMemoryAddress = self.target.superview?.printableMemoryAddress else { return [] }
+        return layoutConstraints.filter { ($0.identifier?.contains(printableMemoryAddress) ?? false) }
+    }
     
     var layoutConstraints: [NSLayoutConstraint] {
         var constraints: [NSLayoutConstraint] = []

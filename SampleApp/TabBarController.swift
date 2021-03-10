@@ -32,7 +32,7 @@ class TabBarController: UITabBarController {
                 
         let swiftUIView = SwiftUIView().viewController
         let v0 = createControllers(tabName: "SwiftUIView", vc: swiftUIView)
-        let v1 = createControllers(tabName: "Combine", vc: VC.TestingCombine(viewStateBinder1: viewStateBinder1, viewStateBinder2: viewStateBinder2))
+        let v1 = createControllers(tabName: "Combine", vc: VC.CombineTestingVC(viewStateBinder1: viewStateBinder1, viewStateBinder2: viewStateBinder2))
         let v2 = createControllers(tabName: "SwiftUI", vc: VC.SwiftUIAndUIKitVC())
         let v3 = createControllers(tabName: "Desinables", vc: VC.RJSLibUFDesignablesVC())
         let v4 = createControllers(tabName: "DLanguage", vc: VC.RJSLibUFAppThemesVC())
