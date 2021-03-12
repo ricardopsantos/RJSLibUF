@@ -84,7 +84,8 @@ public extension RJS_Designables {
                     Text("ListItem (3 types)").font(.caption)
                     List {
                         RJS_Designables_SwiftUI.ListItem(title: "Option1 title", value: "Option1 value")
-                        RJS_Designables_SwiftUI.ListItem(title: "Option2 title", value: "Option2 value", imageName: "paperplane.fill", imageColor1: Color.red, imageColor2: Color.blue)
+                        RJS_Designables_SwiftUI.ListItem(title: "Option2 title", value: "Option2 value",
+                                                         imageName: "paperplane.fill", imageColor1: Color.red, imageColor2: Color.blue)
                         RJS_Designables_SwiftUI.ListItem(title: "Option3 title", value: "Option3 value", imageName: "paperplane.fill")
                     }
                 }.padding()

@@ -17,7 +17,6 @@ public extension Collection {
     }
 }
 
-
 public extension Array {
     
     mutating func shuffle() {

@@ -91,9 +91,9 @@ struct Previews_SearchBar {
         var body: some View {
             NavigationView {
                 List {
-                    Section.init(header:RJS_Designables_SwiftUI.SearchBar(text: $searchText, isEditing: $isEditing),
+                    Section(header: RJS_Designables_SwiftUI.SearchBar(text: $searchText, isEditing: $isEditing),
                     content: {
-                        ForEach(countryList.filter( { searchText.isEmpty ? true : $0.contains(searchText) } ), id: \.self) { country in
+                        ForEach(countryList.filter({searchText.isEmpty ? true : $0.contains(searchText)}), id: \.self) { country in
                             Text(country)
                         }
                     })

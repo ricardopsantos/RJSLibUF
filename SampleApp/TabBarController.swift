@@ -30,8 +30,9 @@ class TabBarController: UITabBarController {
         super.viewDidLoad()
         let cancelBag = CancelBag()
                 
-        let swiftUIView = SwiftUIView().viewController
-        let v0 = createControllers(tabName: "SwiftUIView", vc: swiftUIView)
+        let swiftUIView1 = ComposableArquitectureView().viewController
+        let swiftUIView2 = RJSLibUFBase_Preview.ConditionalViews().viewController
+        let v0 = createControllers(tabName: "SwiftUIView", vc: swiftUIView1)
         let v1 = createControllers(tabName: "Combine", vc: VC.CombineTestingVC(viewStateBinder1: viewStateBinder1, viewStateBinder2: viewStateBinder2))
         let v2 = createControllers(tabName: "SwiftUI", vc: VC.SwiftUIAndUIKitVC())
         let v3 = createControllers(tabName: "Desinables", vc: VC.RJSLibUFDesignablesVC())

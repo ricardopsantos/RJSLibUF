@@ -8,6 +8,7 @@ import Foundation
 // https://medium.com/codex/swift-create-your-own-custom-operator-a6fe4d71f606
 //
 
+// swiftlint:disable shorthand_operator
 prefix operator ✔️
 prefix func ✔️(num: Double) -> Double {
     return sqrt(num)
@@ -34,12 +35,13 @@ postfix func ❗(num: Int) -> Double {
 
 fileprivate extension RJSLib {
     func sample() {
-        print(✔️25.0) // prints 5.0
-        print(3 ➕ 6) // prints 9
-        print(5❗) // prints 120.0
+        RJS_Logs.debug(✔️25.0) // prints 5.0
+        RJS_Logs.debug(3 ➕ 6) // prints 9
+        RJS_Logs.debug(5❗) // prints 120.0
         
         var num = 14.0
         num ➗= 2.0
-        print(num) // prints 7.0
+        RJS_Logs.debug(num) // prints 7.0
     }
 }
+// swiftlint:enable shorthand_operator
