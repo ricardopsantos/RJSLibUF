@@ -23,7 +23,7 @@ struct SwiftUIView_Previews: PreviewProvider {
 
 struct ComposableArquitectureView: View {
     var body: some View {
-        ContentView(store: Store(initialValue: AppState(), reducer: appReducer))
+        CTPMainContentView(store: Store(initialValue: AppState(), reducer: appReducer))
     }
 }
 
@@ -49,19 +49,19 @@ final class Store<Value, Action>: ObservableObject {
 
 // AppAction is a type to nest other app actions
 enum AppAction {
-    case counter(CounterAction)
-    case primeModal(PrimeModalAction)
-    case favoritePrime(FavoritePrimeAction)
+    case counter(CTACounterViewAction)
+    case primeModal(CTAPrimeModalAction)
+    case favoritePrime(CTAFavoritePrimesAction)
     
-    enum FavoritePrimeAction {
+    enum CTAFavoritePrimesAction {
         case deleteFavoritePrimes(IndexSet)
     }
-    enum PrimeModalAction {
+    enum CTAPrimeModalAction {
         case saveFavoritePrimeTap
         case removeFavoritePrimeTap
     }
 
-    enum CounterAction {
+    enum CTACounterViewAction {
         case decrementTap
         case incrementTap
     }
@@ -146,17 +146,17 @@ extension AppState {
 // MARK: - Views
 //
 
-struct ContentView: View {
+struct CTPMainContentView: View {
     //@ObservedObject var state: AppState
     @ObservedObject var store: Store<AppState, AppAction>
     var body: some View {
         NavigationView {
             List {
                 Text("ContentView_RELOAD").foregroundColor(Color(UIColor.random)).font(.body)
-                NavigationLink(destination: CounterView(store: store)) {
+                NavigationLink(destination: CTACounterView(store: store)) {
                     Text("Find primes")
                 }
-                NavigationLink(destination: FavoritPrimesView(store: store)) {
+                NavigationLink(destination: CTAFavoritePrimesView(store: store)) {
                     Text("My favorit primes")
                 }
             }
@@ -165,7 +165,7 @@ struct ContentView: View {
     }
 }
 
-struct CounterView: View {
+struct CTACounterView: View {
     @ObservedObject var store: Store<AppState, AppAction>
     @State var isPrimeModalShown: Bool = false // Local state
     @State var alertNthPrimeShow: Bool = false // Local state
@@ -176,16 +176,10 @@ struct CounterView: View {
             Text("CounterView_RELOAD").foregroundColor(Color(UIColor.random)).font(.body)
             HStack {
                 Button(action: {
-                    //store.value.decrement()
-                    //store.value = counterReducer(state: store.value, action: .decrementTap)
-                    //store.send(.decrementTap)
                     store.send(.counter(.decrementTap))
                 }, label: { Text("-") })
                 Text("\(store.value.number)")
                 Button(action: {
-                    //store.value.increment()
-                    //store.value = counterReducer(state: store.value, action: .incrementTap)
-                   // store.send(.incrementTap)
                     store.send(.counter(.incrementTap))
                 }, label: { Text("+") })
             }
@@ -203,14 +197,14 @@ struct CounterView: View {
             .disabled(isLoadingAPI)
         }
         //.navigationTitle("CounterView")
-        .sheet(isPresented: $isPrimeModalShown) { IsPrimeModalView(store: store) }
+        .sheet(isPresented: $isPrimeModalShown) { CTAPrimeModalView(store: store) }
         .alert(isPresented: $alertNthPrimeShow) {
                    Alert(title: Text("The nth prime is \(alertNthPrime!)"), message: Text(""), dismissButton: .default(Text("OK")))
                }
     }
 }
 
-struct IsPrimeModalView: View {
+struct CTAPrimeModalView: View {
     @ObservedObject var store: Store<AppState, AppAction>
     var body: some View {
         VStack {
@@ -221,11 +215,9 @@ struct IsPrimeModalView: View {
                 if store.value.isFavoritPrime {
                     Button(action: {
                         store.send(.primeModal(.saveFavoritePrimeTap))
-                        //store.value.removePrime()
                     }, label: { Text("Remove from favorite primes") })
                 } else {
                     Button(action: {
-                        //store.value.addPrime()
                         store.send(.primeModal(.saveFavoritePrimeTap))
                     }, label: { Text("Save to favorite primes") })
                 }
@@ -236,7 +228,7 @@ struct IsPrimeModalView: View {
     }
 }
 
-struct FavoritPrimesView: View {
+struct CTAFavoritePrimesView: View {
     @ObservedObject var store: Store<AppState, AppAction>
     var body: some View {
         List {
@@ -248,7 +240,6 @@ struct FavoritPrimesView: View {
                 }
             }.onDelete { indexSet in
                 store.send(.favoritePrime(.deleteFavoritePrimes(indexSet)))
-              //  store.value.removeFavoritPrime(at: indexSet)
             }
         }
     }

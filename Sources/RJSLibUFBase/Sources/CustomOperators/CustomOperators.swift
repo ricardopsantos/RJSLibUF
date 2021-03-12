@@ -35,13 +35,13 @@ postfix func ❗(num: Int) -> Double {
 
 fileprivate extension RJSLib {
     func sample() {
-        RJS_Logs.debug(✔️25.0) // prints 5.0
-        RJS_Logs.debug(3 ➕ 6) // prints 9
-        RJS_Logs.debug(5❗) // prints 120.0
+        RJS_Logs.debug(✔️25.0, tag: .rjsLib) // prints 5.0
+        RJS_Logs.debug(3 ➕ 6, tag: .rjsLib) // prints 9
+        RJS_Logs.debug(5❗, tag: .rjsLib) // prints 120.0
         
         var num = 14.0
         num ➗= 2.0
-        RJS_Logs.debug(num) // prints 7.0
+        RJS_Logs.debug(num, tag: .rjsLib) // prints 7.0
     }
 }
 // swiftlint:enable shorthand_operator
