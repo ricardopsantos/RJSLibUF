@@ -196,6 +196,7 @@
 		CF0E1B44BC74AA9328659F93 /* E.Result<T>.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B013BDF41E070C57D5C8A1 /* E.Result<T>.swift */; };
 		D721F15CD0A2521AD72E0860 /* RJSLibUFBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B0D02882E22945B619357BF /* RJSLibUFBase.framework */; };
 		D73B913F3B0BFBE0931FE4D0 /* UIImageView+Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF56FDF37196BB07FF9066A /* UIImageView+Transform.swift */; };
+		D7412E3F25FCB8360069890B /* DesignablesSwiftUI+RefreshedStateIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7412E3E25FCB8360069890B /* DesignablesSwiftUI+RefreshedStateIndicatorView.swift */; };
 		DA50D4AABCDF53FF057D7914 /* DesignablesUIKit+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFB590FB4DD847801697F6B /* DesignablesUIKit+SearchBar.swift */; };
 		DA76897C36942C026A9B45B3 /* E.ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D1E7644ECF22BAEF83029E /* E.ColorScheme.swift */; };
 		DAC580909BF621BF60A75DD4 /* UIWindow+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9724D367D128A44CAFDA07DF /* UIWindow+Extensions.swift */; };
@@ -549,6 +550,7 @@
 		D5C8A3C35FA31D5E659375A6 /* FRPSampleAPI+ResponseDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FRPSampleAPI+ResponseDto.swift"; sourceTree = "<group>"; };
 		D5FCBCFD8D709AF7820D020A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		D66CA57671DE0186C90E5FA4 /* NSObject+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extensions.swift"; sourceTree = "<group>"; };
+		D7412E3E25FCB8360069890B /* DesignablesSwiftUI+RefreshedStateIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DesignablesSwiftUI+RefreshedStateIndicatorView.swift"; sourceTree = "<group>"; };
 		D8BF094350F466DD8E3BFC72 /* TNConstrainable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNConstrainable.swift; sourceTree = "<group>"; };
 		D9BE1BE60D893AF4394F15CA /* FRPSampleAP+Requests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FRPSampleAP+Requests.swift"; sourceTree = "<group>"; };
 		D9EEF02B9F345876BA1812D6 /* UIKitFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitFactory.swift; sourceTree = "<group>"; };
@@ -1003,6 +1005,7 @@
 				A65907CC832AB49F12F89498 /* DesignablesSwiftUI+SearchBar.swift */,
 				CE03946450DF7FEA362F01C7 /* DesignablesSwiftUI+TitleAndValue.swift */,
 				7E82A595E9C2A47FB48E577C /* DesignablesSwiftUI+ViewWithItems.swift */,
+				D7412E3E25FCB8360069890B /* DesignablesSwiftUI+RefreshedStateIndicatorView.swift */,
 			);
 			path = Designable_SwiftUI;
 			sourceTree = "<group>";
@@ -1423,8 +1426,6 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 1201;
-				TargetAttributes = {
-				};
 			};
 			buildConfigurationList = 478BD369166F0567C3785035 /* Build configuration list for PBXProject "RJSLibUF" */;
 			compatibilityVersion = "Xcode 10.0";
@@ -1686,6 +1687,7 @@
 				A965DCA717C1A7B012577F89 /* DesignablesSwiftUI+Buttons.swift in Sources */,
 				B7B01E05DE931FDCBDA3734E /* DesignablesSwiftUI+ConnectivityView.swift in Sources */,
 				F5DBBF5A06E384F63D33A684 /* DesignablesSwiftUI+ErrorView.swift in Sources */,
+				D7412E3F25FCB8360069890B /* DesignablesSwiftUI+RefreshedStateIndicatorView.swift in Sources */,
 				9C545B3FE449F69BD22E09F3 /* DesignablesSwiftUI+FloatingTextField.swift in Sources */,
 				48F68C32B6D2F24C92E178CF /* DesignablesSwiftUI+ListItem.swift in Sources */,
 				4D8C9A531D9F2AD2F6460F25 /* DesignablesSwiftUI+LoadingAnimations.swift in Sources */,

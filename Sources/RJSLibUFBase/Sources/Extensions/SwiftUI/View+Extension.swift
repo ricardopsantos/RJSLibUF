@@ -69,14 +69,14 @@ public extension SwiftUI.View {
         NavigationView { self }
     }
 
-    func erase() -> AnyView {
-        eraseToAnyView()
-    }
-    
-    func eraseToAnyView() -> AnyView {
+    var erased: AnyView {
         AnyView(self)
     }
-
+    
+    var erasedToAnyView: AnyView {
+        AnyView(self)
+    }
+    
     func userInteractionEnabled(_ value: Bool) -> some View {
         disabled(value)
     }
@@ -144,7 +144,7 @@ public extension View {
     
     // IfOnSimulator(view: Text("\(Date()) - Reloaded").eraseToAnyView())
     func ifOnSimulator<TrueContent: View>(then transform: (Self) -> TrueContent) -> some View {
-        RJS_Utils.onSimulator ? transform(self).eraseToAnyView() : self.eraseToAnyView()
+        RJS_Utils.onSimulator ? transform(self).erasedToAnyView : self.erasedToAnyView
     }
     
     // https://matteo-puccinelli.medium.com/conditionally-apply-modifiers-in-swiftui-51c1cf7f61d1
@@ -171,11 +171,11 @@ public extension View {
         // Booth versions bellow work
         let method = Int.random(in: 0...3)
         if method == 1 {
-            return Group { if condition { transform(self) } else { self } }.eraseToAnyView()
+            return Group { if condition { transform(self) } else { self } }.erased
         } else if method == 2 {
-            return condition ? transform(self).eraseToAnyView() : eraseToAnyView()
+            return condition ? transform(self).erased : erased
         } else {
-            return ifCondition(condition, then: transform).eraseToAnyView()
+            return ifCondition(condition, then: transform).erased
         }
     }
 }
