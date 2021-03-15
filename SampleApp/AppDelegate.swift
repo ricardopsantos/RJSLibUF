@@ -35,7 +35,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             _ = RJS_StorableKeyValue.save(key: key, value: "0")
         }
         
-        self.window?.rootViewController = TabBarController()
+//        self.window?.rootViewController = TabBarControllerV1()
+        self.window?.rootViewController = TabBarControllerV2().viewController
 
         return true
     }

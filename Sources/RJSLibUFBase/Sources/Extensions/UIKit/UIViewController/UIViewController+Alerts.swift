@@ -1,12 +1,14 @@
-
 //
 //  Created by Ricardo Santos on 10/03/2021.
 //
 
 import Foundation
 import UIKit
+import SwiftUI
 
 public extension RJSLibExtension where Target == UIViewController {
+    
+    var asAnyView: AnyView { target.asAnyView }
     
     func showAlertWithActions(title: String,
                               message: String,
@@ -34,6 +36,8 @@ public extension RJSLibExtension where Target == UIViewController {
 
 public extension UIViewController {
 
+    var asAnyView: AnyView { RJS_ViewControllerRepresentable { self }.erased }
+    
     func alert(title: String?,
                message: String?,
                preferredStyle: UIAlertController.Style = .actionSheet,
@@ -82,4 +86,3 @@ public extension UIAlertAction {
             })
     }
 }
-

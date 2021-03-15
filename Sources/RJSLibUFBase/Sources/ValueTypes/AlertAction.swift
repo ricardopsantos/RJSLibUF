@@ -12,4 +12,3 @@ public extension RJSLib {
         public let action: (() -> Void)?
     }
 }
-

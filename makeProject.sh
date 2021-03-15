@@ -89,8 +89,17 @@ echo 'done!'
 
 ################################################################################
 
-echo 'periphery...'
-periphery scan
+echo "### periphery scan?"
+echo " [1] : Yes"
+echo " [2] : No/Skip"
+echo -n "Option? "
+read option
+case $option in
+    [1] ) periphery scan ;;
+   *) echo "Ignored...."
+;;
+esac
+
 
 ################################################################################
 

@@ -42,23 +42,24 @@ public extension RJSLibUFDesignables_Preview {
     
     var allCasesSwiftUI: [AnyView] {
         return [
-            RJS_Designables_SwiftUI.SearchBar(text: $textState, isEditing: $boolState).erase(),
-            RJS_Designables_SwiftUI.ViewWithAnyViews([Text("ViewWithAnyViews").erase()]).erase(),
+            RJS_Designables_SwiftUI.SearchBar(text: $textState, isEditing: $boolState).erased,
+            RJS_Designables_SwiftUI.ViewWithAnyViews([Text("ViewWithAnyViews").erased]).erased,
             RJS_Designables_SwiftUI.ListItem(title: "ListItem.title1",
-                                             value: "ListItem.value1").erase(),
+                                             value: "ListItem.value1").erased,
             RJS_Designables_SwiftUI.ListItem(title: "ListItem.title2",
                                              value: "ListItem.value2",
                                              imageName: "paperplane.fill",
                                              imageColor1: Color.red,
-                                             imageColor2: Color.blue).erase(),
+                                             imageColor2: Color.blue).erased,
             RJS_Designables_SwiftUI.ListItem(title: "ListItem title 3",
                                              value: "ListItem value3",
-                                             imageName: "paperplane.fill").erase(),
-            RJS_Designables_SwiftUI.TitleAndValue(title: "TitleAndValue.title", value: "TitleAndValue.value").erase(),
-            RJS_Designables_SwiftUI.CustomButton(title: "title").erase(),
-            RJS_Designables_SwiftUI.ErrorView1(message: "message").erase(),
+                                             imageName: "paperplane.fill").erased,
+            RJS_Designables_SwiftUI.TitleAndValue(title: "TitleAndValue.title", value: "TitleAndValue.value").erased,
+            RJS_Designables_SwiftUI.CustomButton(title: "title").erased,
+            RJS_Designables_SwiftUI.ErrorView1(message: "message").erased,
             RJS_Designables_SwiftUI.FloatingTextField(title: "First Name",
-                                                      text: $textState).erase()
+                                                      text: $textState).erased,
+            RJS_Designables_SwiftUI.RefreshedStateIndicatorView().erased,
         ]
      }
 }
