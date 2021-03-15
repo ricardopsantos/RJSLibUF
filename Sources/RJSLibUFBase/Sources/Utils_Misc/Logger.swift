@@ -35,6 +35,7 @@ extension RJSLib {
             StorageUtils.deleteLogs()
         }
 
+        
         public static func debug(_ message: Any?,
                                  tag: Logger.Tag,
                                  function: String = #function, file: String = #file, line: Int = #line) {
@@ -72,14 +73,17 @@ extension RJSLib {
         // Log to console/terminal
         //
         
-        private static func private_print(_ message: String, function: String = #function, file: String = #file, line: Int = #line) {
+        private static func private_print(_ message: @autoclosure () -> String,
+                                          function: String = #function,
+                                          file: String = #file,
+                                          line: Int = #line) {
             
             // When performed on physical device, NSLog statements appear in the device's console whereas
             // print only appears in the debugger console.
             
             _debugCounter     += 1
             let senderCodeId   = RJS_Utils.senderCodeId(function, file: file, line: line)
-            let messageToPrint = message.trim
+            let messageToPrint = message().trim
             let date           = Date.utcNow
             let logMessage     = """
             \n###################################################################
