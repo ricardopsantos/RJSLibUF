@@ -15,11 +15,13 @@ import RJSLibUFDesignables
 // https://www.pointfree.co/episodes/ep68-composable-state-management-reducers
 //
 
+#if canImport(SwiftUI) && DEBUG
 struct PrimeApp_Previews: PreviewProvider {
     static var previews: some View {
         V.PrimeApp.ContentView(store: AppStores.PrimeApp().store)
     }
 }
+#endif
 
 //
 // MARK:- Store

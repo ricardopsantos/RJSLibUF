@@ -23,8 +23,8 @@ public extension RJSLib {
         open override func loadView() {
             super.loadView()
             // Setup Generic View
-            setup()
             genericView = T()
+            setup()
             view.addSubview(genericView)
             genericView.layouts.edgesToSuperview()
             setupViewUIRx()
@@ -42,13 +42,6 @@ public extension RJSLib {
         open override func viewWillAppear(_ animated: Bool) {
             super.viewWillAppear(animated)
             setupNavigationUIRx()
-        }
-
-        open override func viewDidAppear(_ animated: Bool) {
-            super.viewDidAppear(animated)
-            DispatchQueue.executeWithDelay(delay: 0.1) { [weak self] in
-                self?.firstAppearance = false
-            }
         }
 
         open func setupViewIfNeed() {

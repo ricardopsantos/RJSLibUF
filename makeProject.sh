@@ -30,6 +30,23 @@ esac
 
 printf "\n"
 
+echo "### Periphery"
+echo " [1] : Install"
+echo " [2] : Update"
+echo " [3] : Skip"
+echo -n "Option? "
+read option
+case $option in
+    [1] ) brew tap peripheryapp/periphery && brew install periphery ;;
+    [2] ) eval brew update ;;
+   *) echo "Ignored...."
+;;
+esac
+
+################################################################################
+
+printf "\n"
+
 echo "### Xcodegen"
 echo " [1] : Install"
 echo " [2] : Upgrade"
@@ -88,6 +105,8 @@ xcodegen dump --spec ./XcodeGen/RJSLibUF.yml --type json     --file ./Documents/
 echo 'done!'
 
 ################################################################################
+
+printf "\n"
 
 echo "### periphery scan?"
 echo " [1] : Yes"
