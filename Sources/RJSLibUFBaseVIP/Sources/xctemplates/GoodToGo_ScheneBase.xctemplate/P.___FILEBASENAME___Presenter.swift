@@ -28,7 +28,7 @@ extension P {
         }
         weak var viewController: (___VARIABLE_sceneName___DisplayLogicProtocol)?
 
-        override weak var baseViewController: BaseViewControllerVIPProtocol? {
+        override weak var baseViewController: BaseViewControllerProtocol? {
             return viewController
         }
     }

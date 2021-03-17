@@ -9,13 +9,13 @@ import RJSLibUFBase
 
 // MARK: - Interactor - Business Logic
 
-public protocol BaseInteractorVIPMandatoryBusinessLogicProtocol {
-    var basePresenter: BasePresenterVIPProtocol? { get }
+public protocol BaseInteractorMandatoryBusinessLogicProtocol {
+    var basePresenter: BasePresenterProtocol? { get }
     func requestScreenInitialState()
 }
 
 extension RJSLib {
-    open class BaseInteractorVIP {
+    open class BaseInteractor {
         public init() { }
         
         public func handleSubscriber<T>(result: Subscribers.Completion<T>) {
@@ -23,7 +23,7 @@ extension RJSLib {
             case .finished: _ = ()
             case .failure(let reason):
                 let model = BaseDisplayLogicModels.Error(title: "\(reason)")
-                (self as? BaseInteractorVIPMandatoryBusinessLogicProtocol)?.basePresenter?.presentError(response: model)
+                (self as? BaseInteractorMandatoryBusinessLogicProtocol)?.basePresenter?.presentError(response: model)
             }
         }
     }

@@ -12,7 +12,7 @@ public protocol BaseRouterProtocol {
 }
 
 extension RJSLib {
-    open class BaseRouterVIP {
+    open class BaseRouter {
         public init() { }
     }
 }

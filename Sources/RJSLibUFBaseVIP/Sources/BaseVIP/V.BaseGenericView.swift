@@ -10,7 +10,7 @@ import RJSLibUFBase
 
 extension RJSLib {
 
-    open class BaseGenericViewVIP: StylableView, RJS_BaseViewProtocol {
+    open class BaseGenericView: StylableView, RJS_BaseViewProtocol {
 
         public let cancelBag = CancelBag()
         public init() {

@@ -9,7 +9,7 @@ import RJSLibUFBase
 
 // MARK: - ViewController - DisplayLogic
 
-public protocol BaseViewControllerVIPProtocol: class {
+public protocol BaseViewControllerProtocol: class {
     func displayLoading(viewModel: RJS_BaseDisplayLogicModels.Loading)
     func displayError(viewModel: RJS_BaseDisplayLogicModels.Error)
     func displayWarning(viewModel: RJS_BaseDisplayLogicModels.Warning)
@@ -18,7 +18,7 @@ public protocol BaseViewControllerVIPProtocol: class {
 
 public extension RJSLib {
     
-    class BaseViewControllerVIP: UIViewController, BaseViewControllerVIPProtocol, RJS_BaseViewProtocol {
+    class BaseViewController: UIViewController, BaseViewControllerProtocol, RJS_BaseViewProtocol {
 
         public private (set) var firstAppearance = true // public to read, private to set...
 

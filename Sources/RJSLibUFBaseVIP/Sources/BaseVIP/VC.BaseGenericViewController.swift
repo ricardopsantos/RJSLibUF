@@ -9,7 +9,7 @@ import RJSLibUFBase
 
 public extension RJSLib {
     
-    class BaseGenericViewControllerVIP<T: StylableView>: BaseViewControllerVIP {
+    class BaseGenericViewController<T: StylableView>: BaseViewController {
 
         public let cancelBag = CancelBag()
         deinit {

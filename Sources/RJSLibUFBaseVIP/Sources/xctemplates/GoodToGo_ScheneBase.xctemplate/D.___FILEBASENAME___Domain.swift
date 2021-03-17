@@ -37,7 +37,7 @@ struct TemplateModel {
 // MARK: - Interactor (Business Logic)
 //
 
-protocol ___VARIABLE_sceneName___BusinessLogicProtocol: BaseInteractorVIPMandatoryBusinessLogicProtocol {
+protocol ___VARIABLE_sceneName___BusinessLogicProtocol: BaseInteractorMandatoryBusinessLogicProtocol {
     // Naming convention : func request__XXX__(viewModel: VM.___VARIABLE_sceneName___.__XXX__.Request)
     func requestScreenInitialState()
     func requestSomething(request: VM.___VARIABLE_sceneName___.Something.Request)
@@ -47,7 +47,7 @@ protocol ___VARIABLE_sceneName___BusinessLogicProtocol: BaseInteractorVIPMandato
 // MARK: - Presenter (Presentation Logic)
 //
 
-protocol ___VARIABLE_sceneName___PresentationLogicProtocol: BasePresenterVIPProtocol {
+protocol ___VARIABLE_sceneName___PresentationLogicProtocol: BasePresenterProtocol {
     // Naming convention : func present__XXX__(response: VM.___VARIABLE_sceneName___.__XXX__.Response)
     func presentScreenInitialState(response: VM.___VARIABLE_sceneName___.ScreenInitialState.Response)
     func presentSomething(response: VM.___VARIABLE_sceneName___.Something.Response)
@@ -57,7 +57,7 @@ protocol ___VARIABLE_sceneName___PresentationLogicProtocol: BasePresenterVIPProt
 // MARK: - ViewController (Display Logic)
 //
 
-protocol ___VARIABLE_sceneName___DisplayLogicProtocol: BaseViewControllerVIPProtocol {
+protocol ___VARIABLE_sceneName___DisplayLogicProtocol: BaseViewControllerProtocol {
     // Naming convention : func display__XXX__(viewModel: VM.___VARIABLE_sceneName___.__XXX__.ViewModel)
     func displayScreenInitialState(viewModel: VM.___VARIABLE_sceneName___.ScreenInitialState.ViewModel)
     func displaySomething(viewModel: VM.___VARIABLE_sceneName___.Something.ViewModel)
