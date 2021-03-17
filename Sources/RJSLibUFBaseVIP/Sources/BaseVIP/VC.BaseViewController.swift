@@ -106,7 +106,7 @@ public extension RJSLib {
 // MARK: - Private
 //
 
-private extension RJS_BaseViewControllerVIP {
+private extension RJS_BaseViewController {
 
     func setActivityState(_ state: Bool) {
         if state {

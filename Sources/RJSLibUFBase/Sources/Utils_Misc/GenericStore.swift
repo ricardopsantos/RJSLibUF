@@ -2,7 +2,6 @@
 //  Created by Ricardo Santos on 15/03/2021.
 //
 
-import UIKit
 import SwiftUI
 import Combine
 

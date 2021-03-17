@@ -21,6 +21,7 @@ public extension RJS_Designables_SwiftUI {
     }
 }
 
+#if !os(macOS)
 struct Previews_ViewWithAnyViews {
     #if canImport(SwiftUI) && DEBUG
     struct ViewWithAnyViews: PreviewProvider {
@@ -32,3 +33,4 @@ struct Previews_ViewWithAnyViews {
     }
     #endif
 }
+#endif

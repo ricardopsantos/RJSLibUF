@@ -1,7 +1,7 @@
 //
 //  Created by Ricardo Santos on 07/03/2021.
 //
-
+#if !os(macOS)
 import Foundation
 import SwiftUI
 
@@ -73,7 +73,7 @@ public extension RJS_Designables_SwiftUI {
             .padding(0)
             .background(
                 GeometryReader { proxy in
-                    Color(UIColor.systemBackground)
+                    Color.gray
                     .frame(width: proxy.size.width * 1.3, height: 100).fixedSize()
                         .offset(CGSize(width: -20.0, height: -50.0))
             })
@@ -82,7 +82,6 @@ public extension RJS_Designables_SwiftUI {
 }
 
 struct Previews_SearchBar {
-    
     struct DemoView: View {
         @State private var searchText = ""
         @State private var isEditing = false
@@ -117,3 +116,4 @@ struct Previews_SearchBar {
     }
     #endif
 }
+#endif

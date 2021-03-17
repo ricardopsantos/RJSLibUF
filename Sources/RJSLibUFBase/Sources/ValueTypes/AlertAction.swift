@@ -2,6 +2,7 @@
 //  Created by Ricardo Santos on 10/03/2021.
 //
 
+#if !os(macOS)
 import Foundation
 import UIKit
 
@@ -12,3 +13,4 @@ public extension RJSLib {
         public let action: (() -> Void)?
     }
 }
+#endif

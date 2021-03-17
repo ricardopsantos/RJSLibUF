@@ -18,7 +18,7 @@ public extension RJS_Designables_SwiftUI {
                 if RJS_Utils.onSimulator {
                     VStack {
                         Text("View was refreshed [\(someBool.description)] @ \(Date().hours)h:\(Date().minutes)m:\(Date().seconds)s")
-                            .background(Color(UIColor.random))
+                            .background(Color.random)
                         //CustomButton(title: "Reload") { someBool.toggle() }
                     }
                 } else {
@@ -29,6 +29,7 @@ public extension RJS_Designables_SwiftUI {
     }
 }
 
+#if !os(macOS)
 struct Previews_RefreshAlertView {
     #if canImport(SwiftUI) && DEBUG
     struct RefreshAlertView: PreviewProvider {
@@ -40,3 +41,4 @@ struct Previews_RefreshAlertView {
     }
     #endif
 }
+#endif

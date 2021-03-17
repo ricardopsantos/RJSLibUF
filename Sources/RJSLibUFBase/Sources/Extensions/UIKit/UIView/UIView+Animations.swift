@@ -3,6 +3,7 @@
 //
 
 import Foundation
+#if !os(macOS)
 import UIKit
 
 public extension RJSLibExtension where Target == UIView {
@@ -28,3 +29,4 @@ fileprivate extension UIView {
         layer.add(shake, forKey: "position")
     }
 }
+#endif

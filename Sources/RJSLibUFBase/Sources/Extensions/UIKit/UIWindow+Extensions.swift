@@ -2,6 +2,7 @@
 //  Created by Ricardo Santos on 10/03/2021.
 //
 
+#if !os(macOS)
 import Foundation
 import UIKit
 
@@ -26,3 +27,4 @@ public extension UIWindow {
         return new
     }
 }
+#endif

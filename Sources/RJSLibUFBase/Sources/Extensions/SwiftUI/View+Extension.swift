@@ -180,8 +180,6 @@ public extension View {
     }
 }
 
-#endif
-
 public extension RJSLibUFBase_Preview {
     struct ConditionalViews: View {
         @State private var condition = false
@@ -237,4 +235,5 @@ struct ViewWithAnyViews: PreviewProvider {
         RJSLibUFBase_Preview.ConditionalViews()
     }
 }
+#endif
 #endif
