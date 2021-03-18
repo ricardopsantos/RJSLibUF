@@ -35,7 +35,7 @@ extension RJSLib {
             setupViewUIRx()                          // DONT CHANGE ORDER
             setupColorsAndStyles()
         }
-
+        
         open func prepareLayoutCreateHierarchy() {
             fatalError("Override me")
         }
@@ -48,7 +48,7 @@ extension RJSLib {
             fatalError("Override me")
         }
 
-        open func setupColorsAndStyles() {
+        open override func setupColorsAndStyles() {
             fatalError("Override me")
         }
 
@@ -62,7 +62,7 @@ extension RJSLib {
         
         // Can (and should) be overriden
         public func displayMessage(_ message: String, type: AlertType) {
-            (self as? UIViewController)?.showAlert(title: "\(type)", message: message)
+           // self as? UIViewController)?.showAlert(title: "\(type)", message: message)
         }
     }
 }

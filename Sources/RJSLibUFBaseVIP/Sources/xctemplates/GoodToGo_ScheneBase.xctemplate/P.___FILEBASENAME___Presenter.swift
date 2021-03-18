@@ -22,7 +22,7 @@ import RJSLibUFBase
 //
 
 extension P {
-    class ___VARIABLE_sceneName___Presenter: RJS_BasePresenterVIP {
+    class ___VARIABLE_sceneName___Presenter: RJS_BasePresenter {
         deinit {
             NotificationCenter.default.removeObserver(self)
         }

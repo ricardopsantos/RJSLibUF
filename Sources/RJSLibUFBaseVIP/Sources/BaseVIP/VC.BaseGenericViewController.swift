@@ -55,6 +55,11 @@ public extension RJSLib {
         open func setupViewUIRx() {
             fatalError("Override me")
         }
+        
+        override public func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+            super.traitCollectionDidChange(previousTraitCollection)
+            setupColorsAndStyles()
+        }
     }
 }
 #endif

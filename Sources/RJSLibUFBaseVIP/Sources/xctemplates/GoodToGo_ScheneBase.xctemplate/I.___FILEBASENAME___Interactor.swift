@@ -20,7 +20,7 @@ import RJSLibUFBase
 //
 
 extension I {
-    class ___VARIABLE_sceneName___Interactor: RJS_BaseInteractorVIP, ___VARIABLE_sceneName___DataStoreProtocol {
+    class ___VARIABLE_sceneName___Interactor: RJS_BaseInteractor, ___VARIABLE_sceneName___DataStoreProtocol {
         deinit {
             NotificationCenter.default.removeObserver(self)
         }

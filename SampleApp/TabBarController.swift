@@ -54,6 +54,10 @@ struct TabBarControllerV2: View {
                 
                 NavigationLink(destination: VC.TestingMiscVC().asAnyView)
                     { Text("TestingMiscVC") }
+                
+                NavigationLink(destination: VC.___VARIABLE_sceneName___ViewController().asAnyView)
+                    { Text("VIP") }
+                
             }
             .navigationBarTitle("RJSLib_UseCases")
         }
