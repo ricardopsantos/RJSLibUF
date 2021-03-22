@@ -19,7 +19,6 @@ public extension RJSCombineCompatibleProtocol where Self: UIControl {
 
 fileprivate extension RJSLib {
     func sample() {
-        let search = UISearchTextField()
         let btn = UIButton()
         _ = btn.publisher(for: .touchUpInside).sinkToResult { (_) in }
         _ = btn.rjsCombine.touchUpInsidePublisher.sinkToResult { (_) in }

@@ -57,7 +57,9 @@ public extension RJSLibUFDesignables_Preview {
             RJS_Designables_SwiftUI.TitleAndValue(title: "TitleAndValue.title", value: "TitleAndValue.value").erased,
             RJS_Designables_SwiftUI.CustomButton(title: "title").erased,
             RJS_Designables_SwiftUI.ErrorView1(message: "message").erased,
-            RJS_Designables_SwiftUI.FloatingTextField(title: "First Name",
+            RJS_Designables_SwiftUI.FloatingTextField1(title: "First Name",
+                                                      text: $textState).erased,
+            RJS_Designables_SwiftUI.FloatingTextField2(placeHolder: "First Name",
                                                       text: $textState).erased,
             RJS_Designables_SwiftUI.RefreshedStateIndicatorView().erased,
         ]

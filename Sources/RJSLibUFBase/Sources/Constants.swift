@@ -27,6 +27,6 @@ public extension RJSLib {
         public static var fail: String = "\(sharedLibConstantsId)fail"
         public static var referenceLost: String = "\(sharedLibConstantsId)referenceLost"
         public static var userInterationDisabled: String = "\(sharedLibConstantsId)userInterationDisabled"
-        public static var cellIdentifier: String { "\(sharedLibConstantsId)cellIdentifier" }
+        //public static var cellIdentifier: String { "\(sharedLibConstantsId)cellIdentifier" }
     }
 }

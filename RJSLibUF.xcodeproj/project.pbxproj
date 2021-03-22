@@ -197,8 +197,11 @@
 		CF0E1B44BC74AA9328659F93 /* E.Result<T>.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B013BDF41E070C57D5C8A1 /* E.Result<T>.swift */; };
 		D721F15CD0A2521AD72E0860 /* RJSLibUFBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B0D02882E22945B619357BF /* RJSLibUFBase.framework */; };
 		D73B913F3B0BFBE0931FE4D0 /* UIImageView+Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF56FDF37196BB07FF9066A /* UIImageView+Transform.swift */; };
+		D79FEBA4260888B100053268 /* UITableViewCell+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79FEBA3260888B100053268 /* UITableViewCell+Extensions.swift */; };
 		D7A6D1952600022B00B60F95 /* GenericStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A6D1942600022B00B60F95 /* GenericStore.swift */; };
 		D7A6D1A52600049000B60F95 /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A6D1A42600049000B60F95 /* Color+Extensions.swift */; };
+		D7BDD40E26053AB800A08099 /* DesignablesSwiftUI+ EditModeContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BDD40D26053AB800A08099 /* DesignablesSwiftUI+ EditModeContext.swift */; };
+		D7BDD41E26053F3400A08099 /* UIView+Publishers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BDD41D26053F3400A08099 /* UIView+Publishers.swift */; };
 		DA50D4AABCDF53FF057D7914 /* DesignablesUIKit+SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFB590FB4DD847801697F6B /* DesignablesUIKit+SearchBar.swift */; };
 		DA76897C36942C026A9B45B3 /* E.ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D1E7644ECF22BAEF83029E /* E.ColorScheme.swift */; };
 		DAC580909BF621BF60A75DD4 /* UIWindow+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9724D367D128A44CAFDA07DF /* UIWindow+Extensions.swift */; };
@@ -553,8 +556,11 @@
 		D5C8A3C35FA31D5E659375A6 /* FRPSampleAPI+ResponseDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FRPSampleAPI+ResponseDto.swift"; sourceTree = "<group>"; };
 		D5FCBCFD8D709AF7820D020A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		D66CA57671DE0186C90E5FA4 /* NSObject+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extensions.swift"; sourceTree = "<group>"; };
+		D79FEBA3260888B100053268 /* UITableViewCell+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extensions.swift"; sourceTree = "<group>"; };
 		D7A6D1942600022B00B60F95 /* GenericStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericStore.swift; sourceTree = "<group>"; };
 		D7A6D1A42600049000B60F95 /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
+		D7BDD40D26053AB800A08099 /* DesignablesSwiftUI+ EditModeContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DesignablesSwiftUI+ EditModeContext.swift"; sourceTree = "<group>"; };
+		D7BDD41D26053F3400A08099 /* UIView+Publishers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Publishers.swift"; sourceTree = "<group>"; };
 		D8BF094350F466DD8E3BFC72 /* TNConstrainable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNConstrainable.swift; sourceTree = "<group>"; };
 		D9BE1BE60D893AF4394F15CA /* FRPSampleAP+Requests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FRPSampleAP+Requests.swift"; sourceTree = "<group>"; };
 		D9EEF02B9F345876BA1812D6 /* UIKitFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitFactory.swift; sourceTree = "<group>"; };
@@ -943,6 +949,7 @@
 				DC2FEC8635137B0E81218DBC /* UISwitch+Extensions.swift */,
 				9724D367D128A44CAFDA07DF /* UIWindow+Extensions.swift */,
 				FE3883FFFC9CC47A07F9CBCF /* VoiceOver+Extensions.swift */,
+				D79FEBA3260888B100053268 /* UITableViewCell+Extensions.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -1011,6 +1018,7 @@
 				A65907CC832AB49F12F89498 /* DesignablesSwiftUI+SearchBar.swift */,
 				CE03946450DF7FEA362F01C7 /* DesignablesSwiftUI+TitleAndValue.swift */,
 				7E82A595E9C2A47FB48E577C /* DesignablesSwiftUI+ViewWithItems.swift */,
+				D7BDD40D26053AB800A08099 /* DesignablesSwiftUI+ EditModeContext.swift */,
 			);
 			path = Designable_SwiftUI;
 			sourceTree = "<group>";
@@ -1020,6 +1028,7 @@
 			children = (
 				185BB4E37EEA19D84EC81E3F /* Just+Error.swift */,
 				CD08BAEDCF8220FD8F191A25 /* Publisher+Extensions.swift */,
+				D7BDD41D26053F3400A08099 /* UIView+Publishers.swift */,
 			);
 			path = Publishers;
 			sourceTree = "<group>";
@@ -1586,6 +1595,7 @@
 				25808F17B55E5FCBB9A15946 /* TinyConstraints+superview.swift in Sources */,
 				392DF32A84BF956D3D1D45B4 /* TinyConstraints.swift in Sources */,
 				ECA9AE04C6909A407436C033 /* UIApplication+Extensions.swift in Sources */,
+				D79FEBA4260888B100053268 /* UITableViewCell+Extensions.swift in Sources */,
 				0F10C42338632CE0A100DA58 /* UIButton+CombineCompatible.swift in Sources */,
 				2387487C4408FA34E14E9586 /* UIButton+Extensions.swift in Sources */,
 				A3A128AC07485020ED700D0E /* UICollectionView+Extensions.swift in Sources */,
@@ -1600,6 +1610,7 @@
 				5841B0DE677D4203C2DBCD4B /* UILabel+Extensions.swift in Sources */,
 				E279B459817E24B8694F91FF /* UILayoutPriority+Extensions.swift in Sources */,
 				A96BFA6C19318FA5CE5B7142 /* UIScreen+Extensions.swift in Sources */,
+				D7BDD41E26053F3400A08099 /* UIView+Publishers.swift in Sources */,
 				B01DF79DD718668FFB438041 /* UIScrollView+Extensions.swift in Sources */,
 				D7A6D1A52600049000B60F95 /* Color+Extensions.swift in Sources */,
 				B4487563D20C25563E7B84D7 /* UISearchTextField+CombineCompatible.swift in Sources */,
@@ -1708,6 +1719,7 @@
 				DA50D4AABCDF53FF057D7914 /* DesignablesUIKit+SearchBar.swift in Sources */,
 				A8A9D60E6E99E018193B60BD /* Designables_Preview.swift in Sources */,
 				0DAF3438BD0E658F46819553 /* UIKitFactory.swift in Sources */,
+				D7BDD40E26053AB800A08099 /* DesignablesSwiftUI+ EditModeContext.swift in Sources */,
 				03740C2CABD375E9CF8E35B6 /* UIView+Animations.swift in Sources */,
 				DF91B2F82FC5621D0372DE3B /* typealias.swift in Sources */,
 			);

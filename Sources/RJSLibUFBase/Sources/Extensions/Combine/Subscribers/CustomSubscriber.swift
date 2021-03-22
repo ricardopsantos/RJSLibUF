@@ -67,8 +67,6 @@ fileprivate extension RJSLib {
         let customSubscriber = CustomSubscriber()
 
         customPublisher.subscribe(customSubscriber)
-        
-        customPublisher
     }
     
     func sample2() {

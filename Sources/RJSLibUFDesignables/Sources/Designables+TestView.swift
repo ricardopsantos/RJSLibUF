@@ -66,9 +66,10 @@ public extension RJS_Designables {
                         Divider()
                     }
                     VStack {
-                        Text("FloatingTextField").font(.caption)
-                        RJS_Designables_SwiftUI.FloatingTextField(title: "First Name", text: $valuesFloatingTextField)
+                        Text("FloatingTextField1").font(.caption)
+                        RJS_Designables_SwiftUI.FloatingTextField1(title: "First Name", text: $valuesFloatingTextField)
                         Text(valuesFloatingTextField)
+                        RJS_Designables_SwiftUI.FloatingTextField2(placeHolder: "First Name", text: $valuesFloatingTextField)
                         Divider()
                     }
                     VStack {
