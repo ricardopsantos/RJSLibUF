@@ -34,29 +34,28 @@ struct TabBarControllerV2: View {
     var body: some View {
         NavigationView {
             List {
-                NavigationLink(destination: V.PrimeApp.ContentView(store: AppStores.PrimeApp().store))
-                    { Text("PrimeApp") }
+                NavigationLink(destination: V.PrimeApp.ContentView(store: AppStores.PrimeApp().store)) { Text("PrimeApp") }
                 
-                NavigationLink(destination: RJSLibUFBase_Preview.ConditionalViews())
-                    { Text("ConditionalViews") }
+                NavigationLink(destination: RJSLibUFBase_Preview.ConditionalViews()) {
+                    Text("ConditionalViews") }
                 
-                NavigationLink(destination: vcCombineTesting.asAnyView)
-                    { Text("CombineTestingVC") }
+                NavigationLink(destination: vcCombineTesting.asAnyView) {
+                    Text("CombineTestingVC") }
                 
-                NavigationLink(destination: VC.SwiftUIAndUIKitVC().asAnyView)
-                    { Text("SwiftUIAndUIKitVC") }
+                NavigationLink(destination: VC.SwiftUIAndUIKitVC().asAnyView) {
+                    Text("SwiftUIAndUIKitVC") }
                 
-                NavigationLink(destination: VC.RJSLibUFDesignablesVC().asAnyView)
-                    { Text("RJSLibUFDesignablesVC") }
+                NavigationLink(destination: VC.RJSLibUFDesignablesVC().asAnyView) {
+                    Text("RJSLibUFDesignablesVC") }
                 
-                NavigationLink(destination: VC.RJSLibUFAppThemesVC().asAnyView)
-                    { Text("RJSLibUFAppThemesVC") }
+                NavigationLink(destination: VC.RJSLibUFAppThemesVC().asAnyView) {
+                    Text("RJSLibUFAppThemesVC") }
                 
-                NavigationLink(destination: VC.TestingMiscVC().asAnyView)
-                    { Text("TestingMiscVC") }
+                NavigationLink(destination: VC.TestingMiscVC().asAnyView) {
+                    Text("TestingMiscVC") }
                 
-                NavigationLink(destination: VC.___VARIABLE_sceneName___ViewController().asAnyView)
-                    { Text("VIP") }
+                NavigationLink(destination: VC.___VARIABLE_sceneName___ViewController().asAnyView) {
+                    Text("VIP") }
                 
             }
             .navigationBarTitle("RJSLib_UseCases")

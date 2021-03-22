@@ -151,8 +151,8 @@ public extension View {
     // How to conditionally apply modifiers in SwiftUI
     @ViewBuilder
     func ifElseCondition<TrueContent: View, FalseContent: View>(_ condition: Bool,
-                                                            then trueContent: (Self) -> TrueContent,
-                                                            else falseContent: (Self) -> FalseContent) -> some View {
+                                                                then trueContent: (Self) -> TrueContent,
+                                                                else falseContent: (Self) -> FalseContent) -> some View {
         if condition { trueContent(self)
         } else { falseContent(self) }
     }
@@ -167,7 +167,7 @@ public extension View {
     
     // https://medium.com/better-programming/swiftui-tips-and-tricks-c7840d8eb01b
     func doIf<Content: View>(_ condition: Bool,
-                              transform: (Self) -> Content) -> some View {
+                             transform: (Self) -> Content) -> some View {
         // Booth versions bellow work
         let method = Int.random(in: 0...3)
         if method == 1 {
@@ -218,7 +218,7 @@ public extension RJSLibUFBase_Preview {
                 }
                 VStack {
                     PerformIfSimulator { print("On Simulator") }
-                    Perform { print("perfomed_1") }
+                    Perform { RJS_Logs.info("perfomed_1", tag: .rjsLib) }
                     Perform(if: condition) {
                         print("perfomed_2")
                     }

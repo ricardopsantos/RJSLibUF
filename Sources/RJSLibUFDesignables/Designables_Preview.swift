@@ -61,7 +61,7 @@ public extension RJSLibUFDesignables_Preview {
                                                       text: $textState).erased,
             RJS_Designables_SwiftUI.FloatingTextField2(placeHolder: "First Name",
                                                       text: $textState).erased,
-            RJS_Designables_SwiftUI.RefreshedStateIndicatorView().erased,
+            RJS_Designables_SwiftUI.RefreshedStateIndicatorView().erased
         ]
      }
 }

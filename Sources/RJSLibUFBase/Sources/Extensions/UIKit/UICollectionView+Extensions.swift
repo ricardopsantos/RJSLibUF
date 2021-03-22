@@ -22,5 +22,13 @@ public extension UICollectionView {
         selectItem(at: indexPath, animated: true, scrollPosition: .centeredHorizontally)
         delegate?.collectionView?(self, didSelectItemAt: indexPath)
     }
+    
+    func register<T: UICollectionViewCell>(_ class: T.Type) {
+        register(`class`, forCellWithReuseIdentifier: T.reusableIdentifier)
+    }
+    
+    func dequeueReusableCell<T: UICollectionViewCell>(for indexPath: IndexPath) -> T {
+        dequeueReusableCell(withReuseIdentifier: T.reusableIdentifier, for: indexPath) as! T
+    }
 }
 #endif

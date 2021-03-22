@@ -3,6 +3,8 @@
 //
 
 import Foundation
+
+#if !os(macOS)
 import UIKit
 //
 import RJSLibUFBase
@@ -87,3 +89,4 @@ public class StylesHandler {
 }
 
 // public class ViewStyle: Decodable { }
+#endif

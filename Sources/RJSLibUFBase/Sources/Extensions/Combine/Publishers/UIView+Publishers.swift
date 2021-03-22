@@ -4,6 +4,7 @@
 
 import Foundation
 import Combine
+#if !os(macOS)
 import UIKit
 
 //
@@ -45,20 +46,21 @@ private func sample1() {
     UIView.animationPublisher(withDuration: 1.5) {
         cube.center = view.center
     }
-        .flatMap { isCompleted in
+        .flatMap { /*isCompleted*/ _ in
             UIView.animationPublisher(withDuration: 1.0) {
                 cube.backgroundColor = .blue
                 cube.layer.bounds.size = CGSize(width: 100.0, height: 100.0)
             }
         }
-        .flatMap { isCompleted in
+        .flatMap { /*isCompleted*/ _ in
             UIView.animationPublisher(withDuration: 0.5) {
                 cube.layer.cornerRadius = 50.0
                 cube.transform = CGAffineTransform(rotationAngle: .pi)
             }
         }
         .sink(receiveValue: { isCompleted in
-            print("animation completed ? \(isCompleted)")
+            RJS_Logs.debug("animation completed ? \(isCompleted)", tag: .rjsLib)
         })
         .store(in: &cancellables)
 }
+#endif

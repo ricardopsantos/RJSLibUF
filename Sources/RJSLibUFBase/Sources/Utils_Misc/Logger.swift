@@ -35,7 +35,6 @@ extension RJSLib {
             StorageUtils.deleteLogs()
         }
 
-        
         public static func debug(_ message: Any?,
                                  tag: Logger.Tag,
                                  function: String = #function, file: String = #file, line: Int = #line) {

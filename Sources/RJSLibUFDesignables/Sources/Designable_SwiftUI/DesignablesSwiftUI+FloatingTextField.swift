@@ -54,8 +54,8 @@ public extension RJS_Designables_SwiftUI {
                 .foregroundColor(Color.secondary)
                     .background(Color(UIColor.systemBackground))
                 .padding(shouldPlaceHolderMove ?
-                         EdgeInsets(top: 0, leading:15, bottom: textFieldHeight, trailing: 0) :
-                         EdgeInsets(top: 0, leading:15, bottom: 0, trailing: 0))
+                         EdgeInsets(top: 0, leading: 15, bottom: textFieldHeight, trailing: 0) :
+                         EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 0))
                 .scaleEffect(shouldPlaceHolderMove ? 1.0 : 1.2)
                 .animation(.linear)
             }

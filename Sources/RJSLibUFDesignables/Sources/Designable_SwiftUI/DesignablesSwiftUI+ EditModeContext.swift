@@ -5,13 +5,14 @@
 import Foundation
 import SwiftUI
 
+#if !os(macOS)
 //
 // https://medium.com/geekculture/swiftui-and-the-intermittent-editmode-b714c923f536
 // SwiftUI and the Intermittent EditMode
 //
 
 public extension RJS_Designables_SwiftUI {
-    struct EditModeContext<Content: View> : View {
+    struct EditModeContext<Content: View>: View {
         @State var editMode: EditMode = .inactive
         var content: Content
         init(@ViewBuilder content: () -> Content) {
@@ -23,8 +24,7 @@ public extension RJS_Designables_SwiftUI {
     }
 }
 
-#if !os(macOS)
-fileprivate struct Previews_EditModeContext {
+private struct Previews_EditModeContext {
     
     struct ListView1: View {
         @State var items = ["One", "Two", "Three"]
@@ -58,7 +58,7 @@ fileprivate struct Previews_EditModeContext {
                             )
                         }
                         .onDelete(perform: { _ in })
-                        .onMove(perform: { indices, newOffset in })
+                        .onMove(perform: { /*indices, newOffset*/ _, _ in })
                     }
                     .navigationBarTitle("List", displayMode: .inline)
                     .navigationBarItems(trailing: EditButton())

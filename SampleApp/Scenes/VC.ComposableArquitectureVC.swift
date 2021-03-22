@@ -24,7 +24,7 @@ struct PrimeApp_Previews: PreviewProvider {
 #endif
 
 //
-// MARK:- Store
+// MARK: - Store
 //
 
 extension AppStores {
@@ -33,17 +33,17 @@ extension AppStores {
         typealias AppAction = AppDomain.PrimeApp.AppAction
         typealias AppState  = AppDomain.PrimeApp.AppState
         
-        var initialState : AppState { AppState() }
-        var reducer : (inout AppState, AppAction) -> Void { AppReducers.PrimeApp().appReducer }
+        var initialState: AppState { AppState() }
+        var reducer: (inout AppState, AppAction) -> Void { AppReducers.PrimeApp().appReducer }
         
-        var store : RJS_GenericStore<AppState, AppAction> {
+        var store: RJS_GenericStore<AppState, AppAction> {
             RJS_GenericStore(initialValue: initialState, reducer: reducer)
         }
     }
 }
 
 //
-// MARK:- Domain
+// MARK: - Domain
 //
 
 extension AppDomain {
@@ -51,7 +51,7 @@ extension AppDomain {
     struct PrimeApp {
         
         //
-        // MARK:- View Domain (ContentView)
+        // MARK: - View Domain (ContentView)
         //
         
         enum FavoritePrimeAction {
@@ -74,7 +74,7 @@ extension AppDomain {
         }
         
         //
-        // MARK:- App Domain
+        // MARK: - App Domain
         //
         
         struct AppState {
@@ -113,7 +113,7 @@ extension AppDomain {
             }
             
             var isFavoritPrime: Bool {
-                let result = favoritPrimes.filter{ $0 == number }.count >= 1
+                let result = favoritPrimes.filter { $0 == number }.count >= 1
                 printState(sender: #function, aux: "\(result)")
                 return result
             }
@@ -121,10 +121,8 @@ extension AppDomain {
     }
 }
 
-
-
 //
-// MARK:- Reducer
+// MARK: - Reducer
 //
 
 extension AppReducers {
@@ -134,7 +132,7 @@ extension AppReducers {
         
         // inout cauze we are change the `state` instead of doing a copy,
         // changing the copy and return it
-        func appReducer(state: inout AppState, action: AppAction) -> Void {
+        func appReducer(state: inout AppState, action: AppAction) {
             switch action {
             case .counter(.decrementTap):
                 state.number -= 1
@@ -154,7 +152,7 @@ extension AppReducers {
 }
 
 //
-// MARK:- Views
+// MARK: - Views
 //
 
 extension V {
