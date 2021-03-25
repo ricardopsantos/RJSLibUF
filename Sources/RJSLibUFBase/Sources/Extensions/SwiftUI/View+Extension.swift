@@ -36,10 +36,15 @@ public extension SwiftUI.View {
         environment(\.colorScheme, .dark).previewDisplayName("Dark")
     }
     
+    var buildPreviewExtraLarge: some SwiftUI.View {
+        environment(\.sizeCategory, .extraLarge).previewDisplayName("ExtraLarge")
+    }
+    
     func buildPreviews(full: Bool = false) -> some SwiftUI.View {
         Group {
             if full {
                 previewDisplayName("Default")
+                environment(\.sizeCategory, .extraLarge).previewDisplayName("ExtraLarge")
                 environment(\.colorScheme, .dark).previewDisplayName("Dark")
                 previewDevice("iPhone 8").previewDisplayName("Default - iPhone8")
                 previewDevice("iPhone 11 Pro").previewDisplayName("Default - iPhone11")
@@ -48,6 +53,7 @@ public extension SwiftUI.View {
             }
         }
     }
+
 }
 
 public extension SwiftUI.View {

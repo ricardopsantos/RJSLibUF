@@ -6,6 +6,8 @@ import Foundation
 import SwiftUI
 
 public extension RJS_Designables_SwiftUI {
+    
+    @available(*, deprecated, message: "Use @ViewBuilder instead")
     struct ViewWithAnyViews: View {
         private var items: [AnyView]
         public init(_ items: [AnyView]) {

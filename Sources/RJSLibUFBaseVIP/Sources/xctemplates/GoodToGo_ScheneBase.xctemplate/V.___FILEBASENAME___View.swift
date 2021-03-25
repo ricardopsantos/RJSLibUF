@@ -19,7 +19,7 @@ import RJSLibUFBase
 import SwiftUI
 struct ___VARIABLE_sceneName___ViewPreviews: PreviewProvider {
     static var previews: some View {
-        RJS_ViewRepresentable { V.___VARIABLE_sceneName___View() }.buildPreviews()
+        RJS_ViewRepresentable( V.___VARIABLE_sceneName___View() ).buildPreviews()
     }
 }
 

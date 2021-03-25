@@ -13,27 +13,30 @@ import SwiftUI
 public extension RJSLib {
     struct ViewControllerRepresentable: UIViewControllerRepresentable {
         let viewControllerBuilder: () -> UIViewController
-        
         public init(_ viewControllerBuilder: @escaping () -> UIViewController) {
             self.viewControllerBuilder = viewControllerBuilder
         }
-        
         public func makeUIViewController(context: Context) -> some UIViewController {
             return viewControllerBuilder()
         }
-        
         public func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
             // Not needed
         }
     }
     
-    struct ViewRepresentable: UIViewRepresentable {
+    struct ViewRepresentable1: UIViewRepresentable {
+        public typealias UIViewType = UIView
+        let view: UIViewType
+        public init(_ view: UIView) { self.view = view }
+        public func makeUIView(context: Context) -> UIViewType { view }
+        public func updateUIView(_ uiView: UIViewType, context: Context) { }
+    }
+    
+    struct ViewRepresentable2: UIViewRepresentable {
         let viewBuilder: () -> UIView
-
         public init(_ viewBuilder: @escaping () -> UIView) {
             self.viewBuilder = viewBuilder
         }
-
         public func makeUIView(context: Context) -> some UIView {
             viewBuilder()
         }
@@ -41,7 +44,6 @@ public extension RJSLib {
         public func updateUIView(_ uiView: UIViewType, context: Context) {
             // Not needed
         }
-    
     }
 }
 
@@ -74,7 +76,7 @@ struct Previews_ViewControllerRepresentable {
     // View Preview
     struct PreviewProvider_2: PreviewProvider {
         static var previews: some View {
-            RJS_ViewRepresentable { SampleVC().view }
+            RJS_ViewRepresentable(SampleVC().view)
         }
     }
     #endif

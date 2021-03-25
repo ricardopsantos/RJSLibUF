@@ -53,8 +53,8 @@ public extension RJS_Designables {
                                      cellIdentifier: String = UITableViewCell.reusableIdentifier) -> UITableView {
             let some = UITableView()
             some.tag = tag
-            some.register(UITableViewCell.self)
-            //some.register(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
+            //some.register(UITableViewCell.self)
+            some.register(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
             return some
         }
         
