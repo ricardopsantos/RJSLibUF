@@ -49,7 +49,7 @@ public extension RJS_Designables_SwiftUI {
                 .foregroundColor(Color.primary)
                 .accentColor(Color.secondary)
                 .animation(.linear)
-                ///Floating Placeholder
+                //Floating Placeholder
                 Text(placeHolderText)
                 .foregroundColor(Color.secondary)
                     .background(Color(UIColor.systemBackground))

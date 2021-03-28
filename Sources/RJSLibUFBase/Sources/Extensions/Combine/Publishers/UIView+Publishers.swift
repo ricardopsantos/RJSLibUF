@@ -21,7 +21,10 @@ public extension UIView {
         }
     }
     
-    class func animationPublisher(withDuration duration: TimeInterval, delay: TimeInterval, options: UIView.AnimationOptions = [], animations: @escaping () -> Void) -> Future<Bool, Never> {
+    class func animationPublisher(withDuration duration: TimeInterval,
+                                  delay: TimeInterval,
+                                  options: UIView.AnimationOptions = [],
+                                  animations: @escaping () -> Void) -> Future<Bool, Never> {
         Future { promise in
             UIView.animate(withDuration: duration, delay: delay, options: options, animations: animations) {
                 promise(.success($0))
@@ -29,9 +32,20 @@ public extension UIView {
         }
     }
     
-    class func animationPublisher(withDuration duration: TimeInterval, delay: TimeInterval, usingSpringWithDamping dampingRatio: CGFloat, initialSpringVelocity velocity: CGFloat, options: UIView.AnimationOptions = [], animations: @escaping () -> Void) -> Future<Bool, Never> {
+    class func animationPublisher(withDuration duration: TimeInterval,
+                                  delay: TimeInterval,
+                                  usingSpringWithDamping dampingRatio: CGFloat,
+                                  initialSpringVelocity
+                                    velocity: CGFloat,
+                                  options: UIView.AnimationOptions = [],
+                                  animations: @escaping () -> Void) -> Future<Bool, Never> {
         Future { promise in
-            UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: dampingRatio, initialSpringVelocity: velocity, options: options, animations: animations) {
+            UIView.animate(withDuration: duration,
+                           delay: delay,
+                           usingSpringWithDamping: dampingRatio,
+                           initialSpringVelocity: velocity,
+                           options: options,
+                           animations: animations) {
                 promise(.success($0))
             }
         }

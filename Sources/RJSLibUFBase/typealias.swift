@@ -25,7 +25,7 @@ public typealias RJS_Convert          = RJSLib.Convert            // Types conve
 
 #if !os(macOS)
 public typealias RJS_ViewControllerRepresentable = RJSLib.ViewControllerRepresentable
-public typealias RJS_ViewRepresentable           = RJSLib.ViewRepresentable
+public typealias RJS_ViewRepresentable           = RJSLib.ViewRepresentable2
 #endif
 
 // MARK: - Networking

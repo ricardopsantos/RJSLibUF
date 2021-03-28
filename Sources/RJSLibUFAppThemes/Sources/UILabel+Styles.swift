@@ -10,8 +10,8 @@ import UIKit
 public extension UILabel {
     
     var layoutStyle: RJS_LabelStyle {
-        set { apply(style: newValue) }
         get { return .notApplied }
+        set { apply(style: newValue) }
     }
 
     func apply(style: RJS_LabelStyle) {

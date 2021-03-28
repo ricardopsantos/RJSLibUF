@@ -76,7 +76,7 @@ struct Previews_ViewControllerRepresentable {
     // View Preview
     struct PreviewProvider_2: PreviewProvider {
         static var previews: some View {
-            RJS_ViewRepresentable(SampleVC().view)
+            RJS_ViewRepresentable { SampleVC().view }
         }
     }
     #endif

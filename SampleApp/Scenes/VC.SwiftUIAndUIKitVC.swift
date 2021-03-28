@@ -51,12 +51,6 @@ extension VC {
             containerView2.layouts.height(200)
             _ = view.rjs.allSubviewsWith(type: UIButton.self).map { $0.layouts.height(44) }
 
-//            print(containerView1.layouts.layoutConstraints.compactMap { $0.identifier })
-//            print("#####")
-//            print(self.view.layouts.layoutConstraintsRelatedWith(containerView1).compactMap { $0.identifier })
-//            print("#####")
-//            print(containerView1.layouts.layoutConstraintsRelatedWithSuperView.compactMap { $0.identifier })
-
         }
         
         override func setupFRP() {

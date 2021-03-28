@@ -10,8 +10,6 @@ import RJSLibUFBase
 
 private var cancelBag = CancelBag()
 
-// swiftlint:disable multiple_closures_with_trailing_closure no_space_in_method_call
-
 public extension RJSLib {
 
     static func frpSampleAPIUseCase() {

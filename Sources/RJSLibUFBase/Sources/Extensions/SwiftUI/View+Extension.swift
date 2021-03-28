@@ -223,10 +223,10 @@ public extension RJSLibUFBase_Preview {
                         .ifElseCondition(condition) { $0.foregroundColor(Color(.blue)) } else: { $0.foregroundColor(Color(.green)) }
                 }
                 VStack {
-                    PerformIfSimulator { print("On Simulator") }
+                    PerformIfSimulator { RJS_Logs.debug("On Simulator", tag: .rjsLib) }
                     Perform { RJS_Logs.info("perfomed_1", tag: .rjsLib) }
                     Perform(if: condition) {
-                        print("perfomed_2")
+                        RJS_Logs.info("perfomed_2", tag: .rjsLib)
                     }
                 }
                 Spacer()
