@@ -17,16 +17,11 @@ public extension RJSLib {
         public static var defaultDelay: Double { 0.35 }
         public static var defaultAnimationsTime: Double { defaultDelay }
         public static var defaultDisableTimeAfterTap: Double { 1 } // Time span in which the view will be disabled after some user interaction
-        public struct Tags {
-            #warning("DELETE!")
-            public static var progressView: Int { 18530186 }
-        }
         private static let sharedLibConstantsId: String = "RJSLib.Constants."
         
         public static var notPredicted: String = "\(sharedLibConstantsId)notPredicted"
         public static var fail: String = "\(sharedLibConstantsId)fail"
         public static var referenceLost: String = "\(sharedLibConstantsId)referenceLost"
         public static var userInterationDisabled: String = "\(sharedLibConstantsId)userInterationDisabled"
-        //public static var cellIdentifier: String { "\(sharedLibConstantsId)cellIdentifier" }
     }
 }

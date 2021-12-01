@@ -14,12 +14,24 @@ public extension RJSLibExtension where Target == UIViewController {
     
     var isVisible: Bool { target.isVisible }
     
+    func destroy() { target.destroy() }
+
     var genericAccessibilityIdentifier: String { target.genericAccessibilityIdentifier }
 
 }
 
 public extension UIViewController {
 
+    func destroy() {
+        children.forEach({ (some) in
+            some.destroy()
+        })
+        willMove(toParent: nil)
+        view.removeFromSuperview()
+        removeFromParent()
+        NotificationCenter.default.removeObserver(self) // Remove from all notifications being observed
+    }
+    
     var topViewController: UIViewController? {
         return UIViewController.topViewController
     }

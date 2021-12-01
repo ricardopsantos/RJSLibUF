@@ -11,7 +11,7 @@ import RJSLibUFBase
 
 // Future way to handle apps DarkMode (on progress)
 
-public protocol StylableProtocol: class {
+public protocol StylableProtocol: AnyObject {
     
     // This object is used to apply any custom behavior associated with
     // an Stylable, so this way we'll not overload our Stylable components.

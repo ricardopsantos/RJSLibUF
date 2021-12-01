@@ -23,7 +23,7 @@ extension RJSLib {
 // MARK: - Presenter - PresentationLogic
 
 /// [BasePresentationLogicProtocol] && [BaseDisplayLogicProtocol] must match
-public protocol BasePresenterProtocol: class {
+public protocol BasePresenterProtocol: AnyObject {
     var baseViewController: BaseViewControllerProtocol? { get }
     func presentLoading(response: RJS_BaseDisplayLogicModels.Loading)
     func presentError(response: RJS_BaseDisplayLogicModels.Error)

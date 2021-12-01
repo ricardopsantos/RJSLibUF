@@ -14,7 +14,7 @@ import SwiftUI
 public extension RJSLib {
     
     enum HashableModelState<T: Hashable>: Hashable {
-        public static func == (lhs: Self<T>, rhs: Self<T>) -> Bool {
+        public static func == (lhs: RJSLib.HashableModelState<T>, rhs: RJSLib.HashableModelState<T>) -> Bool {
             switch (lhs, rhs) {
             case (.notLoaded, .notLoaded):
                 return true

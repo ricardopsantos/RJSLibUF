@@ -9,7 +9,7 @@ import RJSLibUFBase
 
 // MARK: - ViewController - DisplayLogic
 
-public protocol BaseViewControllerProtocol: class {
+public protocol BaseViewControllerProtocol: AnyObject {
     func displayLoading(viewModel: RJS_BaseDisplayLogicModels.Loading)
     func displayError(viewModel: RJS_BaseDisplayLogicModels.Error)
     func displayWarning(viewModel: RJS_BaseDisplayLogicModels.Warning)

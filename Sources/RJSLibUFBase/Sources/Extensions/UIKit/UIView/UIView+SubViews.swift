@@ -24,6 +24,9 @@ public extension UIView {
     func removeAllSubviewsRecursive() {
         let allViews = UIView.allSubviewsRecursive(from: self) as [UIView]
         _ = allViews.map { (some) -> Void in
+            if let vc = some.rjs.viewController {
+                vc.destroy()
+            }
             some.removeFromSuperview()
         }
     }

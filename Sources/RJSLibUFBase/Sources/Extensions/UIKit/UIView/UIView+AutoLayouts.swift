@@ -152,9 +152,15 @@ public extension RJSLayouts {
         if stackViewV.superview == nil {
             scrollView.addSubview(stackViewV)
         }
-        stackViewV.rjs.edgeStackViewToSuperView()
-        scrollView.layouts.edgesToSuperview(excluding: .bottom, insets: .zero)
-        scrollView.layouts.height(screenHeight)
+        if usingSafeArea {
+            stackViewV.rjs.edgeStackViewToSuperView(insets: .zero)
+            scrollView.layouts.edgesToSuperview()
+            scrollView.layouts.height(screenHeight)
+        } else {
+            stackViewV.rjs.edgeStackViewToSuperView(insets: target.safeAreaInsets)
+            scrollView.layouts.edgesToSuperview()
+            scrollView.layouts.height(screenHeight - target.safeAreaInsets.bottom.magnitude - target.safeAreaInsets.top.magnitude)
+        }
     }
 }
 
