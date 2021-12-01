@@ -80,6 +80,22 @@ case $option in
 ;;
 esac
 
+printf "\n"
+printf "\n"
+
+################################################################################
+
+echo "### Kill Xcode?"
+echo " [1] : No/Skip"
+echo " [2] : Yes"
+echo -n "Option? "
+read option
+case $option in
+    [1] ) echo "Ignored...." ;;
+   *) killall Xcode
+;;
+esac
+
 ################################################################################
 
 printf "\n"

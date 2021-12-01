@@ -21,8 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        //RJS_DataModelEntity.StorableKeyValue.clean()
-
         RJS_ColdCache.shared.printReport()
 
         let key = "LoginCount"
@@ -35,7 +33,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             _ = RJS_StorableKeyValue.save(key: key, value: "0")
         }
         
-//        self.window?.rootViewController = TabBarControllerV1()
         self.window?.rootViewController = TabBarControllerV2().viewController
 
         return true
