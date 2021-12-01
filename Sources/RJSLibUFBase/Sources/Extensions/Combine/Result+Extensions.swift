@@ -16,4 +16,11 @@ public extension Swift.Result {
         case .failure: return false
         }
     }
+    
+    var sucessUnWrappedValue: Any? {
+        switch self {
+        case .success(let unWrappedValue): return unWrappedValue
+        case .failure: return nil
+        }
+    }
 }

@@ -24,12 +24,12 @@ public struct Router { private init() {} }
 public typealias AlertType = RJSLib.AlertType
 
 #if !os(macOS)
-public typealias RJS_BaseGenericViewVIP = RJSLib.BaseGenericViewVIP
-public typealias RJS_BaseGenericViewControllerVIP = RJSLib.BaseGenericViewControllerVIP
-public typealias RJS_BaseViewControllerVIP = RJSLib.BaseViewControllerVIP
-public typealias RJS_BaseInteractorVIP = RJSLib.BaseInteractorVIP
-public typealias RJS_BasePresenterVIP = RJSLib.BasePresenterVIP
+public typealias RJS_BaseGenericView           = RJSLib.BaseGenericView
+public typealias RJS_BaseGenericViewController = RJSLib.BaseGenericViewController
+public typealias RJS_BaseViewController        = RJSLib.BaseViewController
+public typealias RJS_BaseInteractor            = RJSLib.BaseInteractor
+public typealias RJS_BasePresenter             = RJSLib.BasePresenter
+public typealias RJS_BaseRouter                = RJSLib.BaseRouter
 
 public typealias RJS_BaseDisplayLogicModels = RJSLib.BaseDisplayLogicModels
-public typealias RJS_BaseRouterVIP = RJSLib.BaseRouterVIP
 #endif

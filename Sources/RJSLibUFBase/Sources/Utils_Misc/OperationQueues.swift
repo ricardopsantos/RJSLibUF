@@ -4,6 +4,12 @@
 
 import Foundation
 
+//
+// https://betterprogramming.pub/the-beauty-of-operationqueue-in-swift-8398fc5fb013
+// The 7 Different Forms of OperationQueue in Swift
+// DispatchGroup, DispatchWorkItem, DispatchWorkItemFlags, DispatchSemaphore, addDependency, and addBarrierBlock at OperationQueue
+//
+
 public extension RJSLib {
     struct OperationQueues {
         private init() { }

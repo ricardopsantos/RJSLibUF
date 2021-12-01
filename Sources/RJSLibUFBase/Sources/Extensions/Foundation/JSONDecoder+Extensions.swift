@@ -1,7 +1,4 @@
 //
-//  UIDevice+Extensions.swift
-//  RJPSLib
-//
 //  Created by Ricardo Santos on 22/06/2020.
 //  Copyright © 2020 Ricardo P Santos. All rights reserved.
 //

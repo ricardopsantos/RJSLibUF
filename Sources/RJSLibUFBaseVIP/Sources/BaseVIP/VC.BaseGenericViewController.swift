@@ -9,7 +9,7 @@ import RJSLibUFBase
 
 public extension RJSLib {
     
-    class BaseGenericViewControllerVIP<T: StylableView>: BaseViewControllerVIP {
+    class BaseGenericViewController<T: StylableView>: BaseViewController {
 
         public let cancelBag = CancelBag()
         deinit {
@@ -23,8 +23,8 @@ public extension RJSLib {
         open override func loadView() {
             super.loadView()
             // Setup Generic View
-            setup()
             genericView = T()
+            setup()
             view.addSubview(genericView)
             genericView.layouts.edgesToSuperview()
             setupViewUIRx()
@@ -44,13 +44,6 @@ public extension RJSLib {
             setupNavigationUIRx()
         }
 
-        open override func viewDidAppear(_ animated: Bool) {
-            super.viewDidAppear(animated)
-            DispatchQueue.executeWithDelay(delay: 0.1) { [weak self] in
-                self?.firstAppearance = false
-            }
-        }
-
         open func setupViewIfNeed() {
             fatalError("Override me")
         }
@@ -61,6 +54,11 @@ public extension RJSLib {
 
         open func setupViewUIRx() {
             fatalError("Override me")
+        }
+        
+        override public func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+            super.traitCollectionDidChange(previousTraitCollection)
+            setupColorsAndStyles()
         }
     }
 }

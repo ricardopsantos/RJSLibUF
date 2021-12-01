@@ -49,7 +49,7 @@ struct ___VARIABLE_sceneName___ViewController_Preview: PreviewProvider {
 
 extension VC {
 
-    public class ___VARIABLE_sceneName___ViewController: RJS_BaseGenericViewControllerVIP<V.___VARIABLE_sceneName___View> {
+    public class ___VARIABLE_sceneName___ViewController: RJS_BaseGenericViewController<V.___VARIABLE_sceneName___View> {
 
         deinit {
             NotificationCenter.default.removeObserver(self)
@@ -91,6 +91,7 @@ extension VC {
         public override func setupColorsAndStyles() {
             //super.setupColorsAndStyles()
             // Setup UI on dark mode (if needed)
+            view.backgroundColor = .darkGray
         }
 
         //

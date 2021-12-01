@@ -8,6 +8,15 @@ import Foundation
 import UIKit
 #endif
 
+public extension Collection {
+    subscript(safe index: Index) -> Iterator.Element? {
+        guard indices.contains(index) else {
+            return nil
+        }
+        return self[index]
+    }
+}
+
 public extension Array {
     
     mutating func shuffle() {
@@ -17,7 +26,8 @@ public extension Array {
     }
     
     private func safeItem(at index: Int) -> Element? {
-        Int(index) < count ? self[Int(index)] : nil
+        guard index >= 0 else { return nil }
+        return Int(index) < count ? self[Int(index)] : nil
     }
     
     // Safe get item at index

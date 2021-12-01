@@ -8,11 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		034D336C4C5F5C4A0EEFB8E3 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93030C52174E8510BF8FCCA /* TabBarController.swift */; };
-		20C983979F0E2B2E18E21DAE /* VC.SwiftUITestingMiscVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABA0CAAA708677A48C764E0 /* VC.SwiftUITestingMiscVC.swift */; };
 		23256E12DC96481BE777A7C3 /* VC.RJSLibUFDesignablesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E600E1C639C903F1B6EA0D2E /* VC.RJSLibUFDesignablesVC.swift */; };
+		317BC6CE84871D23BF9D74CF /* VC.ComposableArquitectureVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0748A115642A4E1CA0D25F2A /* VC.ComposableArquitectureVC.swift */; };
 		3EDE17B59810354D00498610 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C850013A6A17CB2B156A7F5F /* AppDelegate.swift */; };
 		453FF2FF75CFAB7033773F8A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8607B8BF1EA049CFF6B04D2A /* LaunchScreen.storyboard */; };
-		4EDC941E2408A6DA0DB1EA8D /* VC.TestingCombine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF1ABCA47BB3ADF4E3C48BA /* VC.TestingCombine.swift */; };
 		65EBF1F6D99A9EB1B2B44FB9 /* Auxiliar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B452CD4C754EEACDA5C304 /* Auxiliar.swift */; };
 		6A14183C573A6BE1F11824A2 /* RJSLibUFBase in Frameworks */ = {isa = PBXBuildFile; productRef = 08C80521D330CC553007CADB /* RJSLibUFBase */; };
 		77430AC3388E7E07667973D0 /* RJSLibUFAppThemes in Frameworks */ = {isa = PBXBuildFile; productRef = 31826F13AD56498558E5A644 /* RJSLibUFAppThemes */; };
@@ -20,6 +19,7 @@
 		80E64973758DD3990100696A /* RJSLibUFStorage in Frameworks */ = {isa = PBXBuildFile; productRef = A831A6545DE57D4304CDCEDF /* RJSLibUFStorage */; };
 		834F491E24679DA510E3B9B6 /* RJSLibUFBaseVIP in Frameworks */ = {isa = PBXBuildFile; productRef = FA84E002D14A1FD4F201E6F9 /* RJSLibUFBaseVIP */; };
 		A5E96E4677F567A292A72133 /* VC.SwiftUIAndUIKitVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D36EBAA2936244A4A8BAE0 /* VC.SwiftUIAndUIKitVC.swift */; };
+		A93B67531544BE84D18142DC /* VC.CombineTestingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A1BEB4E0228633087AA122 /* VC.CombineTestingVC.swift */; };
 		CF1096D5FEB3FBDBF8D83ACF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61114974D64A09F7845CC853 /* Assets.xcassets */; };
 		D6152E607ABC2B2EE4DAF396 /* RJSLibUFNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = 3D1D0262D4472B54E7A7C375 /* RJSLibUFNetworking */; };
 		D8CDCDE732A116B5A4DD02BA /* RJSLibUFDesignables in Frameworks */ = {isa = PBXBuildFile; productRef = 225AE44B3249C0BC46625971 /* RJSLibUFDesignables */; };
@@ -27,10 +27,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0748A115642A4E1CA0D25F2A /* VC.ComposableArquitectureVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC.ComposableArquitectureVC.swift; sourceTree = "<group>"; };
 		1222A38CA1D980ABA250E196 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		3ABA0CAAA708677A48C764E0 /* VC.SwiftUITestingMiscVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC.SwiftUITestingMiscVC.swift; sourceTree = "<group>"; };
+		31A1BEB4E0228633087AA122 /* VC.CombineTestingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC.CombineTestingVC.swift; sourceTree = "<group>"; };
 		3B91CB910E050843DE439451 /* SampleApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SampleApp.entitlements; sourceTree = "<group>"; };
-		4FF1ABCA47BB3ADF4E3C48BA /* VC.TestingCombine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC.TestingCombine.swift; sourceTree = "<group>"; };
 		54B452CD4C754EEACDA5C304 /* Auxiliar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auxiliar.swift; sourceTree = "<group>"; };
 		61114974D64A09F7845CC853 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		88FFC81A98495F86495716C5 /* VC.RJSLibUFAppThemesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC.RJSLibUFAppThemesVC.swift; sourceTree = "<group>"; };
@@ -86,11 +86,11 @@
 		74901F2E984F5BFD204B85AA /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				31A1BEB4E0228633087AA122 /* VC.CombineTestingVC.swift */,
+				0748A115642A4E1CA0D25F2A /* VC.ComposableArquitectureVC.swift */,
 				88FFC81A98495F86495716C5 /* VC.RJSLibUFAppThemesVC.swift */,
 				E600E1C639C903F1B6EA0D2E /* VC.RJSLibUFDesignablesVC.swift */,
 				E3D36EBAA2936244A4A8BAE0 /* VC.SwiftUIAndUIKitVC.swift */,
-				3ABA0CAAA708677A48C764E0 /* VC.SwiftUITestingMiscVC.swift */,
-				4FF1ABCA47BB3ADF4E3C48BA /* VC.TestingCombine.swift */,
 				C0D10762AA6B4D65CE11B7D3 /* VC.TestingMiscVC.swift */,
 			);
 			path = Scenes;
@@ -190,11 +190,11 @@
 				3EDE17B59810354D00498610 /* AppDelegate.swift in Sources */,
 				65EBF1F6D99A9EB1B2B44FB9 /* Auxiliar.swift in Sources */,
 				034D336C4C5F5C4A0EEFB8E3 /* TabBarController.swift in Sources */,
+				A93B67531544BE84D18142DC /* VC.CombineTestingVC.swift in Sources */,
+				317BC6CE84871D23BF9D74CF /* VC.ComposableArquitectureVC.swift in Sources */,
 				E14CF5D7EEE6515B7D129628 /* VC.RJSLibUFAppThemesVC.swift in Sources */,
 				23256E12DC96481BE777A7C3 /* VC.RJSLibUFDesignablesVC.swift in Sources */,
 				A5E96E4677F567A292A72133 /* VC.SwiftUIAndUIKitVC.swift in Sources */,
-				20C983979F0E2B2E18E21DAE /* VC.SwiftUITestingMiscVC.swift in Sources */,
-				4EDC941E2408A6DA0DB1EA8D /* VC.TestingCombine.swift in Sources */,
 				776ED8E4A574B3EFE8623406 /* VC.TestingMiscVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

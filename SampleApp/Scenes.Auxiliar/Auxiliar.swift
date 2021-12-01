@@ -13,6 +13,35 @@ import RJSLibUFNetworking
 import RJSLibUFAppThemes
 import RJSLibUFBaseVIP
 
+public struct AppViews { private init() { } }
+//public typealias V = AppViews
+
+public struct AppDomain { private init() { } }
+//public typealias D = AppDomain
+
+public struct AppReducers { private init() { } }
+public struct AppStores { private init() { } }
+
+public extension Int {
+    var isPrime: Bool {
+        guard self >= 2     else { return false }
+        guard self != 2     else { return true  }
+        guard self % 2 != 0 else { return false }
+        return !stride(from: 3, through: Int(sqrt(Double(self))), by: 2).contains { self % $0 == 0 }
+    }
+}
+
+public func nthPrimeV1(_ n: Int, callback: @escaping (Int?) -> Void) {
+    let seconds = 3.0
+    DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+        if Bool.random() {
+            callback(n * n)
+        } else {
+            callback(nil)
+        }
+    }
+}
+
 extension UIView {
     func lazyLoad() {}
 }

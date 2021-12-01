@@ -25,7 +25,7 @@ public typealias RJS_Convert          = RJSLib.Convert            // Types conve
 
 #if !os(macOS)
 public typealias RJS_ViewControllerRepresentable = RJSLib.ViewControllerRepresentable
-public typealias RJS_ViewRepresentable           = RJSLib.ViewRepresentable
+public typealias RJS_ViewRepresentable           = RJSLib.ViewRepresentable2
 #endif
 
 // MARK: - Networking
@@ -38,6 +38,7 @@ public typealias RJS_Reachability  = RJSLib.NetworkUtils.Reachability
 public typealias RJS_OperationQueueManager = RJSLib.OperationQueues.OperationQueueManager
 public typealias RJS_OperationBase         = RJSLibOperationBase
 public typealias RJS_SynchronizedArray     = SynchronizedArray
+public typealias RJS_GenericStore          = RJSLib.GenericStore
 
 #if !os(macOS)
 public typealias RJS_Cronometer        = RJSLib.Cronometer         // Utilities class for measure operations time

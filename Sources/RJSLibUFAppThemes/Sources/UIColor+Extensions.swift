@@ -11,6 +11,25 @@ import RJSLibUFBase
 
 // MARK: - Color Set 1
 
+infix operator |: AdditionPrecedence
+public extension UIColor {
+    
+    /// https://www.avanderlee.com/swift/dark-mode-support-ios/
+    /// Easily define two colors for both light and dark mode.
+    /// - Parameters:
+    ///   - lightMode: The color to use in light mode.
+    ///   - darkMode: The color to use in dark mode.
+    /// - Returns: A dynamic color that uses both given colors respectively for the given user interface style.
+    /// Usage: `let dynamicColor: UIColor = .black | .white`
+    static func | (lightMode: UIColor, darkMode: UIColor) -> UIColor {
+        guard #available(iOS 13.0, *) else { return lightMode }
+            
+        return UIColor { (traitCollection) -> UIColor in
+            return traitCollection.userInterfaceStyle == .light ? lightMode : darkMode
+        }
+    }
+}
+
 public extension UIColor {
 
     enum Pack1: CaseIterable, ReportableColorProtocol {

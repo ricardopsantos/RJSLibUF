@@ -168,8 +168,7 @@ fileprivate extension RJSLib {
         }
         
         func handle(state: RJS_ViewState<RJSLib.VM_SampleTableItem>) {
-            RJS_Utils.executeInMainTread { [weak self] in
-                guard let self = self else { return }
+            RJS_Utils.executeInMainTread {
                 switch state {
                 case .notLoaded:
                     RJS_Logs.info("notLoaded")

@@ -49,7 +49,8 @@ extension VC {
             containerView2.layouts.leftToSuperview()
             containerView2.layouts.rightToSuperview()
             containerView2.layouts.height(200)
-            _ = view.rjs.allSubviews.filter({ $0.isKind(of: UIButton.self) }).map { $0.layouts.height(44) }
+            _ = view.rjs.allSubviewsWith(type: UIButton.self).map { $0.layouts.height(44) }
+
         }
         
         override func setupFRP() {

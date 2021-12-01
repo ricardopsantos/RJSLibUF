@@ -8,6 +8,11 @@ import UIKit
 import RJSLibUFBase
 
 public extension RJSLibExtension where Target == UIView {
+    
+    func addDropShadow(color: UIColor = UIView.defaultShadowColor, shadowType: RJS_ShadowType = .heavy) {
+        target.addDropShadow(color: color, shadowType: shadowType)
+    }
+    
     func addShadow(color: UIColor = UIView.defaultShadowColor,
                    offset: CGSize = UIView.defaultShadowOffset,
                    radius: CGFloat = UIView.defaultShadowOffset.height,
@@ -30,6 +35,13 @@ public extension UIView {
     static var defaultShadowColor = UIColor(red: CGFloat(80/255.0), green: CGFloat(88/255.0), blue: CGFloat(93/255.0), alpha: 1)
     static let defaultShadowOffset = CGSize(width: 1, height: 5) // Shadow bellow
 
+    func addDropShadow(color: UIColor = UIView.defaultShadowColor, shadowType: RJS_ShadowType = .heavy) {
+        layer.shadowColor = color.cgColor
+        layer.shadowOpacity = Float(shadowType.rawValue)
+        layer.shadowOffset = CGSize(width: 2, height: 4)
+        layer.shadowRadius = 5
+    }
+    
     //
     // More about shadows : https://medium.com/swlh/how-to-create-advanced-shadows-in-swift-ios-swift-guide-9d2844b653f8
     //

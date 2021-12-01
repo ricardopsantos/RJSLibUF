@@ -27,11 +27,8 @@ extension RJSLib {
     public class FRPSimpleNetworkAgent {
         private var session: URLSession
         public init() {
-            if false {
-                self.session = .shared
-            } else {
-                self.session = URLSession.defaultForConnectivity
-            }
+            //self.session = .shared
+            self.session = URLSession.defaultForConnectivity
         }
         public init(session: URLSession) {
             self.session = session

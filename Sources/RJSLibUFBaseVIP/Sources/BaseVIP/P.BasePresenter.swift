@@ -9,9 +9,9 @@ import RJSLibUFBase
 import RJSLibUFDesignables
 
 extension RJSLib {
-    open class BasePresenterVIP: BasePresenterVIPProtocol {
+    open class BasePresenter: BasePresenterProtocol {
         public init () {}
-        open weak var baseViewController: BaseViewControllerVIPProtocol? {
+        open weak var baseViewController: BaseViewControllerProtocol? {
             fatalError("Override me on pressenter")
         }
         deinit {
@@ -23,8 +23,8 @@ extension RJSLib {
 // MARK: - Presenter - PresentationLogic
 
 /// [BasePresentationLogicProtocol] && [BaseDisplayLogicProtocol] must match
-public protocol BasePresenterVIPProtocol: class {
-    var baseViewController: BaseViewControllerVIPProtocol? { get }
+public protocol BasePresenterProtocol: AnyObject {
+    var baseViewController: BaseViewControllerProtocol? { get }
     func presentLoading(response: RJS_BaseDisplayLogicModels.Loading)
     func presentError(response: RJS_BaseDisplayLogicModels.Error)
     func presentStatus(response: RJS_BaseDisplayLogicModels.Status)
@@ -35,7 +35,7 @@ public protocol BasePresenterVIPProtocol: class {
 }
 
 /// Default implementation....
-public extension BasePresenterVIPProtocol {
+public extension BasePresenterProtocol {
     func presentStatus(response: RJS_BaseDisplayLogicModels.Status) {
         DispatchQueue.main.async { [weak self] in
             let viewModel = response

@@ -13,6 +13,7 @@ public extension RJSLibExtension where Target == UIView {
     var asImage: UIImage { target.asImage }
     var printableMemoryAddress: String { target.printableMemoryAddress }
     var viewController: UIViewController? { target.viewController }
+    var assocViewController: UIViewController? { target.viewController }
     func bringToFront() { target.bringToFront() }
     func sendToBack() { target.sendToBack() }
     func disableUserInteractionFor(_ seconds: Double, disableAlpha: CGFloat = 0.6) { target.disableUserInteractionFor(seconds, disableAlpha: disableAlpha) }

@@ -1,4 +1,5 @@
 import Foundation
+import Combine
 
 /**
  https://github.com/apple/swift-evolution/blob/master/proposals/0258-property-wrappers.md
@@ -35,6 +36,15 @@ __If you’re not familiar with Property Wrappers in Swift, it’s not a big dea
 
 */
 
+/// Allows to match for optionals with generics that are defined as non-optional.
+public protocol AnyOptional {
+    /// Returns `true` if `nil`, otherwise `false`.
+    var isNil: Bool { get }
+}
+extension Optional: AnyOptional {
+    public var isNil: Bool { self == nil }
+}
+
 public extension RJSLib {
     @propertyWrapper
     struct UserDefaults<T> {
@@ -49,4 +59,48 @@ public extension RJSLib {
             set { Foundation.UserDefaults.standard.set(newValue, forKey: key) }
         }
     }
+    
+    //
+    // Projecting a Value From a Property Wrapper
+    // https://www.avanderlee.com/swift/property-wrappers/
+    //
+    
+    /**
+     
+     ```
+     let subscription = UserDefaults.$username.sink { username in
+         print("New username: \(username)")
+     }
+     UserDefaults.username = "Test"
+     ```
+     */
+    
+    @propertyWrapper
+    struct UserDefaultProjected<Value> {
+        public let key: String
+        public let defaultValue: Value
+
+        private let publisher = PassthroughSubject<Value, Never>()
+        
+        public var wrappedValue: Value {
+            get {
+                return Foundation.UserDefaults.standard.object(forKey: key) as? Value ?? defaultValue
+            }
+            set {
+                // Check whether we're dealing with an optional and remove the object if the new value is nil.
+                if let optional = newValue as? AnyOptional, optional.isNil {
+                    Foundation.UserDefaults.standard.removeObject(forKey: key)
+                } else {
+                    Foundation.UserDefaults.standard.set(newValue, forKey: key)
+                }
+                publisher.send(newValue)
+            }
+        }
+
+        public var projectedValue: AnyPublisher<Value, Never> {
+            return publisher.eraseToAnyPublisher()
+        }
+    }
 }
+
+

@@ -9,7 +9,7 @@ import RJSLibUFBase
 
 // MARK: - ViewController - DisplayLogic
 
-public protocol BaseViewControllerVIPProtocol: class {
+public protocol BaseViewControllerProtocol: AnyObject {
     func displayLoading(viewModel: RJS_BaseDisplayLogicModels.Loading)
     func displayError(viewModel: RJS_BaseDisplayLogicModels.Error)
     func displayWarning(viewModel: RJS_BaseDisplayLogicModels.Warning)
@@ -18,9 +18,9 @@ public protocol BaseViewControllerVIPProtocol: class {
 
 public extension RJSLib {
     
-    class BaseViewControllerVIP: UIViewController, BaseViewControllerVIPProtocol, RJS_BaseViewProtocol {
+    class BaseViewController: UIViewController, BaseViewControllerProtocol, RJS_BaseViewProtocol {
 
-        public var firstAppearance = true
+        public private (set) var firstAppearance = true // public to read, private to set...
 
         deinit {
             NotificationCenter.default.removeObserver(self)
@@ -31,12 +31,20 @@ public extension RJSLib {
             doViewLifeCycle()
         }
 
+        open override func viewWillAppear(_ animated: Bool) {
+            super.viewWillAppear(animated)
+            if firstAppearance {
+                viewWillFirstAppear()
+            }
+        }
+        
+        open func viewWillFirstAppear() {
+            guard firstAppearance else { return }
+        }
+        
         open override func viewDidAppear(_ animated: Bool) {
             super.viewDidAppear(animated)
-            DispatchQueue.executeWithDelay(delay: 0.1) { [weak self] in
-                guard let self = self else { return }
-                self.firstAppearance = false
-            }
+            firstAppearance = false
         }
 
         open func displayWarning(viewModel: BaseDisplayLogicModels.Warning) {
@@ -98,7 +106,7 @@ public extension RJSLib {
 // MARK: - Private
 //
 
-private extension RJS_BaseViewControllerVIP {
+private extension RJS_BaseViewController {
 
     func setActivityState(_ state: Bool) {
         if state {

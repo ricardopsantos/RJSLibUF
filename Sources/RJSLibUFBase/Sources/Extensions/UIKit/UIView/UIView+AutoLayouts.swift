@@ -51,6 +51,16 @@ public extension RJSLayouts {
     var saferAreaInsets: UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
+        
+    func layoutConstraintsRelatedWith(_ view: UIView) -> [NSLayoutConstraint] {
+        let printableMemoryAddress = view.printableMemoryAddress
+        return layoutConstraints.filter { ($0.identifier?.contains(printableMemoryAddress) ?? false) }
+    }
+    
+    var layoutConstraintsRelatedWithSuperView: [NSLayoutConstraint] {
+        guard let printableMemoryAddress = self.target.superview?.printableMemoryAddress else { return [] }
+        return layoutConstraints.filter { ($0.identifier?.contains(printableMemoryAddress) ?? false) }
+    }
     
     var layoutConstraints: [NSLayoutConstraint] {
         var constraints: [NSLayoutConstraint] = []
@@ -142,9 +152,15 @@ public extension RJSLayouts {
         if stackViewV.superview == nil {
             scrollView.addSubview(stackViewV)
         }
-        stackViewV.rjs.edgeStackViewToSuperView()
-        scrollView.layouts.edgesToSuperview(excluding: .bottom, insets: .zero)
-        scrollView.layouts.height(screenHeight)
+        if usingSafeArea {
+            stackViewV.rjs.edgeStackViewToSuperView(insets: .zero)
+            scrollView.layouts.edgesToSuperview()
+            scrollView.layouts.height(screenHeight)
+        } else {
+            stackViewV.rjs.edgeStackViewToSuperView(insets: target.safeAreaInsets)
+            scrollView.layouts.edgesToSuperview()
+            scrollView.layouts.height(screenHeight - target.safeAreaInsets.bottom.magnitude - target.safeAreaInsets.top.magnitude)
+        }
     }
 }
 

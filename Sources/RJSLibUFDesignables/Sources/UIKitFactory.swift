@@ -50,9 +50,10 @@ public extension RJS_Designables {
         }
 
         public static func tableView(tag: Int=0,
-                                     cellIdentifier: String = RJS_Constants.cellIdentifier) -> UITableView {
+                                     cellIdentifier: String = UITableViewCell.reusableIdentifier) -> UITableView {
             let some = UITableView()
             some.tag = tag
+            //some.register(UITableViewCell.self)
             some.register(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
             return some
         }
@@ -120,7 +121,8 @@ public extension RJS_Designables {
             let some: UICollectionView = UICollectionView(frame: baseController.view.frame, collectionViewLayout: layout)
             some.dataSource = (baseController as? UICollectionViewDataSource)
             some.delegate   = (baseController as? UICollectionViewDelegate)
-            some.register(UICollectionViewCell.self, forCellWithReuseIdentifier: RJS_Constants.cellIdentifier)
+            some.register(UICollectionViewCell.self, forCellWithReuseIdentifier: String(describing: UICollectionViewCell.self))
+            //some.register(UICollectionViewCell.self)
             some.backgroundColor = UIColor.brown
             baseController.view.addSubview(some)
             return some

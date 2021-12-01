@@ -60,20 +60,35 @@ public extension UIFont {
             case captionSmall
             
             public var rawValue: RawValue {
+                let trait = UIView().traitCollection.preferredContentSizeCategory
+                var multiplier: CGFloat = 1
+                switch trait {
+                case .unspecified: multiplier = 1
+                case .extraSmall: multiplier = 0.6
+                case .small: multiplier = 0.8
+                case .medium, .accessibilityMedium: multiplier = 1
+                case .large, .accessibilityLarge: multiplier = 1.2
+                case .extraLarge, .accessibilityExtraLarge: multiplier = 1.4
+                case .extraExtraLarge, .accessibilityExtraLarge: multiplier = 1.5
+                case .extraExtraExtraLarge, .accessibilityExtraExtraLarge: multiplier = 1.8
+                case .accessibilityExtraExtraExtraLarge: multiplier = 2
+                default: multiplier = 1
+                }
+                
                 let boldFontName    = RJS_Fonts.StylesBuilder.bold.fontName     // Bold
                 let mediumFontName  = RJS_Fonts.StylesBuilder.regular.fontName  // Regular/Bold
                 let regularFontName = RJS_Fonts.StylesBuilder.light.fontName    // Regular
                 switch self {
-                case .headingJumbo: return UIFont(name: regularFontName, size: 38.0)!
-                case .headingBold: return UIFont(name: boldFontName, size: 28.0)!
-                case .headingMedium:  return UIFont(name: mediumFontName, size: 28.0)!
-                case .headingSmall: return UIFont(name: regularFontName, size: 24.0)!
-                case .paragraphBold:  return UIFont(name: mediumFontName, size: 18.0)!
-                case .paragraphMedium: return UIFont(name: mediumFontName, size: 16.0)!
-                case .paragraphSmall: return UIFont(name: regularFontName, size: 16.0)!
+                case .headingJumbo: return UIFont(name: regularFontName, size: 38.0 * multiplier)!
+                case .headingBold: return UIFont(name: boldFontName, size: 28.0 * multiplier)!
+                case .headingMedium:  return UIFont(name: mediumFontName, size: 28.0 * multiplier)!
+                case .headingSmall: return UIFont(name: regularFontName, size: 24.0 * multiplier)!
+                case .paragraphBold:  return UIFont(name: mediumFontName, size: 18.0 * multiplier)!
+                case .paragraphMedium: return UIFont(name: mediumFontName, size: 16.0 * multiplier)!
+                case .paragraphSmall: return UIFont(name: regularFontName, size: 16.0 * multiplier)!
                 case .captionLarge: return UIFont(name: regularFontName, size: 14.0)!
-                case .caption: return UIFont(name: mediumFontName, size: 12.0)!
-                case .captionSmall: return UIFont(name: mediumFontName, size: 10.0)!
+                case .caption: return UIFont(name: mediumFontName, size: 12.0 * multiplier)!
+                case .captionSmall: return UIFont(name: mediumFontName, size: 10.0 * multiplier)!
                 }
             }
             

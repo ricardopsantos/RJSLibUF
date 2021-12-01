@@ -45,7 +45,7 @@ struct Previews_CustomButton {
     struct Preview1: PreviewProvider {
         public static var previews: some View {
             RJS_Designables_SwiftUI.ViewWithAnyViews(
-                RJSLibUFDesignables_Preview.allCasesSwiftUI("\(RJS_Designables_SwiftUI.CustomButton.self)")
+                RJSLibUFDesignables_Preview.shared.allCasesSwiftUI(for: RJS_Designables_SwiftUI.CustomButton.self)
             ).buildPreviews()
         }
     }

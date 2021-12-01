@@ -135,6 +135,8 @@ identifier_name:
 function_parameter_count: 10
 
 disabled_rules:
+    - orphaned_doc_comment
+    - comment_spacing
     - todo
     - valid_ibinspectable
     - identifier_name

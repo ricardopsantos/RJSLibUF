@@ -55,8 +55,8 @@ public extension UIColor {
 
         func colorComponentsFrom(_ string: String, start: Int, length: Int) -> Float {
             let subString = (string as NSString).substring(with: NSMakeRange(start, length))
-            var hexValue: UInt32 = 0
-            Scanner(string: subString).scanHexInt32(&hexValue)
+            var hexValue: UInt64 = 0
+            Scanner(string: subString).scanHexInt64(&hexValue)
             return Float(hexValue) / 255.0
         }
 

@@ -9,15 +9,15 @@ import UIKit
 
 public extension RJSLibExtension where Target == UILabel {
     var textAnimated: String? {
-        set { target.textAnimated = newValue }
         get { target.text }
+        set { target.textAnimated = newValue }
     }
 }
 
 public extension UILabel {
     var textAnimated: String? {
-        set { fadeTransition(); text = newValue ?? "" }
         get { return text }
+        set { fadeTransition(); text = newValue ?? "" }
     }
 }
 

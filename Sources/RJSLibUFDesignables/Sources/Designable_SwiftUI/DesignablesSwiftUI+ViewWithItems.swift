@@ -6,6 +6,7 @@ import Foundation
 import SwiftUI
 
 public extension RJS_Designables_SwiftUI {
+    
     struct ViewWithAnyViews: View {
         private var items: [AnyView]
         public init(_ items: [AnyView]) {
@@ -13,22 +14,24 @@ public extension RJS_Designables_SwiftUI {
         }
         public var body: some View {
             VStack {
-                ForEach((0...items.count-1), id: \.self) {
-                    items.element(at: $0).padding()
+                ForEach((1...items.count), id: \.self) {
+                    items.element(at: ($0-1)).padding()
                 }
             }
         }
     }
 }
 
+#if !os(macOS)
 struct Previews_ViewWithAnyViews {
     #if canImport(SwiftUI) && DEBUG
     struct ViewWithAnyViews: PreviewProvider {
         public static var previews: some View {
             RJS_Designables_SwiftUI.ViewWithAnyViews(
-                RJSLibUFDesignables_Preview.allCasesSwiftUI("\(RJS_Designables_SwiftUI.ViewWithAnyViews.self)")
+                RJSLibUFDesignables_Preview.shared.allCasesSwiftUI(for: RJS_Designables_SwiftUI.ViewWithAnyViews.self)
             ).buildPreviews()
         }
     }
     #endif
 }
+#endif

@@ -22,13 +22,13 @@ import RJSLibUFBase
 //
 
 extension P {
-    class ___VARIABLE_sceneName___Presenter: RJS_BasePresenterVIP {
+    class ___VARIABLE_sceneName___Presenter: RJS_BasePresenter {
         deinit {
             NotificationCenter.default.removeObserver(self)
         }
         weak var viewController: (___VARIABLE_sceneName___DisplayLogicProtocol)?
 
-        override weak var baseViewController: BaseViewControllerVIPProtocol? {
+        override weak var baseViewController: BaseViewControllerProtocol? {
             return viewController
         }
     }

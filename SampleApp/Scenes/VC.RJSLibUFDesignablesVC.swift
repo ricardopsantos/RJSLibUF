@@ -16,9 +16,10 @@ import RJSLibUFDesignables
 #if canImport(SwiftUI) && DEBUG
 import SwiftUI
 struct RJSLibUFDesignablesVC_PreviewProvider: PreviewProvider {
-    static var previews: some View { RJS_ViewControllerRepresentable {
-        VC.RJSLibUFDesignablesVC()
-    }.buildPreviews() }
+    static var previews: some View {
+        RJS_ViewControllerRepresentable {
+            VC.RJSLibUFDesignablesVC()
+        }.buildPreviews() }
 }
 #endif
 
