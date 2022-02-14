@@ -20,8 +20,8 @@ options:
 packages:
   RJSLibUF:
     url: https://github.com/ricardopsantos/RJSLibUF
-    #revision: 11aeb1417d0f32d74bb9576a98149699c9871617
-    branch: develop
+    revision: ad1af173258c330303a1f53263d1513b0ac1998d
+    #branch: develop
 
 ####################### SETTINGS #######################   
     

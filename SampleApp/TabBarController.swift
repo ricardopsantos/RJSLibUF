@@ -54,9 +54,6 @@ struct TabBarControllerV2: View {
                 NavigationLink(destination: VC.TestingMiscVC().asAnyView) {
                     Text("TestingMiscVC") }
                 
-                NavigationLink(destination: VC.___VARIABLE_sceneName___ViewController().asAnyView) {
-                    Text("VIP") }
-                
             }
             .navigationBarTitle("RJSLib_UseCases")
         }
@@ -79,12 +76,8 @@ class TabBarControllerV1: UITabBarController {
         let v3 = createControllers(tabName: "Desinables", vc: VC.RJSLibUFDesignablesVC())
         let v4 = createControllers(tabName: "DLanguage", vc: VC.RJSLibUFAppThemesVC())
         let v5 = createControllers(tabName: "Testing", vc: VC.TestingMiscVC())
-        var vcs = [v0, v1, v2, v3, v4, v5]
-        #if INCLUDE_VIP_TEMPLATE
-        vcs.append(createControllers(tabName: "VIP", vc: VC.___VARIABLE_sceneName___ViewController()))
-        #endif
                 
-        viewControllers = vcs
+        viewControllers = [v0, v1, v2, v3, v4, v5]
         
         viewStateBinder1.value.sink { (some) in
             RJS_Logs.info("new value: \(some)")

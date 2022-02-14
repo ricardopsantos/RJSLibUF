@@ -1,0 +1,65 @@
+name: iOSSampleApp
+
+# iOSSampleApp.xcodeproj
+# SAMPLE APP | SAMPLE APP | SAMPLE APP | SAMPLE APP | SAMPLE APP |
+# SAMPLE APP | SAMPLE APP | SAMPLE APP | SAMPLE APP | SAMPLE APP |
+# SAMPLE APP | SAMPLE APP | SAMPLE APP | SAMPLE APP | SAMPLE APP |
+# iOSSampleApp.xcodeproj
+
+options:
+  bundleIdPrefix: com.rjps.libuf
+  xcodeVersion: '12.0.1'
+  deploymentTarget: '13.0'
+  groupSortPosition: top
+  generateEmptyDirectories: true
+  findCarthageFrameworks: false
+  minimumXcodeGenVersion: '2.18.0'
+
+####################### PACKAGES #######################
+
+packages:
+  RJSLibUF:
+    url: https://github.com/ricardopsantos/RJSLibUF
+    revision: ad1af173258c330303a1f53263d1513b0ac1998d
+    #branch: develop
+
+####################### SETTINGS #######################   
+    
+settings:
+  base:
+    IPHONEOS_DEPLOYMENT_TARGET: 13.0
+    ENABLE_BITCODE: NO
+    SWIFT_VERSION: 5.3
+    
+targets:
+        
+  SampleApp1:
+    type: application
+    platform: iOS
+    deploymentTarget: 13.0
+    settings:
+      base:
+        MARKETING_VERSION: 1.0
+    sources:
+       - path: ../SampleApp
+    dependencies:
+      - package: RJSLibUF
+        product: RJSLibUFBase
+        link: true
+      - package: RJSLibUF
+        product: RJSLibUFNetworking
+        link: true
+      - package: RJSLibUF
+        product: RJSLibUFAppThemes
+        link: true
+      - package: RJSLibUF
+        product: RJSLibUFBaseVIP
+        link: true
+      - package: RJSLibUF
+        product: RJSLibUFStorage
+        link: true
+      - package: RJSLibUF
+        product: RJSLibUFDesignables
+        link: true
+        
+            

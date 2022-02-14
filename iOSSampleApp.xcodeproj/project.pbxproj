@@ -7,23 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		034D336C4C5F5C4A0EEFB8E3 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93030C52174E8510BF8FCCA /* TabBarController.swift */; };
-		23256E12DC96481BE777A7C3 /* VC.RJSLibUFDesignablesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E600E1C639C903F1B6EA0D2E /* VC.RJSLibUFDesignablesVC.swift */; };
-		317BC6CE84871D23BF9D74CF /* VC.ComposableArquitectureVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0748A115642A4E1CA0D25F2A /* VC.ComposableArquitectureVC.swift */; };
-		3EDE17B59810354D00498610 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C850013A6A17CB2B156A7F5F /* AppDelegate.swift */; };
-		453FF2FF75CFAB7033773F8A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8607B8BF1EA049CFF6B04D2A /* LaunchScreen.storyboard */; };
-		65EBF1F6D99A9EB1B2B44FB9 /* Auxiliar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B452CD4C754EEACDA5C304 /* Auxiliar.swift */; };
-		6A14183C573A6BE1F11824A2 /* RJSLibUFBase in Frameworks */ = {isa = PBXBuildFile; productRef = 08C80521D330CC553007CADB /* RJSLibUFBase */; };
-		77430AC3388E7E07667973D0 /* RJSLibUFAppThemes in Frameworks */ = {isa = PBXBuildFile; productRef = 31826F13AD56498558E5A644 /* RJSLibUFAppThemes */; };
-		776ED8E4A574B3EFE8623406 /* VC.TestingMiscVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D10762AA6B4D65CE11B7D3 /* VC.TestingMiscVC.swift */; };
-		80E64973758DD3990100696A /* RJSLibUFStorage in Frameworks */ = {isa = PBXBuildFile; productRef = A831A6545DE57D4304CDCEDF /* RJSLibUFStorage */; };
-		834F491E24679DA510E3B9B6 /* RJSLibUFBaseVIP in Frameworks */ = {isa = PBXBuildFile; productRef = FA84E002D14A1FD4F201E6F9 /* RJSLibUFBaseVIP */; };
-		A5E96E4677F567A292A72133 /* VC.SwiftUIAndUIKitVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D36EBAA2936244A4A8BAE0 /* VC.SwiftUIAndUIKitVC.swift */; };
-		A93B67531544BE84D18142DC /* VC.CombineTestingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A1BEB4E0228633087AA122 /* VC.CombineTestingVC.swift */; };
-		CF1096D5FEB3FBDBF8D83ACF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61114974D64A09F7845CC853 /* Assets.xcassets */; };
-		D6152E607ABC2B2EE4DAF396 /* RJSLibUFNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = 3D1D0262D4472B54E7A7C375 /* RJSLibUFNetworking */; };
-		D8CDCDE732A116B5A4DD02BA /* RJSLibUFDesignables in Frameworks */ = {isa = PBXBuildFile; productRef = 225AE44B3249C0BC46625971 /* RJSLibUFDesignables */; };
-		E14CF5D7EEE6515B7D129628 /* VC.RJSLibUFAppThemesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FFC81A98495F86495716C5 /* VC.RJSLibUFAppThemesVC.swift */; };
+		04E46A2218BFDE82FCC89925 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61114974D64A09F7845CC853 /* Assets.xcassets */; };
+		0946DC2003B4E8DAE58E8AD2 /* VC.ComposableArquitectureVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0748A115642A4E1CA0D25F2A /* VC.ComposableArquitectureVC.swift */; };
+		11F5248A46D64B862681AED4 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93030C52174E8510BF8FCCA /* TabBarController.swift */; };
+		1AB282E5F7C624AFC13C35F3 /* RJSLibUFDesignables in Frameworks */ = {isa = PBXBuildFile; productRef = D1DE25B77C57147353190A8B /* RJSLibUFDesignables */; };
+		30255028F84ED6BC3F50D393 /* RJSLibUFNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = 4AB6B31CF98CD11ECEEDCF00 /* RJSLibUFNetworking */; };
+		35CE25FF3A1D854D55C1E3D7 /* Auxiliar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B452CD4C754EEACDA5C304 /* Auxiliar.swift */; };
+		3895B4C1D785FF29FCC5ED6F /* VC.SwiftUIAndUIKitVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D36EBAA2936244A4A8BAE0 /* VC.SwiftUIAndUIKitVC.swift */; };
+		43B00CF3C9E095F49E334ED8 /* RJSLibUFAppThemes in Frameworks */ = {isa = PBXBuildFile; productRef = A6C023D856A22F4D393D8297 /* RJSLibUFAppThemes */; };
+		5D7DB12E99655CAB7814BB85 /* VC.CombineTestingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A1BEB4E0228633087AA122 /* VC.CombineTestingVC.swift */; };
+		8603C7EFA703169FFCE1057A /* RJSLibUFBaseVIP in Frameworks */ = {isa = PBXBuildFile; productRef = 8F41A86107FA4E70F1447056 /* RJSLibUFBaseVIP */; };
+		8D8E8917A242CAAC772FC404 /* VC.RJSLibUFDesignablesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E600E1C639C903F1B6EA0D2E /* VC.RJSLibUFDesignablesVC.swift */; };
+		AE2AD6F3C1875905D1A2FAD5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8607B8BF1EA049CFF6B04D2A /* LaunchScreen.storyboard */; };
+		B47761791D3A726C6E697A29 /* RJSLibUFBase in Frameworks */ = {isa = PBXBuildFile; productRef = 177A9715E955600A26EDABE7 /* RJSLibUFBase */; };
+		B66BABB5DE6E1185165014E8 /* RJSLibUFStorage in Frameworks */ = {isa = PBXBuildFile; productRef = D865A4DFC444021BC073F982 /* RJSLibUFStorage */; };
+		BF846B3D869B6C0EBC90A20A /* VC.RJSLibUFAppThemesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FFC81A98495F86495716C5 /* VC.RJSLibUFAppThemesVC.swift */; };
+		CE8424C95C995BB1E4493A54 /* VC.TestingMiscVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D10762AA6B4D65CE11B7D3 /* VC.TestingMiscVC.swift */; };
+		E096B001AA0122FC20A82AC9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C850013A6A17CB2B156A7F5F /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,24 +36,24 @@
 		88FFC81A98495F86495716C5 /* VC.RJSLibUFAppThemesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC.RJSLibUFAppThemesVC.swift; sourceTree = "<group>"; };
 		C0D10762AA6B4D65CE11B7D3 /* VC.TestingMiscVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC.TestingMiscVC.swift; sourceTree = "<group>"; };
 		C850013A6A17CB2B156A7F5F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D2EC2B87F18CEF52A4E5B936 /* SampleApp.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = SampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9A33FF968EDCAB50893D9C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E3D36EBAA2936244A4A8BAE0 /* VC.SwiftUIAndUIKitVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC.SwiftUIAndUIKitVC.swift; sourceTree = "<group>"; };
 		E600E1C639C903F1B6EA0D2E /* VC.RJSLibUFDesignablesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC.RJSLibUFDesignablesVC.swift; sourceTree = "<group>"; };
 		E93030C52174E8510BF8FCCA /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		F18C13935AE5B472EDF0C66A /* SampleApp1.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = SampleApp1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		EA959F5EEA5A047509A9FFBD /* Frameworks */ = {
+		C565F07763933BEAFF3B8C95 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6A14183C573A6BE1F11824A2 /* RJSLibUFBase in Frameworks */,
-				D6152E607ABC2B2EE4DAF396 /* RJSLibUFNetworking in Frameworks */,
-				77430AC3388E7E07667973D0 /* RJSLibUFAppThemes in Frameworks */,
-				834F491E24679DA510E3B9B6 /* RJSLibUFBaseVIP in Frameworks */,
-				80E64973758DD3990100696A /* RJSLibUFStorage in Frameworks */,
-				D8CDCDE732A116B5A4DD02BA /* RJSLibUFDesignables in Frameworks */,
+				B47761791D3A726C6E697A29 /* RJSLibUFBase in Frameworks */,
+				30255028F84ED6BC3F50D393 /* RJSLibUFNetworking in Frameworks */,
+				43B00CF3C9E095F49E334ED8 /* RJSLibUFAppThemes in Frameworks */,
+				8603C7EFA703169FFCE1057A /* RJSLibUFBaseVIP in Frameworks */,
+				B66BABB5DE6E1185165014E8 /* RJSLibUFStorage in Frameworks */,
+				1AB282E5F7C624AFC13C35F3 /* RJSLibUFDesignables in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,7 +99,7 @@
 		A955FB7D684A43F8356AD8A4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D2EC2B87F18CEF52A4E5B936 /* SampleApp.app */,
+				F18C13935AE5B472EDF0C66A /* SampleApp1.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -115,29 +115,29 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2FD8BF2486BD401051385EE0 /* SampleApp */ = {
+		7E0CCF6DF61245703DE23361 /* SampleApp1 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 88E1BD85347EF4F63AFE4B1C /* Build configuration list for PBXNativeTarget "SampleApp" */;
+			buildConfigurationList = DD196219B095E32C758E1E22 /* Build configuration list for PBXNativeTarget "SampleApp1" */;
 			buildPhases = (
-				9DA0482A4DEA54884F3BE3F1 /* Sources */,
-				BDC53CADEDEC769CC25B51ED /* Resources */,
-				EA959F5EEA5A047509A9FFBD /* Frameworks */,
+				53F8FA6F84207F5DDD011EC3 /* Sources */,
+				D6A8CFE3C975A66FF019FFCA /* Resources */,
+				C565F07763933BEAFF3B8C95 /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = SampleApp;
+			name = SampleApp1;
 			packageProductDependencies = (
-				08C80521D330CC553007CADB /* RJSLibUFBase */,
-				3D1D0262D4472B54E7A7C375 /* RJSLibUFNetworking */,
-				31826F13AD56498558E5A644 /* RJSLibUFAppThemes */,
-				FA84E002D14A1FD4F201E6F9 /* RJSLibUFBaseVIP */,
-				A831A6545DE57D4304CDCEDF /* RJSLibUFStorage */,
-				225AE44B3249C0BC46625971 /* RJSLibUFDesignables */,
+				177A9715E955600A26EDABE7 /* RJSLibUFBase */,
+				4AB6B31CF98CD11ECEEDCF00 /* RJSLibUFNetworking */,
+				A6C023D856A22F4D393D8297 /* RJSLibUFAppThemes */,
+				8F41A86107FA4E70F1447056 /* RJSLibUFBaseVIP */,
+				D865A4DFC444021BC073F982 /* RJSLibUFStorage */,
+				D1DE25B77C57147353190A8B /* RJSLibUFDesignables */,
 			);
-			productName = SampleApp;
-			productReference = D2EC2B87F18CEF52A4E5B936 /* SampleApp.app */;
+			productName = SampleApp1;
+			productReference = F18C13935AE5B472EDF0C66A /* SampleApp1.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -165,37 +165,37 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2FD8BF2486BD401051385EE0 /* SampleApp */,
+				7E0CCF6DF61245703DE23361 /* SampleApp1 */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		BDC53CADEDEC769CC25B51ED /* Resources */ = {
+		D6A8CFE3C975A66FF019FFCA /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF1096D5FEB3FBDBF8D83ACF /* Assets.xcassets in Resources */,
-				453FF2FF75CFAB7033773F8A /* LaunchScreen.storyboard in Resources */,
+				04E46A2218BFDE82FCC89925 /* Assets.xcassets in Resources */,
+				AE2AD6F3C1875905D1A2FAD5 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		9DA0482A4DEA54884F3BE3F1 /* Sources */ = {
+		53F8FA6F84207F5DDD011EC3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3EDE17B59810354D00498610 /* AppDelegate.swift in Sources */,
-				65EBF1F6D99A9EB1B2B44FB9 /* Auxiliar.swift in Sources */,
-				034D336C4C5F5C4A0EEFB8E3 /* TabBarController.swift in Sources */,
-				A93B67531544BE84D18142DC /* VC.CombineTestingVC.swift in Sources */,
-				317BC6CE84871D23BF9D74CF /* VC.ComposableArquitectureVC.swift in Sources */,
-				E14CF5D7EEE6515B7D129628 /* VC.RJSLibUFAppThemesVC.swift in Sources */,
-				23256E12DC96481BE777A7C3 /* VC.RJSLibUFDesignablesVC.swift in Sources */,
-				A5E96E4677F567A292A72133 /* VC.SwiftUIAndUIKitVC.swift in Sources */,
-				776ED8E4A574B3EFE8623406 /* VC.TestingMiscVC.swift in Sources */,
+				E096B001AA0122FC20A82AC9 /* AppDelegate.swift in Sources */,
+				35CE25FF3A1D854D55C1E3D7 /* Auxiliar.swift in Sources */,
+				11F5248A46D64B862681AED4 /* TabBarController.swift in Sources */,
+				5D7DB12E99655CAB7814BB85 /* VC.CombineTestingVC.swift in Sources */,
+				0946DC2003B4E8DAE58E8AD2 /* VC.ComposableArquitectureVC.swift in Sources */,
+				BF846B3D869B6C0EBC90A20A /* VC.RJSLibUFAppThemesVC.swift in Sources */,
+				8D8E8917A242CAAC772FC404 /* VC.RJSLibUFDesignablesVC.swift in Sources */,
+				3895B4C1D785FF29FCC5ED6F /* VC.SwiftUIAndUIKitVC.swift in Sources */,
+				CE8424C95C995BB1E4493A54 /* VC.TestingMiscVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,6 +213,42 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		208E295E5A6FAEFDDD0BCCBC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = SampleApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rjps.libuf.SampleApp1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		75E82C6BCBF23BE9E70016A4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = SampleApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rjps.libuf.SampleApp1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		91FEEF42A5C9F1B813B2329D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -267,24 +303,6 @@
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.3;
-			};
-			name = Release;
-		};
-		A0CB8686F3F7A0EA34E6C77C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				INFOPLIST_FILE = SampleApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.rjps.libuf.SampleApp;
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -352,41 +370,23 @@
 			};
 			name = Debug;
 		};
-		D90BE16BD64235346C07377E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				INFOPLIST_FILE = SampleApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.rjps.libuf.SampleApp;
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		88E1BD85347EF4F63AFE4B1C /* Build configuration list for PBXNativeTarget "SampleApp" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D90BE16BD64235346C07377E /* Debug */,
-				A0CB8686F3F7A0EA34E6C77C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
-		};
 		95437F7A95DF2E7DF9CD1C02 /* Build configuration list for PBXProject "iOSSampleApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				ACFB7DF632C389BBB543F8D6 /* Debug */,
 				91FEEF42A5C9F1B813B2329D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		DD196219B095E32C758E1E22 /* Build configuration list for PBXNativeTarget "SampleApp1" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				208E295E5A6FAEFDDD0BCCBC /* Debug */,
+				75E82C6BCBF23BE9E70016A4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
@@ -398,42 +398,42 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ricardopsantos/RJSLibUF";
 			requirement = {
-				branch = develop;
-				kind = branch;
+				kind = revision;
+				revision = ad1af173258c330303a1f53263d1513b0ac1998d;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		08C80521D330CC553007CADB /* RJSLibUFBase */ = {
+		177A9715E955600A26EDABE7 /* RJSLibUFBase */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B82E728FCE96035145B29FD9 /* XCRemoteSwiftPackageReference "RJSLibUF" */;
 			productName = RJSLibUFBase;
 		};
-		225AE44B3249C0BC46625971 /* RJSLibUFDesignables */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B82E728FCE96035145B29FD9 /* XCRemoteSwiftPackageReference "RJSLibUF" */;
-			productName = RJSLibUFDesignables;
-		};
-		31826F13AD56498558E5A644 /* RJSLibUFAppThemes */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B82E728FCE96035145B29FD9 /* XCRemoteSwiftPackageReference "RJSLibUF" */;
-			productName = RJSLibUFAppThemes;
-		};
-		3D1D0262D4472B54E7A7C375 /* RJSLibUFNetworking */ = {
+		4AB6B31CF98CD11ECEEDCF00 /* RJSLibUFNetworking */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B82E728FCE96035145B29FD9 /* XCRemoteSwiftPackageReference "RJSLibUF" */;
 			productName = RJSLibUFNetworking;
 		};
-		A831A6545DE57D4304CDCEDF /* RJSLibUFStorage */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B82E728FCE96035145B29FD9 /* XCRemoteSwiftPackageReference "RJSLibUF" */;
-			productName = RJSLibUFStorage;
-		};
-		FA84E002D14A1FD4F201E6F9 /* RJSLibUFBaseVIP */ = {
+		8F41A86107FA4E70F1447056 /* RJSLibUFBaseVIP */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B82E728FCE96035145B29FD9 /* XCRemoteSwiftPackageReference "RJSLibUF" */;
 			productName = RJSLibUFBaseVIP;
+		};
+		A6C023D856A22F4D393D8297 /* RJSLibUFAppThemes */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B82E728FCE96035145B29FD9 /* XCRemoteSwiftPackageReference "RJSLibUF" */;
+			productName = RJSLibUFAppThemes;
+		};
+		D1DE25B77C57147353190A8B /* RJSLibUFDesignables */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B82E728FCE96035145B29FD9 /* XCRemoteSwiftPackageReference "RJSLibUF" */;
+			productName = RJSLibUFDesignables;
+		};
+		D865A4DFC444021BC073F982 /* RJSLibUFStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B82E728FCE96035145B29FD9 /* XCRemoteSwiftPackageReference "RJSLibUF" */;
+			productName = RJSLibUFStorage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

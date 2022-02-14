@@ -74,7 +74,7 @@
 		38B09AFB45FE0369683FACC1 /* E.AlertType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827323C1D38C1D2109A2F500 /* E.AlertType.swift */; };
 		392DF32A84BF956D3D1D45B4 /* TinyConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A77F09CF8631AB5E54E991 /* TinyConstraints.swift */; };
 		398C715C1A46C110F32B1EDF /* CustomOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D10676C204AC922CDDD94F7 /* CustomOperators.swift */; };
-		39EC35A077CAD72C491EC456 /* RJSLibUFStorage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5663A792FA44ED758B33CEE3 /* RJSLibUFStorage.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		39EC35A077CAD72C491EC456 /* RJSLibUFStorage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5663A792FA44ED758B33CEE3 /* RJSLibUFStorage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3A133FF82384D55BE8621C29 /* Subscribers+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2397F2343F47EF7061AA7167 /* Subscribers+Extentions.swift */; };
 		3BC74F55615DC70542CAEC6B /* TemplateInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = A51D7B72F9CDAFCB17AA2790 /* TemplateInfo.plist */; };
 		3DC1CE04F5728BB981821DE5 /* UIViewController+Getters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332873E2BFDF393CE2C69723 /* UIViewController+Getters.swift */; };
@@ -95,7 +95,7 @@
 		4C8828160D4A275A4B94191E /* SimpleNetworkClientProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7379717FEAD4AA9011C4FB /* SimpleNetworkClientProtocols.swift */; };
 		4D7764A15E4BC2D34BC038C4 /* VC.___FILEBASENAME___ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3574176CD8DF745B3BA6B64B /* VC.___FILEBASENAME___ViewController.swift */; };
 		4D8C9A531D9F2AD2F6460F25 /* DesignablesSwiftUI+LoadingAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047FC1E80596083FC7467995 /* DesignablesSwiftUI+LoadingAnimations.swift */; };
-		4DB203F3FBFB283B42AF9956 /* RJSLibUFBaseVIP.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 17AB2D3CA6FDB0759EE4E213 /* RJSLibUFBaseVIP.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		4DB203F3FBFB283B42AF9956 /* RJSLibUFBaseVIP.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 17AB2D3CA6FDB0759EE4E213 /* RJSLibUFBaseVIP.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4EDFF85FA761412CAE827CEF /* V.___FILEBASENAME___View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6419BBEE61B5404800DBC2E4 /* V.___FILEBASENAME___View.swift */; };
 		4F38ECFE987B76785475F144 /* UIFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06985C402FFAD08178A63FA /* UIFont+Extensions.swift */; };
 		4F6FB875EB489F6D64BE3F41 /* Expirable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78A3C6800E3519D0564938B /* Expirable.swift */; };
@@ -135,7 +135,7 @@
 		83B7EF1FBC843B1E86FBE2AF /* E.FadeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3455CB4FE16CF7EA9D951DD2 /* E.FadeType.swift */; };
 		865F721460A07227ADA8E4F7 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA03B21D2E7F416460C2170E /* Date+Extensions.swift */; };
 		87B128430B480C76D2E2DFA4 /* CGSize+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DBA4BF9C93261B48EF50AD /* CGSize+Extensions.swift */; };
-		8979C1446B9DD30142B6AE51 /* RJSLibUFBase.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9B0D02882E22945B619357BF /* RJSLibUFBase.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		8979C1446B9DD30142B6AE51 /* RJSLibUFBase.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9B0D02882E22945B619357BF /* RJSLibUFBase.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		89BA691142297CCFEE50BE0F /* typealias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC8F6B796D0F413F0685949 /* typealias.swift */; };
 		8B2FA356428B78D3209A8819 /* DispatchQueue+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03D76A7604E0D1362351551 /* DispatchQueue+Extensions.swift */; };
 		8B3E9542F2E4225DEA6652DF /* UITableViewCell+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D30BFB9913A9416F890097F /* UITableViewCell+Extensions.swift */; };
@@ -160,7 +160,7 @@
 		9EE4380508AAF2C8DB76D94E /* Convert.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCA7B8B9E275C6A79B6EA35 /* Convert.swift */; };
 		A1B3E772E718C7E564198819 /* SwiftUI+UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5484C04A1613DDA8290AF20 /* SwiftUI+UIKit.swift */; };
 		A1F3FC5B20EF110087B94509 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5513E91F9443C2978C8E0E /* CoreDataManager.swift */; };
-		A26E9B849C90CE5989972AB0 /* RJSLibUFAppThemes.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F20CF5BF19068E6B3A1440D1 /* RJSLibUFAppThemes.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A26E9B849C90CE5989972AB0 /* RJSLibUFAppThemes.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F20CF5BF19068E6B3A1440D1 /* RJSLibUFAppThemes.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A39089CDCA382807D447181A /* UIView+Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB20EC14DD1A532B6876338 /* UIView+Transform.swift */; };
 		A3A128AC07485020ED700D0E /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A56346C97B65149E56B453 /* UICollectionView+Extensions.swift */; };
 		A3F6B0121AA7956851545A0C /* VC.BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5ED9E7E014BE03A55107A41 /* VC.BaseViewController.swift */; };
@@ -198,7 +198,7 @@
 		CB623713A29602197403421B /* VoiceOver+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3883FFFC9CC47A07F9CBCF /* VoiceOver+Extensions.swift */; };
 		CC5BDB2760A6002390BE1EA5 /* TNConstrainable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BF094350F466DD8E3BFC72 /* TNConstrainable.swift */; };
 		CEAECD543112AFDED58FA68D /* FRPSampleAPI+SampleUsage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E993A948FD873FF3076D9BFE /* FRPSampleAPI+SampleUsage.swift */; };
-		CEBE435DACE7CFFA1C8EED64 /* RJSLibUFDesignables.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3788DC7ECB1BFD00838EDBCE /* RJSLibUFDesignables.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		CEBE435DACE7CFFA1C8EED64 /* RJSLibUFDesignables.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3788DC7ECB1BFD00838EDBCE /* RJSLibUFDesignables.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CF0E1B44BC74AA9328659F93 /* E.Result<T>.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B013BDF41E070C57D5C8A1 /* E.Result<T>.swift */; };
 		D21E1684D7C6ABAD59C688BA /* P.BaseInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48F604C60069233677292B7 /* P.BaseInteractor.swift */; };
 		D721F15CD0A2521AD72E0860 /* RJSLibUFBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B0D02882E22945B619357BF /* RJSLibUFBase.framework */; };
@@ -209,7 +209,7 @@
 		DC5CA006A65CC6F7EFFE9A96 /* RJSHotCacheProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379BEE2114539820905E6CE1 /* RJSHotCacheProtocol.swift */; };
 		DE2648DFACC178E68B036107 /* RJSLibUFStorage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5663A792FA44ED758B33CEE3 /* RJSLibUFStorage.framework */; };
 		DF91B2F82FC5621D0372DE3B /* typealias.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87C65CDA8AF2EF036FF6076 /* typealias.swift */; };
-		E195B820DC7F91355526AA57 /* RJSLibUFNetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DD4DEAB85D959C8F029F2E0F /* RJSLibUFNetworking.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E195B820DC7F91355526AA57 /* RJSLibUFNetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DD4DEAB85D959C8F029F2E0F /* RJSLibUFNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E279B459817E24B8694F91FF /* UILayoutPriority+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD3E0B8244ADE4F129328C6 /* UILayoutPriority+Extensions.swift */; };
 		E8331991FBDCB2D111B4E563 /* Just+Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185BB4E37EEA19D84EC81E3F /* Just+Error.swift */; };
 		EA215EBFEF2AA373811B3E64 /* Designables.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E67062EFA650EE18F93AD3 /* Designables.swift */; };
@@ -492,7 +492,7 @@
 		8B84FC7625027165851FC276 /* UILabel+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extensions.swift"; sourceTree = "<group>"; };
 		8C2287E4A9E969D9F1AFADD7 /* VC.TestingMiscVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC.TestingMiscVC.swift; sourceTree = "<group>"; };
 		8D38BF9323CCA1256CC97649 /* LoggingExcluded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingExcluded.swift; sourceTree = "<group>"; };
-		8EDD993373DA46E378B05E1B /* SampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8EDD993373DA46E378B05E1B /* SampleApp.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = SampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9001C93FC16BE0259978FA36 /* DataModelEntity+Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataModelEntity+Cache.swift"; sourceTree = "<group>"; };
 		905BC0621255B60BDF550CDC /* BaseViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewProtocol.swift; sourceTree = "<group>"; };
 		916D24BDA6C3881172EEE697 /* RJSCombineCompatibleProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RJSCombineCompatibleProtocol.swift; sourceTree = "<group>"; };
@@ -1447,6 +1447,8 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 1201;
+				TargetAttributes = {
+				};
 			};
 			buildConfigurationList = 478BD369166F0567C3785035 /* Build configuration list for PBXProject "RJSLibUF" */;
 			compatibilityVersion = "Xcode 10.0";
